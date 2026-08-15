@@ -58,11 +58,16 @@ html {
   background-color: #F6F3EC;
   color: #14120F;
   font-family: var(--font-body);
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
   background-color: #F6F3EC;
   color: #14120F;
 }

@@ -62,28 +62,28 @@ export default function OverviewSection() {
         </div>
 
         {/* Quick Operational Commitments Banner */}
-        <div className="mt-12 p-6 sm:p-8 bg-[#14120F] text-[#F6F3EC] rounded-lg border border-[#383229] flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-12 p-4 sm:p-8 bg-[#14120F] text-[#F6F3EC] rounded-lg border border-[#383229] flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1 text-center lg:text-left">
             <div className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-semibold">
               OUR COMMITMENT TO EVERY PASSENGER
             </div>
-            <div className="font-display text-xl sm:text-2xl font-bold">
+            <div className="font-display text-lg sm:text-2xl font-bold">
               Clean AC Vehicles · Transparent Fares · Punctual Departures
             </div>
           </div>
 
-          <div className="flex items-center gap-4 shrink-0 font-mono text-xs">
-            <div className="px-4 py-2 bg-[#1C1914] border border-[#383229] rounded text-center">
+          <div className="grid grid-cols-3 gap-2 w-full lg:w-auto lg:flex lg:items-center lg:gap-3 shrink-0 font-mono text-xs">
+            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#1C1914] border border-[#383229] rounded text-center">
               <span className="text-[#C9A227] block font-bold">DIRECT</span>
-              <span className="text-[#F6F3EC]/70 text-[10px]">BOOKING</span>
+              <span className="text-[#F6F3EC]/70 text-[9px] sm:text-[10px]">BOOKING</span>
             </div>
-            <div className="px-4 py-2 bg-[#1C1914] border border-[#383229] rounded text-center">
+            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#1C1914] border border-[#383229] rounded text-center">
               <span className="text-[#C9A227] block font-bold">UDUPI</span>
-              <span className="text-[#F6F3EC]/70 text-[10px]">HEADQUARTERS</span>
+              <span className="text-[#F6F3EC]/70 text-[9px] sm:text-[10px]">HEADQUARTERS</span>
             </div>
-            <div className="px-4 py-2 bg-[#1C1914] border border-[#383229] rounded text-center">
+            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#1C1914] border border-[#383229] rounded text-center">
               <span className="text-[#C9A227] block font-bold">DIRECT</span>
-              <span className="text-[#F6F3EC]/70 text-[10px]">NO MIDDLEMEN</span>
+              <span className="text-[#F6F3EC]/70 text-[9px] sm:text-[10px]">NO MIDDLEMEN</span>
             </div>
           </div>
         </div>

@@ -213,7 +213,7 @@ export default function ContactSection() {
 
           {/* Right Column: Ticket Stub Booking & Enquiry Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="bg-[#1C1914] border border-[#B08D3F] rounded-lg p-6 sm:p-8 shadow-2xl relative">
+            <div className="bg-[#1C1914] border border-[#B08D3F] rounded-lg p-4 sm:p-8 shadow-2xl relative">
               {/* Form Ticket Header */}
               <div className="flex items-center justify-between pb-4 border-b border-[#383229] mb-6">
                 <div>

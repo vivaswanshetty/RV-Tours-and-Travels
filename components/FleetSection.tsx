@@ -50,35 +50,35 @@ export default function FleetSection() {
                 </div>
 
                 {/* Card Body */}
-                <div className="p-6 space-y-4">
+                <div className="p-4 sm:p-6 space-y-4">
                   <div>
-                    <span className="font-mono text-[11px] text-[#B08D3F] uppercase tracking-widest block font-semibold">
+                    <span className="font-mono text-[10px] sm:text-[11px] text-[#B08D3F] uppercase tracking-widest block font-semibold">
                       {vehicle.tagline}
                     </span>
-                    <h3 className="font-display text-2xl font-bold text-[#F6F3EC] mt-0.5">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F6F3EC] mt-0.5">
                       {vehicle.name}
                     </h3>
                   </div>
 
-                  <p className="font-body text-sm text-[#F6F3EC]/75 leading-relaxed">
+                  <p className="font-body text-xs sm:text-sm text-[#F6F3EC]/75 leading-relaxed">
                     {vehicle.description}
                   </p>
 
                   {/* Capacity Specs Pills */}
-                  <div className="grid grid-cols-3 gap-2 py-3 border-y border-[#383229]/80 text-xs font-mono">
-                    <div className="p-2 bg-[#14120F] rounded text-center border border-[#383229]/40 flex flex-col items-center justify-center gap-1">
-                      <Users className="w-4 h-4 text-[#C9A227]" />
-                      <span className="text-[10px] text-[#F6F3EC]/90 leading-tight">{vehicle.capacity.passengers}</span>
+                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2 py-3 border-y border-[#383229]/80 text-xs font-mono">
+                    <div className="p-1.5 sm:p-2 bg-[#14120F] rounded text-center border border-[#383229]/40 flex flex-col items-center justify-center gap-1">
+                      <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C9A227]" />
+                      <span className="text-[9px] sm:text-[10px] text-[#F6F3EC]/90 leading-tight">{vehicle.capacity.passengers}</span>
                     </div>
 
-                    <div className="p-2 bg-[#14120F] rounded text-center border border-[#383229]/40 flex flex-col items-center justify-center gap-1">
-                      <Briefcase className="w-4 h-4 text-[#C9A227]" />
-                      <span className="text-[10px] text-[#F6F3EC]/90 leading-tight">{vehicle.capacity.luggage}</span>
+                    <div className="p-1.5 sm:p-2 bg-[#14120F] rounded text-center border border-[#383229]/40 flex flex-col items-center justify-center gap-1">
+                      <Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C9A227]" />
+                      <span className="text-[9px] sm:text-[10px] text-[#F6F3EC]/90 leading-tight">{vehicle.capacity.luggage}</span>
                     </div>
 
-                    <div className="p-2 bg-[#1F4C4C]/40 rounded text-center border border-[#1F4C4C] flex flex-col items-center justify-center gap-1">
-                      <Wind className="w-4 h-4 text-[#F6F3EC]" />
-                      <span className="text-[10px] text-[#F6F3EC] leading-tight">Full AC</span>
+                    <div className="p-1.5 sm:p-2 bg-[#1F4C4C]/40 rounded text-center border border-[#1F4C4C] flex flex-col items-center justify-center gap-1">
+                      <Wind className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F6F3EC]" />
+                      <span className="text-[9px] sm:text-[10px] text-[#F6F3EC] leading-tight">Full AC</span>
                     </div>
                   </div>
 

@@ -29,9 +29,9 @@ export default function TicketButton({
   disabled = false,
 }: TicketButtonProps) {
   const sizeStyles = {
-    sm: "px-3.5 py-1.5 text-xs min-h-[36px]",
-    md: "px-5 py-2.5 text-xs sm:text-sm min-h-[44px]",
-    lg: "px-7 py-3.5 text-sm sm:text-base min-h-[52px]",
+    sm: "px-3 py-1.5 text-[11px] sm:text-xs min-h-[36px]",
+    md: "px-3.5 sm:px-5 py-2.5 text-xs sm:text-sm min-h-[42px] sm:min-h-[44px]",
+    lg: "px-4 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-sm md:text-base min-h-[46px] sm:min-h-[52px]",
   }[size];
 
   const variantStyles = {
@@ -42,16 +42,16 @@ export default function TicketButton({
   }[variant];
 
   const content = (
-    <span className="relative z-10 flex items-center justify-between gap-3 w-full font-mono uppercase font-bold tracking-wider">
+    <span className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 w-full font-mono uppercase font-bold tracking-wider overflow-hidden">
       {/* Left / Main Stub Body */}
-      <span className="flex items-center gap-2 whitespace-nowrap">
+      <span className="flex items-center gap-2 truncate">
         {icon && <span className="shrink-0">{icon}</span>}
-        <span className="whitespace-nowrap tracking-wide">{children}</span>
+        <span className="truncate tracking-wide">{children}</span>
       </span>
 
       {/* Ticket Perforation & Stub Code (if provided or implicit) */}
       {ticketCode && (
-        <span className="flex items-center gap-2.5 pl-2.5 border-l border-dashed border-[#B08D3F]/50 text-[10px] sm:text-xs text-[#E0C068] tracking-widest shrink-0 font-mono">
+        <span className="hidden xs:flex items-center gap-1.5 sm:gap-2.5 pl-2 sm:pl-2.5 border-l border-dashed border-[#B08D3F]/50 text-[10px] sm:text-xs text-[#E0C068] tracking-widest shrink-0 font-mono">
           <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B] shrink-0" />
           <span className="whitespace-nowrap">{ticketCode}</span>
         </span>
@@ -65,7 +65,7 @@ export default function TicketButton({
     transition-all duration-200 ease-out
     hover:-translate-y-0.5
     active:translate-y-0
-    cursor-pointer overflow-hidden whitespace-nowrap shrink-0
+    cursor-pointer overflow-hidden max-w-full shrink-0
     ${disabled ? "opacity-60 cursor-not-allowed pointer-events-none" : ""}
     ${sizeStyles} ${variantStyles} ${className}
   `;

@@ -9,7 +9,7 @@ export default function CtaBanner() {
   return (
     <section className="py-16 sm:py-20 bg-[#F6F3EC] relative border-b border-[#DCD4C4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative bg-[#14120F] text-[#F6F3EC] border-2 border-[#B08D3F] rounded-xl p-8 sm:p-12 shadow-2xl overflow-hidden">
+        <div className="relative bg-[#14120F] text-[#F6F3EC] border-2 border-[#B08D3F] rounded-xl p-5 sm:p-12 shadow-2xl overflow-hidden">
           {/* Background Grid & Vignette */}
           <div className="absolute inset-0 bg-route-dots opacity-10 pointer-events-none" />
 
