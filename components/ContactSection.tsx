@@ -23,64 +23,63 @@ export default function ContactSection() {
   const [refCode, setRefCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const buildWhatsAppUrl = (code?: string) => {
+    const activeRef = code || refCode || `RV-${Date.now().toString().slice(-6)}`;
+    const lines = [
+      `Hello Ramesh ji, I would like to enquire about a booking with RV Tours & Travels (Ref: ${activeRef}).`,
+      ``,
+      `*Passenger Name:* ${formData.name}`,
+      `*Contact Number:* ${formData.phone}`,
+      `*Service:* ${formData.serviceType}`,
+      `*Vehicle Preference:* ${formData.vehicleType}`,
+      `*Pickup Location:* ${formData.pickupLocation || "Udupi / Manipal area"}`,
+      `*Destination:* ${formData.destination || "As discussed"}`,
+      `*Travel Date & Time:* ${formData.travelDate || "Flexible / Not specified"}`,
+    ];
+
+    if (formData.message && formData.message.trim()) {
+      lines.push(`*Notes / Requirements:* ${formData.message.trim()}`);
+    }
+
+    lines.push(``);
+    lines.push(`Please share vehicle availability and tariff estimate.`);
+
+    return `https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage("");
 
+    const code = `RV-${Date.now().toString().slice(-6)}`;
+    setRefCode(code);
+
+    const whatsappUrl = buildWhatsAppUrl(code);
+
+    // Silent background record to API / Web3Forms (does not block customer)
     try {
-      const response = await fetch("/api/contact", {
+      fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setRefCode(data.refCode || `RV-${Date.now().toString().slice(-6)}`);
-        setSubmitted(true);
-      } else {
-        throw new Error(data.message || "Failed to submit enquiry.");
-      }
-    } catch (err: unknown) {
-      console.error("Submission error:", err);
-      // Fallback: Generate local ref code and open mailto
-      const fallbackRef = `RV-${Date.now().toString().slice(-6)}`;
-      setRefCode(fallbackRef);
-
-      const subject = encodeURIComponent(`[${fallbackRef}] Trip Enquiry from ${formData.name} - RV Tours & Travels`);
-      const body = encodeURIComponent(
-        `Reference Code: ${fallbackRef}\n` +
-        `Passenger Name: ${formData.name}\n` +
-        `Phone / WhatsApp: ${formData.phone}\n` +
-        `Service: ${formData.serviceType}\n` +
-        `Preferred Vehicle: ${formData.vehicleType}\n` +
-        `Pickup Location: ${formData.pickupLocation}\n` +
-        `Destination: ${formData.destination}\n` +
-        `Travel Date: ${formData.travelDate}\n\n` +
-        `Additional Notes:\n${formData.message}\n`
-      );
-
-      window.location.href = `mailto:${BUSINESS_INFO.email}?subject=${subject}&body=${body}`;
-      setSubmitted(true);
-    } finally {
-      setIsSubmitting(false);
+        body: JSON.stringify({ ...formData, refCode: code }),
+      }).catch((err) => console.log("Background record:", err));
+    } catch {
+      // Ignore background errors
     }
-  };
 
-  const whatsappMessageWithDetails = encodeURIComponent(
-    `Hello Ramesh ji, I submitted a booking enquiry (Ref: ${refCode || "DIRECT"}).\n\n` +
-    `*Name:* ${formData.name}\n` +
-    `*Phone:* ${formData.phone}\n` +
-    `*Service:* ${formData.serviceType}\n` +
-    `*Vehicle:* ${formData.vehicleType}\n` +
-    `*Route:* ${formData.pickupLocation || "Udupi"} ➔ ${formData.destination || "Destination"}\n` +
-    `*Travel Date:* ${formData.travelDate || "As discussed"}\n\n` +
-    `Please confirm vehicle availability and fare.`
-  );
+    // Immediately open WhatsApp with the pre-filled enquiry message
+    const newWindow = window.open(whatsappUrl, "_blank");
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+      // If popup was blocked by browser, redirect current window
+      window.location.href = whatsappUrl;
+    }
+
+    setSubmitted(true);
+    setIsSubmitting(false);
+  };
 
   return (
     <section id="contact" className="py-20 sm:py-28 bg-[#14120F] text-[#F6F3EC] relative border-b border-[#383229]">
@@ -230,40 +229,47 @@ export default function ContactSection() {
               </div>
 
               {submitted ? (
-                <div className="p-8 bg-[#14120F] border border-[#1F4C4C] rounded-lg text-center space-y-5 animate-in fade-in duration-300">
+                <div className="p-6 sm:p-8 bg-[#14120F] border border-[#1F4C4C] rounded-lg text-center space-y-5 animate-in fade-in duration-300">
                   <div className="w-14 h-14 rounded-full bg-[#1F4C4C]/40 border border-[#2E6B6B] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8 text-[#2E6B6B]" />
                   </div>
 
                   <div>
                     <span className="font-mono text-xs text-[#E0C068] uppercase tracking-widest font-bold block mb-1">
-                      ENQUIRY REGISTERED // REF: {refCode}
+                      ENQUIRY PREPARED // REF: {refCode}
                     </span>
                     <h4 className="font-display text-2xl font-bold text-[#F6F3EC]">
-                      Enquiry Dispatched Successfully
+                      Enquiry Ready on WhatsApp
                     </h4>
                   </div>
 
                   <p className="font-body text-sm text-[#F6F3EC]/85 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-[#F6F3EC]">{formData.name}</strong>. Your trip details have been transmitted directly to proprietor <strong>R Ramesh</strong> at <span className="text-[#E0C068] font-mono text-xs">{BUSINESS_INFO.email}</span>.
+                    Thank you, <strong className="text-[#F6F3EC]">{formData.name}</strong>. Your trip details have been pre-filled. If WhatsApp did not open automatically, click the button below to send your enquiry directly to proprietor <strong>R Ramesh</strong>.
                   </p>
 
                   <div className="p-4 bg-[#1C1914] border border-[#383229] rounded font-mono text-xs text-left max-w-md mx-auto space-y-1.5 text-[#F6F3EC]/80">
-                    <div><span className="text-[#B08D3F]">ROUTE:</span> {formData.pickupLocation || "Udupi"} ➔ {formData.destination || "As requested"}</div>
+                    <div><span className="text-[#B08D3F]">NAME:</span> {formData.name} ({formData.phone})</div>
+                    <div><span className="text-[#B08D3F]">SERVICE:</span> {formData.serviceType}</div>
+                    <div><span className="text-[#B08D3F]">ROUTE:</span> {formData.pickupLocation || "Udupi / Manipal"} ➔ {formData.destination || "As requested"}</div>
                     <div><span className="text-[#B08D3F]">VEHICLE:</span> {formData.vehicleType}</div>
                     <div><span className="text-[#B08D3F]">DATE:</span> {formData.travelDate || "Flexible"}</div>
+                    {formData.message && (
+                      <div className="pt-1 border-t border-[#383229]/60 text-[11px] text-[#F6F3EC]/70">
+                        <span className="text-[#B08D3F]">NOTES:</span> {formData.message}
+                      </div>
+                    )}
                   </div>
 
                   <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                     <TicketButton
-                      href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${whatsappMessageWithDetails}`}
+                      href={buildWhatsAppUrl()}
                       isExternal
                       variant="primary-gold"
                       size="md"
-                      ticketCode="CONFIRM NOW"
+                      ticketCode="OPEN CHAT"
                       icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
                     >
-                      Instant WhatsApp Confirmation
+                      Open WhatsApp Chat
                     </TicketButton>
 
                     <button
@@ -439,10 +445,16 @@ export default function ContactSection() {
                       size="lg"
                       className="w-full"
                       disabled={isSubmitting}
-                      icon={isSubmitting ? <Loader2 className="w-4 h-4 animate-spin text-[#E0C068]" /> : <Send className="w-4 h-4" />}
-                      ticketCode={isSubmitting ? "DISPATCHING..." : "DISPATCH"}
+                      icon={
+                        isSubmitting ? (
+                          <Loader2 className="w-4 h-4 animate-spin text-[#E0C068]" />
+                        ) : (
+                          <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+                        )
+                      }
+                      ticketCode={isSubmitting ? "OPENING..." : "WHATSAPP"}
                     >
-                      {isSubmitting ? "Dispatching Enquiry..." : "Submit Reservation Enquiry"}
+                      {isSubmitting ? "Opening WhatsApp..." : "Send Trip Enquiry on WhatsApp"}
                     </TicketButton>
                   </div>
 
