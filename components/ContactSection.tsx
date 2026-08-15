@@ -308,7 +308,7 @@ export default function ContactSection() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Ramesh Hegde"
+                        placeholder="e.g. Raj Sharma"
                         className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>
@@ -324,7 +324,7 @@ export default function ContactSection() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+91 98455 XXXXX"
+                        placeholder="+91 98457 XXXXX"
                         className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>
