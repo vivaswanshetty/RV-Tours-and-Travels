@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+:root {
+  --color-paper: #F6F3EC;
+  --color-paper-card: #EFEAE0;
+  --color-paper-muted: #E5DFD1;
+  --color-paper-border: #DCD4C4;
+  
+  --color-ink: #14120F;
+  --color-ink-surface: #1C1914;
+  --color-ink-card: #23201A;
+  --color-ink-muted: #2E2922;
+  --color-ink-border: #383229;
+  
+  --color-brass: #B08D3F;
+  --color-brass-gold: #C9A227;
+  --color-brass-light: #E0C068;
+  --color-brass-dark: #8A6D2A;
+  
+  --color-route: #1F4C4C;
+  --color-route-light: #2E6B6B;
+  --color-route-dark: #143535;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-body: var(--font-work-sans), sans-serif;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-card: var(--color-paper-card);
+  --color-paper-muted: var(--color-paper-muted);
+  --color-paper-border: var(--color-paper-border);
+  
+  --color-ink: var(--color-ink);
+  --color-ink-surface: var(--color-ink-surface);
+  --color-ink-card: var(--color-ink-card);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-border: var(--color-ink-border);
+  
+  --color-brass: var(--color-brass);
+  --color-brass-gold: var(--color-brass-gold);
+  --color-brass-light: var(--color-brass-light);
+  --color-brass-dark: var(--color-brass-dark);
+  
+  --color-route: var(--color-route);
+  --color-route-light: var(--color-route-light);
+  --color-route-dark: var(--color-route-dark);
+
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+}
+
+/* Custom Base Rules */
+html {
+  scroll-behavior: smooth;
+  background-color: #F6F3EC;
+  color: #14120F;
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #F6F3EC;
+  color: #14120F;
+}
+
+/* Ticket Stub Cutout Effects */
+.ticket-edge-left {
+  position: relative;
+}
+.ticket-edge-left::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #F6F3EC;
+}
+
+.ticket-edge-right {
+  position: relative;
+}
+.ticket-edge-right::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #F6F3EC;
+}
+
+/* On dark backgrounds, ticket cutouts match ink background */
+.dark-ticket-cutout::before,
+.dark-ticket-cutout::after {
+  background-color: #14120F !important;
+}
+
+/* Boarding pass perforated divider line */
+.perforated-line {
+  background-image: linear-gradient(to right, #B08D3F 50%, rgba(255,255,255,0) 0%);
+  background-position: top;
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
+
+.perforated-line-v {
+  background-image: linear-gradient(to bottom, #B08D3F 50%, rgba(255,255,255,0) 0%);
+  background-position: left;
+  background-size: 1px 8px;
+  background-repeat: repeat-y;
+}
+
+.perforated-ink-h {
+  background-image: linear-gradient(to right, rgba(20, 18, 15, 0.3) 50%, rgba(255,255,255,0) 0%);
+  background-position: top;
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
+
+/* Subtle route line dot pattern */
+.bg-route-dots {
+  background-image: radial-gradient(#B08D3F 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Selection color */
+::selection {
+  background-color: #B08D3F;
+  color: #14120F;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #B08D3F;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
