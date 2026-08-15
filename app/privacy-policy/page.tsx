@@ -76,7 +76,7 @@ export default function PrivacyPolicy() {
             <p>Your details are used solely for operational transportation purposes:</p>
             <ul className="list-disc pl-6 space-y-1.5 text-sm">
               <li>To provide accurate fare estimates and route itineraries.</li>
-              <li>To coordinate driver dispatch and curbside airport pickups at Mangalore (IXE), Goa, or regional terminals.</li>
+              <li>To coordinate driver dispatch and curbside airport pickups at Mangalore (IXE) and regional terminals upon request.</li>
               <li>To communicate trip updates, driver contact details, or schedule changes via Phone or WhatsApp.</li>
               <li>To generate physical trip receipts and commercial invoices when requested.</li>
             </ul>

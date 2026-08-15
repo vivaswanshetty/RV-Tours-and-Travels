@@ -48,7 +48,7 @@ export default function TermsAndConditions() {
               1. Booking &amp; Confirmation
             </h2>
             <p>
-              All reservations with <strong>{BUSINESS_INFO.name}</strong> are coordinated and confirmed directly with proprietor <strong>{BUSINESS_INFO.proprietor}</strong> via Phone (`+91 98455 11169`) or official WhatsApp.
+              All reservations with <strong>{BUSINESS_INFO.name}</strong> are coordinated and confirmed directly with proprietor <strong>{BUSINESS_INFO.proprietor}</strong> via Phone ({BUSINESS_INFO.phoneDisplay}) or official WhatsApp.
             </p>
             <p>
               A booking is considered confirmed once trip dates, pickup times, vehicle category, and agreed fares have been mutually acknowledged.
@@ -64,8 +64,7 @@ export default function TermsAndConditions() {
             </p>
             <ul className="list-disc pl-6 space-y-2 text-sm font-mono">
               <li><strong>Included in Quote:</strong> Vehicle rental, fuel costs, and chauffeur driving services for the agreed route or distance.</li>
-              <li><strong>Toll &amp; Parking Charges:</strong> National highway toll plaza charges, airport parking slips, and monument entry parking fees are payable as per actuals based on physical toll receipts, unless explicitly agreed as an all-inclusive package quote.</li>
-              <li><strong>Interstate Permits:</strong> For journeys outside Karnataka (e.g., Goa, Kerala), interstate border road permits and entry taxes are charged at actual government rates.</li>
+              <li><strong>Toll &amp; Parking Charges:</strong> National highway toll plaza charges, airport parking slips, and monument entry parking fees are payable as per actuals based on physical receipts, unless explicitly agreed as an all-inclusive package quote.</li>
               <li><strong>Driver Allowance (Bata):</strong> Applicable for multi-day outstation packages or journeys extending past midnight, as communicated prior to trip departure.</li>
             </ul>
           </section>
@@ -75,7 +74,7 @@ export default function TermsAndConditions() {
               3. Airport Transfers &amp; Flight Timing Tracking
             </h2>
             <p>
-              For Mangalore International Airport (IXE), Goa Airport, and regional terminals:
+              For Mangalore International Airport (IXE) and regional arrival terminals:
             </p>
             <ul className="list-disc pl-6 space-y-1.5 text-sm">
               <li>Please provide correct flight numbers during booking.</li>
@@ -89,7 +88,7 @@ export default function TermsAndConditions() {
               4. Passenger Safety &amp; Vehicle Conduct
             </h2>
             <p>
-              All vehicles operate under valid commercial taxi permits with active commercial insurance:
+              To ensure a comfortable and safe journey for all passengers:
             </p>
             <ul className="list-disc pl-6 space-y-1.5 text-sm">
               <li>Seatbelt usage is mandatory as per Motor Vehicles Act regulations.</li>

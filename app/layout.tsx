@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rvtoursandtravels.in"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://rv-tours-and-travels.vercel.app"),
   title: `${BUSINESS_INFO.name} — ${BUSINESS_INFO.tagline} | Taxi & Chauffeur in Udupi`,
   description: `Reliable chauffeur-driven taxi and tour service based in Udupi, Karnataka. Airport transfers (Mangalore IXE and regional terminals), all destinations within Karnataka, and custom tour packages. Direct coordination with proprietor ${BUSINESS_INFO.proprietor}.`,
   keywords: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://rvtoursandtravels.in",
+    url: "https://rv-tours-and-travels.vercel.app",
     siteName: BUSINESS_INFO.name,
     title: `${BUSINESS_INFO.name} — ${BUSINESS_INFO.tagline}`,
     description: `Punctual, trustworthy chauffeur service based in Udupi, Karnataka. Managed directly by ${BUSINESS_INFO.proprietor}. Airport transfers, temple circuits & all-Karnataka journeys.`,

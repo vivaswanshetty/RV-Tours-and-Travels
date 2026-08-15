@@ -11,7 +11,7 @@ import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export const metadata: Metadata = {
   title: `Cancellation & Refund Policy | ${BUSINESS_INFO.name}`,
-  description: `Cancellation and refund terms for airport taxi, local trips, and custom tour packages with RV Tours & Travels in Udupi, Karnataka.`,
+  description: `Cancellation and trip adjustment guidelines for taxi and tour services with RV Tours & Travels in Udupi, Karnataka.`,
 };
 
 export default function CancellationPolicy() {
@@ -33,7 +33,7 @@ export default function CancellationPolicy() {
         <div className="border-b border-[#DCD4C4] pb-8 mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 font-mono text-xs text-[#1F4C4C] font-bold uppercase tracking-widest">
             <RefreshCw className="w-4 h-4 text-[#1F4C4C]" />
-            <span>TRIP ADJUSTMENT MANIFEST</span>
+            <span>TRIP ADJUSTMENT GUIDELINES</span>
           </div>
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14120F]">
             Cancellation &amp; Refund Policy
@@ -47,68 +47,46 @@ export default function CancellationPolicy() {
         <div className="space-y-8 font-body text-base text-[#14120F]/85 leading-relaxed">
           <section className="space-y-3">
             <h2 className="font-display text-2xl font-bold text-[#14120F]">
-              1. General Cancellation Principles
+              1. General Principles
             </h2>
             <p>
-              We understand that travel plans can change due to flight reschedulings, family emergencies, or changing itineraries. Because we operate as a personalized boutique chauffeur service rather than an automated aggregator, we strive to be as flexible and accommodating as possible.
+              We understand that travel schedules can change due to flight adjustments, family obligations, or updated itineraries. As a personalized chauffeur and taxi service operated directly by proprietor R Ramesh, we handle schedule modifications and cancellations on a flexible, case-by-case basis.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="font-display text-2xl font-bold text-[#14120F]">
-              2. Notice Periods &amp; Cancellation Terms
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              <div className="p-5 bg-[#EFEAE0] border border-[#DCD4C4] rounded-lg space-y-2">
-                <div className="font-mono text-xs text-[#1F4C4C] font-bold uppercase tracking-wider">
-                  LOCAL &amp; AIRPORT TRANSFERS
-                </div>
-                <div className="font-display text-lg font-bold text-[#14120F]">
-                  Up to 3 Hours Prior
-                </div>
-                <p className="text-xs font-mono text-[#14120F]/75">
-                  Airport drop/pickup cancellations requested at least 3 hours before pickup incur zero cancellation fee.
-                </p>
-              </div>
-
-              <div className="p-5 bg-[#EFEAE0] border border-[#DCD4C4] rounded-lg space-y-2">
-                <div className="font-mono text-xs text-[#1F4C4C] font-bold uppercase tracking-wider">
-                  OUTSTATION &amp; MULTI-DAY PACKAGES
-                </div>
-                <div className="font-display text-lg font-bold text-[#14120F]">
-                  24 Hours Prior
-                </div>
-                <p className="text-xs font-mono text-[#14120F]/75">
-                  For multi-day temple or Ghats packages, please provide 24 hours advance notice so that vehicle scheduling can be adjusted.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-2xl font-bold text-[#14120F]">
-              3. Rescheduling &amp; Flight Delays
+              2. Cancellations &amp; Rescheduling
             </h2>
             <p>
-              If your incoming flight to Mangalore Airport (IXE) or another arrival terminal is delayed, your scheduled pickup will be rescheduled to match your updated landing time at no extra charge whenever possible. Please inform R Ramesh via WhatsApp as soon as your airline notifies you of the delay.
+              If you need to cancel or modify your reservation, please inform R Ramesh as early as possible via WhatsApp or phone call. Because vehicle allocation is planned in advance, early notice allows us to adjust schedules smoothly. Cancellations and date changes are reviewed and handled directly with the passenger based on the specific route and circumstances.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="font-display text-2xl font-bold text-[#14120F]">
-              4. Refunds &amp; Advance Deposits
+              3. Flight Delays &amp; Arrival Updates
             </h2>
             <p>
-              For trips where an advance booking token was collected for high-season vehicle reservations (e.g., peak pilgrimage seasons or festival holidays), eligible refunds for timely cancellations are processed directly via UPI or bank transfer within 24–48 hours.
+              If your incoming flight to Mangalore Airport (IXE) or another arrival terminal is delayed, your scheduled pickup will be rescheduled to match your updated landing time whenever possible. Please inform R Ramesh via WhatsApp as soon as your airline notifies you of the schedule change.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="font-display text-2xl font-bold text-[#14120F]">
+              4. Advance Payments &amp; Refunds
+            </h2>
+            <p>
+              For trips where an advance deposit was provided, any refund or credit adjustment is evaluated and settled directly with proprietor R Ramesh on a case-by-case basis. Please reach out directly to discuss your reservation details.
             </p>
           </section>
 
           <section className="space-y-4 pt-4 border-t border-[#DCD4C4]">
             <h2 className="font-display text-2xl font-bold text-[#14120F]">
-              5. How to Cancel or Modify a Trip
+              5. How to Contact the Operator
             </h2>
             <p>
-              To request a change or cancellation, contact R Ramesh directly via Phone or WhatsApp with your booking details:
+              To request a change or cancellation, contact R Ramesh directly via Phone or WhatsApp:
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <TicketButton
