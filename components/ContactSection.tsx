@@ -1,10 +1,41 @@
 "use client";
 
-import React, { useState } from "react";
-import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, Calendar, Car, Loader2, AlertCircle } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Send,
+  CheckCircle2,
+  Clock,
+  Calendar,
+  Car,
+  Loader2,
+  AlertCircle,
+  History,
+  Trash2,
+  ChevronDown,
+  ChevronUp,
+  RotateCcw,
+} from "lucide-react";
 import { BUSINESS_INFO, FLEET_CATEGORIES } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import ModernDatePicker from "./ModernDatePicker";
+
+interface EnquiryHistoryItem {
+  id: string;
+  refCode: string;
+  name: string;
+  phone: string;
+  serviceType: string;
+  vehicleType: string;
+  pickupLocation: string;
+  destination: string;
+  travelDate: string;
+  message?: string;
+  createdAt: string;
+}
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -22,29 +53,66 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [refCode, setRefCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [history, setHistory] = useState<EnquiryHistoryItem[]>([]);
+  const [activeTab, setActiveTab] = useState<"form" | "history">("form");
 
-  const buildWhatsAppUrl = (code?: string) => {
-    const activeRef = code || refCode || `RV-${Date.now().toString().slice(-6)}`;
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("rv_trip_enquiry_history");
+      if (saved) {
+        setHistory(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error("Failed to load enquiry history:", e);
+    }
+  }, []);
+
+  const clearHistory = () => {
+    setHistory([]);
+    try {
+      localStorage.removeItem("rv_trip_enquiry_history");
+    } catch {}
+  };
+
+  const buildCustomWhatsAppUrl = (item: {
+    refCode: string;
+    name: string;
+    phone: string;
+    serviceType: string;
+    vehicleType: string;
+    pickupLocation: string;
+    destination: string;
+    travelDate: string;
+    message?: string;
+  }) => {
     const lines = [
-      `Hello Ramesh ji, I would like to enquire about a booking with RV Tours & Travels (Ref: ${activeRef}).`,
+      `Hello Ramesh, I would like to enquire about a booking with RV Tours & Travels (Ref: ${item.refCode}).`,
       ``,
-      `*Passenger Name:* ${formData.name}`,
-      `*Contact Number:* ${formData.phone}`,
-      `*Service:* ${formData.serviceType}`,
-      `*Vehicle Preference:* ${formData.vehicleType}`,
-      `*Pickup Location:* ${formData.pickupLocation || "Udupi / Manipal area"}`,
-      `*Destination:* ${formData.destination || "As discussed"}`,
-      `*Travel Date & Time:* ${formData.travelDate || "Flexible / Not specified"}`,
+      `*Passenger Name:* ${item.name}`,
+      `*Contact Number:* ${item.phone}`,
+      `*Service:* ${item.serviceType}`,
+      `*Vehicle Preference:* ${item.vehicleType}`,
+      `*Pickup Location:* ${item.pickupLocation || "Udupi / Manipal area"}`,
+      `*Destination:* ${item.destination || "As discussed"}`,
+      `*Travel Date & Time:* ${item.travelDate || "Flexible / Not specified"}`,
     ];
 
-    if (formData.message && formData.message.trim()) {
-      lines.push(`*Notes / Requirements:* ${formData.message.trim()}`);
+    if (item.message && item.message.trim()) {
+      lines.push(`*Notes / Requirements:* ${item.message.trim()}`);
     }
 
     lines.push(``);
     lines.push(`Please share vehicle availability and tariff estimate.`);
 
     return `https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+  };
+
+  const buildWhatsAppUrl = (code?: string) => {
+    const activeRef = code || refCode || `RV-${Date.now().toString().slice(-6)}`;
+    return buildCustomWhatsAppUrl({
+      ...formData,
+      refCode: activeRef,
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,6 +122,42 @@ export default function ContactSection() {
 
     const code = `RV-${Date.now().toString().slice(-6)}`;
     setRefCode(code);
+
+    const now = new Date();
+    const formattedDate =
+      now.toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }) +
+      ", " +
+      now.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      });
+
+    const newRecord: EnquiryHistoryItem = {
+      id: code,
+      refCode: code,
+      name: formData.name,
+      phone: formData.phone,
+      serviceType: formData.serviceType,
+      vehicleType: formData.vehicleType,
+      pickupLocation: formData.pickupLocation,
+      destination: formData.destination,
+      travelDate: formData.travelDate,
+      message: formData.message,
+      createdAt: formattedDate,
+    };
+
+    const updatedHistory = [newRecord, ...history.filter((h) => h.id !== code)].slice(0, 10);
+    setHistory(updatedHistory);
+    try {
+      localStorage.setItem("rv_trip_enquiry_history", JSON.stringify(updatedHistory));
+    } catch (err) {
+      console.warn("Could not save history to localStorage", err);
+    }
 
     const whatsappUrl = buildWhatsAppUrl(code);
 
@@ -213,22 +317,164 @@ export default function ContactSection() {
           {/* Right Column: Ticket Stub Booking & Enquiry Form (7 cols) */}
           <div className="lg:col-span-7">
             <div className="bg-[#1C1914] border border-[#B08D3F] rounded-lg p-4 sm:p-8 shadow-2xl relative">
-              {/* Form Ticket Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#383229] mb-6">
+              {/* Form Ticket Header with Tab Switcher */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#383229] mb-6">
                 <div>
                   <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold block">
                     RESERVATION MANIFEST
                   </span>
                   <h3 className="font-display text-2xl font-bold text-[#F6F3EC]">
-                    Send Trip Enquiry
+                    {activeTab === "form" ? "Send Trip Enquiry" : "Recent Enquiries"}
                   </h3>
                 </div>
-                <div className="font-mono text-[10px] px-2.5 py-1 bg-[#14120F] border border-[#B08D3F]/50 text-[#E0C068] rounded uppercase tracking-wider">
-                  DIRECT DESK
+
+                {/* Tab Switcher */}
+                <div className="flex items-center gap-1 p-1 bg-[#14120F] border border-[#383229] rounded-lg">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("form")}
+                    className={`px-3 py-1 text-xs font-mono uppercase tracking-wider rounded transition-all ${
+                      activeTab === "form"
+                        ? "bg-[#B08D3F] text-[#14120F] font-bold shadow"
+                        : "text-[#F6F3EC]/70 hover:text-[#E0C068]"
+                    }`}
+                  >
+                    New Form
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("history")}
+                    className={`px-3 py-1 text-xs font-mono uppercase tracking-wider rounded flex items-center gap-1.5 transition-all ${
+                      activeTab === "history"
+                        ? "bg-[#B08D3F] text-[#14120F] font-bold shadow"
+                        : "text-[#F6F3EC]/70 hover:text-[#E0C068]"
+                    }`}
+                  >
+                    <History className="w-3.5 h-3.5" />
+                    <span>History ({history.length})</span>
+                  </button>
                 </div>
               </div>
 
-              {submitted ? (
+              {activeTab === "history" ? (
+                /* Dedicated History Tab Content */
+                <div className="space-y-4 animate-in fade-in duration-200">
+                  {history.length === 0 ? (
+                    <div className="py-12 px-4 text-center space-y-3 bg-[#14120F] border border-[#383229] rounded-lg">
+                      <div className="w-12 h-12 rounded-full bg-[#1C1914] border border-[#383229] flex items-center justify-center mx-auto text-[#B08D3F]">
+                        <History className="w-6 h-6" />
+                      </div>
+                      <div className="font-display text-lg font-bold text-[#F6F3EC]">
+                        No Recent Enquiries Yet
+                      </div>
+                      <p className="font-body text-xs text-[#F6F3EC]/70 max-w-sm mx-auto leading-relaxed">
+                        When you submit a trip enquiry, it will be automatically recorded here with its reference number, date &amp; time, and a direct link to re-open the WhatsApp chat.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab("form")}
+                        className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 bg-[#B08D3F] text-[#14120F] rounded font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#E0C068] transition-colors"
+                      >
+                        <span>Fill New Trip Enquiry</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between font-mono text-xs text-[#F6F3EC]/70 pb-2 border-b border-[#383229]">
+                        <span>Showing {history.length} saved {history.length === 1 ? "enquiry" : "enquiries"} on this device</span>
+                        <button
+                          type="button"
+                          onClick={clearHistory}
+                          className="flex items-center gap-1 text-red-400/80 hover:text-red-300 uppercase tracking-wider transition-colors"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                          <span>Clear All</span>
+                        </button>
+                      </div>
+
+                      <div className="space-y-3 max-h-[480px] overflow-y-auto pr-1">
+                        {history.map((item) => (
+                          <div
+                            key={item.id}
+                            className="p-4 bg-[#14120F] border border-[#383229] rounded-lg space-y-2.5 hover:border-[#B08D3F]/70 transition-colors"
+                          >
+                            <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px]">
+                              <span className="text-[#C9A227] font-bold">
+                                REF: {item.refCode}
+                              </span>
+                              <span className="text-[#F6F3EC]/60 flex items-center gap-1 text-[10px]">
+                                <Clock className="w-3 h-3" />
+                                {item.createdAt}
+                              </span>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 font-mono text-xs text-[#F6F3EC]/90">
+                              <div>
+                                <span className="text-[#B08D3F]">Passenger:</span> {item.name} ({item.phone})
+                              </div>
+                              <div>
+                                <span className="text-[#B08D3F]">Service:</span> {item.serviceType}
+                              </div>
+                              <div>
+                                <span className="text-[#B08D3F]">Route:</span> {item.pickupLocation || "Udupi"} ➔ {item.destination || "TBD"}
+                              </div>
+                              <div>
+                                <span className="text-[#B08D3F]">Vehicle:</span> {item.vehicleType}
+                              </div>
+                            </div>
+
+                            {item.travelDate && (
+                              <div className="font-mono text-[11px] text-[#F6F3EC]/70">
+                                <span className="text-[#B08D3F]">Date &amp; Time:</span> {item.travelDate}
+                              </div>
+                            )}
+
+                            {item.message && (
+                              <div className="font-mono text-[10px] text-[#F6F3EC]/60 bg-[#1C1914] p-2 rounded border border-[#383229]/40">
+                                <span className="text-[#B08D3F]">Notes:</span> {item.message}
+                              </div>
+                            )}
+
+                            <div className="pt-2 border-t border-[#383229]/60 flex flex-wrap items-center justify-between gap-2">
+                              <a
+                                href={buildCustomWhatsAppUrl(item)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1C1914] border border-[#B08D3F]/70 hover:border-[#E0C068] hover:bg-[#25211A] text-[#F6F3EC] rounded font-mono text-[11px] font-bold tracking-wider uppercase transition-colors"
+                              >
+                                <WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />
+                                <span>Re-open on WhatsApp</span>
+                              </a>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setFormData({
+                                    name: item.name,
+                                    phone: item.phone,
+                                    serviceType: item.serviceType,
+                                    vehicleType: item.vehicleType,
+                                    pickupLocation: item.pickupLocation,
+                                    destination: item.destination,
+                                    travelDate: item.travelDate,
+                                    message: item.message || "",
+                                  });
+                                  setSubmitted(false);
+                                  setActiveTab("form");
+                                }}
+                                className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[#E0C068] hover:text-[#F6F3EC] font-mono text-[11px] uppercase tracking-wider transition-colors"
+                              >
+                                <RotateCcw className="w-3 h-3" />
+                                <span>Reuse in Form</span>
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : submitted ? (
                 <div className="p-6 sm:p-8 bg-[#14120F] border border-[#1F4C4C] rounded-lg text-center space-y-5 animate-in fade-in duration-300">
                   <div className="w-14 h-14 rounded-full bg-[#1F4C4C]/40 border border-[#2E6B6B] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8 text-[#2E6B6B]" />
@@ -409,15 +655,13 @@ export default function ContactSection() {
                     {/* Travel Date */}
                     <div>
                       <label htmlFor="travelDate" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
-                        Travel Date / Time
+                        Travel Date &amp; Time
                       </label>
-                      <input
-                        type="text"
+                      <ModernDatePicker
                         id="travelDate"
                         value={formData.travelDate}
-                        onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })}
-                        placeholder="e.g. 24 Oct, 7:00 AM"
-                        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
+                        onChange={(val) => setFormData({ ...formData, travelDate: val })}
+                        placeholder="Select travel date &amp; time"
                       />
                     </div>
                   </div>
