@@ -93,7 +93,7 @@ export default function AboutSection() {
                 </div>
 
                 <div>
-                  <div className="text-[10px] text-[#B08D3F] uppercase tracking-wider mb-1">OFFICIAL EMAIL</div>
+                  <div className="text-[10px] text-[#B08D3F] uppercase tracking-wider mb-1">EMAIL</div>
                   <a href={`mailto:${BUSINESS_INFO.email}`} className="text-xs text-[#E0C068] hover:underline break-all">
                     {BUSINESS_INFO.email}
                   </a>

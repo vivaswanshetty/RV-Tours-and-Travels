@@ -169,10 +169,10 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-widest block font-bold">
-                      DIRECT INBOX
+                      EMAIL
                     </span>
                     <span className="font-display text-lg font-bold text-[#F6F3EC] group-hover:text-[#E0C068] transition-colors">
-                      Email R Ramesh
+                      Email
                     </span>
                     <span className="font-mono text-xs text-[#F6F3EC]/70 block mt-0.5 break-all">
                       {BUSINESS_INFO.email}
