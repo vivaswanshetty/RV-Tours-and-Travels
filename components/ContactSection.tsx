@@ -192,7 +192,7 @@ export default function ContactSection() {
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#E0C068]">
             <span className="w-2.5 h-2.5 rounded-full bg-[#C9A227]" />
-            <span>WAYPOINT 05 // DIRECT DISPATCH &amp; BOOKING</span>
+            <span>WAYPOINT 06 // DIRECT DISPATCH &amp; BOOKING</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC]">
             Get in Touch &amp; Reserve Your Trip
@@ -557,6 +557,8 @@ export default function ContactSection() {
                       <input
                         type="text"
                         id="name"
+                        name="name"
+                        autoComplete="name"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -573,6 +575,8 @@ export default function ContactSection() {
                       <input
                         type="tel"
                         id="phone"
+                        name="phone"
+                        autoComplete="tel"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -590,6 +594,7 @@ export default function ContactSection() {
                       </label>
                       <select
                         id="serviceType"
+                        name="serviceType"
                         value={formData.serviceType}
                         onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
                         className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
@@ -609,6 +614,7 @@ export default function ContactSection() {
                       </label>
                       <select
                         id="vehicleType"
+                        name="vehicleType"
                         value={formData.vehicleType}
                         onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
                         className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
@@ -630,6 +636,8 @@ export default function ContactSection() {
                       <input
                         type="text"
                         id="pickupLocation"
+                        name="pickupLocation"
+                        autoComplete="address-level2"
                         value={formData.pickupLocation}
                         onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
                         placeholder="e.g. Udupi / Manipal"
@@ -645,6 +653,8 @@ export default function ContactSection() {
                       <input
                         type="text"
                         id="destination"
+                        name="destination"
+                        autoComplete="off"
                         value={formData.destination}
                         onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                         placeholder="e.g. Mangalore Airport / Outstation"
@@ -673,6 +683,7 @@ export default function ContactSection() {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
                       rows={3}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}

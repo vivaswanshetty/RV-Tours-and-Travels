@@ -157,50 +157,50 @@ export default function ModernDatePicker({
   return (
     <div className={`relative ${className}`} ref={containerRef}>
       {/* Input Trigger Box */}
-      <div
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
+        id={id}
         onClick={() => setIsOpen(!isOpen)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setIsOpen(!isOpen);
-          }
-        }}
-        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] hover:border-[#B08D3F]/80 rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono flex items-center justify-between cursor-pointer transition-colors select-none"
+        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] hover:border-[#B08D3F]/80 rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono flex items-center justify-between cursor-pointer transition-colors text-left"
         aria-expanded={isOpen}
         aria-haspopup="dialog"
         aria-label="Pick travel date and time"
       >
-        <div className="flex items-center gap-2.5 truncate">
+        <span className="flex items-center gap-2.5 truncate">
           <CalendarIcon className="w-4 h-4 text-[#C9A227] shrink-0" />
           <span className={value ? "text-[#F6F3EC] font-semibold" : "text-[#F6F3EC]/50 font-normal"}>
             {value || placeholder}
           </span>
-        </div>
+        </span>
 
         {value ? (
-          <button
-            type="button"
+          <span
+            role="button"
+            tabIndex={0}
             onClick={(e) => {
               e.stopPropagation();
               setSelectedDate(null);
               onChange("");
             }}
-            className="p-1 text-[#F6F3EC]/50 hover:text-[#E0C068] transition-colors"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.stopPropagation();
+                setSelectedDate(null);
+                onChange("");
+              }
+            }}
+            className="p-1 text-[#F6F3EC]/50 hover:text-[#E0C068] transition-colors cursor-pointer"
             title="Clear date"
           >
             <X className="w-3.5 h-3.5" />
-          </button>
-        ) : (
-          <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-widest border border-[#B08D3F]/40 px-1.5 py-0.5 rounded">
-            PICK
           </span>
+        ) : (
+          <span className="font-mono text-xs text-[#B08D3F]">▾</span>
         )}
-      </div>
+      </button>
 
       {/* Hidden input for standard form submission if needed */}
-      <input type="hidden" id={id} name={id} value={value} />
+      <input type="hidden" id={`${id}-hidden`} name={id} value={value} />
 
       {/* Modern Popover Modal */}
       {isOpen && (

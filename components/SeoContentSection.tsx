@@ -96,9 +96,9 @@ export default function SeoContentSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/40 rounded font-mono text-xs text-[#E0C068] uppercase tracking-widest mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#C9A227]" />
-            <span>AUTHORITATIVE TRAVEL GUIDE // KARNATAKA 2026</span>
+          <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#E0C068] mb-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#C9A227]" />
+            <span>WAYPOINT 04 // TOUR PACKAGES 2026 &amp; TRAVEL GUIDE</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC] leading-[1.15]">

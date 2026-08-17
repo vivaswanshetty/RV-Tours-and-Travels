@@ -33,14 +33,14 @@ export default function Home() {
       {/* Waypoint 03: Fleet Specifications */}
       <FleetSection />
 
-      {/* Waypoint 04: About R Ramesh & RV Tours */}
+      {/* Waypoint 04: Authoritative SEO Travel & Tour Packages Guide */}
+      <SeoContentSection />
+
+      {/* Waypoint 05: About R Ramesh & RV Tours */}
       <AboutSection />
 
-      {/* Waypoint 05: Contact & Reservation Manifest */}
+      {/* Waypoint 06: Contact & Reservation Manifest */}
       <ContactSection />
-
-      {/* Waypoint 06: Authoritative SEO Travel & Packages Guide */}
-      <SeoContentSection />
 
       {/* Pre-footer Call to Action */}
       <CtaBanner />

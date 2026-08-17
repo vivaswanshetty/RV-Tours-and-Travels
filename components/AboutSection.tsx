@@ -15,7 +15,7 @@ export default function AboutSection() {
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-                <span>WAYPOINT 04 // OPERATOR PROFILE</span>
+                <span>WAYPOINT 05 // OPERATOR PROFILE</span>
               </div>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
                 Dedicated Chauffeur Care by <span className="italic text-[#B08D3F]">R Ramesh</span>
