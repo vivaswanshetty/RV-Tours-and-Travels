@@ -30,30 +30,43 @@ export default function RouteLine() {
   const [activeWaypoint, setActiveWaypoint] = useState("01");
 
   useEffect(() => {
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          const match = WAYPOINTS.find((w) => w.id === id);
-          if (match) {
-            setActiveWaypoint(match.number);
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // Trigger waypoint when the section top reaches upper 40% of viewport
+          const scrollFocalPoint = window.scrollY + window.innerHeight * 0.4;
+          
+          let currentWaypoint = "01";
+
+          for (let i = 0; i < WAYPOINTS.length; i++) {
+            const section = document.getElementById(WAYPOINTS[i].id);
+            if (section) {
+              const sectionTop = section.offsetTop;
+              if (scrollFocalPoint >= sectionTop) {
+                currentWaypoint = WAYPOINTS[i].number;
+              }
+            }
           }
-        }
-      });
+
+          setActiveWaypoint(currentWaypoint);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    const observer = new IntersectionObserver(observerCallback, {
-      root: null,
-      rootMargin: "-20% 0px -40% 0px",
-      threshold: 0.1,
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    
+    // Initial check on mount
+    handleScroll();
 
-    WAYPOINTS.forEach((w) => {
-      const el = document.getElementById(w.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
