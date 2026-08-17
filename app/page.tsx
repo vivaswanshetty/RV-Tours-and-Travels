@@ -7,6 +7,7 @@ import ServicesSection from "@/components/ServicesSection";
 import FleetSection from "@/components/FleetSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
+import SeoContentSection from "@/components/SeoContentSection";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -37,6 +38,9 @@ export default function Home() {
 
       {/* Waypoint 05: Contact & Reservation Manifest */}
       <ContactSection />
+
+      {/* Waypoint 06: Authoritative SEO Travel & Packages Guide */}
+      <SeoContentSection />
 
       {/* Pre-footer Call to Action */}
       <CtaBanner />

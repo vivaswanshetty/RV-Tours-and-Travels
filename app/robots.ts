@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://rvtoursandtravels.vercel.app"}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://rvtravelsudupi.com"}/sitemap.xml`,
   };
 }

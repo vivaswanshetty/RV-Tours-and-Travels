@@ -56,8 +56,9 @@ export const NAV_LINKS = [
   { label: "Overview", href: "/#overview", waypoint: "01" },
   { label: "Services", href: "/#services", waypoint: "02" },
   { label: "Fleet", href: "/#fleet", waypoint: "03" },
-  { label: "About", href: "/#about", waypoint: "04" },
-  { label: "Contact", href: "/#contact", waypoint: "05" },
+  { label: "Packages 2026", href: "/#travel-guide", waypoint: "04" },
+  { label: "About", href: "/#about", waypoint: "05" },
+  { label: "Contact", href: "/#contact", waypoint: "06" },
 ] as const;
 
 export const SERVICES: ServiceItem[] = [
