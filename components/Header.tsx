@@ -63,16 +63,16 @@ export default function Header() {
 
         {/* Center: macOS Liquid Glass Pill Navigation (Desktop) */}
         <nav
-          className="hidden lg:flex items-center p-1 bg-white/[0.06] border border-white/[0.12] rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)] backdrop-blur-md shrink-0"
+          className="hidden lg:flex items-center p-0.5 xl:p-1 bg-white/[0.06] border border-white/[0.12] rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)] backdrop-blur-md shrink-0"
           aria-label="Main Navigation"
         >
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="group px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider text-white hover:text-[#F6F3EC] hover:bg-white/[0.15] rounded-full transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap"
+              className="group px-2.5 xl:px-3.5 py-1 xl:py-1.5 text-[11px] xl:text-xs font-mono uppercase tracking-wider text-white hover:text-[#F6F3EC] hover:bg-white/[0.15] rounded-full transition-all duration-200 flex items-center gap-1 xl:gap-1.5 whitespace-nowrap"
             >
-              <span className="text-[11px] text-[#E0C068] font-bold group-hover:text-white transition-colors">
+              <span className="text-[10px] xl:text-[11px] text-[#E0C068] font-bold group-hover:text-white transition-colors">
                 {link.waypoint}
               </span>
               <span className="font-bold text-white tracking-wide">{link.label}</span>
@@ -81,11 +81,11 @@ export default function Header() {
         </nav>
 
         {/* Right: Quick Action CTAs (Compact, Single-Line, Responsive) */}
-        <div className="hidden sm:flex items-center gap-2 sm:gap-2.5 shrink-0">
-          {/* Quick Call Pill */}
+        <div className="hidden sm:flex items-center gap-1.5 xl:gap-2.5 shrink-0">
+          {/* Quick Call Pill (Full display on XL screens) */}
           <a
             href={`tel:${BUSINESS_INFO.phoneClean}`}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-xs font-mono text-[#F6F3EC] hover:border-[#B08D3F] hover:bg-white/[0.1] hover:text-[#E0C068] transition-all shadow-sm whitespace-nowrap shrink-0 group"
+            className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-xs font-mono text-[#F6F3EC] hover:border-[#B08D3F] hover:bg-white/[0.1] hover:text-[#E0C068] transition-all shadow-sm whitespace-nowrap shrink-0 group"
             title="Call R Ramesh directly"
           >
             <div className="w-4 h-4 rounded-full bg-[#14120F] border border-[#B08D3F]/60 flex items-center justify-center shrink-0 group-hover:border-[#E0C068]">
@@ -96,6 +96,16 @@ export default function Header() {
             </span>
           </a>
 
+          {/* Compact Call Icon Button on Large Laptops (1024px–1279px) */}
+          <a
+            href={`tel:${BUSINESS_INFO.phoneClean}`}
+            className="hidden lg:flex xl:hidden p-2 rounded-full bg-white/[0.06] border border-white/[0.1] text-[#C9A227] hover:border-[#B08D3F] hover:bg-white/[0.1] hover:text-[#E0C068] transition-all shrink-0"
+            title={`Call R Ramesh: ${BUSINESS_INFO.phoneDisplay}`}
+            aria-label="Call R Ramesh"
+          >
+            <Phone className="w-3.5 h-3.5 text-[#C9A227]" />
+          </a>
+
           {/* Ticket WhatsApp CTA */}
           <TicketButton
             href={BUSINESS_INFO.whatsappUrl}
@@ -103,8 +113,8 @@ export default function Header() {
             variant="primary-gold"
             size="sm"
             ticketCode="WHATSAPP"
-            icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
-            className="whitespace-nowrap shrink-0 rounded-full text-xs font-bold"
+            icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
+            className="whitespace-nowrap shrink-0 rounded-full text-[11px] xl:text-xs font-bold px-3 xl:px-4 py-1.5"
           >
             Book on WhatsApp
           </TicketButton>
