@@ -33,7 +33,7 @@ export default function QuickFaqStrip() {
               href="/faq"
               className="inline-flex items-center gap-2 px-5 py-3 bg-[#14120F] text-[#E0C068] hover:text-[#F6F3EC] border border-[#B08D3F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md"
             >
-              <span>View All 10 FAQs &amp; Travel Guide</span>
+              <span>View All FAQs &amp; Travel Advisory</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

@@ -182,7 +182,7 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* Embedded Comprehensive 958-Word Travel Guide & Reviews */}
+      {/* Embedded Comprehensive Karnataka Travel & Route Guide */}
       <SeoContentSection />
 
       {/* Pre-Footer Call to Action */}

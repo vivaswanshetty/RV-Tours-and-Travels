@@ -301,60 +301,50 @@ export const DEPARTURE_BOARD_DATA = [
 ] as const;
 
 export interface FaqItem {
-  category: "travels" | "vehicles" | "gifts";
+  category: "booking" | "airport" | "fleet" | "tours";
   q: string;
   a: string;
 }
 
 export const FAQS_DATA: FaqItem[] = [
   {
-    category: "travels",
-    q: "Which travels is best?",
-    a: "The best travels service is one that provides personalized owner-driven coordination, transparent pricing with zero surge charges, punctual pickups, and route-expert chauffeurs. For travel across Karnataka and coastal regions, RV Tours and Travels (managed directly by proprietor R Ramesh) is widely recognized for spotless air-conditioned vehicles, safe driving on Western Ghats, and 24/7 dedicated customer support.",
+    category: "booking",
+    q: "How do I book a cab or tour package with RV Tours and Travels?",
+    a: "Booking is simple and direct. You can send a WhatsApp message to +91 98455 11169 or call proprietor R Ramesh directly. Share your travel dates, pickup location (e.g. Udupi, Manipal, or Mangalore Airport), destination, and number of passengers. We provide an instant transparent quote and confirm your vehicle allocation immediately.",
   },
   {
-    category: "vehicles",
-    q: "Which car is best for tour and travels?",
-    a: "The Toyota Innova Crysta is widely considered the best car for tour and travels due to its exceptional ride comfort, spacious captain seating for 6–7 passengers, generous luggage boot, and reliable performance on long highway stretches and ghat roads. For smaller families (1–4 passengers), the Toyota Etios or Maruti Dzire offers excellent comfort and mileage, while the luxury Tempo Traveller (12–20 seater) is ideal for large group excursions.",
+    category: "booking",
+    q: "Are there any hidden charges, night fees, or surge pricing?",
+    a: "No. RV Tours and Travels operates on a strict transparent pricing policy. The fare agreed upon covers your vehicle, fuel, and chauffeur allowance. Standard toll gates and parking fees are billed at actuals with zero unexpected surge multipliers or hidden markups.",
   },
   {
-    category: "travels",
-    q: "Which travels is best in India?",
-    a: "The best travels in India depends on the journey type: For personalized regional road tours, coastal temple yatras, and private airport transfers in South India, boutique owner-operated fleets like RV Tours and Travels offer superior reliability and care. For pan-India rail journeys, IRCTC provides premier heritage trains, and for scheduled interstate coach transport, premium operators like KSRTC (Airavat Club Class) lead the industry.",
+    category: "airport",
+    q: "Do you provide airport pickup and drop services for Mangalore Airport (IXE)?",
+    a: "Yes, airport transfers between Mangalore International Airport (IXE) and Udupi, Manipal, Kundapura, and surrounding coastal towns are our daily specialty. We track incoming flights to ensure your chauffeur is waiting at the arrivals terminal on time, even if your flight is delayed.",
   },
   {
-    category: "travels",
-    q: "Which travels is best in Bangalore?",
-    a: "For outstation journeys connecting Bangalore to coastal Karnataka (Udupi, Mangalore, Murudeshwar, Gokarna) and the Western Ghats (Coorg, Chikmagalur), RV Tours and Travels is among the top choices for customized tour packages and dedicated private chauffeur cabs with fixed transparent tariffs and expert ghat drivers.",
+    category: "fleet",
+    q: "Which car is best for my family or group size?",
+    a: "For solo travelers or couples/families with 1–4 passengers, the Maruti Suzuki Dzire or Toyota Etios provides a comfortable, economical ride with air-conditioned comfort. For families with 5–7 passengers or long-distance temple tours, the Toyota Innova Crysta offers premium captain seats and ample luggage boot space. For larger groups of 8–20 passengers, our luxury Force Tempo Travellers provide pushback seating and individual AC vents.",
   },
   {
-    category: "vehicles",
-    q: "Which is the best car for travels in India?",
-    a: "The best car for road travels in India is the Toyota Innova Crysta / Hycross for long-distance family travel and rough road handling, followed by the Maruti Suzuki Ertiga for budget-conscious families. For budget solo or couple travel, the Toyota Etios / Maruti Dzire is ideal. For joint family pilgrimages and large group holiday tours, luxury Force Tempo Travellers provide unmatched space and comfort.",
+    category: "tours",
+    q: "Can you customize multi-day temple tour circuits in Coastal Karnataka?",
+    a: "Yes. We regularly organize custom temple pilgrimages covering Sri Krishna Matha (Udupi), Kollur Mookambika, Murudeshwar, Gokarna Mahabaleshwar, Kateel Durga Parameshwari, Dharmasthala Manjunatha, Kukke Subramanya, Sringeri Sharada Peetham, and Horanadu. We tailor the order of darshan and travel pace to your family's preferences.",
   },
   {
-    category: "travels",
-    q: "Which is the best tours and travels in India?",
-    a: "For customized road tours, spiritual pilgrimages, and chauffeur services in Karnataka, RV Tours and Travels stands out for transparent, un-surged pricing, pristine vehicles, and owner-supervised itineraries. For large pan-India holiday packages, established national operators exist, but regional boutique agencies offer far higher reliability and personalized customer service.",
+    category: "tours",
+    q: "Are your chauffeurs experienced with Western Ghats hill driving?",
+    a: "Yes. Driving the winding ghat routes of Agumbe, Charmadi, Shiradi, and Kudremukh requires patience and mountain road experience. Our drivers have extensive experience navigating these roads safely across all seasons, including the monsoon.",
   },
   {
-    category: "gifts",
-    q: "Best gifts for someone who travels?",
-    a: "The best gifts for travelers include: Active Noise-Cancelling (ANC) headphones or earbuds, universal worldwide travel adapters with high-speed USB-C PD charging, high-capacity portable power banks (20,000mAh+), memory foam ergonomic neck pillows, packing cube compression organizers, RFID-blocking travel wallets, and lightweight compact digital luggage scales.",
+    category: "tours",
+    q: "Do you provide outstation cabs to Bangalore, Coorg, Chikmagalur, and Goa?",
+    a: "Yes. We offer one-way and round-trip outstation chauffeur services from Udupi, Manipal, and Mangalore to Bangalore, Mysore, Coorg (Madikeri), Chikmagalur, Hassan, Shimoga, and Goa with comfortable rest stops along scenic routes.",
   },
   {
-    category: "gifts",
-    q: "Best gifts for someone who travels for work?",
-    a: "The best gifts for business and work travelers include: sleek laptop backpacks with TSA-friendly compartments and USB passthrough, portable second laptop monitors, noise-canceling headsets with crystal-clear microphones for conference calls, wrinkle-resistant garment bags, multi-device fast GaN travel chargers, and portable power banks with laptop charging capability.",
-  },
-  {
-    category: "gifts",
-    q: "Best gifts for someone who travels a lot for work?",
-    a: "For frequent corporate and business flyers, top gifts include: premium ultra-durable hardshell spinner carry-on luggage, airline-approved portable power stations with 65W+ laptop charging, premium ANC headphones (such as Sony WH-1000XM5 or Bose QuietComfort), leather passport and document organizers, international multi-port GaN power strips, and subscription to lounge access or travel organizer apps.",
-  },
-  {
-    category: "vehicles",
-    q: "Which is the best bus travels in India?",
-    a: "In the luxury government sector, KSRTC (Karnataka State Road Transport Corporation) with its Airavat Club Class (Volvo Multi-Axle) and Ambari Utsav (Volvo Sleeper) is considered the best bus service in India for safety, punctuality, and comfort. For private group travels, booking a dedicated private Luxury AC Tempo Traveller from RV Tours and Travels provides greater flexibility, custom departure times, and door-to-door convenience.",
+    category: "booking",
+    q: "What happens if my train, flight, or travel plan changes?",
+    a: "Because all trips are coordinated directly with owner R Ramesh, schedule adjustments are handled with understanding and flexibility. Just notify us as early as possible via WhatsApp or phone so we can reschedule your vehicle without cancellation penalties.",
   },
 ];

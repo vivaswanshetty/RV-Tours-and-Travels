@@ -17,8 +17,9 @@ import {
   MessageSquare,
   ChevronRight,
   ShieldCheck,
+  Compass,
   Car,
-  Gift
+  MapPin
 } from "lucide-react";
 
 export default function FaqPage() {
@@ -28,9 +29,10 @@ export default function FaqPage() {
 
   const categories = [
     { id: "all", label: "All Questions", icon: HelpCircle },
-    { id: "travels", label: "Travels & Chauffeurs", icon: ShieldCheck },
-    { id: "vehicles", label: "Cars & Bus Travel", icon: Car },
-    { id: "gifts", label: "Travel Gifts", icon: Gift },
+    { id: "booking", label: "Booking & Pricing", icon: ShieldCheck },
+    { id: "airport", label: "Airport Transfers (IXE)", icon: Compass },
+    { id: "fleet", label: "Fleet & Vehicles", icon: Car },
+    { id: "tours", label: "Temple Circuits & Ghats", icon: MapPin },
   ];
 
   const filteredFaqs = FAQS_DATA.filter((faq) => {
@@ -81,7 +83,7 @@ export default function FaqPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase">
               <HelpCircle className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span>KNOWLEDGE BASE // TRAVEL ADVISORY</span>
+              <span>HELPFUL CUSTOMER ADVISORY // TRANSPARENT TRAVEL</span>
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC]">
@@ -89,7 +91,7 @@ export default function FaqPage() {
             </h1>
 
             <p className="font-body text-base sm:text-lg text-[#F6F3EC]/80 leading-relaxed">
-              Find instant answers to questions regarding taxi bookings in Udupi, best cars for Karnataka tour packages, Western Ghats travel, and gift ideas for avid travelers.
+              Find clear, straightforward answers about taxi bookings in Udupi, Mangalore Airport (IXE) pickups, custom temple circuits, vehicle choices, and transparent fares.
             </p>
 
             {/* Live Search Filter Box */}
@@ -100,7 +102,7 @@ export default function FaqPage() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search questions (e.g. Innova, best travels, gifts, Bangalore)..."
+                  placeholder="Search questions (e.g. airport, Innova, Kollur, booking, pricing)..."
                   className="w-full pl-11 pr-4 py-3.5 bg-[#1C1914] border border-[#383229] hover:border-[#B08D3F]/80 focus:border-[#B08D3F] focus:outline-none rounded-xl text-sm text-[#F6F3EC] font-mono placeholder:text-[#F6F3EC]/40 transition-colors shadow-inner"
                 />
                 {searchQuery && (
@@ -201,7 +203,7 @@ export default function FaqPage() {
               <div className="p-6 bg-[#14120F] text-[#F6F3EC] border border-[#B08D3F] rounded-xl space-y-5 shadow-xl">
                 <div className="flex items-center gap-2.5 font-mono text-xs text-[#E0C068] uppercase tracking-widest font-bold">
                   <MessageSquare className="w-4 h-4 text-[#C9A227]" />
-                  <span>HAVE ANOTHER QUESTION?</span>
+                  <span>HAVE A SPECIFIC ROUTE QUERY?</span>
                 </div>
 
                 <h3 className="font-display text-2xl font-bold leading-tight">
