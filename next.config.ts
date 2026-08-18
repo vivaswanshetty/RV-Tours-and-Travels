@@ -18,6 +18,21 @@ const nextConfig: NextConfig = {
         destination: "/packages",
         permanent: true,
       },
+      {
+        source: "/sitemap-index.xml",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/sitemap_index.xml",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/sitemapindex.xml",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
     ];
   },
   async headers() {
