@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 import { Phone, Menu, X, ArrowUpRight, HelpCircle } from "lucide-react";
 import { BUSINESS_INFO, NAV_LINKS } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
@@ -62,7 +63,7 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Center: Clean Multi-Page Navigation (No Waypoint Numbers) */}
+        {/* Center: Clean Multi-Page Navigation with Sliding Active Pill Animation */}
         <nav
           className="hidden lg:flex items-center p-1 bg-white/[0.06] border border-white/[0.12] rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)] backdrop-blur-md shrink-0 gap-0.5"
           aria-label="Main Navigation"
@@ -73,13 +74,26 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`group px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-full transition-all duration-200 flex items-center gap-1 whitespace-nowrap ${
-                  isActive
-                    ? "bg-[#B08D3F]/30 text-[#E0C068] border border-[#B08D3F]/70 shadow-[0_0_10px_rgba(176,141,63,0.3)] font-bold"
-                    : "text-white hover:text-[#F6F3EC] hover:bg-white/[0.15] border border-transparent font-semibold"
-                }`}
+                className="relative px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider rounded-full transition-colors duration-200 flex items-center gap-1 whitespace-nowrap focus:outline-none"
               >
-                <span>{link.label}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavPill"
+                    className="absolute inset-0 bg-[#B08D3F]/35 border border-[#B08D3F]/80 rounded-full shadow-[0_0_14px_rgba(176,141,63,0.35)]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  />
+                )}
+                <span
+                  className={`relative z-10 font-bold transition-colors duration-200 ${
+                    isActive ? "text-[#E0C068]" : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </span>
               </Link>
             );
           })}
@@ -87,14 +101,27 @@ export default function Header() {
           {/* Dedicated FAQ Link */}
           <Link
             href="/faq"
-            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-full transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap ${
-              pathname === "/faq"
-                ? "bg-[#B08D3F]/30 text-[#E0C068] border border-[#B08D3F]/70 shadow-[0_0_10px_rgba(176,141,63,0.3)] font-bold"
-                : "text-white hover:text-white hover:bg-white/[0.15] border border-transparent font-semibold"
-            }`}
+            className="relative px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider rounded-full transition-colors duration-200 flex items-center gap-1.5 whitespace-nowrap focus:outline-none"
           >
-            <HelpCircle className="w-3.5 h-3.5 text-[#E0C068]" />
-            <span>FAQ</span>
+            {pathname === "/faq" && (
+              <motion.div
+                layoutId="activeNavPill"
+                className="absolute inset-0 bg-[#B08D3F]/35 border border-[#B08D3F]/80 rounded-full shadow-[0_0_14px_rgba(176,141,63,0.35)]"
+                transition={{
+                  type: "spring",
+                  stiffness: 380,
+                  damping: 30,
+                }}
+              />
+            )}
+            <span
+              className={`relative z-10 flex items-center gap-1.5 font-bold transition-colors duration-200 ${
+                pathname === "/faq" ? "text-[#E0C068]" : "text-white/80 hover:text-white"
+              }`}
+            >
+              <HelpCircle className="w-3.5 h-3.5" />
+              <span>FAQ</span>
+            </span>
           </Link>
         </nav>
 

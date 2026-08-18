@@ -13,7 +13,6 @@ import {
   ChevronUp,
   Car,
   Clock,
-  Sparkles,
 } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";

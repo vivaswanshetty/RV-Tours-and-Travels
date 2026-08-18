@@ -5,7 +5,7 @@ import Link from "next/link";
 import { TOUR_PACKAGES, BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { Clock, Car, Compass, ArrowRight, Sparkles } from "lucide-react";
+import { Clock, Car, Compass, ArrowRight } from "lucide-react";
 
 export default function FeaturedPackagesSection() {
   // Show top 3 featured packages on the home page
@@ -98,9 +98,9 @@ export default function FeaturedPackagesSection() {
         {/* Bottom Banner */}
         <div className="mt-12 p-6 bg-[#1C1914] border border-[#383229] rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <Sparkles className="w-5 h-5 text-[#C9A227] shrink-0" />
+            <Compass className="w-5 h-5 text-[#C9A227] shrink-0" />
             <span className="font-mono text-xs text-[#F6F3EC]/80">
-              Want a customized multi-day itinerary across Karnataka, Goa, or Kerala? We arrange custom vehicles and route scheduling.
+              Want a customized multi-day itinerary across Karnataka or any neighboring state? We arrange custom vehicles and route scheduling.
             </span>
           </div>
           <Link

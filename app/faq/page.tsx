@@ -15,7 +15,6 @@ import {
   ChevronUp,
   Phone,
   MessageSquare,
-  Sparkles,
   ChevronRight,
   ShieldCheck,
   Car,
@@ -81,7 +80,7 @@ export default function FaqPage() {
 
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase">
-              <Sparkles className="w-3.5 h-3.5 text-[#C9A227]" />
+              <HelpCircle className="w-3.5 h-3.5 text-[#C9A227]" />
               <span>KNOWLEDGE BASE // TRAVEL ADVISORY</span>
             </div>
 

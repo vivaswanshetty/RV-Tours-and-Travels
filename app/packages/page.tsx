@@ -8,7 +8,7 @@ import SeoContentSection from "@/components/SeoContentSection";
 import { BUSINESS_INFO, TOUR_PACKAGES } from "@/lib/constants";
 import TicketButton from "@/components/TicketButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { Clock, Car, ChevronRight, Sparkles, Phone } from "lucide-react";
+import { Clock, Car, ChevronRight, Compass, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Karnataka Tour Packages 2026 | RV Tours and Travels Udupi",
@@ -55,7 +55,7 @@ export default function PackagesPage() {
 
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase">
-              <Sparkles className="w-3.5 h-3.5 text-[#C9A227]" />
+              <Compass className="w-3.5 h-3.5 text-[#C9A227]" />
               <span>CURATED 2026 ITINERARIES // PRIVATE CHAUFFEUR</span>
             </div>
 
