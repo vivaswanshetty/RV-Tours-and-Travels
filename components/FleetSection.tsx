@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Users, Briefcase, Wind, CheckCircle2 } from "lucide-react";
 import { FLEET_CATEGORIES, BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
@@ -114,17 +115,32 @@ export default function FleetSection() {
           ))}
         </div>
 
-        {/* Note on Custom Vehicle Requests */}
-        <div className="mt-12 p-5 bg-[#1C1914] border border-dashed border-[#B08D3F]/40 rounded-lg text-center font-mono text-xs text-[#F6F3EC]/80 max-w-2xl mx-auto">
-          Need a specific vehicle variant or multiple cars for a family function or pilgrimage?{" "}
-          <a
-            href={BUSINESS_INFO.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#C9A227] hover:underline font-bold"
-          >
-            Message R Ramesh directly on WhatsApp →
-          </a>
+        {/* Fleet Consultation Strip */}
+        <div className="mt-12 p-6 sm:p-8 bg-[#1C1914] border border-[#383229] rounded-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div>
+            <h4 className="font-display text-lg sm:text-xl font-bold text-[#F6F3EC]">
+              Need a vehicle not listed here or special group requirements?
+            </h4>
+            <p className="font-body text-xs sm:text-sm text-[#F6F3EC]/70 mt-1">
+              From luxury sedans to 20-seater Force Urbania vans, we arrange custom transport on prior notice.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+            <Link
+              href="/fleet"
+              className="px-4 py-2.5 bg-white/[0.06] hover:bg-white/[0.12] text-[#F6F3EC] border border-white/[0.15] hover:border-[#B08D3F] rounded-lg font-mono text-xs uppercase tracking-wider transition-all"
+            >
+              View Full Specs ➔
+            </Link>
+            <a
+              href={BUSINESS_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-colors"
+            >
+              WhatsApp R Ramesh →
+            </a>
+          </div>
         </div>
       </div>
     </section>

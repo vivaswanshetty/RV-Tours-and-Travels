@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { UserCheck, MapPin, Compass, PhoneCall, ShieldCheck, HeartHandshake } from "lucide-react";
+import Link from "next/link";
+import { UserCheck, MapPin, Compass, PhoneCall, ShieldCheck, HeartHandshake, Award } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 
@@ -24,10 +25,10 @@ export default function AboutSection() {
 
             <div className="font-body text-base sm:text-lg text-[#14120F]/85 space-y-4 leading-relaxed">
               <p>
-                <strong>RV Tours &amp; Travels</strong> is a locally operated tour and taxi service based in Udupi, Karnataka. Managed directly by proprietor <strong>R Ramesh</strong>, the service focuses on reliable, polite, and comfortable road transport for every passenger.
+                <strong>RV Tours &amp; Travels</strong> is a locally operated boutique tour and taxi service based in Udupi, Karnataka. Managed directly by proprietor <strong>R Ramesh</strong>, our service focuses on reliable, polite, and comfortable road transport for every passenger.
               </p>
               <p>
-                Whether coordinating airport pickups and drops at Mangalore Airport (IXE), planning temple circuit visits across coastal Karnataka, or arranging outstation travel throughout the state, each journey is handled with direct care.
+                Whether coordinating airport pickups and drops at Mangalore Airport (IXE), planning temple circuit visits across coastal Karnataka, or arranging outstation travel throughout the state, each journey is handled with direct accountability and zero middlemen.
               </p>
               <div className="text-sm font-mono text-[#1F4C4C] bg-[#EFEAE0] p-4 border-l-2 border-[#1F4C4C] rounded-r">
                 Punctual departures, careful driving across coastal and ghat routes, and clear communication with transparent fares.
@@ -36,33 +37,43 @@ export default function AboutSection() {
 
             {/* Core Values Strip */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              <div className="p-4 bg-[#EFEAE0] border border-[#DCD4C4] rounded">
+              <div className="p-4 bg-[#EFEAE0] border border-[#DCD4C4] rounded-lg">
                 <ShieldCheck className="w-5 h-5 text-[#1F4C4C] mb-2" />
                 <div className="font-display text-sm font-bold text-[#14120F]">Safe Driving</div>
                 <div className="font-mono text-xs text-[#14120F]/70">Ghats &amp; coastal highways</div>
               </div>
 
-              <div className="p-4 bg-[#EFEAE0] border border-[#DCD4C4] rounded">
+              <div className="p-4 bg-[#EFEAE0] border border-[#DCD4C4] rounded-lg">
                 <HeartHandshake className="w-5 h-5 text-[#1F4C4C] mb-2" />
                 <div className="font-display text-sm font-bold text-[#14120F]">Direct Contact</div>
                 <div className="font-mono text-xs text-[#14120F]/70">Speak directly with owner</div>
               </div>
 
-              <div className="p-4 bg-[#EFEAE0] border border-[#DCD4C4] rounded">
+              <div className="p-4 bg-[#EFEAE0] border border-[#DCD4C4] rounded-lg">
                 <Compass className="w-5 h-5 text-[#1F4C4C] mb-2" />
                 <div className="font-display text-sm font-bold text-[#14120F]">Route Knowhow</div>
                 <div className="font-mono text-xs text-[#14120F]/70">Temple timings &amp; halts</div>
               </div>
             </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#14120F] hover:bg-[#1C1914] text-[#E0C068] hover:text-[#F6F3EC] border border-[#B08D3F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md"
+              >
+                <span>Read Full Story &amp; Operator Standards</span>
+                <span>➔</span>
+              </Link>
+            </div>
           </div>
 
           {/* Right Column: Operator Manifest Card (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="bg-[#14120F] text-[#F6F3EC] border border-[#B08D3F] rounded-lg p-6 sm:p-8 shadow-2xl relative">
+            <div className="bg-[#14120F] text-[#F6F3EC] border border-[#B08D3F] rounded-xl p-6 sm:p-8 shadow-2xl relative">
               {/* Monogram Badge Header */}
               <div className="flex items-center justify-between pb-5 border-b border-[#383229] mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#1C1914] border border-[#B08D3F] rounded flex items-center justify-center font-display text-xl font-bold text-[#C9A227]">
+                  <div className="w-12 h-12 bg-[#1C1914] border border-[#B08D3F] rounded-lg flex items-center justify-center font-display text-xl font-bold text-[#C9A227]">
                     RV
                   </div>
                   <div>
@@ -86,14 +97,14 @@ export default function AboutSection() {
                 </div>
 
                 <div className="pb-3 border-b border-[#383229]/60">
-                  <div className="text-[10px] text-[#B08D3F] uppercase tracking-wider mb-1">DIRECT PHONE &amp; WHATSAPP</div>
+                  <div className="text-[10px] text-[#B08D3F] uppercase tracking-wider mb-1">DIRECT HELPLINE</div>
                   <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="text-sm font-bold text-[#F6F3EC] hover:text-[#C9A227] block">
                     {BUSINESS_INFO.phoneDisplay}
                   </a>
                 </div>
 
                 <div>
-                  <div className="text-[10px] text-[#B08D3F] uppercase tracking-wider mb-1">EMAIL</div>
+                  <div className="text-[10px] text-[#B08D3F] uppercase tracking-wider mb-1">EMAIL DISPATCH</div>
                   <a href={`mailto:${BUSINESS_INFO.email}`} className="text-xs text-[#E0C068] hover:underline break-all">
                     {BUSINESS_INFO.email}
                   </a>
@@ -102,7 +113,7 @@ export default function AboutSection() {
 
               {/* Bottom Stamp */}
               <div className="mt-6 pt-4 border-t border-dashed border-[#B08D3F]/40 flex items-center justify-between font-mono text-[10px] text-[#F6F3EC]/70">
-                <span>SERVICE: PAN-KARNATAKA</span>
+                <span>SERVICE: ALL-KARNATAKA</span>
                 <span>ORIGIN: UDUPI</span>
               </div>
             </div>

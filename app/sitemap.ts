@@ -8,26 +8,62 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: baseUrl,
       lastModified: now,
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/packages`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/fleet`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/privacy-policy`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.4,
     },
     {
       url: `${baseUrl}/terms-and-conditions`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.4,
     },
     {
       url: `${baseUrl}/cancellation-policy`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.4,
     },
   ];
 }

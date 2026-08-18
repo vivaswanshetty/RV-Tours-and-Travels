@@ -5,9 +5,10 @@ import RouteLine from "@/components/RouteLine";
 import OverviewSection from "@/components/OverviewSection";
 import ServicesSection from "@/components/ServicesSection";
 import FleetSection from "@/components/FleetSection";
+import FeaturedPackagesSection from "@/components/FeaturedPackagesSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
-import SeoContentSection from "@/components/SeoContentSection";
+import QuickFaqStrip from "@/components/QuickFaqStrip";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -33,14 +34,17 @@ export default function Home() {
       {/* Waypoint 03: Fleet Specifications */}
       <FleetSection />
 
-      {/* Waypoint 04: Authoritative SEO Travel & Tour Packages Guide */}
-      <SeoContentSection />
+      {/* Waypoint 04: Featured 2026 Tour Packages */}
+      <FeaturedPackagesSection />
 
       {/* Waypoint 05: About R Ramesh & RV Tours */}
       <AboutSection />
 
       {/* Waypoint 06: Contact & Reservation Manifest */}
       <ContactSection />
+
+      {/* Quick FAQs Teaser */}
+      <QuickFaqStrip />
 
       {/* Pre-footer Call to Action */}
       <CtaBanner />

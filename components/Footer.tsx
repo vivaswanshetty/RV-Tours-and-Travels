@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin, ArrowUp, Compass } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowUp, Compass, HelpCircle } from "lucide-react";
 import { BUSINESS_INFO, NAV_LINKS } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
 
@@ -64,11 +64,11 @@ export default function Footer() {
               <div className="text-[11px] text-[#C9A227]">Chauffeur &amp; Tour Management</div>
             </div>
             <p className="text-[11px] text-[#F6F3EC]/70 leading-relaxed font-body">
-              Independent, reliable tour &amp; taxi operator serving coastal Karnataka and pan-state routes.
+              Boutique, owner-supervised tour &amp; taxi operator serving coastal Karnataka and pan-state routes.
             </p>
           </div>
 
-          {/* Column 2: Direct Contact */}
+          {/* Column 2: Direct Lines */}
           <div className="space-y-3 font-mono text-xs">
             <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
               // DIRECT LINES
@@ -102,23 +102,32 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 3: Quick Waypoints */}
+          {/* Column 3: Site Navigation & Subpages */}
           <div className="space-y-3 font-mono text-xs">
             <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
-              // WAYPOINT INDEX
+              // NAVIGATION &amp; PAGES
             </div>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[#F6F3EC]/80 hover:text-[#C9A227] transition-colors flex items-center gap-2"
+                    className="text-[#F6F3EC]/80 hover:text-[#C9A227] transition-colors flex items-center justify-between"
                   >
-                    <span className="text-[#B08D3F]">{link.waypoint}</span>
                     <span>{link.label}</span>
+                    <span className="text-[#B08D3F]">➔</span>
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-[#F6F3EC]/80 hover:text-[#C9A227] transition-colors flex items-center justify-between"
+                >
+                  <span>Frequently Asked Questions</span>
+                  <span className="text-[#B08D3F]">➔</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

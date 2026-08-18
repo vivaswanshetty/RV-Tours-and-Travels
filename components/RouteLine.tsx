@@ -14,7 +14,7 @@ const WAYPOINTS: RouteWaypoint[] = [
   { id: "overview", number: "01", name: "ORIGIN", topPct: 0.05 },
   { id: "services", number: "02", name: "SERVICES", topPct: 0.22 },
   { id: "fleet", number: "03", name: "FLEET", topPct: 0.40 },
-  { id: "travel-guide", number: "04", name: "PACKAGES", topPct: 0.58 },
+  { id: "packages", number: "04", name: "PACKAGES", topPct: 0.58 },
   { id: "about", number: "05", name: "OPERATOR", topPct: 0.76 },
   { id: "contact", number: "06", name: "DISPATCH", topPct: 0.94 },
 ];
