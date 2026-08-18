@@ -275,13 +275,12 @@ export default function RootLayout({
     >
       <head>
         {/* Google tag (gtag.js) */}
-        <Script
-          strategy="afterInteractive"
+        <script
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-RKP9HBQ5D2"
         />
-        <Script
+        <script
           id="google-analytics"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
