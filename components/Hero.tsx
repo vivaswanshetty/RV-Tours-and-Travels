@@ -48,7 +48,16 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 bg-route-dots opacity-10 pointer-events-none" />
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#B08D3F]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-8 my-auto">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-6 sm:space-y-8 my-auto">
+        {/* Sacred Invocation Greeting */}
+        <div className="flex items-center justify-center gap-3 select-none">
+          <span className="h-[1px] w-6 sm:w-12 bg-gradient-to-r from-transparent to-[#B08D3F]/60" />
+          <span className="font-display text-xs sm:text-sm tracking-[0.2em] text-[#E0C068] font-medium">
+            || Shri Krishnam Vandhe Jagadhgurum ||
+          </span>
+          <span className="h-[1px] w-6 sm:w-12 bg-gradient-to-l from-transparent to-[#B08D3F]/60" />
+        </div>
+
         {/* Origin & Live Dispatch Pill */}
         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-[#1C1914]/90 border border-[#B08D3F]/50 rounded-full text-xs font-mono tracking-widest text-[#E0C068] uppercase shadow-lg backdrop-blur-md">
           <span className="w-2 h-2 rounded-full bg-[#2E6B6B] animate-pulse" />
