@@ -135,8 +135,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     description: "Ascend the verdant Western Ghats with an expert hill-route chauffeur. Enjoy serene coffee estate tours, panoramic viewpoints, and safe mountain driving.",
     idealVehicle: "Premium SUV (Toyota Innova Crysta)",
     whatsappMessage: "Hello Ramesh ji, I want to enquire about the Chikmagalur & Coorg Highland Package 2026.",
-    imageSrc: "/destinations/coorg-mysuru.jpg",
-    imageAlt: "Chikmagalur Coffee Plantations and Coorg Western Ghats Highlands"
+    imageSrc: "/destinations/western-ghats.jpg",
+    imageAlt: "Scenic Western Ghats mountain ridges and mist-covered valleys",
   },
   {
     id: "mangalore-airport-connect",
@@ -149,8 +149,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     description: "Zero-stress airport transit with flight tracking, early morning / late night scheduled pickups, and ample luggage boot space.",
     idealVehicle: "Dzire / Etios / Innova Crysta",
     whatsappMessage: "Hello Ramesh ji, I need to book a Mangalore Airport (IXE) Drop / Pickup.",
-    imageSrc: "/destinations/udupi.jpg",
-    imageAlt: "Mangalore Airport and Udupi Coastal Highway Transit"
+    imageSrc: "/destinations/mangalore-airport.jpg",
+    imageAlt: "Mangalore International Airport modern terminal building and tarmac",
   },
   {
     id: "custom-karnataka-itinerary",
