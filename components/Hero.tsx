@@ -12,9 +12,6 @@ import WhatsAppIcon from "./WhatsAppIcon";
 export default function Hero() {
   const quickRoutes = [
     { label: "✈️ Mangalore Airport (IXE)", query: "Hello Ramesh ji, I want to book a Mangalore Airport (IXE) cab." },
-    { label: "🛕 Kollur & Murudeshwar", query: "Hello Ramesh ji, I want to enquire about the Kollur & Murudeshwar temple tour." },
-    { label: "🌊 Gokarna & Karwar", query: "Hello Ramesh ji, I want to enquire about a Gokarna & Karwar beach trip." },
-    { label: "⛰️ Coorg & Chikmagalur", query: "Hello Ramesh ji, I want to enquire about the Coorg & Chikmagalur tour." },
     { label: "🚗 All-Karnataka Outstation", query: "Hello Ramesh ji, I need a chauffeur for an outstation Karnataka trip." },
   ];
 
@@ -33,15 +30,14 @@ export default function Hero() {
       {/* Background Graphic with Atmospheric Cinematic Image & Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/hero-road.jpg"
-          alt="Scenic coastal Karnataka and Western Ghats highway route - RV Tours & Travels"
+          src="/hero-coastal-sunset.jpg"
+          alt="Scenic coastal Karnataka highway at golden hour alongside the Arabian Sea - RV Tours & Travels"
           fill
           priority
-          className="object-cover object-center opacity-25 filter brightness-95"
+          className="object-cover object-center opacity-65 filter brightness-105 contrast-105"
         />
-        {/* Soft Multi-Layered Atmospheric Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#14120F]/90 via-[#14120F]/60 to-[#14120F]" />
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#14120F]/50 to-[#14120F]" />
+        {/* Soft Natural Atmospheric Warmth Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#14120F]/65 via-[#14120F]/35 to-[#14120F]/85" />
       </div>
 
       {/* Decorative Blueprint Grid & Subtle Amber Glow */}
@@ -66,10 +62,6 @@ export default function Hero() {
 
         {/* Hero Typography */}
         <div className="space-y-4 max-w-4xl mx-auto">
-          <div className="font-mono text-xs sm:text-sm text-[#B08D3F] uppercase tracking-[0.3em] font-bold">
-            — {BUSINESS_INFO.tagline} —
-          </div>
-
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#F6F3EC] leading-[1.1]">
             Boutique Chauffeur &amp; Private Taxi Service in{" "}
             <span className="italic bg-gradient-to-r from-[#E0C068] via-[#F3E5AB] to-[#C9A227] bg-clip-text text-transparent">
@@ -77,8 +69,8 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="font-body text-base sm:text-lg md:text-xl text-[#F6F3EC]/80 max-w-2xl mx-auto leading-relaxed font-light">
-            Managed directly by proprietor <strong className="font-semibold text-[#F6F3EC]">{BUSINESS_INFO.proprietor}</strong>. Punctual airport transfers, tailored temple circuits, and bespoke inter-city journeys across all destinations in Karnataka with zero surge pricing.
+          <p className="font-body text-base sm:text-lg md:text-xl text-[#F6F3EC]/85 max-w-2xl mx-auto leading-relaxed font-light">
+            Punctual airport transfers, sacred temple circuits, and custom outstation trips across Karnataka, managed directly by proprietor <strong className="font-semibold text-[#F6F3EC]">{BUSINESS_INFO.proprietor}</strong> with zero surge pricing.
           </p>
         </div>
 

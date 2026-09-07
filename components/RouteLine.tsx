@@ -11,12 +11,15 @@ interface RouteWaypoint {
 }
 
 const WAYPOINTS: RouteWaypoint[] = [
-  { id: "overview", number: "01", name: "ORIGIN", topPct: 0.05 },
-  { id: "services", number: "02", name: "SERVICES", topPct: 0.22 },
-  { id: "fleet", number: "03", name: "FLEET", topPct: 0.40 },
-  { id: "packages", number: "04", name: "PACKAGES", topPct: 0.58 },
-  { id: "about", number: "05", name: "OPERATOR", topPct: 0.76 },
-  { id: "contact", number: "06", name: "DISPATCH", topPct: 0.94 },
+  { id: "overview", number: "01", name: "ORIGIN", topPct: 0.04 },
+  { id: "destinations", number: "02", name: "DESTINATIONS", topPct: 0.15 },
+  { id: "saptha-kshetra", number: "03", name: "SAPTHA KSHT", topPct: 0.27 },
+  { id: "packages", number: "04", name: "PACKAGES", topPct: 0.39 },
+  { id: "fleet", number: "05", name: "FLEET", topPct: 0.51 },
+  { id: "services", number: "06", name: "SERVICES", topPct: 0.63 },
+  { id: "trust", number: "07", name: "TRUST", topPct: 0.75 },
+  { id: "about", number: "08", name: "OPERATOR", topPct: 0.87 },
+  { id: "contact", number: "09", name: "DISPATCH", topPct: 0.98 },
 ];
 
 export default function RouteLine() {

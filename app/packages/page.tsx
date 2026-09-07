@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -40,8 +41,20 @@ export default function PackagesPage() {
 
       {/* Page Hero Header */}
       <section className="pt-32 sm:pt-36 lg:pt-40 pb-16 bg-[#14120F] text-[#F6F3EC] relative overflow-hidden border-b border-[#383229]">
-        <div className="absolute inset-0 bg-route-dots opacity-10 pointer-events-none" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#B08D3F]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Atmospheric Cinematic Header Background Image & Gradient */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/headers/packages-header.jpg"
+            alt="Panoramic view of Murudeshwar temple and Arabian Sea coast - RV Tours & Travels packages"
+            fill
+            priority
+            className="object-cover object-center opacity-45 filter brightness-95 contrast-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#14120F]/75 via-[#14120F]/50 to-[#14120F]/95" />
+        </div>
+
+        <div className="absolute inset-0 z-0 bg-route-dots opacity-10 pointer-events-none" />
+        <div className="absolute -top-24 -right-24 z-0 w-96 h-96 bg-[#B08D3F]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}
@@ -112,69 +125,85 @@ export default function PackagesPage() {
             {TOUR_PACKAGES.map((pkg) => (
               <div
                 key={pkg.id}
-                className="group relative bg-[#14120F] text-[#F6F3EC] border border-[#383229] hover:border-[#B08D3F] rounded-xl p-6 sm:p-7 transition-all duration-300 shadow-xl flex flex-col justify-between"
+                className="group relative bg-[#14120F] text-[#F6F3EC] border border-[#383229] hover:border-[#B08D3F] rounded-xl overflow-hidden transition-all duration-300 shadow-xl flex flex-col justify-between"
               >
-                <div className="space-y-4">
-                  {/* Top Badge & Duration */}
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="inline-block font-mono text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 bg-[#1C1914] text-[#E0C068] border border-[#B08D3F]/50 rounded">
-                      {pkg.badge}
-                    </span>
-                    <span className="font-mono text-xs text-[#F6F3EC]/70 flex items-center gap-1">
+                <div>
+                  {/* Visual Landmark Header Image */}
+                  <div className="relative aspect-[16/10] w-full bg-[#1C1914] overflow-hidden border-b border-[#383229]">
+                    <Image
+                      src={pkg.imageSrc}
+                      alt={pkg.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#14120F] via-transparent to-transparent opacity-60" />
+
+                    {/* Top Overlay Badges */}
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="inline-block font-mono text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 bg-[#14120F]/90 text-[#E0C068] border border-[#B08D3F]/60 rounded backdrop-blur-sm shadow-md">
+                        {pkg.badge}
+                      </span>
+                    </div>
+                    <div className="absolute top-3 right-3 z-10 bg-[#14120F]/90 border border-white/20 px-2.5 py-1 rounded text-[10px] font-mono text-[#F6F3EC] backdrop-blur-sm flex items-center gap-1 shadow-md">
                       <Clock className="w-3.5 h-3.5 text-[#C9A227]" />
-                      {pkg.duration}
-                    </span>
+                      <span>{pkg.duration}</span>
+                    </div>
                   </div>
 
-                  {/* Title & Subtitle */}
-                  <div>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F6F3EC] group-hover:text-[#E0C068] transition-colors leading-snug">
-                      {pkg.title}
-                    </h3>
-                    <p className="font-mono text-xs text-[#B08D3F] mt-1">
-                      {pkg.subtitle}
+                  <div className="p-6 sm:p-7 space-y-4">
+                    {/* Title & Subtitle */}
+                    <div>
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F6F3EC] group-hover:text-[#E0C068] transition-colors leading-snug">
+                        {pkg.title}
+                      </h3>
+                      <p className="font-mono text-xs text-[#B08D3F] mt-1">
+                        {pkg.subtitle}
+                      </p>
+                    </div>
+
+                    <p className="font-body text-sm text-[#F6F3EC]/80 leading-relaxed">
+                      {pkg.description}
                     </p>
-                  </div>
 
-                  <p className="font-body text-sm text-[#F6F3EC]/80 leading-relaxed">
-                    {pkg.description}
-                  </p>
+                    {/* Key Stops */}
+                    <div className="p-3.5 bg-[#1C1914] border border-[#383229]/60 rounded-lg space-y-2">
+                      <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-wider block font-bold">
+                        KEY WAYPOINTS &amp; STOPS:
+                      </span>
+                      <ul className="space-y-1.5 font-mono text-xs text-[#F6F3EC]/85">
+                        {pkg.stops.map((stop, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-[#C9A227] font-bold">{idx + 1}.</span>
+                            <span>{stop}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  {/* Key Stops */}
-                  <div className="p-3.5 bg-[#1C1914] border border-[#383229]/60 rounded-lg space-y-2">
-                    <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-wider block font-bold">
-                      KEY WAYPOINTS &amp; STOPS:
-                    </span>
-                    <ul className="space-y-1.5 font-mono text-xs text-[#F6F3EC]/85">
-                      {pkg.stops.map((stop, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="text-[#C9A227] font-bold">{idx + 1}.</span>
-                          <span>{stop}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Ideal Vehicle */}
-                  <div className="font-mono text-xs text-[#F6F3EC]/70 flex items-center gap-2 pt-1">
-                    <Car className="w-4 h-4 text-[#C9A227] shrink-0" />
-                    <span>Vehicle: <strong className="text-[#F6F3EC]">{pkg.idealVehicle}</strong></span>
+                    {/* Ideal Vehicle */}
+                    <div className="font-mono text-xs text-[#F6F3EC]/70 flex items-center gap-2 pt-1">
+                      <Car className="w-4 h-4 text-[#C9A227] shrink-0" />
+                      <span>Vehicle: <strong className="text-[#F6F3EC]">{pkg.idealVehicle}</strong></span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Bottom WhatsApp Booking CTA */}
-                <div className="pt-6 mt-6 border-t border-[#383229]/60">
-                  <TicketButton
-                    href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(pkg.whatsappMessage)}`}
-                    isExternal
-                    variant="primary-gold"
-                    size="sm"
-                    ticketCode="BOOK 2026"
-                    icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
-                    className="w-full justify-center"
-                  >
-                    Enquire on WhatsApp
-                  </TicketButton>
+                <div className="p-6 sm:p-7 pt-0">
+                  <div className="pt-6 border-t border-[#383229]/60">
+                    <TicketButton
+                      href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(pkg.whatsappMessage)}`}
+                      isExternal
+                      variant="primary-gold"
+                      size="sm"
+                      ticketCode="BOOK 2026"
+                      icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
+                      className="w-full justify-center"
+                    >
+                      Enquire on WhatsApp
+                    </TicketButton>
+                  </div>
                 </div>
               </div>
             ))}

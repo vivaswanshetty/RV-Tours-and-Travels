@@ -186,19 +186,19 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 bg-[#14120F] text-[#F6F3EC] relative border-b border-[#383229]">
+    <section id="contact" className="py-20 sm:py-28 bg-[#F6F3EC] text-[#14120F] relative border-b border-[#DCD4C4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Waypoint 05 Header */}
+        {/* Waypoint 08 Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#E0C068]">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#C9A227]" />
-            <span>WAYPOINT 06 // DIRECT DISPATCH &amp; BOOKING</span>
+          <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
+            <span>WAYPOINT 09 // DIRECT DISPATCH &amp; BOOKING</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC]">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
             Get in Touch &amp; Reserve Your Trip
           </h2>
-          <p className="font-body text-base sm:text-lg text-[#F6F3EC]/80 leading-relaxed font-light">
-            Direct coordination with proprietor R Ramesh. Fast response via WhatsApp, phone call, or trip enquiry form for price estimates and vehicle availability.
+          <p className="font-body text-base sm:text-lg text-[#14120F]/80 leading-relaxed font-light">
+            Direct coordination with proprietor R Ramesh via WhatsApp, phone call, or trip enquiry form for transparent price estimates and vehicle allocation.
           </p>
         </div>
 
@@ -213,25 +213,25 @@ export default function ContactSection() {
                 href={BUSINESS_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 bg-[#1C1914] border border-[#B08D3F] rounded-lg flex items-center justify-between group hover:bg-[#242019] hover:border-[#E0C068] transition-all"
+                className="p-5 bg-[#EFEAE0] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-xl flex items-center justify-between group transition-all shadow-sm"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded bg-[#14120F] border border-[#B08D3F] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg bg-[#F6F3EC] border border-[#DCD4C4] flex items-center justify-center group-hover:border-[#B08D3F] transition-colors">
                     <WhatsAppIcon className="w-6 h-6" withOriginalColor />
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-widest block font-bold">
+                    <span className="font-mono text-[10px] text-[#1F4C4C] uppercase tracking-widest block font-bold">
                       FASTEST RESPONSE
                     </span>
-                    <span className="font-display text-lg font-bold text-[#F6F3EC] group-hover:text-[#E0C068] transition-colors">
+                    <span className="font-display text-lg font-bold text-[#14120F] group-hover:text-[#B08D3F] transition-colors">
                       Chat on WhatsApp
                     </span>
-                    <span className="font-mono text-xs text-[#F6F3EC]/70 block mt-0.5">
+                    <span className="font-mono text-xs text-[#14120F]/70 block mt-0.5">
                       {BUSINESS_INFO.phoneDisplay}
                     </span>
                   </div>
                 </div>
-                <span className="font-mono text-xs text-[#C9A227] group-hover:translate-x-1 transition-transform">
+                <span className="font-mono text-xs text-[#B08D3F] group-hover:translate-x-1 transition-transform">
                   →
                 </span>
               </a>
@@ -239,20 +239,20 @@ export default function ContactSection() {
               {/* Direct Call Card */}
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
-                className="p-5 bg-[#1C1914] border border-[#383229] rounded-lg flex items-center justify-between group hover:border-[#B08D3F] transition-all"
+                className="p-5 bg-[#EFEAE0] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-xl flex items-center justify-between group transition-all shadow-sm"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded bg-[#14120F] border border-[#383229] flex items-center justify-center text-[#C9A227]">
+                  <div className="w-12 h-12 rounded-lg bg-[#F6F3EC] border border-[#DCD4C4] flex items-center justify-center text-[#1F4C4C] group-hover:border-[#B08D3F] transition-colors">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-widest block font-bold">
+                    <span className="font-mono text-[10px] text-[#1F4C4C] uppercase tracking-widest block font-bold">
                       PROPRIETOR DIRECT LINE
                     </span>
-                    <span className="font-display text-lg font-bold text-[#F6F3EC] group-hover:text-[#E0C068] transition-colors">
+                    <span className="font-display text-lg font-bold text-[#14120F] group-hover:text-[#B08D3F] transition-colors">
                       Call R Ramesh
                     </span>
-                    <span className="font-mono text-xs text-[#F6F3EC]/70 block mt-0.5">
+                    <span className="font-mono text-xs text-[#14120F]/70 block mt-0.5">
                       {BUSINESS_INFO.phoneDisplay}
                     </span>
                   </div>
@@ -265,20 +265,20 @@ export default function ContactSection() {
               {/* Email Card */}
               <a
                 href={`mailto:${BUSINESS_INFO.email}`}
-                className="p-5 bg-[#1C1914] border border-[#383229] rounded-lg flex items-center justify-between group hover:border-[#B08D3F] transition-all"
+                className="p-5 bg-[#EFEAE0] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-xl flex items-center justify-between group transition-all shadow-sm"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded bg-[#14120F] border border-[#383229] flex items-center justify-center text-[#F6F3EC]">
+                  <div className="w-12 h-12 rounded-lg bg-[#F6F3EC] border border-[#DCD4C4] flex items-center justify-center text-[#1F4C4C] group-hover:border-[#B08D3F] transition-colors">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-widest block font-bold">
+                    <span className="font-mono text-[10px] text-[#1F4C4C] uppercase tracking-widest block font-bold">
                       EMAIL
                     </span>
-                    <span className="font-display text-lg font-bold text-[#F6F3EC] group-hover:text-[#E0C068] transition-colors">
+                    <span className="font-display text-lg font-bold text-[#14120F] group-hover:text-[#B08D3F] transition-colors">
                       Email
                     </span>
-                    <span className="font-mono text-xs text-[#F6F3EC]/70 block mt-0.5 break-all">
+                    <span className="font-mono text-xs text-[#14120F]/70 block mt-0.5 break-all">
                       {BUSINESS_INFO.email}
                     </span>
                   </div>
@@ -290,21 +290,21 @@ export default function ContactSection() {
             </div>
 
             {/* Embedded Google Map */}
-            <div className="bg-[#1C1914] border border-[#383229] rounded-lg p-3 space-y-2">
+            <div className="bg-[#EFEAE0] border border-[#DCD4C4] rounded-xl p-3 space-y-2 shadow-sm">
               <div className="flex items-center justify-between px-2 pt-1">
-                <span className="font-mono text-xs text-[#B08D3F] uppercase tracking-wider flex items-center gap-1.5 font-bold">
-                  <MapPin className="w-3.5 h-3.5 text-[#C9A227]" />
+                <span className="font-mono text-xs text-[#1F4C4C] uppercase tracking-wider flex items-center gap-1.5 font-bold">
+                  <MapPin className="w-3.5 h-3.5 text-[#B08D3F]" />
                   BASE STATION MAP // UDUPI, KARNATAKA
                 </span>
-                <span className="font-mono text-[10px] text-[#F6F3EC]/60">13.3409° N, 74.7421° E</span>
+                <span className="font-mono text-[10px] text-[#14120F]/60">13.3409° N, 74.7421° E</span>
               </div>
-              <div className="relative aspect-[16/9] w-full rounded overflow-hidden border border-[#383229]/60">
+              <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden border border-[#DCD4C4]">
                 <iframe
                   title="RV Tours and Travels Base Location - Udupi Karnataka"
                   src={BUSINESS_INFO.googleMapsEmbedUrl}
                   width="100%"
                   height="100%"
-                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%)" }}
+                  style={{ border: 0 }}
                   allowFullScreen={false}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -316,27 +316,27 @@ export default function ContactSection() {
 
           {/* Right Column: Ticket Stub Booking & Enquiry Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="bg-[#1C1914] border border-[#B08D3F] rounded-lg p-4 sm:p-8 shadow-2xl relative">
+            <div className="bg-[#EFEAE0] border border-[#DCD4C4] rounded-xl p-4 sm:p-8 shadow-sm relative text-[#14120F]">
               {/* Form Ticket Header with Tab Switcher */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#383229] mb-6">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#DCD4C4] mb-6">
                 <div>
-                  <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold block">
+                  <span className="font-mono text-xs text-[#1F4C4C] uppercase tracking-widest font-bold block">
                     RESERVATION MANIFEST
                   </span>
-                  <h3 className="font-display text-2xl font-bold text-[#F6F3EC]">
+                  <h3 className="font-display text-2xl font-bold text-[#14120F]">
                     {activeTab === "form" ? "Send Trip Enquiry" : "Recent Enquiries"}
                   </h3>
                 </div>
 
                 {/* Tab Switcher */}
-                <div className="flex items-center gap-1 p-1 bg-[#14120F] border border-[#383229] rounded-lg">
+                <div className="flex items-center gap-1 p-1 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg">
                   <button
                     type="button"
                     onClick={() => setActiveTab("form")}
                     className={`px-3 py-1 text-xs font-mono uppercase tracking-wider rounded transition-all ${
                       activeTab === "form"
-                        ? "bg-[#B08D3F] text-[#14120F] font-bold shadow"
-                        : "text-[#F6F3EC]/70 hover:text-[#E0C068]"
+                        ? "bg-[#B08D3F] text-[#14120F] font-bold shadow-sm"
+                        : "text-[#14120F]/70 hover:text-[#B08D3F]"
                     }`}
                   >
                     New Form
@@ -346,8 +346,8 @@ export default function ContactSection() {
                     onClick={() => setActiveTab("history")}
                     className={`px-3 py-1 text-xs font-mono uppercase tracking-wider rounded flex items-center gap-1.5 transition-all ${
                       activeTab === "history"
-                        ? "bg-[#B08D3F] text-[#14120F] font-bold shadow"
-                        : "text-[#F6F3EC]/70 hover:text-[#E0C068]"
+                        ? "bg-[#B08D3F] text-[#14120F] font-bold shadow-sm"
+                        : "text-[#14120F]/70 hover:text-[#B08D3F]"
                     }`}
                   >
                     <History className="w-3.5 h-3.5" />
@@ -360,32 +360,32 @@ export default function ContactSection() {
                 /* Dedicated History Tab Content */
                 <div className="space-y-4 animate-in fade-in duration-200">
                   {history.length === 0 ? (
-                    <div className="py-12 px-4 text-center space-y-3 bg-[#14120F] border border-[#383229] rounded-lg">
-                      <div className="w-12 h-12 rounded-full bg-[#1C1914] border border-[#383229] flex items-center justify-center mx-auto text-[#B08D3F]">
+                    <div className="py-12 px-4 text-center space-y-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg">
+                      <div className="w-12 h-12 rounded-full bg-[#EFEAE0] border border-[#DCD4C4] flex items-center justify-center mx-auto text-[#1F4C4C]">
                         <History className="w-6 h-6" />
                       </div>
-                      <div className="font-display text-lg font-bold text-[#F6F3EC]">
+                      <div className="font-display text-lg font-bold text-[#14120F]">
                         No Recent Enquiries Yet
                       </div>
-                      <p className="font-body text-xs text-[#F6F3EC]/70 max-w-sm mx-auto leading-relaxed">
+                      <p className="font-body text-xs text-[#14120F]/70 max-w-sm mx-auto leading-relaxed font-light">
                         When you submit a trip enquiry, it will be automatically recorded here with its reference number, date &amp; time, and a direct link to re-open the WhatsApp chat.
                       </p>
                       <button
                         type="button"
                         onClick={() => setActiveTab("form")}
-                        className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 bg-[#B08D3F] text-[#14120F] rounded font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#E0C068] transition-colors"
+                        className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 bg-[#B08D3F] text-[#14120F] rounded font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#C9A227] transition-colors"
                       >
                         <span>Fill New Trip Enquiry</span>
                       </button>
                     </div>
                   ) : (
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between font-mono text-xs text-[#F6F3EC]/70 pb-2 border-b border-[#383229]">
+                      <div className="flex items-center justify-between font-mono text-xs text-[#14120F]/70 pb-2 border-b border-[#DCD4C4]">
                         <span>Showing {history.length} saved {history.length === 1 ? "enquiry" : "enquiries"} on this device</span>
                         <button
                           type="button"
                           onClick={clearHistory}
-                          className="flex items-center gap-1 text-red-400/80 hover:text-red-300 uppercase tracking-wider transition-colors"
+                          className="flex items-center gap-1 text-red-600 hover:text-red-700 uppercase tracking-wider transition-colors"
                         >
                           <Trash2 className="w-3 h-3" />
                           <span>Clear All</span>
@@ -396,51 +396,51 @@ export default function ContactSection() {
                         {history.map((item) => (
                           <div
                             key={item.id}
-                            className="p-4 bg-[#14120F] border border-[#383229] rounded-lg space-y-2.5 hover:border-[#B08D3F]/70 transition-colors"
+                            className="p-4 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg space-y-2.5 hover:border-[#B08D3F] transition-colors"
                           >
                             <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px]">
-                              <span className="text-[#C9A227] font-bold">
+                              <span className="text-[#1F4C4C] font-bold">
                                 REF: {item.refCode}
                               </span>
-                              <span className="text-[#F6F3EC]/60 flex items-center gap-1 text-[10px]">
+                              <span className="text-[#14120F]/60 flex items-center gap-1 text-[10px]">
                                 <Clock className="w-3 h-3" />
                                 {item.createdAt}
                               </span>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 font-mono text-xs text-[#F6F3EC]/90">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 font-mono text-xs text-[#14120F]/90">
                               <div>
-                                <span className="text-[#B08D3F]">Passenger:</span> {item.name} ({item.phone})
+                                <span className="text-[#1F4C4C] font-semibold">Passenger:</span> {item.name} ({item.phone})
                               </div>
                               <div>
-                                <span className="text-[#B08D3F]">Service:</span> {item.serviceType}
+                                <span className="text-[#1F4C4C] font-semibold">Service:</span> {item.serviceType}
                               </div>
                               <div>
-                                <span className="text-[#B08D3F]">Route:</span> {item.pickupLocation || "Udupi"} ➔ {item.destination || "TBD"}
+                                <span className="text-[#1F4C4C] font-semibold">Route:</span> {item.pickupLocation || "Udupi"} ➔ {item.destination || "TBD"}
                               </div>
                               <div>
-                                <span className="text-[#B08D3F]">Vehicle:</span> {item.vehicleType}
+                                <span className="text-[#1F4C4C] font-semibold">Vehicle:</span> {item.vehicleType}
                               </div>
                             </div>
 
                             {item.travelDate && (
-                              <div className="font-mono text-[11px] text-[#F6F3EC]/70">
-                                <span className="text-[#B08D3F]">Date &amp; Time:</span> {item.travelDate}
+                              <div className="font-mono text-[11px] text-[#14120F]/70">
+                                <span className="text-[#1F4C4C] font-semibold">Date &amp; Time:</span> {item.travelDate}
                               </div>
                             )}
 
                             {item.message && (
-                              <div className="font-mono text-[10px] text-[#F6F3EC]/60 bg-[#1C1914] p-2 rounded border border-[#383229]/40">
-                                <span className="text-[#B08D3F]">Notes:</span> {item.message}
+                              <div className="font-mono text-[10px] text-[#14120F]/75 bg-[#EFEAE0] p-2 rounded border border-[#DCD4C4]">
+                                <span className="text-[#1F4C4C] font-semibold">Notes:</span> {item.message}
                               </div>
                             )}
 
-                            <div className="pt-2 border-t border-[#383229]/60 flex flex-wrap items-center justify-between gap-2">
+                            <div className="pt-2 border-t border-[#DCD4C4] flex flex-wrap items-center justify-between gap-2">
                               <a
                                 href={buildCustomWhatsAppUrl(item)}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1C1914] border border-[#B08D3F]/70 hover:border-[#E0C068] hover:bg-[#25211A] text-[#F6F3EC] rounded font-mono text-[11px] font-bold tracking-wider uppercase transition-colors"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EFEAE0] border border-[#DCD4C4] hover:border-[#B08D3F] hover:bg-[#E5DFD1] text-[#14120F] rounded font-mono text-[11px] font-bold tracking-wider uppercase transition-colors"
                               >
                                 <WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />
                                 <span>Re-open on WhatsApp</span>
@@ -462,7 +462,7 @@ export default function ContactSection() {
                                   setSubmitted(false);
                                   setActiveTab("form");
                                 }}
-                                className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[#E0C068] hover:text-[#F6F3EC] font-mono text-[11px] uppercase tracking-wider transition-colors"
+                                className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[#1F4C4C] hover:text-[#B08D3F] font-mono text-[11px] uppercase tracking-wider transition-colors"
                               >
                                 <RotateCcw className="w-3 h-3" />
                                 <span>Reuse in Form</span>
@@ -475,33 +475,33 @@ export default function ContactSection() {
                   )}
                 </div>
               ) : submitted ? (
-                <div className="p-6 sm:p-8 bg-[#14120F] border border-[#1F4C4C] rounded-lg text-center space-y-5 animate-in fade-in duration-300">
-                  <div className="w-14 h-14 rounded-full bg-[#1F4C4C]/40 border border-[#2E6B6B] flex items-center justify-center mx-auto">
+                <div className="p-6 sm:p-8 bg-[#F6F3EC] border border-[#2E6B6B] rounded-lg text-center space-y-5 animate-in fade-in duration-300">
+                  <div className="w-14 h-14 rounded-full bg-[#1F4C4C]/10 border border-[#2E6B6B] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8 text-[#2E6B6B]" />
                   </div>
 
                   <div>
-                    <span className="font-mono text-xs text-[#E0C068] uppercase tracking-widest font-bold block mb-1">
+                    <span className="font-mono text-xs text-[#1F4C4C] uppercase tracking-widest font-bold block mb-1">
                       ENQUIRY PREPARED // REF: {refCode}
                     </span>
-                    <h4 className="font-display text-2xl font-bold text-[#F6F3EC]">
+                    <h4 className="font-display text-2xl font-bold text-[#14120F]">
                       Enquiry Ready on WhatsApp
                     </h4>
                   </div>
 
-                  <p className="font-body text-sm text-[#F6F3EC]/85 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-[#F6F3EC]">{formData.name}</strong>. Your trip details have been pre-filled. If WhatsApp did not open automatically, click the button below to send your enquiry directly to proprietor <strong>R Ramesh</strong>.
+                  <p className="font-body text-sm text-[#14120F]/80 max-w-md mx-auto leading-relaxed font-light">
+                    Thank you, <strong className="text-[#14120F]">{formData.name}</strong>. Your trip details have been pre-filled. If WhatsApp did not open automatically, click the button below to send your enquiry directly to proprietor <strong>R Ramesh</strong>.
                   </p>
 
-                  <div className="p-4 bg-[#1C1914] border border-[#383229] rounded font-mono text-xs text-left max-w-md mx-auto space-y-1.5 text-[#F6F3EC]/80">
-                    <div><span className="text-[#B08D3F]">NAME:</span> {formData.name} ({formData.phone})</div>
-                    <div><span className="text-[#B08D3F]">SERVICE:</span> {formData.serviceType}</div>
-                    <div><span className="text-[#B08D3F]">ROUTE:</span> {formData.pickupLocation || "Udupi / Manipal"} ➔ {formData.destination || "As requested"}</div>
-                    <div><span className="text-[#B08D3F]">VEHICLE:</span> {formData.vehicleType}</div>
-                    <div><span className="text-[#B08D3F]">DATE:</span> {formData.travelDate || "Flexible"}</div>
+                  <div className="p-4 bg-[#EFEAE0] border border-[#DCD4C4] rounded font-mono text-xs text-left max-w-md mx-auto space-y-1.5 text-[#14120F]/85">
+                    <div><span className="text-[#1F4C4C] font-semibold">NAME:</span> {formData.name} ({formData.phone})</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">SERVICE:</span> {formData.serviceType}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">ROUTE:</span> {formData.pickupLocation || "Udupi / Manipal"} ➔ {formData.destination || "As requested"}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">VEHICLE:</span> {formData.vehicleType}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">DATE:</span> {formData.travelDate || "Flexible"}</div>
                     {formData.message && (
-                      <div className="pt-1 border-t border-[#383229]/60 text-[11px] text-[#F6F3EC]/70">
-                        <span className="text-[#B08D3F]">NOTES:</span> {formData.message}
+                      <div className="pt-1 border-t border-[#DCD4C4] text-[11px] text-[#14120F]/70">
+                        <span className="text-[#1F4C4C] font-semibold">NOTES:</span> {formData.message}
                       </div>
                     )}
                   </div>
@@ -533,7 +533,7 @@ export default function ContactSection() {
                           message: "",
                         });
                       }}
-                      className="text-xs font-mono text-[#F6F3EC]/60 hover:text-[#F6F3EC] underline uppercase tracking-wider py-2"
+                      className="text-xs font-mono text-[#14120F]/60 hover:text-[#14120F] underline uppercase tracking-wider py-2"
                     >
                       Submit Another Enquiry
                     </button>
@@ -542,8 +542,8 @@ export default function ContactSection() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 font-body">
                   {errorMessage && (
-                    <div className="p-3 bg-red-950/50 border border-red-800/80 rounded text-xs font-mono text-red-200 flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                    <div className="p-3 bg-red-50 border border-red-200 rounded text-xs font-mono text-red-800 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
                       <span>{errorMessage}</span>
                     </div>
                   )}
@@ -551,7 +551,7 @@ export default function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Passenger Name */}
                     <div>
-                      <label htmlFor="name" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                      <label htmlFor="name" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                         Your Name *
                       </label>
                       <input
@@ -563,13 +563,13 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Raj Sharma"
-                        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>
 
                     {/* Phone Number */}
                     <div>
-                      <label htmlFor="phone" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                      <label htmlFor="phone" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                         Phone / WhatsApp Number *
                       </label>
                       <input
@@ -581,7 +581,7 @@ export default function ContactSection() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+91 98457 XXXXX"
-                        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>
                   </div>
@@ -589,7 +589,7 @@ export default function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Service Type */}
                     <div>
-                      <label htmlFor="serviceType" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                      <label htmlFor="serviceType" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                         Service Type
                       </label>
                       <select
@@ -597,7 +597,7 @@ export default function ContactSection() {
                         name="serviceType"
                         value={formData.serviceType}
                         onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       >
                         <option>Airport Drop / Pickup</option>
                         <option>All-Karnataka Outstation Trip</option>
@@ -609,7 +609,7 @@ export default function ContactSection() {
 
                     {/* Vehicle Choice */}
                     <div>
-                      <label htmlFor="vehicleType" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                      <label htmlFor="vehicleType" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                         Vehicle Preference
                       </label>
                       <select
@@ -617,7 +617,7 @@ export default function ContactSection() {
                         name="vehicleType"
                         value={formData.vehicleType}
                         onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       >
                         <option>Comfort Sedan (Dzire / Etios) — 1-4 Pax</option>
                         <option>Premium SUV / MUV (Innova / Ertiga) — 6-7 Pax</option>
@@ -630,7 +630,7 @@ export default function ContactSection() {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {/* Pickup Location */}
                     <div>
-                      <label htmlFor="pickupLocation" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                      <label htmlFor="pickupLocation" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                         Pickup Location
                       </label>
                       <input
@@ -641,13 +641,13 @@ export default function ContactSection() {
                         value={formData.pickupLocation}
                         onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
                         placeholder="e.g. Udupi / Manipal"
-                        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>
 
                     {/* Destination */}
                     <div>
-                      <label htmlFor="destination" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                      <label htmlFor="destination" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                         Destination
                       </label>
                       <input
@@ -658,13 +658,13 @@ export default function ContactSection() {
                         value={formData.destination}
                         onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                         placeholder="e.g. Mangalore Airport / Outstation"
-                        className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono"
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>
 
                     {/* Travel Date */}
                     <div>
-                      <label htmlFor="travelDate" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                      <label htmlFor="travelDate" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                         Travel Date &amp; Time
                       </label>
                       <ModernDatePicker
@@ -678,7 +678,7 @@ export default function ContactSection() {
 
                   {/* Message */}
                   <div>
-                    <label htmlFor="message" className="block font-mono text-xs text-[#B08D3F] uppercase tracking-wider mb-1.5">
+                    <label htmlFor="message" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
                       Additional Requirements / Notes
                     </label>
                     <textarea
@@ -688,7 +688,7 @@ export default function ContactSection() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Number of passengers, luggage amount, flight details, or specific tour stops..."
-                      className="w-full px-4 py-3 bg-[#14120F] border border-[#383229] rounded text-sm text-[#F6F3EC] focus:border-[#B08D3F] focus:outline-none font-mono resize-none"
+                      className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono resize-none"
                     />
                   </div>
 
@@ -702,7 +702,7 @@ export default function ContactSection() {
                       disabled={isSubmitting}
                       icon={
                         isSubmitting ? (
-                          <Loader2 className="w-4 h-4 animate-spin text-[#E0C068]" />
+                          <Loader2 className="w-4 h-4 animate-spin text-[#14120F]" />
                         ) : (
                           <WhatsAppIcon className="w-4 h-4" withOriginalColor />
                         )
@@ -713,7 +713,7 @@ export default function ContactSection() {
                     </TicketButton>
                   </div>
 
-                  <p className="font-mono text-[11px] text-[#F6F3EC]/60 text-center pt-1">
+                  <p className="font-mono text-[11px] text-[#14120F]/60 text-center pt-1">
                     Direct dispatch to proprietor R Ramesh · Prompt response · Transparent quotes
                   </p>
                 </form>

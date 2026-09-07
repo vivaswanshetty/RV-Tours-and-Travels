@@ -45,17 +45,23 @@ export default function TicketButton({
       "bg-[#EFEAE0] text-[#14120F] border border-[#B08D3F] hover:border-[#14120F] hover:bg-[#E8E1D2] hover:shadow-[0_4px_16px_rgba(176,141,63,0.2)]",
   }[variant];
 
+  const notchBg = variant === "paper-ticket" ? "bg-[#EFEAE0]" : "bg-[#14120F]";
+
   const content = (
-    <span className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 w-full font-mono uppercase font-bold tracking-wider overflow-hidden">
+    <span
+      className={`relative z-10 flex items-center ${
+        ticketCode ? "justify-between" : "justify-center"
+      } gap-2 sm:gap-3 w-full font-mono uppercase font-bold tracking-wider overflow-hidden`}
+    >
       {/* Left / Main Stub Body */}
-      <span className="flex items-center gap-2 truncate text-current">
+      <span className="flex items-center justify-center gap-2 truncate text-current">
         {icon && <span className="shrink-0">{icon}</span>}
         <span className="truncate tracking-wide text-current">{children}</span>
       </span>
 
       {/* Ticket Perforation & Stub Code */}
       {ticketCode && (
-        <span className="hidden xs:flex items-center gap-1.5 sm:gap-2.5 pl-2 sm:pl-2.5 border-l border-dashed border-[#B08D3F]/60 text-[10px] sm:text-xs text-[#E0C068] tracking-widest shrink-0 font-mono">
+        <span className="hidden sm:flex items-center gap-1.5 sm:gap-2.5 pl-2 sm:pl-2.5 border-l border-dashed border-[#B08D3F]/60 text-[10px] sm:text-xs text-[#E0C068] tracking-widest shrink-0 font-mono">
           <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B] shrink-0" />
           <span className="whitespace-nowrap">{ticketCode}</span>
         </span>
@@ -77,8 +83,12 @@ export default function TicketButton({
   // Decorative Notch Elements (Left & Right Top/Bottom Cutouts)
   const decorativeNotches = (
     <>
-      <span className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#14120F] border-r border-[#B08D3F]/60 pointer-events-none" />
-      <span className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#14120F] border-l border-[#B08D3F]/60 pointer-events-none" />
+      <span
+        className={`absolute -left-1.5 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full ${notchBg} border-r border-[#B08D3F]/60 pointer-events-none`}
+      />
+      <span
+        className={`absolute -right-1.5 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full ${notchBg} border-l border-[#B08D3F]/60 pointer-events-none`}
+      />
     </>
   );
 

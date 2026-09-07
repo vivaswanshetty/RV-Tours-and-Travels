@@ -45,6 +45,8 @@ export interface TourPackage {
   description: string;
   idealVehicle: string;
   whatsappMessage: string;
+  imageSrc: string;
+  imageAlt: string;
 }
 
 export const BUSINESS_INFO = {
@@ -58,8 +60,10 @@ export const BUSINESS_INFO = {
   phoneDisplay: "+91 98455 11169",
   email: "rameshshetty0013@gmail.com",
   whatsappNumber: "919845511169",
-  whatsappUrl: "https://wa.me/919845511169",
-  defaultWhatsAppMessage: "Hello Ramesh ji, I would like to enquire about taxi/tour services from RV Tours & Travels.",
+  whatsappUrl: "https://wa.me/919845511169?text=Hello%20Ramesh%20ji%2C%20I%20would%20like%20to%20enquire%20about%20a%20cab%20service.",
+  address: "Near Sri Krishna Matha, Car Street, Udupi, Karnataka 576101",
+  experienceYears: 15,
+  serviceArea: "Udupi, Manipal, Mangalore, Coastal Karnataka & Interstate Routes",
   mapQuery: "Udupi, Karnataka, India",
   googleMapsEmbedUrl: "https://maps.google.com/maps?q=Udupi,%20Karnataka,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed",
   operatingHours: "Direct Coordination via Phone & WhatsApp",
@@ -85,9 +89,11 @@ export const TOUR_PACKAGES: TourPackage[] = [
     badge: "MOST POPULAR // 2026",
     popular: true,
     stops: ["Udupi Sri Krishna Matha", "Maravanthe Beach", "Kollur Mookambika Temple", "Murudeshwar Shiva Temple & Beach"],
-    description: "Experience the premier coastal pilgrimage route connecting Udupi's Krishna Matha to the mystical foothills of Kodachadri (Kollur) and the majestic 123-foot Shiva statue overlooking the Arabian Sea at Murudeshwar.",
+    description: "The premier coastal pilgrimage route connecting Udupi's Krishna Matha, Kollur Mookambika, and the majestic 123-foot Shiva statue at Murudeshwar.",
     idealVehicle: "Comfort Sedan or Innova Crysta",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Kollur Mookambika & Murudeshwar Tour Package 2026."
+    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Kollur Mookambika & Murudeshwar Tour Package 2026.",
+    imageSrc: "/destinations/murudeshwar.jpg",
+    imageAlt: "Murudeshwar Shiva Temple and Coastal Beach - Karnataka Tour Package"
   },
   {
     id: "dharmasthala-kukke",
@@ -98,9 +104,11 @@ export const TOUR_PACKAGES: TourPackage[] = [
     badge: "DEVOTIONAL SPECIAL",
     popular: true,
     stops: ["Kateel Durgaparameshwari", "Dharmasthala Manjunatha Swamy", "Southadka Ganapathi", "Kukke Sri Subramanya Temple"],
-    description: "A peaceful spiritual journey across the Western Ghat foothills. Specially planned for convenient pooja timings, smooth ghat driving, and senior citizen comfort with door-to-door pickup.",
+    description: "A peaceful spiritual pilgrimage across Western Ghat foothills planned for convenient darshan timings and senior citizen comfort.",
     idealVehicle: "Innova Crysta / Ertiga / Sedan",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Dharmasthala & Kukke Subramanya Pilgrimage Package 2026."
+    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Dharmasthala & Kukke Subramanya Pilgrimage Package 2026.",
+    imageSrc: "/packages/dharmasthala.jpg",
+    imageAlt: "Dharmasthala Sri Manjunatha Swamy Temple and Kukke Subramanya Pilgrimage Tour"
   },
   {
     id: "gokarna-karwar-coastal",
@@ -110,9 +118,11 @@ export const TOUR_PACKAGES: TourPackage[] = [
     category: "coastal",
     badge: "COASTAL ESCAPE",
     stops: ["Udupi", "Maravanthe Sunset Drive", "Murudeshwar", "Gokarna Mahabaleshwar", "Om & Kudle Beach", "Karwar"],
-    description: "Explore the dramatic coastline of Uttara Kannada with seamless highway chauffeur service, oceanfront scenic halts, and customized beach excursion schedules.",
+    description: "Explore the dramatic coastline of Uttara Kannada with oceanfront scenic halts and flexible beach excursion schedules.",
     idealVehicle: "Toyota Innova Crysta or Sedan",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Gokarna & Karwar Coastal Package 2026."
+    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Gokarna & Karwar Coastal Package 2026.",
+    imageSrc: "/packages/gokarna-om-beach.jpg",
+    imageAlt: "Om Beach Gokarna and Karwar Coastal Highway Tour"
   },
   {
     id: "coorg-chikmagalur-highlands",
@@ -124,7 +134,9 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Udupi / Mangalore", "Agumbe Rainforest", "Chikmagalur Peak Drive", "Mullayanagiri", "Madikeri / Coorg"],
     description: "Ascend the verdant Western Ghats with an expert hill-route chauffeur. Enjoy serene coffee estate tours, panoramic viewpoints, and safe mountain driving.",
     idealVehicle: "Premium SUV (Toyota Innova Crysta)",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Chikmagalur & Coorg Highland Package 2026."
+    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Chikmagalur & Coorg Highland Package 2026.",
+    imageSrc: "/destinations/coorg-mysuru.jpg",
+    imageAlt: "Chikmagalur Coffee Plantations and Coorg Western Ghats Highlands"
   },
   {
     id: "mangalore-airport-connect",
@@ -136,7 +148,9 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Udupi / Manipal / Kundapura", "Mangalore International Airport (IXE)", "Mangalore Central / Junction"],
     description: "Zero-stress airport transit with flight tracking, early morning / late night scheduled pickups, and ample luggage boot space.",
     idealVehicle: "Dzire / Etios / Innova Crysta",
-    whatsappMessage: "Hello Ramesh ji, I need to book a Mangalore Airport (IXE) Drop / Pickup."
+    whatsappMessage: "Hello Ramesh ji, I need to book a Mangalore Airport (IXE) Drop / Pickup.",
+    imageSrc: "/destinations/udupi.jpg",
+    imageAlt: "Mangalore Airport and Udupi Coastal Highway Transit"
   },
   {
     id: "custom-karnataka-itinerary",
@@ -148,7 +162,9 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Any destination in Karnataka", "Hampi", "Mysore", "Belur/Halebidu", "Bengaluru", "Coastal Circuit"],
     description: "Design your dream Karnataka road journey with dedicated chauffeur, flexible daily halts, and transparent per-km or fixed package pricing.",
     idealVehicle: "Sedan, Innova, or Tempo Traveller",
-    whatsappMessage: "Hello Ramesh ji, I want to plan a custom multi-day Karnataka tour package."
+    whatsappMessage: "Hello Ramesh ji, I want to plan a custom multi-day Karnataka tour package.",
+    imageSrc: "/destinations/goa.jpg",
+    imageAlt: "Custom Multi-Day Karnataka and Interstate Road Trip Circuit"
   }
 ];
 
@@ -233,7 +249,7 @@ export const FLEET_CATEGORIES: VehicleCategory[] = [
     id: "suv",
     name: "Premium SUV / MUV",
     tagline: "Toyota Innova Crysta / Ertiga or equivalent",
-    description: "The preferred choice for family vacations, ghat road trips, and outstation travel. Ample legroom, robust luggage capacity, and superior comfort.",
+    description: "Spacious legroom and luggage capacity for family vacations, ghat road trips, and outstation travel.",
     capacity: {
       passengers: "6 to 7 Passengers",
       luggage: "4 Large + 3 Small Bags",
@@ -265,12 +281,180 @@ export const FLEET_CATEGORIES: VehicleCategory[] = [
   }
 ];
 
+export interface DestinationItem {
+  id: string;
+  name: string;
+  sector: string;
+  ticketCode: string;
+  badge: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  highlights: string[];
+  whatsappMessage: string;
+  featured?: boolean;
+}
+
+export const DESTINATIONS: DestinationItem[] = [
+  {
+    id: "udupi-coastal",
+    name: "Udupi & Coastal Karnataka",
+    sector: "UDUPI (UD) ➔ COASTAL CIRCUIT",
+    ticketCode: "TKT-UD-01",
+    badge: "HOME BASE & COASTAL HUB",
+    description: "Explore the sacred Sri Krishna Matha, Kapu Lighthouse, and pristine beaches with drivers who grew up on these coastal roads.",
+    imageSrc: "/destinations/udupi.jpg",
+    imageAlt: "Kapu Beach Lighthouse and Rocky Coast in Udupi, Karnataka",
+    highlights: ["Sri Krishna Matha", "Malpe Beach & St. Mary's Island", "Kapu Lighthouse & Sunset", "Coastal Cuisine Trail"],
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Udupi & Coastal Karnataka.",
+    featured: true
+  },
+  {
+    id: "kollur-murudeshwar",
+    name: "Kollur Mookambika & Murudeshwar",
+    sector: "UDUPI (UD) ➔ KOLLUR / MURUDESHWAR",
+    ticketCode: "TKT-KL-02",
+    badge: "SACRED COASTAL CIRCUIT",
+    description: "Sacred coastal pilgrimage connecting Kollur Sri Mookambika Temple with the iconic seaside Shiva statue at Murudeshwar.",
+    imageSrc: "/destinations/murudeshwar.jpg",
+    imageAlt: "Murudeshwar Shiva Statue and Coastal Temple Cliffs, Karnataka",
+    highlights: ["Kollur Sri Mookambika", "Murudeshwar Shiva Statue", "Maravanthe Sunset Drive"],
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Kollur Mookambika & Murudeshwar."
+  },
+  {
+    id: "goa",
+    name: "Goa (North & South)",
+    sector: "UDUPI (UD) ➔ GOA (GOI / GOX)",
+    ticketCode: "TKT-GOA-03",
+    badge: "INTERSTATE COASTAL ESCAPE",
+    description: "Comfortable door-to-door interstate highway travel to South and North Goa with scenic coastal rest stops.",
+    imageSrc: "/destinations/goa.jpg",
+    imageAlt: "Palm-fringed golden beach in Goa",
+    highlights: ["Palolem & South Goa", "Panaji Heritage Quarters", "North Goa Beach Hubs"],
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Goa."
+  },
+  {
+    id: "kerala-mysuru-coorg",
+    name: "Kerala, Mysuru & Coorg",
+    sector: "UDUPI (UD) ➔ COORG / MYSURU / KERALA",
+    ticketCode: "TKT-SOU-04",
+    badge: "HIGHLANDS & SOUTHERN CORRIDORS",
+    description: "Custom outstation journeys connecting Western Ghats coffee estates, royal Mysuru heritage, and South India corridors on your schedule.",
+    imageSrc: "/destinations/coorg-mysuru.jpg",
+    imageAlt: "Western Ghats scenic mountain road through coffee estates in Coorg, Karnataka",
+    highlights: ["Coorg Coffee Hills", "Mysuru Royal Heritage", "Scenic Western Ghats Roads"],
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Kerala, Mysuru & Coorg."
+  }
+];
+
+export interface SapthaKshetraItem {
+  id: string;
+  number: string;
+  name: string;
+  templeName: string;
+  shortLine: string;
+  imageSrc: string;
+  imageAlt: string;
+  whatsappMessage: string;
+}
+
+export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
+  {
+    id: "udupi",
+    number: "01",
+    name: "Udupi",
+    templeName: "Sri Krishna Matha",
+    shortLine: "Sacred sanctum founded by Sri Madhvacharya with darshan through the Kanakana Kindi.",
+    imageSrc: "/temples/udupi-krishna.jpg",
+    imageAlt: "Sri Krishna Matha Temple in Udupi",
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Udupi Sri Krishna Matha."
+  },
+  {
+    id: "kollur",
+    number: "02",
+    name: "Kollur",
+    templeName: "Sri Mookambika Temple",
+    shortLine: "Lush Kodachadri foothill shrine dedicated to Goddess Mookambika with ancient Jyothirlinga.",
+    imageSrc: "/temples/kollur-mookambika.jpg",
+    imageAlt: "Sri Mookambika Temple in Kollur",
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Kollur Mookambika Temple."
+  },
+  {
+    id: "subrahmanya",
+    number: "03",
+    name: "Subrahmanya",
+    templeName: "Kukke Sri Subrahmanya Temple",
+    shortLine: "Revered Western Ghats riverside abode of Lord Subrahmanya on the banks of Kumaradhara.",
+    imageSrc: "/temples/kukke-subrahmanya.jpg",
+    imageAlt: "Kukke Sri Subrahmanya Temple",
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Kukke Subrahmanya Temple."
+  },
+  {
+    id: "kumbasi",
+    number: "04",
+    name: "Kumbasi",
+    templeName: "Anegudde Sri Vinayaka Temple",
+    shortLine: "Hilltop Muktistala dedicated to Siddhi Vinayaka, visited for peaceful darshan and new beginnings.",
+    imageSrc: "/temples/kumbasi-anegudde.jpg",
+    imageAlt: "Anegudde Sri Vinayaka Temple in Kumbasi",
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Kumbasi Anegudde Vinayaka Temple."
+  },
+  {
+    id: "kodeshwara",
+    number: "05",
+    name: "Kodeshwara",
+    templeName: "Sri Kotilingeshwara Temple",
+    shortLine: "Ancient coastal Shiva kshetra celebrated for its vast 4-acre sacred Kotiteertha temple lake.",
+    imageSrc: "/temples/koteshwara-kotilingeshwara.jpg",
+    imageAlt: "Kotilingeshwara Temple in Koteshwara",
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Koteshwara Kotilingeshwara Temple."
+  },
+  {
+    id: "sankaranarayana",
+    number: "06",
+    name: "Sankaranarayana",
+    templeName: "Sri Shankaranarayana Temple",
+    shortLine: "Rare coastal shrine worshipping the harmonious combined divine presence of Shiva and Vishnu.",
+    imageSrc: "/temples/sankaranarayana.jpg",
+    imageAlt: "Sri Shankaranarayana Temple in Sankaranarayana",
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Shankaranarayana Temple."
+  },
+  {
+    id: "gokarna",
+    number: "07",
+    name: "Gokarna",
+    templeName: "Sri Mahabaleshwara Temple",
+    shortLine: "Atmospheric seaside Atmalinga kshetra overlooking the Arabian Sea, revered as Dakshina Kashi.",
+    imageSrc: "/temples/gokarna-mahabaleshwara.jpg",
+    imageAlt: "Sri Mahabaleshwara Temple in Gokarna",
+    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Gokarna Mahabaleshwara Temple."
+  }
+];
+
 export const TRUST_POINTS: TrustPoint[] = [
   {
     title: "Proprietor-Run Dependability",
     subtitle: "Direct Contact with R Ramesh",
     description: "No confusing call centers or automated app chatbots. You speak directly with the owner, ensuring accountable and punctual coordination for every booking.",
+    icon: "UserCheck"
+  },
+  {
+    title: "Fair, Transparent Pricing",
+    subtitle: "No Hidden Charges",
+    description: "Fair, Transparent Pricing — clear, honest quotes with no hidden charges",
+    icon: "Receipt"
+  },
+  {
+    title: "Insured Vehicles",
+    subtitle: "Safety & Compliance",
+    description: "Insured Vehicles — all vehicles insured for passenger safety and peace of mind",
     icon: "ShieldCheck"
+  },
+  {
+    title: "Fast, Personal Response",
+    subtitle: "Direct WhatsApp Dispatch",
+    description: "Fast, Personal Response — detailed itinerary and quote over WhatsApp, typically within 2 hours.",
+    icon: "Clock"
   },
   {
     title: "Route & Coastal Ghats Expertise",
@@ -283,12 +467,6 @@ export const TRUST_POINTS: TrustPoint[] = [
     subtitle: "Flexible Trip Configurations",
     description: "Whether you need an airport transfer to Mangalore or a multi-day itinerary across Karnataka, routes are tailored to your requirements.",
     icon: "Map"
-  },
-  {
-    title: "Honest, Transparent Pricing",
-    subtitle: "No Hidden Surprises",
-    description: "Clear communication on tolls, permits, driver allowance, and distance estimates before your journey begins.",
-    icon: "Receipt"
   }
 ];
 

@@ -4,6 +4,7 @@ import { Fraunces, JetBrains_Mono, Work_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { BUSINESS_INFO } from "@/lib/constants";
+import StickyQuoteTab from "@/components/StickyQuoteTab";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -253,9 +254,11 @@ export default function RootLayout({
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-RKP9HBQ5D2"
+          suppressHydrationWarning
         />
         <script
           id="google-analytics"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -266,8 +269,12 @@ export default function RootLayout({
           }}
         />
         <script
+          id="jsonld-schema"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdSchema).replace(/</g, '\\u003c'),
+          }}
         />
       </head>
       <body
@@ -275,6 +282,7 @@ export default function RootLayout({
         className="min-h-screen bg-[#F6F3EC] text-[#14120F] font-sans selection:bg-[#B08D3F] selection:text-[#14120F]"
       >
         {children}
+        <StickyQuoteTab />
         <Analytics />
       </body>
     </html>

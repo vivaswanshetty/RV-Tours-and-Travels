@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -38,8 +39,20 @@ export default function FleetPage() {
 
       {/* Hero Header */}
       <section className="pt-32 sm:pt-36 lg:pt-40 pb-16 bg-[#14120F] text-[#F6F3EC] relative overflow-hidden border-b border-[#383229]">
-        <div className="absolute inset-0 bg-route-dots opacity-10 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#B08D3F]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Atmospheric Cinematic Header Background Image & Gradient */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/headers/fleet-header.jpg"
+            alt="Scenic Western Ghats mountain highway curve in Karnataka - RV Tours & Travels fleet"
+            fill
+            priority
+            className="object-cover object-center opacity-45 filter brightness-95 contrast-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#14120F]/75 via-[#14120F]/50 to-[#14120F]/95" />
+        </div>
+
+        <div className="absolute inset-0 z-0 bg-route-dots opacity-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 z-0 w-96 h-96 bg-[#B08D3F]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}

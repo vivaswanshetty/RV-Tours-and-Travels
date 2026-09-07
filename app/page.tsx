@@ -5,6 +5,8 @@ import RouteLine from "@/components/RouteLine";
 import OverviewSection from "@/components/OverviewSection";
 import ServicesSection from "@/components/ServicesSection";
 import FleetSection from "@/components/FleetSection";
+import DestinationsSection from "@/components/DestinationsSection";
+import SapthaKshetraSection from "@/components/SapthaKshetraSection";
 import FeaturedPackagesSection from "@/components/FeaturedPackagesSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
@@ -25,22 +27,28 @@ export default function Home() {
       {/* Waypoint 01: Hero & Departure Board */}
       <Hero />
 
-      {/* Waypoint 01 Trust & Commitments */}
-      <OverviewSection />
+      {/* Waypoint 02: Destinations ("Where We Drive") */}
+      <DestinationsSection />
 
-      {/* Waypoint 02: Services */}
-      <ServicesSection />
+      {/* Waypoint 03: Saptha Kshetra Sacred Pilgrimage */}
+      <SapthaKshetraSection />
 
-      {/* Waypoint 03: Fleet Specifications */}
-      <FleetSection />
-
-      {/* Waypoint 04: Featured 2026 Tour Packages */}
+      {/* Waypoint 04: Popular Tour Packages */}
       <FeaturedPackagesSection />
 
-      {/* Waypoint 05: About R Ramesh & RV Tours */}
+      {/* Waypoint 05: Fleet Specifications */}
+      <FleetSection />
+
+      {/* Waypoint 06: Services & Routes */}
+      <ServicesSection />
+
+      {/* Waypoint 07: Built on Trust ("Why Choose Us") */}
+      <OverviewSection />
+
+      {/* Waypoint 08: About / Operator Profile */}
       <AboutSection />
 
-      {/* Waypoint 06: Contact & Reservation Manifest */}
+      {/* Waypoint 09: Contact / Dispatch */}
       <ContactSection />
 
       {/* Quick FAQs Teaser */}
