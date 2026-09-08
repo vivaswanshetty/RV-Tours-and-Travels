@@ -6,6 +6,7 @@ import Image from "next/image";
 import { TOUR_PACKAGES, BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import PackageImageCarousel from "./PackageImageCarousel";
 import { Clock, Compass, ArrowRight } from "lucide-react";
 
 export default function FeaturedPackagesSection() {
@@ -43,32 +44,22 @@ export default function FeaturedPackagesSection() {
 
         {/* Packages 3-Card Grid with Rich Authentic Visuals */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {featured.map((pkg) => (
+          {featured.map((pkg, idx) => (
             <div
               key={pkg.id}
               className="group bg-[#EFEAE0] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-xl"
             >
               <div>
-                {/* Visual Landmark Header */}
-                <div className="relative aspect-[16/10] w-full bg-[#E5DFD1] overflow-hidden border-b border-[#DCD4C4]">
-                  <Image
-                    src={pkg.imageSrc}
-                    alt={pkg.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                  {/* Overlay Badges */}
-                  <div className="absolute top-3 left-3">
-                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 bg-[#14120F]/90 text-[#E0C068] border border-[#B08D3F]/60 rounded backdrop-blur-sm shadow-md">
-                      {pkg.badge}
-                    </span>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-[#14120F]/90 border border-white/20 px-2.5 py-1 rounded text-[10px] font-mono text-[#F6F3EC] backdrop-blur-sm flex items-center gap-1 shadow-md">
-                    <Clock className="w-3 h-3 text-[#E0C068]" />
-                    <span>{pkg.duration}</span>
-                  </div>
-                </div>
+                {/* Visual Landmark Carousel */}
+                <PackageImageCarousel
+                  images={pkg.images}
+                  fallbackSrc={pkg.imageSrc}
+                  fallbackAlt={pkg.imageAlt}
+                  durationBadge={pkg.duration}
+                  packageBadge={pkg.badge}
+                  borderClassName="border-b border-[#DCD4C4]"
+                  staggerOffsetMs={idx * 800}
+                />
 
                 <div className="p-6 sm:p-7 space-y-4">
                   {/* Exactly 2 label types: Heading + 1 sentence description */}

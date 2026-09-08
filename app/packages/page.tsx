@@ -9,6 +9,7 @@ import SeoContentSection from "@/components/SeoContentSection";
 import { BUSINESS_INFO, TOUR_PACKAGES } from "@/lib/constants";
 import TicketButton from "@/components/TicketButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import PackageImageCarousel from "@/components/PackageImageCarousel";
 import { Clock, Car, ChevronRight, Compass, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -122,34 +123,22 @@ export default function PackagesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TOUR_PACKAGES.map((pkg) => (
+            {TOUR_PACKAGES.map((pkg, idx) => (
               <div
                 key={pkg.id}
                 className="group relative bg-[#14120F] text-[#F6F3EC] border border-[#383229] hover:border-[#B08D3F] rounded-xl overflow-hidden transition-all duration-300 shadow-xl flex flex-col justify-between"
               >
                 <div>
-                  {/* Visual Landmark Header Image */}
-                  <div className="relative aspect-[16/10] w-full bg-[#1C1914] overflow-hidden border-b border-[#383229]">
-                    <Image
-                      src={pkg.imageSrc}
-                      alt={pkg.imageAlt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#14120F] via-transparent to-transparent opacity-60" />
-
-                    {/* Top Overlay Badges */}
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="inline-block font-mono text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 bg-[#14120F]/90 text-[#E0C068] border border-[#B08D3F]/60 rounded backdrop-blur-sm shadow-md">
-                        {pkg.badge}
-                      </span>
-                    </div>
-                    <div className="absolute top-3 right-3 z-10 bg-[#14120F]/90 border border-white/20 px-2.5 py-1 rounded text-[10px] font-mono text-[#F6F3EC] backdrop-blur-sm flex items-center gap-1 shadow-md">
-                      <Clock className="w-3.5 h-3.5 text-[#C9A227]" />
-                      <span>{pkg.duration}</span>
-                    </div>
-                  </div>
+                  {/* Dynamic Visual Landmark Carousel */}
+                  <PackageImageCarousel
+                    images={pkg.images}
+                    fallbackSrc={pkg.imageSrc}
+                    fallbackAlt={pkg.imageAlt}
+                    durationBadge={pkg.duration}
+                    packageBadge={pkg.badge}
+                    staggerOffsetMs={idx * 600}
+                    priority={idx < 2}
+                  />
 
                   <div className="p-6 sm:p-7 space-y-4">
                     {/* Title & Subtitle */}

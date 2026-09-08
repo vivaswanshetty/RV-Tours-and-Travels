@@ -33,6 +33,12 @@ export interface TrustPoint {
   icon: string;
 }
 
+export interface TourPackageImage {
+  src: string;
+  alt: string;
+  label?: string;
+}
+
 export interface TourPackage {
   id: string;
   title: string;
@@ -47,6 +53,7 @@ export interface TourPackage {
   whatsappMessage: string;
   imageSrc: string;
   imageAlt: string;
+  images?: TourPackageImage[];
 }
 
 export const BUSINESS_INFO = {
@@ -92,8 +99,20 @@ export const TOUR_PACKAGES: TourPackage[] = [
     description: "The premier coastal pilgrimage route connecting Udupi's Krishna Matha, Kollur Mookambika, and the majestic 123-foot Shiva statue at Murudeshwar.",
     idealVehicle: "Comfort Sedan or Innova Crysta",
     whatsappMessage: "Hello Ramesh ji, I want to enquire about the Kollur Mookambika & Murudeshwar Tour Package 2026.",
-    imageSrc: "/destinations/murudeshwar.jpg",
-    imageAlt: "Murudeshwar Shiva Temple and Coastal Beach - Karnataka Tour Package"
+    imageSrc: "/packages/kollur-mookambika.jpg",
+    imageAlt: "Kollur Sri Mookambika Temple and Murudeshwar Shiva Temple Coastal Circuit",
+    images: [
+      {
+        src: "/packages/kollur-mookambika.jpg",
+        alt: "Kollur Sri Mookambika Temple Main Entrance Gate and Courtyard",
+        label: "Kollur Sri Mookambika Temple",
+      },
+      {
+        src: "/destinations/murudeshwar.jpg",
+        alt: "Murudeshwar Shiva Temple and Coastal Beach",
+        label: "Murudeshwar Temple & Beach",
+      },
+    ],
   },
   {
     id: "dharmasthala-kukke",
@@ -108,7 +127,24 @@ export const TOUR_PACKAGES: TourPackage[] = [
     idealVehicle: "Innova Crysta / Ertiga / Sedan",
     whatsappMessage: "Hello Ramesh ji, I want to enquire about the Dharmasthala & Kukke Subramanya Pilgrimage Package 2026.",
     imageSrc: "/packages/dharmasthala.jpg",
-    imageAlt: "Dharmasthala Sri Manjunatha Swamy Temple and Kukke Subramanya Pilgrimage Tour"
+    imageAlt: "Dharmasthala Sri Manjunatha Swamy Temple and Kukke Subramanya Pilgrimage Tour",
+    images: [
+      {
+        src: "/packages/dharmasthala.jpg",
+        alt: "Dharmasthala Sri Manjunatha Swamy Temple Entrance",
+        label: "Dharmasthala Manjunatha Swamy",
+      },
+      {
+        src: "/packages/kukke-subramanya.jpg",
+        alt: "Kukke Sri Subrahmanya Temple Gopuram with Western Ghats Mountain Backdrop",
+        label: "Kukke Sri Subrahmanya Temple",
+      },
+      {
+        src: "/packages/kateel-durgaparameshwari.jpg",
+        alt: "Kateel Shree Durgaparameshwari Temple Ornate Entrance Arch",
+        label: "Kateel Durgaparameshwari Temple",
+      },
+    ],
   },
   {
     id: "gokarna-karwar-coastal",
@@ -121,8 +157,20 @@ export const TOUR_PACKAGES: TourPackage[] = [
     description: "Explore the dramatic coastline of Uttara Kannada with oceanfront scenic halts and flexible beach excursion schedules.",
     idealVehicle: "Toyota Innova Crysta or Sedan",
     whatsappMessage: "Hello Ramesh ji, I want to enquire about the Gokarna & Karwar Coastal Package 2026.",
-    imageSrc: "/packages/gokarna-om-beach.jpg",
-    imageAlt: "Om Beach Gokarna and Karwar Coastal Highway Tour"
+    imageSrc: "/packages/gokarna-om-beach-aerial.jpg",
+    imageAlt: "Om Beach Gokarna Aerial View and Karwar Coastal Highway Tour",
+    images: [
+      {
+        src: "/packages/gokarna-om-beach-aerial.jpg",
+        alt: "Om Beach Gokarna Aerial Panoramic View of Turquoise Arabian Coastline",
+        label: "Om Beach Gokarna (Aerial View)",
+      },
+      {
+        src: "/packages/gokarna-om-beach.jpg",
+        alt: "Om Beach Gokarna Shoreline with Rock Formations and Sea Waves",
+        label: "Om Beach Shoreline & Waves",
+      },
+    ],
   },
   {
     id: "coorg-chikmagalur-highlands",
@@ -137,6 +185,18 @@ export const TOUR_PACKAGES: TourPackage[] = [
     whatsappMessage: "Hello Ramesh ji, I want to enquire about the Chikmagalur & Coorg Highland Package 2026.",
     imageSrc: "/destinations/western-ghats.jpg",
     imageAlt: "Scenic Western Ghats mountain ridges and mist-covered valleys",
+    images: [
+      {
+        src: "/destinations/western-ghats.jpg",
+        alt: "Western Ghats Mountain Ranges and Kudremukh Valley Panorama",
+        label: "Western Ghats & Chikmagalur",
+      },
+      {
+        src: "/packages/coorg-hills.jpg",
+        alt: "Coorg Rolling Green Mountains and Cloud-Kissed Mist View",
+        label: "Coorg Misty Highlands",
+      },
+    ],
   },
   {
     id: "mangalore-airport-connect",
@@ -151,6 +211,13 @@ export const TOUR_PACKAGES: TourPackage[] = [
     whatsappMessage: "Hello Ramesh ji, I need to book a Mangalore Airport (IXE) Drop / Pickup.",
     imageSrc: "/destinations/mangalore-airport.jpg",
     imageAlt: "Mangalore International Airport modern terminal building and tarmac",
+    images: [
+      {
+        src: "/destinations/mangalore-airport.jpg",
+        alt: "Mangalore International Airport Modern Terminal Building and Tarmac",
+        label: "Mangaluru Airport (IXE) Terminal",
+      },
+    ],
   },
   {
     id: "custom-karnataka-itinerary",
@@ -164,8 +231,15 @@ export const TOUR_PACKAGES: TourPackage[] = [
     idealVehicle: "Sedan, Innova, or Tempo Traveller",
     whatsappMessage: "Hello Ramesh ji, I want to plan a custom multi-day Karnataka tour package.",
     imageSrc: "/destinations/goa.jpg",
-    imageAlt: "Custom Multi-Day Karnataka and Interstate Road Trip Circuit"
-  }
+    imageAlt: "Custom Multi-Day Karnataka and Interstate Road Trip Circuit",
+    images: [
+      {
+        src: "/destinations/goa.jpg",
+        alt: "Custom Multi-Day Karnataka and Interstate Road Trip Circuit",
+        label: "Custom Road Trips Across Karnataka",
+      },
+    ],
+  },
 ];
 
 export const SERVICES: ServiceItem[] = [
