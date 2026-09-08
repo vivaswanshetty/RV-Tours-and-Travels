@@ -39,8 +39,8 @@ export default function DestinationsSection() {
 
         {/* Asymmetric Boarding Pass Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Featured Large Ticket Stub: Udupi & Coastal Karnataka (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col">
+          {/* Featured Large Ticket Stub: Udupi & Coastal Karnataka (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col">
             <div className="relative bg-[#EFEAE0] text-[#14120F] border border-[#DCD4C4] rounded-xl overflow-hidden shadow-lg flex-1 flex flex-col justify-between group transition-all duration-300 hover:border-[#B08D3F]">
               {/* Circular Ticket Cutouts on Left & Right edge at the perforation tear line */}
               <span
@@ -98,8 +98,8 @@ export default function DestinationsSection() {
             </div>
           </div>
 
-          {/* Supporting Stubs: 3 Stacked Horizontal Boarding Passes (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          {/* Supporting Stubs: 3 Stacked Horizontal Boarding Passes (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col gap-4">
             {supportingDestinations.map((dest, idx) => {
               const wpIndex = idx === 0 ? "02-B" : idx === 1 ? "02-C" : "02-D";
 
@@ -110,21 +110,21 @@ export default function DestinationsSection() {
                 >
                   {/* Circular Notches on Top and Bottom at the vertical divider line */}
                   <span
-                    className="hidden sm:block absolute top-[-10px] left-[36%] -translate-x-1/2 w-5 h-5 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
+                    className="hidden sm:block absolute top-[-10px] left-[42%] -translate-x-1/2 w-5 h-5 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
                     aria-hidden="true"
                   />
                   <span
-                    className="hidden sm:block absolute bottom-[-10px] left-[36%] -translate-x-1/2 w-5 h-5 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
+                    className="hidden sm:block absolute bottom-[-10px] left-[42%] -translate-x-1/2 w-5 h-5 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
                     aria-hidden="true"
                   />
 
-                  {/* Left (Image section with dynamic carousel, 36% on desktop) */}
+                  {/* Left (Image section with dynamic carousel, 42% on desktop) */}
                   <DestinationImageCarousel
                     images={dest.images}
                     fallbackSrc={dest.imageSrc}
                     fallbackAlt={dest.imageAlt}
                     stampBadge={`WP ${wpIndex}`}
-                    className="relative w-full sm:w-[36%] h-48 sm:h-auto min-h-[170px] shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r-2 border-dashed border-[#DCD4C4]"
+                    className="relative w-full sm:w-[42%] h-48 sm:h-auto min-h-[180px] shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r-2 border-dashed border-[#DCD4C4]"
                     staggerOffsetMs={(idx + 1) * 750}
                   />
 

@@ -135,21 +135,40 @@ export default function DestinationImageCarousel({
       {/* Atmospheric Vignette Overlays */}
       <div className="absolute inset-0 z-[2] pointer-events-none bg-gradient-to-t from-black/75 via-transparent to-black/35 opacity-70" />
 
-      {/* Top Header Row: Stamp Badge & Slide Count */}
+      {/* Top Header Row: Stamp Badge & Slide Count with Indicators */}
       <div className="absolute top-2.5 inset-x-2.5 sm:top-3 sm:inset-x-3 z-10 flex items-center justify-between gap-1.5 pointer-events-none">
         {stampBadge && (
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#14120F]/90 border border-[#B08D3F]/80 rounded text-[10px] font-mono text-[#E0C068] tracking-widest uppercase backdrop-blur-md shadow-md">
             <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B]" />
-            <span className="truncate max-w-[200px]">{stampBadge}</span>
+            <span className="truncate max-w-[170px] sm:max-w-[200px]">{stampBadge}</span>
           </div>
         )}
 
         {hasMultiple && (
-          <div className="bg-[#14120F]/90 border border-white/20 px-2 py-0.5 rounded text-[10px] font-mono text-[#F6F3EC]/90 backdrop-blur-md flex items-center gap-1 shadow-md shrink-0">
+          <div className="bg-[#14120F]/90 border border-white/20 px-2 py-1 rounded text-[10px] font-mono text-[#F6F3EC]/90 backdrop-blur-md flex items-center gap-1.5 shadow-md shrink-0 pointer-events-auto">
             <Camera className="w-2.5 h-2.5 text-[#C9A227]" />
             <span>
               {currentIndex + 1}/{totalSlides}
             </span>
+            <span className="w-px h-2.5 bg-white/20 mx-0.5" />
+            <div className="flex items-center gap-1">
+              {slides.map((slide, idx) => {
+                const isActive = idx === currentIndex;
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={(e) => goToSlide(idx, e)}
+                    aria-label={`Show ${slide.label || `photo ${idx + 1}`}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      isActive
+                        ? "w-3 bg-[#E0C068] shadow-[0_0_5px_rgba(224,192,104,0.6)]"
+                        : "w-1.5 bg-white/40 hover:bg-white/80"
+                    }`}
+                  />
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
@@ -176,40 +195,15 @@ export default function DestinationImageCarousel({
         </>
       )}
 
-      {/* Bottom Row: Landmark Label & Indicator Dots */}
-      <div className="absolute bottom-2 inset-x-2.5 sm:bottom-2.5 sm:inset-x-3 z-10 flex items-center justify-between gap-1.5 pointer-events-none">
-        {currentSlide.label ? (
-          <div className="max-w-[72%] pointer-events-auto">
-            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/75 backdrop-blur-md border border-white/15 font-mono text-[9.5px] text-[#E0C068] font-medium tracking-wide truncate shadow-sm">
-              <MapPin className="w-2.5 h-2.5 text-[#C9A227] shrink-0" />
-              <span className="truncate">{currentSlide.label}</span>
-            </span>
+      {/* Bottom Row: Landmark Label (Dedicated Full Width, Zero Overlap) */}
+      {currentSlide.label && (
+        <div className="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-3 z-10 pointer-events-auto flex items-end">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-mono text-[10px] sm:text-[10.5px] text-[#E0C068] font-medium tracking-wide shadow-md max-w-full">
+            <MapPin className="w-2.5 h-2.5 text-[#C9A227] shrink-0" />
+            <span className="break-words leading-tight">{currentSlide.label}</span>
           </div>
-        ) : (
-          <div />
-        )}
-
-        {hasMultiple && (
-          <div className="flex items-center gap-1 pointer-events-auto bg-black/60 backdrop-blur-md px-1.5 py-0.5 rounded-full border border-white/10">
-            {slides.map((slide, idx) => {
-              const isActive = idx === currentIndex;
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={(e) => goToSlide(idx, e)}
-                  aria-label={`Show ${slide.label || `photo ${idx + 1}`}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? "w-3.5 bg-[#E0C068] shadow-[0_0_5px_rgba(224,192,104,0.6)]"
-                      : "w-1.5 bg-white/40 hover:bg-white/80"
-                  }`}
-                />
-              );
-            })}
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

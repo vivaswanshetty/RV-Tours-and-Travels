@@ -151,12 +151,31 @@ export default function PackageImageCarousel({
             </span>
           )}
           {hasMultiple && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-mono text-[10px] text-[#F6F3EC]/90 font-semibold tracking-wide shadow-md">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-mono text-[10px] text-[#F6F3EC]/90 font-semibold tracking-wide shadow-md pointer-events-auto">
               <Camera className="w-3 h-3 text-[#C9A227]" />
               <span>
-                {currentIndex + 1} / {totalSlides}
+                {currentIndex + 1}/{totalSlides}
               </span>
-            </span>
+              <span className="w-px h-2.5 bg-white/20 mx-0.5" />
+              <div className="flex items-center gap-1">
+                {slides.map((slide, idx) => {
+                  const isActive = idx === currentIndex;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={(e) => goToSlide(idx, e)}
+                      aria-label={`Show ${slide.label || `photo ${idx + 1}`}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        isActive
+                          ? "w-3 bg-[#E0C068] shadow-[0_0_5px_rgba(224,192,104,0.6)]"
+                          : "w-1.5 bg-white/40 hover:bg-white/80"
+                      }`}
+                    />
+                  );
+                })}
+              </div>
+            </div>
           )}
         </div>
 
@@ -189,42 +208,15 @@ export default function PackageImageCarousel({
         </>
       )}
 
-      {/* Bottom Row: Landmark Label & Indicator Dots */}
-      <div className="absolute bottom-2.5 inset-x-3 z-10 flex items-center justify-between gap-2 pointer-events-none">
-        {/* Landmark / Destination Name Label */}
-        {currentSlide.label ? (
-          <div className="max-w-[70%] pointer-events-auto">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md border border-white/15 font-mono text-[10px] text-[#E0C068] font-medium tracking-wide truncate">
-              <MapPin className="w-2.5 h-2.5 text-[#C9A227] shrink-0" />
-              <span className="truncate">{currentSlide.label}</span>
-            </span>
+      {/* Bottom Row: Landmark Label (Dedicated Full Width, Zero Overlap) */}
+      {currentSlide.label && (
+        <div className="absolute bottom-2.5 inset-x-3 z-10 pointer-events-auto flex items-end">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-mono text-[10px] sm:text-[10.5px] text-[#E0C068] font-medium tracking-wide shadow-md max-w-full">
+            <MapPin className="w-2.5 h-2.5 text-[#C9A227] shrink-0" />
+            <span className="break-words leading-tight">{currentSlide.label}</span>
           </div>
-        ) : (
-          <div />
-        )}
-
-        {/* Pagination Dots / Indicator Pills */}
-        {hasMultiple && (
-          <div className="flex items-center gap-1.5 pointer-events-auto bg-black/60 backdrop-blur-md px-2 py-1 rounded-full border border-white/10">
-            {slides.map((slide, idx) => {
-              const isActive = idx === currentIndex;
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={(e) => goToSlide(idx, e)}
-                  aria-label={`Show ${slide.label || `photo ${idx + 1}`}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? "w-4 bg-[#E0C068] shadow-[0_0_6px_rgba(224,192,104,0.6)]"
-                      : "w-1.5 bg-white/40 hover:bg-white/80"
-                  }`}
-                />
-              );
-            })}
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
