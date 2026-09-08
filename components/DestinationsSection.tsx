@@ -5,6 +5,7 @@ import Image from "next/image";
 import { DESTINATIONS, BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import DestinationImageCarousel from "./DestinationImageCarousel";
 
 export default function DestinationsSection() {
   const featuredDestination = DESTINATIONS[0];
@@ -51,23 +52,17 @@ export default function DestinationsSection() {
                 aria-hidden="true"
               />
 
-              {/* Card Top: Full-Bleed Real Photograph */}
+              {/* Card Top: Dynamic Landmark Carousel */}
               <div>
-                <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border-b border-[#DCD4C4]">
-                  <Image
-                    src={featuredDestination.imageSrc}
-                    alt={featuredDestination.imageAlt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className="object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
-                    priority
-                  />
-                  {/* Subtle Corner Badge */}
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 bg-[#14120F]/85 border border-[#B08D3F] rounded text-[11px] font-mono text-[#E0C068] tracking-widest uppercase backdrop-blur-md shadow-lg">
-                    <span className="w-2 h-2 rounded-full bg-[#2E6B6B]" />
-                    <span>WP 04-A // {featuredDestination.badge}</span>
-                  </div>
-                </div>
+                <DestinationImageCarousel
+                  images={featuredDestination.images}
+                  fallbackSrc={featuredDestination.imageSrc}
+                  fallbackAlt={featuredDestination.imageAlt}
+                  stampBadge={`WP 02-A // ${featuredDestination.badge}`}
+                  className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border-b border-[#DCD4C4]"
+                  priority
+                  staggerOffsetMs={0}
+                />
 
                 {/* Card Main Body: Strictly 2 label types (Heading + 1 sentence description) */}
                 <div className="p-6 sm:p-8 space-y-3">
@@ -106,7 +101,7 @@ export default function DestinationsSection() {
           {/* Supporting Stubs: 3 Stacked Horizontal Boarding Passes (5 cols) */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             {supportingDestinations.map((dest, idx) => {
-              const wpIndex = idx === 0 ? "04-B" : idx === 1 ? "04-C" : "04-D";
+              const wpIndex = idx === 0 ? "02-B" : idx === 1 ? "02-C" : "02-D";
 
               return (
                 <div
@@ -123,20 +118,15 @@ export default function DestinationsSection() {
                     aria-hidden="true"
                   />
 
-                  {/* Left (Image section, 36% on desktop) */}
-                  <div className="relative w-full sm:w-[36%] h-44 sm:h-auto min-h-[160px] shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r-2 border-dashed border-[#DCD4C4]">
-                    <Image
-                      src={dest.imageSrc}
-                      alt={dest.imageAlt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 22vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    {/* Top Stamp on image */}
-                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#14120F]/85 border border-[#B08D3F]/70 rounded text-[9px] font-mono text-[#E0C068] tracking-widest uppercase backdrop-blur-md">
-                      WP {wpIndex}
-                    </div>
-                  </div>
+                  {/* Left (Image section with dynamic carousel, 36% on desktop) */}
+                  <DestinationImageCarousel
+                    images={dest.images}
+                    fallbackSrc={dest.imageSrc}
+                    fallbackAlt={dest.imageAlt}
+                    stampBadge={`WP ${wpIndex}`}
+                    className="relative w-full sm:w-[36%] h-48 sm:h-auto min-h-[170px] shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r-2 border-dashed border-[#DCD4C4]"
+                    staggerOffsetMs={(idx + 1) * 750}
+                  />
 
                   {/* Right: Content & Action */}
                   <div className="p-4 sm:p-5 flex-1 min-w-0 flex flex-col justify-between">

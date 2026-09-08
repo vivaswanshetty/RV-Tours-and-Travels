@@ -379,6 +379,7 @@ export interface DestinationItem {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  images?: TourPackageImage[];
   highlights: string[];
   whatsappMessage: string;
   featured?: boolean;
@@ -392,8 +393,20 @@ export const DESTINATIONS: DestinationItem[] = [
     ticketCode: "TKT-UD-01",
     badge: "HOME BASE & COASTAL HUB",
     description: "Explore the sacred Sri Krishna Matha, Kapu Lighthouse, and pristine beaches with drivers who grew up on these coastal roads.",
-    imageSrc: "/destinations/udupi.jpg",
-    imageAlt: "Kapu Beach Lighthouse and Rocky Coast in Udupi, Karnataka",
+    imageSrc: "/destinations/udupi-krishna-matha.jpg",
+    imageAlt: "Udupi Sri Krishna Matha Deity Darshan and Coastal Karnataka",
+    images: [
+      {
+        src: "/destinations/udupi-krishna-matha.jpg",
+        alt: "Udupi Sri Krishna Matha Divine Deity Darshan with Golden Kavacha and Garlands",
+        label: "Udupi Sri Krishna Matha",
+      },
+      {
+        src: "/destinations/udupi.jpg",
+        alt: "Kapu Beach Lighthouse and Rocky Coast in Udupi, Karnataka",
+        label: "Kapu Beach & Lighthouse",
+      },
+    ],
     highlights: ["Sri Krishna Matha", "Malpe Beach & St. Mary's Island", "Kapu Lighthouse & Sunset", "Coastal Cuisine Trail"],
     whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Udupi & Coastal Karnataka.",
     featured: true
@@ -405,8 +418,20 @@ export const DESTINATIONS: DestinationItem[] = [
     ticketCode: "TKT-KL-02",
     badge: "SACRED COASTAL CIRCUIT",
     description: "Sacred coastal pilgrimage connecting Kollur Sri Mookambika Temple with the iconic seaside Shiva statue at Murudeshwar.",
-    imageSrc: "/destinations/murudeshwar.jpg",
-    imageAlt: "Murudeshwar Shiva Statue and Coastal Temple Cliffs, Karnataka",
+    imageSrc: "/packages/kollur-mookambika.jpg",
+    imageAlt: "Kollur Sri Mookambika Temple and Murudeshwar Shiva Statue, Karnataka",
+    images: [
+      {
+        src: "/packages/kollur-mookambika.jpg",
+        alt: "Kollur Sri Mookambika Temple Main Entrance Gate and Courtyard",
+        label: "Kollur Sri Mookambika Temple",
+      },
+      {
+        src: "/destinations/murudeshwar.jpg",
+        alt: "Murudeshwar Shiva Statue and Coastal Temple Cliffs, Karnataka",
+        label: "Murudeshwar Shiva Statue & Beach",
+      },
+    ],
     highlights: ["Kollur Sri Mookambika", "Murudeshwar Shiva Statue", "Maravanthe Sunset Drive"],
     whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Kollur Mookambika & Murudeshwar."
   },
@@ -417,8 +442,20 @@ export const DESTINATIONS: DestinationItem[] = [
     ticketCode: "TKT-GOA-03",
     badge: "INTERSTATE COASTAL ESCAPE",
     description: "Comfortable door-to-door interstate highway travel to South and North Goa with scenic coastal rest stops.",
-    imageSrc: "/destinations/goa.jpg",
-    imageAlt: "Palm-fringed golden beach in Goa",
+    imageSrc: "/destinations/goa-beach-shacks.jpg",
+    imageAlt: "Vibrant Goa Beach Shacks and Golden Palm Shore",
+    images: [
+      {
+        src: "/destinations/goa-beach-shacks.jpg",
+        alt: "Vibrant Goa Beach Shacks with Colorful Canopies and Palm Trees",
+        label: "Goa Beach Shacks & Coast",
+      },
+      {
+        src: "/destinations/goa.jpg",
+        alt: "Palm-Fringed Golden Beach and Turquoise Waters in Goa",
+        label: "Scenic Goa Coastal Shore",
+      },
+    ],
     highlights: ["Palolem & South Goa", "Panaji Heritage Quarters", "North Goa Beach Hubs"],
     whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Goa."
   },
@@ -429,8 +466,25 @@ export const DESTINATIONS: DestinationItem[] = [
     ticketCode: "TKT-SOU-04",
     badge: "HIGHLANDS & SOUTHERN CORRIDORS",
     description: "Custom outstation journeys connecting Western Ghats coffee estates, royal Mysuru heritage, and South India corridors on your schedule.",
-    imageSrc: "/destinations/coorg-mysuru.jpg",
-    imageAlt: "Western Ghats scenic mountain road through coffee estates in Coorg, Karnataka",
+    imageSrc: "/packages/mysore-palace-night.jpg",
+    imageAlt: "Mysore Palace, Coorg Highlands, and Scenic Western Ghats Roads",
+    images: [
+      {
+        src: "/packages/mysore-palace-night.jpg",
+        alt: "Mysore Royal Palace Grand Night Illumination Reflected on Wet Courtyard",
+        label: "Mysore Royal Palace",
+      },
+      {
+        src: "/packages/coorg-hills.jpg",
+        alt: "Coorg Rolling Green Mountains and Cloud-Kissed Mist View",
+        label: "Coorg Misty Highlands",
+      },
+      {
+        src: "/destinations/western-ghats.jpg",
+        alt: "Western Ghats Mountain Ranges and Kudremukh Valley Panorama",
+        label: "Western Ghats Scenic Roads",
+      },
+    ],
     highlights: ["Coorg Coffee Hills", "Mysuru Royal Heritage", "Scenic Western Ghats Roads"],
     whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Kerala, Mysuru & Coorg."
   }
