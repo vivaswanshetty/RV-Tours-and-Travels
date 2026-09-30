@@ -9,6 +9,8 @@ export async function POST(request: Request) {
       phone,
       serviceType,
       vehicleType,
+      members,
+      tripDays,
       pickupLocation,
       destination,
       travelDate,
@@ -39,6 +41,8 @@ export async function POST(request: Request) {
       phone: phone.trim(),
       service_type: serviceType || "General Enquiry",
       vehicle_preference: vehicleType || "Not Specified",
+      number_of_members: members || "Not Specified",
+      trip_duration: tripDays || "Not Specified",
       pickup_location: pickupLocation || "Udupi / TBD",
       destination: destination || "TBD",
       travel_date: travelDate || "TBD",
@@ -75,6 +79,7 @@ export async function POST(request: Request) {
     console.log(`[BOOKING ENQUIRY RECEIVED] Ref: ${refCode}`);
     console.log(`Passenger: ${name} (${phone})`);
     console.log(`Service: ${serviceType} | Vehicle: ${vehicleType}`);
+    console.log(`Members: ${members || "N/A"} | Duration: ${tripDays || "N/A"}`);
     console.log(`Route: ${pickupLocation} -> ${destination} on ${travelDate}`);
     console.log(`Message: ${message || "N/A"}`);
     console.log(`Destination Dispatch: ${BUSINESS_INFO.email}`);

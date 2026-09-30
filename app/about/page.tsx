@@ -80,7 +80,9 @@ export default function AboutPage() {
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <TicketButton
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent("Hello Ramesh ji, I would like to enquire about your services.")}`}
+                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
+                  "Hello Ramesh ji, I would like to enquire about your chauffeur and tour services with RV Tours & Travels.\n\n*Travel Enquiry Details:*\n• *Vehicle Type:* Sedan / Innova Crysta / Tempo Traveller\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share available vehicle options and tariff details."
+                )}`}
                 isExternal
                 variant="primary-gold"
                 size="md"

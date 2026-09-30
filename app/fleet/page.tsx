@@ -80,7 +80,9 @@ export default function FleetPage() {
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <TicketButton
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent("Hello Ramesh ji, I want to check fleet availability and pricing.")}`}
+                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
+                  "Hello Ramesh ji, I would like to check fleet availability and pricing with RV Tours & Travels.\n\n*Vehicle Enquiry Details:*\n• *Vehicle Type:* Sedan / Innova Crysta / Tempo Traveller\n• *Number of Members:* 4 to 7 Members\n• *Trip Duration:* 2 to 3 Days\n\nPlease share vehicle availability and tariff estimate."
+                )}`}
                 isExternal
                 variant="primary-gold"
                 size="md"

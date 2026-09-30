@@ -30,6 +30,8 @@ interface EnquiryHistoryItem {
   phone: string;
   serviceType: string;
   vehicleType: string;
+  members: string;
+  tripDays: string;
   pickupLocation: string;
   destination: string;
   travelDate: string;
@@ -43,6 +45,8 @@ export default function ContactSection() {
     phone: "",
     serviceType: "Airport Drop / Pickup",
     vehicleType: "Comfort Sedan (Dzire / Etios)",
+    members: "3 - 4 Members (Small Family / Sedan)",
+    tripDays: "1 Day (Same Day Return / Airport)",
     pickupLocation: "",
     destination: "",
     travelDate: "",
@@ -80,6 +84,8 @@ export default function ContactSection() {
     phone: string;
     serviceType: string;
     vehicleType: string;
+    members?: string;
+    tripDays?: string;
     pickupLocation: string;
     destination: string;
     travelDate: string;
@@ -88,16 +94,20 @@ export default function ContactSection() {
     const lines = [
       `Hello Ramesh, I would like to enquire about a booking with RV Tours & Travels (Ref: ${item.refCode}).`,
       ``,
-      `*Passenger Name:* ${item.name}`,
-      `*Contact Number:* ${item.phone}`,
-      `*Service:* ${item.serviceType}`,
-      `*Vehicle Preference:* ${item.vehicleType}`,
-      `*Pickup Location:* ${item.pickupLocation || "Udupi / Manipal area"}`,
-      `*Destination:* ${item.destination || "As discussed"}`,
-      `*Travel Date & Time:* ${item.travelDate || "Flexible / Not specified"}`,
+      `*Trip Booking Details:*`,
+      `• *Passenger Name:* ${item.name}`,
+      `• *Contact Number:* ${item.phone}`,
+      `• *Service:* ${item.serviceType}`,
+      `• *Vehicle Preference:* ${item.vehicleType}`,
+      `• *Number of Members:* ${item.members || "3 - 4 Members"}`,
+      `• *Trip Duration:* ${item.tripDays || "1 Day (Same Day Return)"}`,
+      `• *Pickup Location:* ${item.pickupLocation || "Udupi / Manipal area"}`,
+      `• *Destination:* ${item.destination || "As discussed"}`,
+      `• *Travel Date & Time:* ${item.travelDate || "Flexible / Not specified"}`,
     ];
 
     if (item.message && item.message.trim()) {
+      lines.push(``);
       lines.push(`*Notes / Requirements:* ${item.message.trim()}`);
     }
 
@@ -144,6 +154,8 @@ export default function ContactSection() {
       phone: formData.phone,
       serviceType: formData.serviceType,
       vehicleType: formData.vehicleType,
+      members: formData.members,
+      tripDays: formData.tripDays,
       pickupLocation: formData.pickupLocation,
       destination: formData.destination,
       travelDate: formData.travelDate,
@@ -416,10 +428,16 @@ export default function ContactSection() {
                                 <span className="text-[#1F4C4C] font-semibold">Service:</span> {item.serviceType}
                               </div>
                               <div>
-                                <span className="text-[#1F4C4C] font-semibold">Route:</span> {item.pickupLocation || "Udupi"} ➔ {item.destination || "TBD"}
+                                <span className="text-[#1F4C4C] font-semibold">Vehicle:</span> {item.vehicleType}
                               </div>
                               <div>
-                                <span className="text-[#1F4C4C] font-semibold">Vehicle:</span> {item.vehicleType}
+                                <span className="text-[#1F4C4C] font-semibold">Members:</span> {item.members || "3 - 4 Members"}
+                              </div>
+                              <div>
+                                <span className="text-[#1F4C4C] font-semibold">Trip Days:</span> {item.tripDays || "1 Day"}
+                              </div>
+                              <div>
+                                <span className="text-[#1F4C4C] font-semibold">Route:</span> {item.pickupLocation || "Udupi"} ➔ {item.destination || "TBD"}
                               </div>
                             </div>
 
@@ -454,6 +472,8 @@ export default function ContactSection() {
                                     phone: item.phone,
                                     serviceType: item.serviceType,
                                     vehicleType: item.vehicleType,
+                                    members: item.members || "3 - 4 Members (Small Family / Sedan)",
+                                    tripDays: item.tripDays || "1 Day (Same Day Return / Airport)",
                                     pickupLocation: item.pickupLocation,
                                     destination: item.destination,
                                     travelDate: item.travelDate,
@@ -498,6 +518,8 @@ export default function ContactSection() {
                     <div><span className="text-[#1F4C4C] font-semibold">SERVICE:</span> {formData.serviceType}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">ROUTE:</span> {formData.pickupLocation || "Udupi / Manipal"} ➔ {formData.destination || "As requested"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">VEHICLE:</span> {formData.vehicleType}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">MEMBERS:</span> {formData.members}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">TRIP DAYS:</span> {formData.tripDays}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">DATE:</span> {formData.travelDate || "Flexible"}</div>
                     {formData.message && (
                       <div className="pt-1 border-t border-[#DCD4C4] text-[11px] text-[#14120F]/70">
@@ -527,6 +549,8 @@ export default function ContactSection() {
                           phone: "",
                           serviceType: "Airport Drop / Pickup",
                           vehicleType: "Comfort Sedan (Dzire / Etios)",
+                          members: "3 - 4 Members (Small Family / Sedan)",
+                          tripDays: "1 Day (Same Day Return / Airport)",
                           pickupLocation: "",
                           destination: "",
                           travelDate: "",
@@ -623,6 +647,48 @@ export default function ContactSection() {
                         <option>Premium SUV / MUV (Innova / Ertiga) — 6-7 Pax</option>
                         <option>Tempo Traveller — 12-20 Pax</option>
                         <option>Advise me based on group</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Number of Members */}
+                    <div>
+                      <label htmlFor="members" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
+                        How Many Members
+                      </label>
+                      <select
+                        id="members"
+                        name="members"
+                        value={formData.members}
+                        onChange={(e) => setFormData({ ...formData, members: e.target.value })}
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
+                      >
+                        <option>1 - 2 Members (Couples / Solo)</option>
+                        <option>3 - 4 Members (Small Family / Sedan)</option>
+                        <option>5 - 7 Members (Family / Innova Crysta)</option>
+                        <option>8 - 12 Members (Group / Executive Tempo)</option>
+                        <option>13 - 20 Members (Large Group / Tempo)</option>
+                      </select>
+                    </div>
+
+                    {/* No. of Trip Days */}
+                    <div>
+                      <label htmlFor="tripDays" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
+                        No. of Trip Days
+                      </label>
+                      <select
+                        id="tripDays"
+                        name="tripDays"
+                        value={formData.tripDays}
+                        onChange={(e) => setFormData({ ...formData, tripDays: e.target.value })}
+                        className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
+                      >
+                        <option>1 Day (Same Day Return / Airport)</option>
+                        <option>2 Days / 1 Night (Weekend / Coastal)</option>
+                        <option>3 Days / 2 Nights (Temple / Hill Station)</option>
+                        <option>4 Days / 3 Nights (Heritage Circuit)</option>
+                        <option>5+ Days (Custom Multi-Day Outstation)</option>
                       </select>
                     </div>
                   </div>

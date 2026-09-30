@@ -87,7 +87,9 @@ export default function ServicesPage() {
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <TicketButton
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent("Hello Ramesh ji, I would like to enquire about your taxi services.")}`}
+                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
+                  "Hello Ramesh ji, I would like to enquire about your chauffeur and taxi services with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Vehicle Type:* Sedan / Innova Crysta / Tempo Traveller\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share available vehicle options and tariff estimate."
+                )}`}
                 isExternal
                 variant="primary-gold"
                 size="md"

@@ -6,11 +6,34 @@ import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
 
 const TRIP_OPTIONS = [
-  "Airport Transfer",
+  "Airport Drop / Pickup",
   "Karnataka Temple Circuit",
-  "Goa Trip",
-  "Kerala/Mysuru/Coorg Trip",
-  "Custom Trip",
+  "Goa Coastal Tour",
+  "Kerala, Mysuru & Coorg Tour",
+  "Custom Outstation Trip",
+] as const;
+
+const VEHICLE_OPTIONS = [
+  "Comfort Sedan (Dzire / Etios) — 1-4 Pax",
+  "Premium SUV / MUV (Innova Crysta / Ertiga) — 6-7 Pax",
+  "Tempo Traveller (Force Executive) — 12-20 Pax",
+  "Advise based on group size",
+] as const;
+
+const MEMBER_OPTIONS = [
+  "1 - 2 Members",
+  "3 - 4 Members",
+  "5 - 7 Members",
+  "8 - 12 Members",
+  "13+ Members",
+] as const;
+
+const DURATION_OPTIONS = [
+  "1 Day (Same Day)",
+  "2 Days / 1 Night",
+  "3 Days / 2 Nights",
+  "4 Days / 3 Nights",
+  "5+ Days (Custom)",
 ] as const;
 
 export default function StickyQuoteTab() {
@@ -18,6 +41,9 @@ export default function StickyQuoteTab() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [interest, setInterest] = useState<string>(TRIP_OPTIONS[0]);
+  const [vehicleType, setVehicleType] = useState<string>(VEHICLE_OPTIONS[0]);
+  const [members, setMembers] = useState<string>(MEMBER_OPTIONS[1]);
+  const [tripDays, setTripDays] = useState<string>(DURATION_OPTIONS[0]);
   const [submitted, setSubmitted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -52,11 +78,15 @@ export default function StickyQuoteTab() {
     const message = [
       `Hello Ramesh ji, I would like to plan a trip with RV Tours & Travels.`,
       ``,
-      `• Name: ${name.trim()}`,
-      `• WhatsApp: ${phone.trim()}`,
-      `• Interested In: ${interest}`,
+      `*Trip Enquiry Details:*`,
+      `• *Name:* ${name.trim()}`,
+      `• *WhatsApp:* ${phone.trim()}`,
+      `• *Trip Route:* ${interest}`,
+      `• *Vehicle Preference:* ${vehicleType}`,
+      `• *Number of Members:* ${members}`,
+      `• *Trip Duration:* ${tripDays}`,
       ``,
-      `Please share transparent pricing and vehicle availability.`,
+      `Please share vehicle availability and transparent pricing estimate.`,
     ].join("\n");
 
     const whatsappUrl = `https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -68,6 +98,9 @@ export default function StickyQuoteTab() {
       setName("");
       setPhone("");
       setInterest(TRIP_OPTIONS[0]);
+      setVehicleType(VEHICLE_OPTIONS[0]);
+      setMembers(MEMBER_OPTIONS[1]);
+      setTripDays(DURATION_OPTIONS[0]);
       setIsOpen(false);
     }, 1500);
   };
@@ -113,7 +146,7 @@ export default function StickyQuoteTab() {
             className="md:hidden fixed bottom-6 left-4 z-40 bg-[#14120F] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] rounded-full px-4 py-2.5 shadow-2xl flex items-center gap-2 cursor-pointer active:scale-95 transition-all"
           >
             <div className="w-5 h-5 rounded-full bg-[#1F4C4C] border border-[#B08D3F] flex items-center justify-center text-[#E0C068]">
-              <Compass className="w-3 h-3" />
+              <Compass className="w-3.5 h-3.5" />
             </div>
             <span className="font-mono text-xs font-bold tracking-wider text-[#E0C068] uppercase">
               Plan My Trip
@@ -128,7 +161,7 @@ export default function StickyQuoteTab() {
         <div
           role="dialog"
           aria-label="Plan My Trip Quick Form"
-          className="fixed z-50 md:right-4 md:top-1/2 md:-translate-y-1/2 bottom-4 inset-x-4 md:inset-x-auto w-auto md:w-96 bg-[#14120F] text-[#F6F3EC] border-2 border-[#B08D3F] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.85)] p-5 sm:p-6 animate-in fade-in zoom-in-95 duration-200"
+          className="fixed z-50 md:right-4 md:top-1/2 md:-translate-y-1/2 bottom-4 inset-x-4 md:inset-x-auto w-auto md:w-96 max-h-[92vh] overflow-y-auto bg-[#14120F] text-[#F6F3EC] border-2 border-[#B08D3F] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.85)] p-5 sm:p-6 animate-in fade-in zoom-in-95 duration-200"
         >
           {/* Decorative Corner Notches on Top and Bottom edges */}
           <span className="absolute -left-2 top-10 w-4 h-4 rounded-full bg-[#F6F3EC] border border-[#B08D3F]" />
@@ -172,7 +205,7 @@ export default function StickyQuoteTab() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3.5">
               {/* Field 1: Name */}
               <div className="space-y-1">
                 <label
@@ -217,7 +250,7 @@ export default function StickyQuoteTab() {
                   htmlFor="quote-tab-interest"
                   className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
                 >
-                  I&apos;m Interested In
+                  Trip Route / Sector
                 </label>
                 <select
                   id="quote-tab-interest"
@@ -231,6 +264,73 @@ export default function StickyQuoteTab() {
                     </option>
                   ))}
                 </select>
+              </div>
+
+              {/* Field 4: Vehicle Type / Name */}
+              <div className="space-y-1">
+                <label
+                  htmlFor="quote-tab-vehicle"
+                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
+                >
+                  Vehicle Preference
+                </label>
+                <select
+                  id="quote-tab-vehicle"
+                  value={vehicleType}
+                  onChange={(e) => setVehicleType(e.target.value)}
+                  className="w-full px-3 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                >
+                  {VEHICLE_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Fields 5 & 6: How Many Members & No. of Trip Days (2-col grid) */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="space-y-1">
+                  <label
+                    htmlFor="quote-tab-members"
+                    className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
+                  >
+                    Members (Pax)
+                  </label>
+                  <select
+                    id="quote-tab-members"
+                    value={members}
+                    onChange={(e) => setMembers(e.target.value)}
+                    className="w-full px-2.5 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                  >
+                    {MEMBER_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-1">
+                  <label
+                    htmlFor="quote-tab-duration"
+                    className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
+                  >
+                    Trip Days
+                  </label>
+                  <select
+                    id="quote-tab-duration"
+                    value={tripDays}
+                    onChange={(e) => setTripDays(e.target.value)}
+                    className="w-full px-2.5 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                  >
+                    {DURATION_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               {/* Ticket Perforation Divider */}

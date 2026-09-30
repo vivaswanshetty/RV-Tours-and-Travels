@@ -67,7 +67,9 @@ export const BUSINESS_INFO = {
   phoneDisplay: "+91 98455 11169",
   email: "rameshshetty0013@gmail.com",
   whatsappNumber: "919845511169",
-  whatsappUrl: "https://wa.me/919845511169?text=Hello%20Ramesh%20ji%2C%20I%20would%20like%20to%20enquire%20about%20a%20cab%20service.",
+  whatsappUrl: `https://wa.me/919845511169?text=${encodeURIComponent(
+    "Hello Ramesh ji, I would like to enquire about booking a cab with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Vehicle Type:* Sedan / Innova Crysta / Tempo Traveller\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share vehicle availability and tariff estimate."
+  )}`,
   address: "Near Sri Krishna Matha, Car Street, Udupi, Karnataka 576101",
   experienceYears: 15,
   serviceArea: "Udupi, Manipal, Mangalore, Coastal Karnataka & Interstate Routes",
@@ -98,7 +100,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Udupi Sri Krishna Matha", "Maravanthe Beach", "Kollur Mookambika Temple", "Murudeshwar Shiva Temple & Beach"],
     description: "The premier coastal pilgrimage route connecting Udupi's Krishna Matha, Kollur Mookambika, and the majestic 123-foot Shiva statue at Murudeshwar.",
     idealVehicle: "Comfort Sedan or Innova Crysta",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Kollur Mookambika & Murudeshwar Tour Package 2026.",
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to enquire about the Kollur Mookambika & Murudeshwar Coastal Circuit Tour.\n\n*Trip Enquiry Details:*\n• *Tour Package:* Kollur Mookambika & Murudeshwar Coastal Circuit\n• *Vehicle Preference:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share vehicle availability and tariff estimate.",
     imageSrc: "/packages/kollur-mookambika.jpg",
     imageAlt: "Kollur Sri Mookambika Temple and Murudeshwar Shiva Temple Coastal Circuit",
     images: [
@@ -125,7 +128,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Kateel Durgaparameshwari", "Dharmasthala Manjunatha Swamy", "Southadka Ganapathi", "Kukke Sri Subramanya Temple"],
     description: "A peaceful spiritual pilgrimage across Western Ghat foothills planned for convenient darshan timings and senior citizen comfort.",
     idealVehicle: "Innova Crysta / Ertiga / Sedan",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Dharmasthala & Kukke Subramanya Pilgrimage Package 2026.",
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to enquire about the Dharmasthala, Kukke Subramanya & Kateel Yatra.\n\n*Trip Enquiry Details:*\n• *Tour Package:* Dharmasthala, Kukke Subramanya & Kateel Yatra\n• *Vehicle Preference:* Innova Crysta / Ertiga / Sedan\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share vehicle availability and tariff estimate.",
     imageSrc: "/packages/dharmasthala.jpg",
     imageAlt: "Dharmasthala Sri Manjunatha Swamy Temple and Kukke Subramanya Pilgrimage Tour",
     images: [
@@ -156,7 +160,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Udupi", "Maravanthe Sunset Drive", "Murudeshwar", "Gokarna Mahabaleshwar", "Om & Kudle Beach", "Karwar"],
     description: "Explore the dramatic coastline of Uttara Kannada with oceanfront scenic halts and flexible beach excursion schedules.",
     idealVehicle: "Toyota Innova Crysta or Sedan",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Gokarna & Karwar Coastal Package 2026.",
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to enquire about the Gokarna, Om Beach & Karwar Heritage Expedition.\n\n*Trip Enquiry Details:*\n• *Tour Package:* Gokarna, Om Beach & Karwar Heritage Expedition\n• *Vehicle Preference:* Toyota Innova Crysta / Sedan\n• *Number of Members:* 4 Members\n• *Trip Duration:* 2 Days / 1 Night\n\nPlease share vehicle availability and tariff estimate.",
     imageSrc: "/packages/gokarna-om-beach-aerial.jpg",
     imageAlt: "Om Beach Gokarna Aerial View and Karwar Coastal Highway Tour",
     images: [
@@ -182,7 +187,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Udupi / Mangalore", "Agumbe Rainforest", "Chikmagalur Peak Drive", "Mullayanagiri", "Madikeri / Coorg"],
     description: "Ascend the verdant Western Ghats with an expert hill-route chauffeur. Enjoy serene coffee estate tours, panoramic viewpoints, and safe mountain driving.",
     idealVehicle: "Premium SUV (Toyota Innova Crysta)",
-    whatsappMessage: "Hello Ramesh ji, I want to enquire about the Chikmagalur & Coorg Highland Package 2026.",
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to enquire about the Western Ghats Highlands: Chikmagalur & Coorg Package.\n\n*Trip Enquiry Details:*\n• *Tour Package:* Western Ghats Highlands: Chikmagalur & Coorg\n• *Vehicle Preference:* Premium SUV (Toyota Innova Crysta)\n• *Number of Members:* 4 Members\n• *Trip Duration:* 3 Days / 2 Nights\n\nPlease share vehicle availability and tariff estimate.",
     imageSrc: "/destinations/western-ghats.jpg",
     imageAlt: "Scenic Western Ghats mountain ridges and mist-covered valleys",
     images: [
@@ -208,7 +214,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Udupi / Manipal / Kundapura", "Mangalore International Airport (IXE)", "Mangalore Central / Junction"],
     description: "Zero-stress airport transit with flight tracking, early morning / late night scheduled pickups, and ample luggage boot space.",
     idealVehicle: "Dzire / Etios / Innova Crysta",
-    whatsappMessage: "Hello Ramesh ji, I need to book a Mangalore Airport (IXE) Drop / Pickup.",
+    whatsappMessage:
+      "Hello Ramesh ji, I need to book a Mangalore Airport (IXE) Drop / Pickup with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Service:* Mangalore Airport (IXE) Curbside Transit\n• *Vehicle Preference:* Comfort Sedan (Dzire / Etios) / Innova\n• *Number of Members:* 2 to 4 Members\n• *Trip Duration:* Point to Point / Same Day\n\nPlease share cab availability and tariff estimate.",
     imageSrc: "/packages/mangalore-airport-curbside.jpg",
     imageAlt: "Mangalore International Airport Curbside Terminal Entrance & Flight Connect",
     images: [
@@ -234,7 +241,8 @@ export const TOUR_PACKAGES: TourPackage[] = [
     stops: ["Any destination in Karnataka", "Hampi", "Mysore", "Belur/Halebidu", "Bengaluru", "Coastal Circuit"],
     description: "Design your dream Karnataka road journey with dedicated chauffeur, flexible daily halts, and transparent per-km or fixed package pricing.",
     idealVehicle: "Sedan, Innova, or Tempo Traveller",
-    whatsappMessage: "Hello Ramesh ji, I want to plan a custom multi-day Karnataka tour package.",
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a bespoke multi-day Karnataka tour with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Tour Package:* Bespoke All-Karnataka Road Trip (Hampi / Mysore / Belur)\n• *Vehicle Preference:* Innova Crysta / Sedan / Tempo Traveller\n• *Number of Members:* 4 to 6 Members\n• *Trip Duration:* Custom (3 to 7+ Days)\n\nPlease share route options and tariff estimate.",
     imageSrc: "/packages/hampi-stone-chariot.jpg",
     imageAlt: "Hampi Stone Chariot, Mysore Palace and Belur Halebidu Heritage Tour",
     images: [
@@ -270,7 +278,8 @@ export const SERVICES: ServiceItem[] = [
       "Doorstep pickup anywhere in Udupi & Manipal"
     ],
     icon: "Plane",
-    whatsappMessage: "Hello, I want to enquire about an Airport Drop / Pickup service."
+    whatsappMessage:
+      "Hello Ramesh ji, I want to enquire about Airport Drops & Pickups with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Service:* Airport Drops & Pickups (Mangalore IXE)\n• *Vehicle Type:* Comfort Sedan (Etios / Dzire) / Innova\n• *Number of Members:* 2 to 4 Members\n• *Trip Duration:* 1 Day (Single / Round Transfer)\n\nPlease share cab availability and tariff estimate."
   },
   {
     id: "karnataka-destinations",
@@ -284,7 +293,8 @@ export const SERVICES: ServiceItem[] = [
       "Custom itineraries and temple routes upon request"
     ],
     icon: "MapPin",
-    whatsappMessage: "Hello, I want to enquire about travel to destinations across Karnataka."
+    whatsappMessage:
+      "Hello Ramesh ji, I want to enquire about an all-Karnataka outstation trip with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Service:* All Destinations Within Karnataka\n• *Vehicle Type:* Toyota Innova Crysta / Sedan / Tempo Traveller\n• *Number of Members:* 4 to 7 Members\n• *Trip Duration:* 2 to 3 Days\n\nPlease share vehicle availability and tariff details."
   },
   {
     id: "fleet-variety",
@@ -298,7 +308,8 @@ export const SERVICES: ServiceItem[] = [
       "Prompt coordination directly with the operator"
     ],
     icon: "Car",
-    whatsappMessage: "Hello, I want to enquire about vehicle availability for an upcoming trip."
+    whatsappMessage:
+      "Hello Ramesh ji, I want to check vehicle availability and rates with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Service:* Chauffeur Vehicle Booking\n• *Vehicle Type:* Comfort Sedan / Premium SUV / Tempo Traveller\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share available vehicles and tariff details."
   },
   {
     id: "custom-packages",
@@ -312,7 +323,8 @@ export const SERVICES: ServiceItem[] = [
       "Transparent point-to-point or package quotes"
     ],
     icon: "Compass",
-    whatsappMessage: "Hello, I want to enquire about custom tour packages from Udupi."
+    whatsappMessage:
+      "Hello Ramesh ji, I want to enquire about a custom tour package with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Service:* Custom Tour Package & Temple Itinerary\n• *Vehicle Type:* Innova Crysta / Sedan / Tempo Traveller\n• *Number of Members:* 4 Members\n• *Trip Duration:* 2 to 3 Days\n\nPlease share itinerary suggestions and tariff estimate."
   }
 ];
 
@@ -332,7 +344,8 @@ export const FLEET_CATEGORIES: VehicleCategory[] = [
     placeholderLabel: "SEDAN CLASS",
     imageAlt: "Toyota Etios / Maruti Dzire AC Sedan - RV Tours & Travels Fleet",
     imageSrc: "/fleet-etios-v2.jpg",
-    whatsappMessage: "Hello, I would like to book/enquire about a Comfort Sedan (Etios/Dzire class)."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to book a Comfort Sedan with RV Tours & Travels.\n\n*Booking Enquiry Details:*\n• *Vehicle Name:* Comfort Sedan (Toyota Etios / Maruti Dzire)\n• *Number of Members:* Up to 4 Members\n• *Trip Duration:* 1 Day (Local / Airport / Outstation)\n\nPlease share availability and tariff details."
   },
   {
     id: "suv",
@@ -349,7 +362,8 @@ export const FLEET_CATEGORIES: VehicleCategory[] = [
     placeholderLabel: "SUV / MUV CLASS",
     imageAlt: "Toyota Innova Crysta / Ertiga AC SUV - RV Tours & Travels Fleet",
     imageSrc: "/fleet-innova-v2.jpg",
-    whatsappMessage: "Hello, I would like to book/enquire about a Premium SUV (Innova / Ertiga class)."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to book a Premium SUV with RV Tours & Travels.\n\n*Booking Enquiry Details:*\n• *Vehicle Name:* Premium SUV / MUV (Toyota Innova Crysta / Ertiga)\n• *Number of Members:* 6 to 7 Members\n• *Trip Duration:* 2 to 3 Days (Outstation / Ghats)\n\nPlease share availability and tariff details."
   },
   {
     id: "tempo-traveller",
@@ -366,7 +380,8 @@ export const FLEET_CATEGORIES: VehicleCategory[] = [
     placeholderLabel: "EXECUTIVE VAN",
     imageAlt: "Force Tempo Traveller AC Minibus - RV Tours & Travels Fleet",
     imageSrc: "/fleet-tempo-v2.jpg",
-    whatsappMessage: "Hello, I would like to book/enquire about a Tempo Traveller for group travel."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to book a Tempo Traveller with RV Tours & Travels.\n\n*Booking Enquiry Details:*\n• *Vehicle Name:* Tempo Traveller (12 / 17 / 20 Seater Force Executive)\n• *Number of Members:* 12 to 20 Members\n• *Trip Duration:* 2 to 4 Days (Group Tour)\n\nPlease share availability and tariff details."
   }
 ];
 
@@ -408,7 +423,8 @@ export const DESTINATIONS: DestinationItem[] = [
       },
     ],
     highlights: ["Sri Krishna Matha", "Malpe Beach & St. Mary's Island", "Kapu Lighthouse & Sunset", "Coastal Cuisine Trail"],
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Udupi & Coastal Karnataka.",
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a trip to Udupi & Coastal Karnataka with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination:* Udupi & Coastal Karnataka Circuit\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 2 Days / 1 Night\n\nPlease share vehicle availability and tariff estimate.",
     featured: true
   },
   {
@@ -433,7 +449,8 @@ export const DESTINATIONS: DestinationItem[] = [
       },
     ],
     highlights: ["Kollur Sri Mookambika", "Murudeshwar Shiva Statue", "Maravanthe Sunset Drive"],
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Kollur Mookambika & Murudeshwar."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a trip to Kollur Mookambika & Murudeshwar with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination:* Kollur Mookambika & Murudeshwar Circuit\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "goa",
@@ -457,7 +474,8 @@ export const DESTINATIONS: DestinationItem[] = [
       },
     ],
     highlights: ["Palolem & South Goa", "Panaji Heritage Quarters", "North Goa Beach Hubs"],
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Goa."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a trip to Goa (North & South) with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination:* Goa (North & South) Coastal Road Trip\n• *Vehicle Type:* Toyota Innova Crysta / AC Sedan\n• *Number of Members:* 4 Members\n• *Trip Duration:* 3 Days / 2 Nights\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "kerala-mysuru-coorg",
@@ -486,7 +504,8 @@ export const DESTINATIONS: DestinationItem[] = [
       },
     ],
     highlights: ["Coorg Coffee Hills", "Mysuru Royal Heritage", "Scenic Western Ghats Roads"],
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a trip to Kerala, Mysuru & Coorg."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan an outstation trip to Kerala, Mysuru & Coorg with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination:* Kerala, Mysuru & Coorg Highlands\n• *Vehicle Type:* Toyota Innova Crysta / SUV\n• *Number of Members:* 4 to 6 Members\n• *Trip Duration:* 3 to 4 Days\n\nPlease share vehicle availability and tariff estimate."
   }
 ];
 
@@ -510,7 +529,8 @@ export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
     shortLine: "Sacred sanctum founded by Sri Madhvacharya with darshan through the Kanakana Kindi.",
     imageSrc: "/temples/udupi-krishna.jpg",
     imageAlt: "Sri Krishna Matha Temple in Udupi",
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Udupi Sri Krishna Matha."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a temple pilgrimage to Udupi Sri Krishna Matha with RV Tours & Travels.\n\n*Pilgrimage Details:*\n• *Temple / Kshetra:* Udupi Sri Krishna Matha\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 Day (Same Day Darshan)\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "kollur",
@@ -520,7 +540,8 @@ export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
     shortLine: "Lush Kodachadri foothill shrine dedicated to Goddess Mookambika with ancient Jyothirlinga.",
     imageSrc: "/temples/kollur-mookambika.jpg",
     imageAlt: "Sri Mookambika Temple in Kollur",
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Kollur Mookambika Temple."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a temple pilgrimage to Sri Mookambika Temple (Kollur) with RV Tours & Travels.\n\n*Pilgrimage Details:*\n• *Temple / Kshetra:* Kollur Sri Mookambika Temple\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 Day (Same Day Darshan)\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "subrahmanya",
@@ -530,7 +551,8 @@ export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
     shortLine: "Revered Western Ghats riverside abode of Lord Subrahmanya on the banks of Kumaradhara.",
     imageSrc: "/temples/kukke-subrahmanya.jpg",
     imageAlt: "Kukke Sri Subrahmanya Temple",
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Kukke Subrahmanya Temple."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a temple pilgrimage to Kukke Sri Subrahmanya Temple with RV Tours & Travels.\n\n*Pilgrimage Details:*\n• *Temple / Kshetra:* Kukke Sri Subrahmanya Temple\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "kumbasi",
@@ -540,7 +562,8 @@ export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
     shortLine: "Hilltop Muktistala dedicated to Siddhi Vinayaka, visited for peaceful darshan and new beginnings.",
     imageSrc: "/temples/kumbasi-anegudde.jpg",
     imageAlt: "Anegudde Sri Vinayaka Temple in Kumbasi",
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Kumbasi Anegudde Vinayaka Temple."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a temple pilgrimage to Anegudde Sri Vinayaka Temple (Kumbasi) with RV Tours & Travels.\n\n*Pilgrimage Details:*\n• *Temple / Kshetra:* Kumbasi Anegudde Vinayaka Temple\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 Day (Same Day Darshan)\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "kodeshwara",
@@ -550,7 +573,8 @@ export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
     shortLine: "Ancient coastal Shiva kshetra celebrated for its vast 4-acre sacred Kotiteertha temple lake.",
     imageSrc: "/temples/koteshwara-kotilingeshwara.jpg",
     imageAlt: "Kotilingeshwara Temple in Koteshwara",
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Koteshwara Kotilingeshwara Temple."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a temple pilgrimage to Sri Kotilingeshwara Temple (Koteshwara) with RV Tours & Travels.\n\n*Pilgrimage Details:*\n• *Temple / Kshetra:* Koteshwara Kotilingeshwara Temple\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 Day (Same Day Darshan)\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "sankaranarayana",
@@ -560,7 +584,8 @@ export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
     shortLine: "Rare coastal shrine worshipping the harmonious combined divine presence of Shiva and Vishnu.",
     imageSrc: "/temples/sankaranarayana.jpg",
     imageAlt: "Sri Shankaranarayana Temple in Sankaranarayana",
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Shankaranarayana Temple."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a temple pilgrimage to Sri Shankaranarayana Temple with RV Tours & Travels.\n\n*Pilgrimage Details:*\n• *Temple / Kshetra:* Shankaranarayana Temple\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 Day (Same Day Darshan)\n\nPlease share vehicle availability and tariff estimate."
   },
   {
     id: "gokarna",
@@ -570,7 +595,8 @@ export const SAPTHA_KSHETRAS: SapthaKshetraItem[] = [
     shortLine: "Atmospheric seaside Atmalinga kshetra overlooking the Arabian Sea, revered as Dakshina Kashi.",
     imageSrc: "/temples/gokarna-mahabaleshwara.jpg",
     imageAlt: "Sri Mahabaleshwara Temple in Gokarna",
-    whatsappMessage: "Hello Ramesh ji, I would like to plan a temple trip to Gokarna Mahabaleshwara Temple."
+    whatsappMessage:
+      "Hello Ramesh ji, I would like to plan a temple pilgrimage to Sri Mahabaleshwara Temple (Gokarna) with RV Tours & Travels.\n\n*Pilgrimage Details:*\n• *Temple / Kshetra:* Gokarna Mahabaleshwara Temple\n• *Vehicle Type:* Comfort Sedan / Innova Crysta\n• *Number of Members:* 4 Members\n• *Trip Duration:* 2 Days / 1 Night\n\nPlease share vehicle availability and tariff estimate."
   }
 ];
 
