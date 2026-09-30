@@ -102,7 +102,7 @@ export default function ContactSection() {
       `• *No. of Members:* ${item.members && item.members.trim() ? item.members : "[Enter no. of members]"}`,
       `• *No. of Trip Days:* ${item.tripDays && item.tripDays.trim() ? item.tripDays : "[Enter no. of days]"}`,
       `• *Pickup Location:* ${item.pickupLocation || "Udupi / Manipal area"}`,
-      `• *Destination:* ${item.destination || "As discussed"}`,
+      `• *Destination:* ${item.destination ? `${item.destination} (mention if any other places also)` : "[Enter destination — mention if any other places also]"}`,
       `• *Travel Date & Time:* ${item.travelDate || "Flexible / Not specified"}`,
     ];
 
@@ -717,7 +717,7 @@ export default function ContactSection() {
                     {/* Destination */}
                     <div>
                       <label htmlFor="destination" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
-                        Destination
+                        Destination <span className="normal-case font-normal text-stone-500 font-sans">(mention if any other places also)</span>
                       </label>
                       <input
                         type="text"
@@ -726,7 +726,7 @@ export default function ContactSection() {
                         autoComplete="off"
                         value={formData.destination}
                         onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-                        placeholder="e.g. Mangalore Airport / Outstation"
+                        placeholder="e.g. Mangalore Airport / Outstation (mention if any other places also)"
                         className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>

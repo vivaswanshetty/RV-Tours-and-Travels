@@ -81,7 +81,7 @@ export default function AboutPage() {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <TicketButton
                 href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                  "Hello Ramesh ji, I would like to enquire about your chauffeur and tour services with RV Tours & Travels.\n\n*Travel Enquiry Details:*\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease share available vehicle options and tariff details."
+                  "Hello Ramesh, I would like to enquire about your chauffeur and tour services with RV Tours & Travels.\n\n*Travel Enquiry Details:*\n• *Destination:* [Enter destination — mention if any other places also]\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease share available vehicle options and tariff details."
                 )}`}
                 isExternal
                 variant="primary-gold"

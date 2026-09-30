@@ -79,12 +79,12 @@ export default function StickyQuoteTab() {
     if (!name.trim() || !phone.trim()) return;
 
     const message = [
-      `Hello Ramesh ji, I would like to plan a trip with RV Tours & Travels.`,
+      `Hello Ramesh, I would like to plan a trip with RV Tours & Travels.`,
       ``,
       `*Trip Enquiry Details:*`,
       `• *Name:* ${name.trim()}`,
       `• *WhatsApp:* ${phone.trim()}`,
-      `• *Trip Route:* ${interest}`,
+      `• *Destination / Route:* ${interest} (mention if any other places also)`,
       `• *Vehicle Preference:* ${vehicleType && vehicleType !== "Select vehicle type" ? vehicleType : "[Enter vehicle type / name]"}`,
       `• *No. of Members:* ${members && members !== "Select no. of members" ? members : "[Enter no. of members]"}`,
       `• *No. of Trip Days:* ${tripDays && tripDays !== "Select trip duration" ? tripDays : "[Enter no. of days]"}`,
