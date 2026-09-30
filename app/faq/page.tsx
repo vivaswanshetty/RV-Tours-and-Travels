@@ -234,7 +234,7 @@ export default function FaqPage() {
                 <div className="pt-2 space-y-3">
                   <TicketButton
                     href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                      "Hello Ramesh ji, I have an inquiry regarding taxi booking with RV Tours & Travels.\n\n*Travel Enquiry Details:*\n• *Vehicle Type:* Sedan / Innova Crysta / Tempo Traveller\n• *Number of Members:* 4 Members\n• *Trip Duration:* 1 to 2 Days\n\nPlease assist with route availability and estimated fare."
+                      "Hello Ramesh ji, I have an inquiry regarding taxi booking with RV Tours & Travels.\n\n*Travel Enquiry Details:*\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease assist with route availability and estimated fare."
                     )}`}
                     isExternal
                     variant="primary-gold"

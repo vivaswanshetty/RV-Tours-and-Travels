@@ -84,7 +84,7 @@ export default function PackagesPage() {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <TicketButton
                 href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                  "Hello Ramesh ji, I want to discuss a customized 2026 tour package with RV Tours & Travels.\n\n*Package Enquiry Details:*\n• *Vehicle Type:* Sedan / Innova Crysta / Tempo Traveller\n• *Number of Members:* 4 to 6 Members\n• *Trip Duration:* 3 Days / 2 Nights\n\nPlease share sample itinerary options and package quote."
+                  "Hello Ramesh ji, I want to discuss a customized 2026 tour package with RV Tours & Travels.\n\n*Package Enquiry Details:*\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease share sample itinerary options and package quote."
                 )}`}
                 isExternal
                 variant="primary-gold"

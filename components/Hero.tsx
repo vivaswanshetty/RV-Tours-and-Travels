@@ -14,12 +14,12 @@ export default function Hero() {
     {
       label: "✈️ Mangalore Airport (IXE)",
       query:
-        "Hello Ramesh ji, I want to book a Mangalore Airport (IXE) cab with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Route:* Udupi / Manipal ⇄ Mangalore Airport (IXE)\n• *Vehicle Type:* Comfort Sedan (Etios / Dzire)\n• *Number of Members:* 2 to 4 Members\n• *Trip Duration:* 1 Day (Airport Transfer)\n\nPlease share availability and fare estimate.",
+        "Hello Ramesh ji, I want to book a Mangalore Airport (IXE) cab with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Route:* Udupi / Manipal ⇄ Mangalore Airport (IXE)\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease share availability and fare estimate.",
     },
     {
       label: "🚗 All-Karnataka Outstation",
       query:
-        "Hello Ramesh ji, I need a chauffeur for an outstation Karnataka trip with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Route:* Outstation Karnataka Road Trip\n• *Vehicle Type:* Premium SUV (Innova Crysta) / Sedan\n• *Number of Members:* 4 Members\n• *Trip Duration:* 2 to 3 Days\n\nPlease share availability and tariff details.",
+        "Hello Ramesh ji, I need a chauffeur for an outstation Karnataka trip with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Route:* Outstation Karnataka Road Trip\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease share availability and tariff details.",
     },
   ];
 

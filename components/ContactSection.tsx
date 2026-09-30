@@ -44,9 +44,9 @@ export default function ContactSection() {
     name: "",
     phone: "",
     serviceType: "Airport Drop / Pickup",
-    vehicleType: "Comfort Sedan (Dzire / Etios)",
-    members: "3 - 4 Members (Small Family / Sedan)",
-    tripDays: "1 Day (Same Day Return / Airport)",
+    vehicleType: "",
+    members: "",
+    tripDays: "",
     pickupLocation: "",
     destination: "",
     travelDate: "",
@@ -98,9 +98,9 @@ export default function ContactSection() {
       `• *Passenger Name:* ${item.name}`,
       `• *Contact Number:* ${item.phone}`,
       `• *Service:* ${item.serviceType}`,
-      `• *Vehicle Preference:* ${item.vehicleType}`,
-      `• *Number of Members:* ${item.members || "3 - 4 Members"}`,
-      `• *Trip Duration:* ${item.tripDays || "1 Day (Same Day Return)"}`,
+      `• *Vehicle Preference:* ${item.vehicleType && item.vehicleType.trim() ? item.vehicleType : "[Enter vehicle type / name]"}`,
+      `• *No. of Members:* ${item.members && item.members.trim() ? item.members : "[Enter no. of members]"}`,
+      `• *No. of Trip Days:* ${item.tripDays && item.tripDays.trim() ? item.tripDays : "[Enter no. of days]"}`,
       `• *Pickup Location:* ${item.pickupLocation || "Udupi / Manipal area"}`,
       `• *Destination:* ${item.destination || "As discussed"}`,
       `• *Travel Date & Time:* ${item.travelDate || "Flexible / Not specified"}`,
@@ -471,9 +471,9 @@ export default function ContactSection() {
                                     name: item.name,
                                     phone: item.phone,
                                     serviceType: item.serviceType,
-                                    vehicleType: item.vehicleType,
-                                    members: item.members || "3 - 4 Members (Small Family / Sedan)",
-                                    tripDays: item.tripDays || "1 Day (Same Day Return / Airport)",
+                                    vehicleType: item.vehicleType || "",
+                                    members: item.members || "",
+                                    tripDays: item.tripDays || "",
                                     pickupLocation: item.pickupLocation,
                                     destination: item.destination,
                                     travelDate: item.travelDate,
@@ -517,9 +517,9 @@ export default function ContactSection() {
                     <div><span className="text-[#1F4C4C] font-semibold">NAME:</span> {formData.name} ({formData.phone})</div>
                     <div><span className="text-[#1F4C4C] font-semibold">SERVICE:</span> {formData.serviceType}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">ROUTE:</span> {formData.pickupLocation || "Udupi / Manipal"} ➔ {formData.destination || "As requested"}</div>
-                    <div><span className="text-[#1F4C4C] font-semibold">VEHICLE:</span> {formData.vehicleType}</div>
-                    <div><span className="text-[#1F4C4C] font-semibold">MEMBERS:</span> {formData.members}</div>
-                    <div><span className="text-[#1F4C4C] font-semibold">TRIP DAYS:</span> {formData.tripDays}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">VEHICLE:</span> {formData.vehicleType || "As Discussed / Advise"}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">MEMBERS:</span> {formData.members || "To be specified"}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">TRIP DAYS:</span> {formData.tripDays || "To be specified"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">DATE:</span> {formData.travelDate || "Flexible"}</div>
                     {formData.message && (
                       <div className="pt-1 border-t border-[#DCD4C4] text-[11px] text-[#14120F]/70">
@@ -548,9 +548,9 @@ export default function ContactSection() {
                           name: "",
                           phone: "",
                           serviceType: "Airport Drop / Pickup",
-                          vehicleType: "Comfort Sedan (Dzire / Etios)",
-                          members: "3 - 4 Members (Small Family / Sedan)",
-                          tripDays: "1 Day (Same Day Return / Airport)",
+                          vehicleType: "",
+                          members: "",
+                          tripDays: "",
                           pickupLocation: "",
                           destination: "",
                           travelDate: "",
@@ -643,6 +643,7 @@ export default function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, vehicleType: e.target.value })}
                         className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       >
+                        <option value="">Select vehicle preference</option>
                         <option>Comfort Sedan (Dzire / Etios) — 1-4 Pax</option>
                         <option>Premium SUV / MUV (Innova / Ertiga) — 6-7 Pax</option>
                         <option>Tempo Traveller — 12-20 Pax</option>
@@ -664,6 +665,7 @@ export default function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, members: e.target.value })}
                         className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       >
+                        <option value="">Select no. of members</option>
                         <option>1 - 2 Members (Couples / Solo)</option>
                         <option>3 - 4 Members (Small Family / Sedan)</option>
                         <option>5 - 7 Members (Family / Innova Crysta)</option>
@@ -684,6 +686,7 @@ export default function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, tripDays: e.target.value })}
                         className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       >
+                        <option value="">Select no. of trip days</option>
                         <option>1 Day (Same Day Return / Airport)</option>
                         <option>2 Days / 1 Night (Weekend / Coastal)</option>
                         <option>3 Days / 2 Nights (Temple / Hill Station)</option>

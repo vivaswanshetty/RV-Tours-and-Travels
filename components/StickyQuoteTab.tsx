@@ -14,6 +14,7 @@ const TRIP_OPTIONS = [
 ] as const;
 
 const VEHICLE_OPTIONS = [
+  "Select vehicle type",
   "Comfort Sedan (Dzire / Etios) — 1-4 Pax",
   "Premium SUV / MUV (Innova Crysta / Ertiga) — 6-7 Pax",
   "Tempo Traveller (Force Executive) — 12-20 Pax",
@@ -21,6 +22,7 @@ const VEHICLE_OPTIONS = [
 ] as const;
 
 const MEMBER_OPTIONS = [
+  "Select no. of members",
   "1 - 2 Members",
   "3 - 4 Members",
   "5 - 7 Members",
@@ -29,6 +31,7 @@ const MEMBER_OPTIONS = [
 ] as const;
 
 const DURATION_OPTIONS = [
+  "Select trip duration",
   "1 Day (Same Day)",
   "2 Days / 1 Night",
   "3 Days / 2 Nights",
@@ -42,7 +45,7 @@ export default function StickyQuoteTab() {
   const [phone, setPhone] = useState("");
   const [interest, setInterest] = useState<string>(TRIP_OPTIONS[0]);
   const [vehicleType, setVehicleType] = useState<string>(VEHICLE_OPTIONS[0]);
-  const [members, setMembers] = useState<string>(MEMBER_OPTIONS[1]);
+  const [members, setMembers] = useState<string>(MEMBER_OPTIONS[0]);
   const [tripDays, setTripDays] = useState<string>(DURATION_OPTIONS[0]);
   const [submitted, setSubmitted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -82,9 +85,9 @@ export default function StickyQuoteTab() {
       `• *Name:* ${name.trim()}`,
       `• *WhatsApp:* ${phone.trim()}`,
       `• *Trip Route:* ${interest}`,
-      `• *Vehicle Preference:* ${vehicleType}`,
-      `• *Number of Members:* ${members}`,
-      `• *Trip Duration:* ${tripDays}`,
+      `• *Vehicle Preference:* ${vehicleType && vehicleType !== "Select vehicle type" ? vehicleType : "[Enter vehicle type / name]"}`,
+      `• *No. of Members:* ${members && members !== "Select no. of members" ? members : "[Enter no. of members]"}`,
+      `• *No. of Trip Days:* ${tripDays && tripDays !== "Select trip duration" ? tripDays : "[Enter no. of days]"}`,
       ``,
       `Please share vehicle availability and transparent pricing estimate.`,
     ].join("\n");
@@ -99,7 +102,7 @@ export default function StickyQuoteTab() {
       setPhone("");
       setInterest(TRIP_OPTIONS[0]);
       setVehicleType(VEHICLE_OPTIONS[0]);
-      setMembers(MEMBER_OPTIONS[1]);
+      setMembers(MEMBER_OPTIONS[0]);
       setTripDays(DURATION_OPTIONS[0]);
       setIsOpen(false);
     }, 1500);
