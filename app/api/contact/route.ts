@@ -13,6 +13,8 @@ export async function POST(request: Request) {
       tripDays,
       pickupLocation,
       destination,
+      fromDate,
+      toDate,
       travelDates,
       pickupTime,
       travelDate,
@@ -32,6 +34,14 @@ export async function POST(request: Request) {
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
     const refCode = `RV-${dateStr}-${randomSuffix}`;
 
+    const computedDates =
+      travelDates ||
+      (fromDate && toDate
+        ? fromDate === toDate
+          ? `${fromDate} (Same Day Return)`
+          : `${fromDate} to ${toDate}`
+        : fromDate || travelDate || "Flexible (From – To)");
+
     // Payload for Web3Forms or Email Relay
     const emailPayload = {
       access_key: process.env.WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE",
@@ -47,7 +57,7 @@ export async function POST(request: Request) {
       trip_duration: tripDays || "Not Specified",
       pickup_location: pickupLocation || "Udupi / TBD",
       destination: destination || "TBD",
-      travel_dates: travelDates || travelDate || "Flexible (From – To)",
+      travel_dates: computedDates,
       pickup_time: pickupTime || "Flexible (Optional)",
       additional_notes: message || "No extra notes provided",
     };

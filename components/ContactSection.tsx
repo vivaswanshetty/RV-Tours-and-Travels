@@ -21,7 +21,7 @@ import {
 import { BUSINESS_INFO, FLEET_CATEGORIES } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
-import ModernDatePicker, { ModernTimePicker } from "./ModernDatePicker";
+import ModernDatePicker, { ModernTimePicker, parseDateString } from "./ModernDatePicker";
 
 interface EnquiryHistoryItem {
   id: string;
@@ -34,12 +34,23 @@ interface EnquiryHistoryItem {
   tripDays: string;
   pickupLocation: string;
   destination: string;
+  fromDate?: string;
+  toDate?: string;
   travelDates?: string;
   pickupTime?: string;
   travelDate?: string;
   message?: string;
   createdAt: string;
 }
+
+export const getTravelDatesSummary = (from?: string, to?: string, fallback?: string) => {
+  if (from && to) {
+    return from === to ? `${from} (Same Day Return)` : `${from} to ${to}`;
+  }
+  if (from) return `${from} (Return TBA / One-Way)`;
+  if (to) return `Until ${to}`;
+  return fallback || "";
+};
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -51,6 +62,8 @@ export default function ContactSection() {
     tripDays: "",
     pickupLocation: "",
     destination: "",
+    fromDate: "",
+    toDate: "",
     travelDates: "",
     pickupTime: "Flexible (Optional)",
     message: "",
@@ -91,12 +104,17 @@ export default function ContactSection() {
     tripDays?: string;
     pickupLocation: string;
     destination: string;
+    fromDate?: string;
+    toDate?: string;
     travelDates?: string;
     pickupTime?: string;
     travelDate?: string;
     message?: string;
   }) => {
-    const datesStr = item.travelDates || item.travelDate;
+    const datesStr =
+      item.travelDates ||
+      getTravelDatesSummary(item.fromDate, item.toDate) ||
+      item.travelDate;
     const lines = [
       `Hello Ramesh, I would like to enquire about a booking with RV Tours & Travels (Ref: ${item.refCode}).`,
       ``,
@@ -154,6 +172,8 @@ export default function ContactSection() {
         hour12: true,
       });
 
+    const datesFormatted = getTravelDatesSummary(formData.fromDate, formData.toDate, formData.travelDates);
+
     const newRecord: EnquiryHistoryItem = {
       id: code,
       refCode: code,
@@ -165,9 +185,11 @@ export default function ContactSection() {
       tripDays: formData.tripDays,
       pickupLocation: formData.pickupLocation,
       destination: formData.destination,
-      travelDates: formData.travelDates,
+      fromDate: formData.fromDate,
+      toDate: formData.toDate,
+      travelDates: datesFormatted,
       pickupTime: formData.pickupTime,
-      travelDate: formData.travelDates,
+      travelDate: datesFormatted,
       message: formData.message,
       createdAt: formattedDate,
     };
@@ -189,7 +211,7 @@ export default function ContactSection() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, refCode: code }),
+        body: JSON.stringify({ ...formData, travelDates: datesFormatted, refCode: code }),
       }).catch((err) => console.log("Background record:", err));
     } catch {
       // Ignore background errors
@@ -488,6 +510,8 @@ export default function ContactSection() {
                                     tripDays: item.tripDays || "",
                                     pickupLocation: item.pickupLocation,
                                     destination: item.destination,
+                                    fromDate: item.fromDate || (item.travelDates && item.travelDates.includes(" to ") ? item.travelDates.split(" to ")[0].trim() : (item.travelDates ? item.travelDates.split(" (")[0].trim() : "")),
+                                    toDate: item.toDate || (item.travelDates && item.travelDates.includes(" to ") ? item.travelDates.split(" to ")[1].trim() : ""),
                                     travelDates: item.travelDates || item.travelDate || "",
                                     pickupTime: item.pickupTime || "Flexible (Optional)",
                                     message: item.message || "",
@@ -533,7 +557,7 @@ export default function ContactSection() {
                     <div><span className="text-[#1F4C4C] font-semibold">VEHICLE:</span> {formData.vehicleType || "As Discussed / Advise"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">MEMBERS:</span> {formData.members || "To be specified"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">TRIP DAYS:</span> {formData.tripDays || "To be specified"}</div>
-                    <div><span className="text-[#1F4C4C] font-semibold">TRAVEL DATES:</span> {formData.travelDates || "Flexible (From – To)"}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">TRAVEL DATES:</span> {getTravelDatesSummary(formData.fromDate, formData.toDate, formData.travelDates) || "Flexible (From – To)"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">PICKUP TIME:</span> {formData.pickupTime || "Flexible (Optional)"}</div>
                     {formData.message && (
                       <div className="pt-1 border-t border-[#DCD4C4] text-[11px] text-[#14120F]/70">
@@ -567,6 +591,8 @@ export default function ContactSection() {
                           tripDays: "",
                           pickupLocation: "",
                           destination: "",
+                          fromDate: "",
+                          toDate: "",
                           travelDates: "",
                           pickupTime: "Flexible (Optional)",
                           message: "",
@@ -748,37 +774,54 @@ export default function ContactSection() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Travel Dates (From – To) */}
+                    {/* From Date (Departure) */}
                     <div>
-                      <label htmlFor="travelDates" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5 flex items-center justify-between">
-                        <span>Travel Dates (From – To)</span>
-                        <span className="text-[10px] text-[#B08D3F] font-normal normal-case">Departure ➔ Return</span>
+                      <label htmlFor="fromDate" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5 flex items-center justify-between">
+                        <span>From Date (Departure)</span>
+                        <span className="text-[10px] text-[#B08D3F] font-normal normal-case">Departure date</span>
                       </label>
                       <ModernDatePicker
-                        id="travelDates"
-                        value={formData.travelDates}
-                        onChange={(val) => setFormData({ ...formData, travelDates: val })}
-                        pickupTime={formData.pickupTime}
-                        onTimeChange={(val) => setFormData({ ...formData, pickupTime: val })}
-                        placeholder="Select travel dates (From – To)"
+                        id="fromDate"
+                        value={formData.fromDate}
+                        onChange={(val) => setFormData({ ...formData, fromDate: val })}
+                        placeholder="Select departure date"
+                        label="From Date (Departure)"
                         theme="light"
                       />
                     </div>
 
-                    {/* Pickup Time (Optional) */}
+                    {/* To Date (Return) */}
                     <div>
-                      <label htmlFor="pickupTime" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5 flex items-center justify-between">
-                        <span>Pickup Time (Optional)</span>
-                        <span className="text-[10px] text-stone-500 font-normal normal-case">Non-mandatory</span>
+                      <label htmlFor="toDate" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5 flex items-center justify-between">
+                        <span>To Date (Return)</span>
+                        <span className="text-[10px] text-[#B08D3F] font-normal normal-case">Same day or return date</span>
                       </label>
-                      <ModernTimePicker
-                        id="pickupTime"
-                        value={formData.pickupTime}
-                        onChange={(val) => setFormData({ ...formData, pickupTime: val })}
-                        placeholder="Flexible / As required (Optional)"
+                      <ModernDatePicker
+                        id="toDate"
+                        value={formData.toDate}
+                        onChange={(val) => setFormData({ ...formData, toDate: val })}
+                        minDate={formData.fromDate ? parseDateString(formData.fromDate) : null}
+                        isReturn={true}
+                        placeholder="Select return date"
+                        label="To Date (Return)"
                         theme="light"
                       />
                     </div>
+                  </div>
+
+                  {/* Pickup Time (Optional) */}
+                  <div>
+                    <label htmlFor="pickupTime" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5 flex items-center justify-between">
+                      <span>Pickup Time (Optional)</span>
+                      <span className="text-[10px] text-stone-500 font-normal normal-case">Non-mandatory</span>
+                    </label>
+                    <ModernTimePicker
+                      id="pickupTime"
+                      value={formData.pickupTime}
+                      onChange={(val) => setFormData({ ...formData, pickupTime: val })}
+                      placeholder="Flexible / As required (Optional)"
+                      theme="light"
+                    />
                   </div>
 
                   {/* Message */}

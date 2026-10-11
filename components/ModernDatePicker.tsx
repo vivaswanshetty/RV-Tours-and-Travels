@@ -8,22 +8,18 @@ import {
   ChevronRight,
   X,
   Check,
-  ArrowRight,
-  Sparkles,
 } from "lucide-react";
 
 export interface ModernDatePickerProps {
   value: string;
   onChange: (value: string) => void;
-  startDate?: string;
-  endDate?: string;
-  onRangeChange?: (start: string, end: string, formatted: string) => void;
-  pickupTime?: string;
-  onTimeChange?: (time: string) => void;
+  minDate?: Date | null;
   placeholder?: string;
   id?: string;
   className?: string;
   theme?: "light" | "dark";
+  label?: string;
+  isReturn?: boolean;
 }
 
 export interface ModernTimePickerProps {
@@ -64,36 +60,31 @@ function formatDateDisplay(d: Date): string {
   return `${day} ${m} ${y}`;
 }
 
-function formatDateShort(d: Date): string {
-  const day = d.getDate();
-  const m = MONTH_SHORT[d.getMonth()];
-  return `${day} ${m}`;
-}
-
-function formatRangeString(start: Date, end: Date): string {
-  const startStr = formatDateDisplay(start);
-  const endStr = formatDateDisplay(end);
-
-  const startMidnight = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  const endMidnight = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-  const diffDays = Math.round((endMidnight.getTime() - startMidnight.getTime()) / (1000 * 60 * 60 * 24)) + 1;
-
-  if (diffDays <= 1) {
-    return `${startStr} (Same Day Return)`;
+export function parseDateString(str: string): Date | null {
+  if (!str) return null;
+  const parts = str.trim().split(/\s+/);
+  if (parts.length === 3) {
+    const day = parseInt(parts[0], 10);
+    const monthIndex = MONTH_SHORT.indexOf(parts[1]);
+    const year = parseInt(parts[2], 10);
+    if (!isNaN(day) && monthIndex !== -1 && !isNaN(year)) {
+      return new Date(year, monthIndex, day);
+    }
   }
-  return `${startStr} to ${endStr} (${diffDays} Days)`;
+  const fallback = new Date(str);
+  return isNaN(fallback.getTime()) ? null : fallback;
 }
 
 export default function ModernDatePicker({
   value,
   onChange,
-  onRangeChange,
-  pickupTime,
-  onTimeChange,
-  placeholder = "Select travel dates (From – To)",
-  id = "travelDates",
+  minDate = null,
+  placeholder = "Select date",
+  id = "travelDate",
   className = "",
   theme = "light",
+  label,
+  isReturn = false,
 }: ModernDatePickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -102,17 +93,19 @@ export default function ModernDatePicker({
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
 
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
-  const [hoverDate, setHoverDate] = useState<Date | null>(null);
-
-  // Parse initial value if empty or reset
+  // Set initial calendar view to match value or minDate
   useEffect(() => {
-    if (!value) {
-      setStartDate(null);
-      setEndDate(null);
+    if (value) {
+      const parsed = parseDateString(value);
+      if (parsed) {
+        setCurrentMonth(parsed.getMonth());
+        setCurrentYear(parsed.getFullYear());
+      }
+    } else if (minDate && !isNaN(minDate.getTime())) {
+      setCurrentMonth(minDate.getMonth());
+      setCurrentYear(minDate.getFullYear());
     }
-  }, [value]);
+  }, [value, minDate]);
 
   // Handle outside click and escape
   useEffect(() => {
@@ -157,58 +150,34 @@ export default function ModernDatePicker({
     }
   };
 
-  const commitRange = (start: Date, end: Date) => {
-    const formatted = formatRangeString(start, end);
+  const handleSelectDate = (day: number) => {
+    const selected = new Date(currentYear, currentMonth, day);
+    const formatted = formatDateDisplay(selected);
     onChange(formatted);
-    if (onRangeChange) {
-      onRangeChange(formatDateDisplay(start), formatDateDisplay(end), formatted);
-    }
+    setIsOpen(false);
   };
 
-  const handleDateClick = (day: number) => {
-    const clicked = new Date(currentYear, currentMonth, day);
-
-    // If starting fresh or both already set, set start date
-    if (!startDate || (startDate && endDate)) {
-      setStartDate(clicked);
-      setEndDate(null);
-      // Temporary 1-day value while waiting for return date
-      const singleFormatted = `${formatDateDisplay(clicked)} (Tap return date)`;
-      onChange(singleFormatted);
-      return;
+  const applyPreset = (offsetDays: number) => {
+    let base = new Date();
+    if (minDate && isReturn && !isNaN(minDate.getTime())) {
+      base = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
     }
-
-    // If start is set, choosing return / end date
-    if (startDate && !endDate) {
-      if (clicked < startDate) {
-        // Clicked before start, restart with this as start
-        setStartDate(clicked);
-        setEndDate(null);
-        onChange(`${formatDateDisplay(clicked)} (Tap return date)`);
-      } else {
-        // Valid end date selected
-        setEndDate(clicked);
-        commitRange(startDate, clicked);
-      }
-    }
-  };
-
-  const applyPreset = (daysCount: number, startOffset = 0) => {
-    const s = new Date();
-    s.setDate(s.getDate() + startOffset);
-    const e = new Date(s);
-    e.setDate(s.getDate() + (daysCount - 1));
-
-    setCurrentMonth(s.getMonth());
-    setCurrentYear(s.getFullYear());
-    setStartDate(s);
-    setEndDate(e);
-    commitRange(s, e);
+    base.setDate(base.getDate() + offsetDays);
+    setCurrentMonth(base.getMonth());
+    setCurrentYear(base.getFullYear());
+    onChange(formatDateDisplay(base));
+    setIsOpen(false);
   };
 
   const isPastDate = (day: number) => {
     const dateToCheck = new Date(currentYear, currentMonth, day);
     const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+    if (minDate && isReturn) {
+      const minMidnight = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
+      return dateToCheck < minMidnight;
+    }
+
     return dateToCheck < startOfToday;
   };
 
@@ -220,44 +189,24 @@ export default function ModernDatePicker({
     );
   };
 
-  const isStart = (day: number) => {
-    if (!startDate) return false;
+  const isSelected = (day: number) => {
+    if (!value) return false;
+    const parsed = parseDateString(value);
+    if (!parsed) return false;
     return (
-      day === startDate.getDate() &&
-      currentMonth === startDate.getMonth() &&
-      currentYear === startDate.getFullYear()
+      day === parsed.getDate() &&
+      currentMonth === parsed.getMonth() &&
+      currentYear === parsed.getFullYear()
     );
-  };
-
-  const isEnd = (day: number) => {
-    if (!endDate) return false;
-    return (
-      day === endDate.getDate() &&
-      currentMonth === endDate.getMonth() &&
-      currentYear === endDate.getFullYear()
-    );
-  };
-
-  const isInRange = (day: number) => {
-    const current = new Date(currentYear, currentMonth, day);
-    if (startDate && endDate) {
-      return current > startDate && current < endDate;
-    }
-    if (startDate && !endDate && hoverDate) {
-      return current > startDate && current <= hoverDate;
-    }
-    return false;
   };
 
   const clearSelection = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setStartDate(null);
-    setEndDate(null);
     onChange("");
-    if (onRangeChange) onRangeChange("", "", "");
   };
 
   const isLight = theme === "light";
+  const displayTitle = label || (isReturn ? "Return Date (To)" : "Departure Date (From)");
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
@@ -273,7 +222,7 @@ export default function ModernDatePicker({
         }`}
         aria-expanded={isOpen}
         aria-haspopup="dialog"
-        aria-label="Pick travel dates from this to this"
+        aria-label={`Select ${displayTitle}`}
       >
         <span className="flex items-center gap-2.5 truncate">
           <CalendarIcon className="w-4 h-4 text-[#C9A227] shrink-0" />
@@ -291,7 +240,7 @@ export default function ModernDatePicker({
               if (e.key === "Enter" || e.key === " ") clearSelection(e as any);
             }}
             className="p-1 text-stone-400 hover:text-[#C9A227] transition-colors cursor-pointer"
-            title="Clear travel dates"
+            title="Clear date"
           >
             <X className="w-3.5 h-3.5" />
           </span>
@@ -302,76 +251,93 @@ export default function ModernDatePicker({
 
       <input type="hidden" name={id} value={value} />
 
-      {/* Popover Range Calendar */}
+      {/* Popover Calendar */}
       {isOpen && (
-        <div className="absolute z-50 top-full left-0 right-0 sm:right-auto sm:w-[380px] mt-2 bg-[#181510] border border-[#B08D3F] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] p-4 sm:p-5 font-mono animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl text-[#F6F3EC]">
-          {/* Header Title with Range Progress */}
-          <div className="mb-3 pb-3 border-b border-[#383229] flex items-center justify-between">
-            <div>
-              <div className="text-xs font-bold text-[#E0C068] uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#C9A227]" />
-                <span>Travel Dates (From – To)</span>
-              </div>
-              <div className="text-[11px] text-[#F6F3EC]/70 mt-0.5">
-                {!startDate && "Step 1: Pick departure / start date"}
-                {startDate && !endDate && "Step 2: Pick return date (or tap same date for 1 day)"}
-                {startDate && endDate && (
-                  <span className="text-[#C9A227] font-semibold">
-                    ✓ {formatDateShort(startDate)} ➔ {formatDateShort(endDate)} ({formatRangeString(startDate, endDate).split("(")[1]}
-                  </span>
-                )}
-              </div>
+        <div className="absolute z-50 top-full left-0 right-0 sm:right-auto sm:w-[340px] mt-2 bg-[#181510] border border-[#B08D3F] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] p-4 font-mono animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl text-[#F6F3EC]">
+          {/* Header Title */}
+          <div className="mb-3 pb-2.5 border-b border-[#383229] flex items-center justify-between">
+            <div className="text-xs font-bold text-[#E0C068] uppercase tracking-wider flex items-center gap-1.5">
+              <CalendarIcon className="w-3.5 h-3.5 text-[#C9A227]" />
+              <span>{displayTitle}</span>
             </div>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="p-1 text-[#F6F3EC]/60 hover:text-white transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
 
-            {/* Same day quick shortcut */}
-            {startDate && !endDate && (
-              <button
-                type="button"
-                onClick={() => {
-                  setEndDate(startDate);
-                  commitRange(startDate, startDate);
-                }}
-                className="text-[10px] uppercase font-bold px-2 py-1 bg-[#B08D3F]/20 text-[#E0C068] border border-[#B08D3F] rounded hover:bg-[#B08D3F] hover:text-[#14120F] transition-colors"
-              >
-                1-Day Trip
-              </button>
+          {/* Quick Presets */}
+          <div className="grid grid-cols-4 gap-1.5 mb-3">
+            {!isReturn ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(0)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  Today
+                </button>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(1)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  Tomorrow
+                </button>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(2)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  In 2 Days
+                </button>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(7)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  +1 Week
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(0)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  Same Day
+                </button>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(1)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  +1 Day
+                </button>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(2)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  +2 Days
+                </button>
+                <button
+                  type="button"
+                  onClick={() => applyPreset(7)}
+                  className="py-1 px-1 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
+                >
+                  +1 Week
+                </button>
+              </>
             )}
           </div>
 
-          {/* Quick Presets Strip */}
-          <div className="grid grid-cols-4 gap-1.5 mb-3.5">
-            <button
-              type="button"
-              onClick={() => applyPreset(1, 0)}
-              className="py-1 px-1.5 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
-            >
-              Today
-            </button>
-            <button
-              type="button"
-              onClick={() => applyPreset(1, 1)}
-              className="py-1 px-1.5 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
-            >
-              Tomorrow
-            </button>
-            <button
-              type="button"
-              onClick={() => applyPreset(2, 0)}
-              className="py-1 px-1.5 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
-            >
-              2 Days
-            </button>
-            <button
-              type="button"
-              onClick={() => applyPreset(3, 0)}
-              className="py-1 px-1.5 text-[10px] bg-[#14120F] hover:bg-[#B08D3F]/20 hover:text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] rounded text-center text-[#F6F3EC]/80 uppercase transition-colors"
-            >
-              3 Days
-            </button>
-          </div>
-
           {/* Month / Year Navigator */}
-          <div className="flex items-center justify-between mb-2.5">
+          <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-[#F6F3EC] uppercase tracking-widest flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227]" />
               <span>
@@ -408,7 +374,7 @@ export default function ModernDatePicker({
             ))}
           </div>
 
-          {/* Calendar Day Grid */}
+          {/* Day Grid */}
           <div className="grid grid-cols-7 gap-1 text-center mb-3">
             {Array.from({ length: firstDayIndex }).map((_, i) => (
               <div key={`empty-${i}`} className="h-8" />
@@ -417,24 +383,15 @@ export default function ModernDatePicker({
             {Array.from({ length: daysInMonth }).map((_, i) => {
               const dayNum = i + 1;
               const past = isPastDate(dayNum);
-              const start = isStart(dayNum);
-              const end = isEnd(dayNum);
-              const inRange = isInRange(dayNum);
+              const selected = isSelected(dayNum);
               const current = isToday(dayNum);
 
               let styleClasses = "text-[#F6F3EC] hover:bg-[#B08D3F]/20 hover:text-[#E0C068]";
 
               if (past) {
                 styleClasses = "text-[#F6F3EC]/20 cursor-not-allowed";
-              } else if (start && end) {
-                // Same day single date
+              } else if (selected) {
                 styleClasses = "bg-gradient-to-r from-[#B08D3F] to-[#E0C068] text-[#14120F] font-bold shadow-md rounded-md";
-              } else if (start) {
-                styleClasses = "bg-gradient-to-r from-[#B08D3F] to-[#C9A227] text-[#14120F] font-bold rounded-l-md shadow-md";
-              } else if (end) {
-                styleClasses = "bg-gradient-to-r from-[#C9A227] to-[#B08D3F] text-[#14120F] font-bold rounded-r-md shadow-md";
-              } else if (inRange) {
-                styleClasses = "bg-[#B08D3F]/25 text-[#E0C068] font-semibold";
               } else if (current) {
                 styleClasses = "border border-[#B08D3F]/70 text-[#C9A227]";
               }
@@ -444,27 +401,11 @@ export default function ModernDatePicker({
                   key={`day-${dayNum}`}
                   type="button"
                   disabled={past}
-                  onClick={() => handleDateClick(dayNum)}
-                  onMouseEnter={() => {
-                    if (startDate && !endDate && !past) {
-                      setHoverDate(new Date(currentYear, currentMonth, dayNum));
-                    }
-                  }}
-                  onMouseLeave={() => setHoverDate(null)}
+                  onClick={() => handleSelectDate(dayNum)}
                   className={`h-8 text-xs font-semibold transition-all flex flex-col items-center justify-center relative cursor-pointer ${styleClasses}`}
                 >
                   <span>{dayNum}</span>
-                  {start && !end && (
-                    <span className="text-[7px] uppercase font-bold text-[#14120F] leading-none absolute -bottom-0.5">
-                      FROM
-                    </span>
-                  )}
-                  {end && !start && (
-                    <span className="text-[7px] uppercase font-bold text-[#14120F] leading-none absolute -bottom-0.5">
-                      TO
-                    </span>
-                  )}
-                  {current && !start && !end && !inRange && (
+                  {current && !selected && (
                     <span className="w-1 h-1 rounded-full bg-[#C9A227] absolute bottom-0.5" />
                   )}
                 </button>
@@ -472,57 +413,18 @@ export default function ModernDatePicker({
             })}
           </div>
 
-          {/* Optional Pickup Time selector integrated into bottom of modal */}
-          {onTimeChange && (
-            <div className="pt-2.5 border-t border-[#383229]">
-              <div className="flex items-center justify-between text-[11px] text-[#B08D3F] uppercase tracking-wider font-bold mb-1.5">
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#C9A227]" />
-                  Pickup Time <span className="text-stone-400 font-normal lowercase">(optional)</span>
-                </span>
-                <span className="text-[#F6F3EC] text-[11px] font-semibold">
-                  {pickupTime || "Flexible"}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-4 gap-1">
-                {TIME_PRESETS.slice(0, 4).map((p) => {
-                  const active = pickupTime === p.value || (!pickupTime && p.label === "Flexible");
-                  return (
-                    <button
-                      key={p.label}
-                      type="button"
-                      onClick={() => onTimeChange(p.value)}
-                      className={`py-1 px-1 rounded text-[9px] border text-center transition-all ${
-                        active
-                          ? "bg-[#B08D3F] text-[#14120F] font-bold border-[#E0C068]"
-                          : "bg-[#14120F] text-[#F6F3EC]/70 border-[#383229] hover:border-[#B08D3F]"
-                      }`}
-                    >
-                      {p.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* Modal Footer */}
-          <div className="mt-3 pt-2.5 border-t border-[#383229] flex items-center justify-between gap-2">
-            <button
-              type="button"
-              onClick={clearSelection}
-              className="text-[10px] text-stone-400 hover:text-[#E0C068] uppercase underline underline-offset-2 transition-colors cursor-pointer"
-            >
-              Reset Dates
-            </button>
+          {/* Footer */}
+          <div className="pt-2 border-t border-[#383229] flex items-center justify-between text-[11px]">
+            <span className="text-stone-400">
+              {value ? <span className="text-[#E0C068] font-bold">✓ {value}</span> : "Select a day"}
+            </span>
 
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="px-3.5 py-1.5 bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] rounded text-xs uppercase font-bold tracking-wider transition-colors flex items-center gap-1 shrink-0 cursor-pointer"
+              className="px-3 py-1 bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] rounded text-xs uppercase font-bold tracking-wider transition-colors flex items-center gap-1"
             >
-              <Check className="w-3.5 h-3.5" />
+              <Check className="w-3 h-3" />
               <span>Done</span>
             </button>
           </div>

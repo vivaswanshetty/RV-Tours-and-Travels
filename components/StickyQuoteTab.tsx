@@ -5,7 +5,6 @@ import {
   X,
   Compass,
   CheckCircle2,
-  Sparkles,
   ShieldCheck,
   MapPin,
   Calendar,
@@ -18,7 +17,7 @@ import {
 } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
-import ModernDatePicker, { ModernTimePicker } from "./ModernDatePicker";
+import ModernDatePicker, { ModernTimePicker, parseDateString } from "./ModernDatePicker";
 
 const TRIP_OPTIONS = [
   "Airport Drop / Pickup",
@@ -54,6 +53,15 @@ const DURATION_OPTIONS = [
   "5+ Days (Custom)",
 ] as const;
 
+const getTravelDatesSummary = (from: string, to: string) => {
+  if (from && to) {
+    return from === to ? `${from} (Same Day Return)` : `${from} to ${to}`;
+  }
+  if (from) return `${from} (Return TBA / One-Way)`;
+  if (to) return `Until ${to}`;
+  return "";
+};
+
 export default function StickyQuoteTab() {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -63,7 +71,8 @@ export default function StickyQuoteTab() {
   const [vehicleType, setVehicleType] = useState<string>(VEHICLE_OPTIONS[0]);
   const [members, setMembers] = useState<string>(MEMBER_OPTIONS[0]);
   const [tripDays, setTripDays] = useState<string>(DURATION_OPTIONS[0]);
-  const [travelDates, setTravelDates] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
   const [pickupTime, setPickupTime] = useState("Flexible (Optional)");
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -100,6 +109,8 @@ export default function StickyQuoteTab() {
       ? `${destinationCustom.trim()} (mention if any other places also)`
       : `${interest} (mention if any other places also)`;
 
+    const datesStr = getTravelDatesSummary(fromDate, toDate);
+
     const message = [
       `Hello Ramesh, I would like to plan a trip with RV Tours & Travels.`,
       ``,
@@ -110,7 +121,7 @@ export default function StickyQuoteTab() {
       `• *Vehicle Preference:* ${vehicleType && vehicleType !== "Select vehicle type" ? vehicleType : "[Enter vehicle type / name]"}`,
       `• *No. of Members:* ${members && members !== "Select no. of members" ? members : "[Enter no. of members]"}`,
       `• *No. of Trip Days:* ${tripDays && tripDays !== "Select trip duration" ? tripDays : "[Enter no. of days]"}`,
-      `• *Travel Dates:* ${travelDates ? travelDates : "[Enter travel dates (From – To)]"}`,
+      `• *Travel Dates:* ${datesStr ? datesStr : "[Enter travel dates (From – To)]"}`,
       `• *Pickup Time (Optional):* ${pickupTime && pickupTime !== "Flexible (Optional)" ? pickupTime : "Flexible / Not specified (Optional)"}`,
     ];
 
@@ -137,7 +148,8 @@ export default function StickyQuoteTab() {
       setVehicleType(VEHICLE_OPTIONS[0]);
       setMembers(MEMBER_OPTIONS[0]);
       setTripDays(DURATION_OPTIONS[0]);
-      setTravelDates("");
+      setFromDate("");
+      setToDate("");
       setPickupTime("Flexible (Optional)");
       setNotes("");
       setIsOpen(false);
@@ -432,26 +444,49 @@ export default function StickyQuoteTab() {
                         </div>
                       </div>
 
-                      {/* Field 8: Travel Dates (From – To) */}
-                      <div className="space-y-1.5">
-                        <label
-                          htmlFor="quote-tab-dates"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
-                        >
-                          <span>Travel Dates (From – To)</span>
-                          <span className="text-[10px] text-stone-400 font-normal lowercase">
-                            departure ➔ return
-                          </span>
-                        </label>
-                        <ModernDatePicker
-                          id="quote-tab-dates"
-                          value={travelDates}
-                          onChange={(val) => setTravelDates(val)}
-                          pickupTime={pickupTime}
-                          onTimeChange={(val) => setPickupTime(val)}
-                          placeholder="Select travel dates (From – To)"
-                          theme="dark"
-                        />
+                      {/* Field 8: Travel Dates (Separate From & To Date Pickers) */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div className="space-y-1.5">
+                          <label
+                            htmlFor="quote-tab-from-date"
+                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                          >
+                            <span>From Date (Departure)</span>
+                            <span className="text-[10px] text-stone-400 font-normal lowercase">
+                              departure
+                            </span>
+                          </label>
+                          <ModernDatePicker
+                            id="quote-tab-from-date"
+                            value={fromDate}
+                            onChange={(val) => setFromDate(val)}
+                            placeholder="Select departure date"
+                            label="From Date (Departure)"
+                            theme="dark"
+                          />
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label
+                            htmlFor="quote-tab-to-date"
+                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                          >
+                            <span>To Date (Return)</span>
+                            <span className="text-[10px] text-stone-400 font-normal lowercase">
+                              return
+                            </span>
+                          </label>
+                          <ModernDatePicker
+                            id="quote-tab-to-date"
+                            value={toDate}
+                            onChange={(val) => setToDate(val)}
+                            minDate={fromDate ? parseDateString(fromDate) : null}
+                            isReturn={true}
+                            placeholder="Select return date"
+                            label="To Date (Return)"
+                            theme="dark"
+                          />
+                        </div>
                       </div>
 
                       {/* Field 9: Pickup Time (Optional) */}
