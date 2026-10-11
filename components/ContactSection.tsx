@@ -21,7 +21,7 @@ import {
 import { BUSINESS_INFO, FLEET_CATEGORIES } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
-import ModernDatePicker from "./ModernDatePicker";
+import ModernDatePicker, { ModernTimePicker } from "./ModernDatePicker";
 
 interface EnquiryHistoryItem {
   id: string;
@@ -34,7 +34,9 @@ interface EnquiryHistoryItem {
   tripDays: string;
   pickupLocation: string;
   destination: string;
-  travelDate: string;
+  travelDates?: string;
+  pickupTime?: string;
+  travelDate?: string;
   message?: string;
   createdAt: string;
 }
@@ -49,7 +51,8 @@ export default function ContactSection() {
     tripDays: "",
     pickupLocation: "",
     destination: "",
-    travelDate: "",
+    travelDates: "",
+    pickupTime: "Flexible (Optional)",
     message: "",
   });
 
@@ -88,9 +91,12 @@ export default function ContactSection() {
     tripDays?: string;
     pickupLocation: string;
     destination: string;
-    travelDate: string;
+    travelDates?: string;
+    pickupTime?: string;
+    travelDate?: string;
     message?: string;
   }) => {
+    const datesStr = item.travelDates || item.travelDate;
     const lines = [
       `Hello Ramesh, I would like to enquire about a booking with RV Tours & Travels (Ref: ${item.refCode}).`,
       ``,
@@ -103,7 +109,8 @@ export default function ContactSection() {
       `• *No. of Trip Days:* ${item.tripDays && item.tripDays.trim() ? item.tripDays : "[Enter no. of days]"}`,
       `• *Pickup Location:* ${item.pickupLocation || "Udupi / Manipal area"}`,
       `• *Destination:* ${item.destination ? `${item.destination} (mention if any other places also)` : "[Enter destination — mention if any other places also]"}`,
-      `• *Travel Date & Time:* ${item.travelDate || "Flexible / Not specified"}`,
+      `• *Travel Dates:* ${datesStr ? datesStr : "[Enter travel dates (From – To)]"}`,
+      `• *Pickup Time (Optional):* ${item.pickupTime && item.pickupTime !== "Flexible (Optional)" ? item.pickupTime : "Flexible / Not specified (Optional)"}`,
     ];
 
     if (item.message && item.message.trim()) {
@@ -158,7 +165,9 @@ export default function ContactSection() {
       tripDays: formData.tripDays,
       pickupLocation: formData.pickupLocation,
       destination: formData.destination,
-      travelDate: formData.travelDate,
+      travelDates: formData.travelDates,
+      pickupTime: formData.pickupTime,
+      travelDate: formData.travelDates,
       message: formData.message,
       createdAt: formattedDate,
     };
@@ -441,9 +450,12 @@ export default function ContactSection() {
                               </div>
                             </div>
 
-                            {item.travelDate && (
+                            {(item.travelDates || item.travelDate) && (
                               <div className="font-mono text-[11px] text-[#14120F]/70">
-                                <span className="text-[#1F4C4C] font-semibold">Date &amp; Time:</span> {item.travelDate}
+                                <span className="text-[#1F4C4C] font-semibold">Travel Dates:</span> {item.travelDates || item.travelDate}
+                                {item.pickupTime && item.pickupTime !== "Flexible (Optional)" && (
+                                  <span className="ml-2 text-stone-500">· Time: {item.pickupTime}</span>
+                                )}
                               </div>
                             )}
 
@@ -476,7 +488,8 @@ export default function ContactSection() {
                                     tripDays: item.tripDays || "",
                                     pickupLocation: item.pickupLocation,
                                     destination: item.destination,
-                                    travelDate: item.travelDate,
+                                    travelDates: item.travelDates || item.travelDate || "",
+                                    pickupTime: item.pickupTime || "Flexible (Optional)",
                                     message: item.message || "",
                                   });
                                   setSubmitted(false);
@@ -520,7 +533,8 @@ export default function ContactSection() {
                     <div><span className="text-[#1F4C4C] font-semibold">VEHICLE:</span> {formData.vehicleType || "As Discussed / Advise"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">MEMBERS:</span> {formData.members || "To be specified"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">TRIP DAYS:</span> {formData.tripDays || "To be specified"}</div>
-                    <div><span className="text-[#1F4C4C] font-semibold">DATE:</span> {formData.travelDate || "Flexible"}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">TRAVEL DATES:</span> {formData.travelDates || "Flexible (From – To)"}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">PICKUP TIME:</span> {formData.pickupTime || "Flexible (Optional)"}</div>
                     {formData.message && (
                       <div className="pt-1 border-t border-[#DCD4C4] text-[11px] text-[#14120F]/70">
                         <span className="text-[#1F4C4C] font-semibold">NOTES:</span> {formData.message}
@@ -553,7 +567,8 @@ export default function ContactSection() {
                           tripDays: "",
                           pickupLocation: "",
                           destination: "",
-                          travelDate: "",
+                          travelDates: "",
+                          pickupTime: "Flexible (Optional)",
                           message: "",
                         });
                       }}
@@ -696,7 +711,7 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Pickup Location */}
                     <div>
                       <label htmlFor="pickupLocation" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
@@ -730,17 +745,38 @@ export default function ContactSection() {
                         className="w-full px-4 py-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-sm text-[#14120F] focus:border-[#B08D3F] focus:outline-none font-mono"
                       />
                     </div>
+                  </div>
 
-                    {/* Travel Date */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Travel Dates (From – To) */}
                     <div>
-                      <label htmlFor="travelDate" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5">
-                        Travel Date &amp; Time
+                      <label htmlFor="travelDates" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5 flex items-center justify-between">
+                        <span>Travel Dates (From – To)</span>
+                        <span className="text-[10px] text-[#B08D3F] font-normal normal-case">Departure ➔ Return</span>
                       </label>
                       <ModernDatePicker
-                        id="travelDate"
-                        value={formData.travelDate}
-                        onChange={(val) => setFormData({ ...formData, travelDate: val })}
-                        placeholder="Select travel date &amp; time"
+                        id="travelDates"
+                        value={formData.travelDates}
+                        onChange={(val) => setFormData({ ...formData, travelDates: val })}
+                        pickupTime={formData.pickupTime}
+                        onTimeChange={(val) => setFormData({ ...formData, pickupTime: val })}
+                        placeholder="Select travel dates (From – To)"
+                        theme="light"
+                      />
+                    </div>
+
+                    {/* Pickup Time (Optional) */}
+                    <div>
+                      <label htmlFor="pickupTime" className="block font-mono text-xs text-[#1F4C4C] uppercase tracking-wider font-bold mb-1.5 flex items-center justify-between">
+                        <span>Pickup Time (Optional)</span>
+                        <span className="text-[10px] text-stone-500 font-normal normal-case">Non-mandatory</span>
+                      </label>
+                      <ModernTimePicker
+                        id="pickupTime"
+                        value={formData.pickupTime}
+                        onChange={(val) => setFormData({ ...formData, pickupTime: val })}
+                        placeholder="Flexible / As required (Optional)"
+                        theme="light"
                       />
                     </div>
                   </div>

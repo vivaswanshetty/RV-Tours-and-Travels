@@ -13,6 +13,8 @@ export async function POST(request: Request) {
       tripDays,
       pickupLocation,
       destination,
+      travelDates,
+      pickupTime,
       travelDate,
       message,
     } = body;
@@ -45,7 +47,8 @@ export async function POST(request: Request) {
       trip_duration: tripDays || "Not Specified",
       pickup_location: pickupLocation || "Udupi / TBD",
       destination: destination || "TBD",
-      travel_date: travelDate || "TBD",
+      travel_dates: travelDates || travelDate || "Flexible (From – To)",
+      pickup_time: pickupTime || "Flexible (Optional)",
       additional_notes: message || "No extra notes provided",
     };
 

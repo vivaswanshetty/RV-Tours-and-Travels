@@ -14,12 +14,12 @@ export default function Hero() {
     {
       label: "✈️ Mangalore Airport (IXE)",
       query:
-        "Hello Ramesh, I want to book a Mangalore Airport (IXE) cab with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination / Route:* Udupi / Manipal ⇄ Mangalore Airport (IXE) (mention if any other places / stops also)\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease share availability and fare estimate.",
+        "Hello Ramesh, I want to book a Mangalore Airport (IXE) cab with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination / Route:* Udupi / Manipal ⇄ Mangalore Airport (IXE) (mention if any other places / stops also)\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease share availability and fare estimate.",
     },
     {
       label: "🚗 All-Karnataka Outstation",
       query:
-        "Hello Ramesh, I need a chauffeur for an outstation Karnataka trip with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination / Route:* Outstation Karnataka Road Trip (mention if any other places also)\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n\nPlease share availability and tariff details.",
+        "Hello Ramesh, I need a chauffeur for an outstation Karnataka trip with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination / Route:* Outstation Karnataka Road Trip (mention if any other places also)\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease share availability and tariff details.",
     },
   ];
 

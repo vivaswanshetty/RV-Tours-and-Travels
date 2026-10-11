@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { X, Send, Compass, CheckCircle2 } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
+import ModernDatePicker, { ModernTimePicker } from "./ModernDatePicker";
 
 const TRIP_OPTIONS = [
   "Airport Drop / Pickup",
@@ -47,6 +48,8 @@ export default function StickyQuoteTab() {
   const [vehicleType, setVehicleType] = useState<string>(VEHICLE_OPTIONS[0]);
   const [members, setMembers] = useState<string>(MEMBER_OPTIONS[0]);
   const [tripDays, setTripDays] = useState<string>(DURATION_OPTIONS[0]);
+  const [travelDates, setTravelDates] = useState("");
+  const [pickupTime, setPickupTime] = useState("Flexible (Optional)");
   const [submitted, setSubmitted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -88,6 +91,8 @@ export default function StickyQuoteTab() {
       `• *Vehicle Preference:* ${vehicleType && vehicleType !== "Select vehicle type" ? vehicleType : "[Enter vehicle type / name]"}`,
       `• *No. of Members:* ${members && members !== "Select no. of members" ? members : "[Enter no. of members]"}`,
       `• *No. of Trip Days:* ${tripDays && tripDays !== "Select trip duration" ? tripDays : "[Enter no. of days]"}`,
+      `• *Travel Dates:* ${travelDates ? travelDates : "[Enter travel dates (From – To)]"}`,
+      `• *Pickup Time (Optional):* ${pickupTime && pickupTime !== "Flexible (Optional)" ? pickupTime : "Flexible / Not specified (Optional)"}`,
       ``,
       `Please share vehicle availability and transparent pricing estimate.`,
     ].join("\n");
@@ -104,6 +109,8 @@ export default function StickyQuoteTab() {
       setVehicleType(VEHICLE_OPTIONS[0]);
       setMembers(MEMBER_OPTIONS[0]);
       setTripDays(DURATION_OPTIONS[0]);
+      setTravelDates("");
+      setPickupTime("Flexible (Optional)");
       setIsOpen(false);
     }, 1500);
   };
@@ -334,6 +341,43 @@ export default function StickyQuoteTab() {
                     ))}
                   </select>
                 </div>
+              </div>
+
+              {/* Field 7: Travel Dates (From – To) */}
+              <div className="space-y-1">
+                <label
+                  htmlFor="quote-tab-dates"
+                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
+                >
+                  Travel Dates (From – To)
+                </label>
+                <ModernDatePicker
+                  id="quote-tab-dates"
+                  value={travelDates}
+                  onChange={(val) => setTravelDates(val)}
+                  pickupTime={pickupTime}
+                  onTimeChange={(val) => setPickupTime(val)}
+                  placeholder="Select travel dates (From – To)"
+                  theme="dark"
+                />
+              </div>
+
+              {/* Field 8: Pickup Time (Optional) */}
+              <div className="space-y-1">
+                <label
+                  htmlFor="quote-tab-time"
+                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                >
+                  <span>Pickup Time (Optional)</span>
+                  <span className="text-[9px] text-[#F6F3EC]/50 font-normal normal-case">Non-mandatory</span>
+                </label>
+                <ModernTimePicker
+                  id="quote-tab-time"
+                  value={pickupTime}
+                  onChange={(val) => setPickupTime(val)}
+                  placeholder="Flexible / As required (Optional)"
+                  theme="dark"
+                />
               </div>
 
               {/* Ticket Perforation Divider */}
