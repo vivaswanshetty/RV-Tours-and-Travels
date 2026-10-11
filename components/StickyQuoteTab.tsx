@@ -1,7 +1,21 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { X, Send, Compass, CheckCircle2 } from "lucide-react";
+import {
+  X,
+  Compass,
+  CheckCircle2,
+  Sparkles,
+  ShieldCheck,
+  MapPin,
+  Calendar,
+  Clock,
+  User,
+  Phone,
+  Car,
+  Users,
+  FileText,
+} from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
 import ModernDatePicker, { ModernTimePicker } from "./ModernDatePicker";
@@ -11,7 +25,7 @@ const TRIP_OPTIONS = [
   "Karnataka Temple Circuit",
   "Goa Coastal Tour",
   "Kerala, Mysuru & Coorg Tour",
-  "Custom Outstation Trip",
+  "Custom Outstation Road Trip",
 ] as const;
 
 const VEHICLE_OPTIONS = [
@@ -45,11 +59,13 @@ export default function StickyQuoteTab() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [interest, setInterest] = useState<string>(TRIP_OPTIONS[0]);
+  const [destinationCustom, setDestinationCustom] = useState("");
   const [vehicleType, setVehicleType] = useState<string>(VEHICLE_OPTIONS[0]);
   const [members, setMembers] = useState<string>(MEMBER_OPTIONS[0]);
   const [tripDays, setTripDays] = useState<string>(DURATION_OPTIONS[0]);
   const [travelDates, setTravelDates] = useState("");
   const [pickupTime, setPickupTime] = useState("Flexible (Optional)");
+  const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -64,40 +80,51 @@ export default function StickyQuoteTab() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
-  // Close when clicking outside panel
+  // Lock body scroll when window modal is open
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
     }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isOpen]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) return;
 
+    const destStr = destinationCustom.trim()
+      ? `${destinationCustom.trim()} (mention if any other places also)`
+      : `${interest} (mention if any other places also)`;
+
     const message = [
       `Hello Ramesh, I would like to plan a trip with RV Tours & Travels.`,
       ``,
       `*Trip Enquiry Details:*`,
-      `• *Name:* ${name.trim()}`,
+      `• *Passenger Name:* ${name.trim()}`,
       `• *WhatsApp:* ${phone.trim()}`,
-      `• *Destination / Route:* ${interest} (mention if any other places also)`,
+      `• *Destination / Route:* ${destStr}`,
       `• *Vehicle Preference:* ${vehicleType && vehicleType !== "Select vehicle type" ? vehicleType : "[Enter vehicle type / name]"}`,
       `• *No. of Members:* ${members && members !== "Select no. of members" ? members : "[Enter no. of members]"}`,
       `• *No. of Trip Days:* ${tripDays && tripDays !== "Select trip duration" ? tripDays : "[Enter no. of days]"}`,
       `• *Travel Dates:* ${travelDates ? travelDates : "[Enter travel dates (From – To)]"}`,
       `• *Pickup Time (Optional):* ${pickupTime && pickupTime !== "Flexible (Optional)" ? pickupTime : "Flexible / Not specified (Optional)"}`,
-      ``,
-      `Please share vehicle availability and transparent pricing estimate.`,
-    ].join("\n");
+    ];
 
-    const whatsappUrl = `https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    if (notes.trim()) {
+      message.push(``);
+      message.push(`*Notes / Requests:* ${notes.trim()}`);
+    }
+
+    message.push(``);
+    message.push(`Please share vehicle availability and transparent pricing estimate.`);
+
+    const whatsappUrl = `https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
+      message.join("\n")
+    )}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
     setSubmitted(true);
@@ -106,17 +133,19 @@ export default function StickyQuoteTab() {
       setName("");
       setPhone("");
       setInterest(TRIP_OPTIONS[0]);
+      setDestinationCustom("");
       setVehicleType(VEHICLE_OPTIONS[0]);
       setMembers(MEMBER_OPTIONS[0]);
       setTripDays(DURATION_OPTIONS[0]);
       setTravelDates("");
       setPickupTime("Flexible (Optional)");
+      setNotes("");
       setIsOpen(false);
     }, 1500);
   };
 
   return (
-    <div ref={panelRef} className="print:hidden">
+    <div className="print:hidden">
       {/* Collapsed State: Vertical Ticket Stub on Desktop, Bottom Dock on Mobile */}
       {!isOpen && (
         <>
@@ -124,14 +153,14 @@ export default function StickyQuoteTab() {
           <button
             onClick={() => setIsOpen(true)}
             aria-expanded={isOpen}
-            aria-label="Open Plan My Trip quote form"
+            aria-label="Open Plan My Trip quote window"
             className="hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-[#14120F] text-[#F6F3EC] border-l-2 border-t-2 border-b-2 border-[#B08D3F] hover:border-[#E0C068] rounded-l-xl px-3 py-5 shadow-[-5px_0_25px_rgba(0,0,0,0.6)] hover:shadow-[-5px_0_25px_rgba(176,141,63,0.35)] transition-all duration-300 hover:-translate-x-1 group flex-col items-center gap-3 cursor-pointer"
           >
             {/* Top & Bottom Ticket Notch Cutouts */}
             <span className="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-[#F6F3EC] border border-[#B08D3F]/60" />
             <span className="absolute -left-2 bottom-2 w-3.5 h-3.5 rounded-full bg-[#F6F3EC] border border-[#B08D3F]/60" />
 
-            {/* Compass / Ticket Icon */}
+            {/* Compass Icon */}
             <div className="w-6 h-6 rounded-full bg-[#1F4C4C] border border-[#B08D3F] flex items-center justify-center text-[#E0C068] group-hover:rotate-45 transition-transform duration-300">
               <Compass className="w-3.5 h-3.5" />
             </div>
@@ -144,15 +173,15 @@ export default function StickyQuoteTab() {
               PLAN MY TRIP
             </span>
 
-            {/* Perforated Indicator Dot */}
+            {/* Indicator Dot */}
             <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B] animate-pulse" />
           </button>
 
-          {/* Mobile Bottom-Left Docked Ticket Tab (keeps clear of WhatsApp at bottom-right) */}
+          {/* Mobile Bottom-Left Docked Ticket Tab */}
           <button
             onClick={() => setIsOpen(true)}
             aria-expanded={isOpen}
-            aria-label="Open Plan My Trip quote form"
+            aria-label="Open Plan My Trip quote window"
             className="md:hidden fixed bottom-6 left-4 z-40 bg-[#14120F] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] rounded-full px-4 py-2.5 shadow-2xl flex items-center gap-2 cursor-pointer active:scale-95 transition-all"
           >
             <div className="w-5 h-5 rounded-full bg-[#1F4C4C] border border-[#B08D3F] flex items-center justify-center text-[#E0C068]">
@@ -166,236 +195,336 @@ export default function StickyQuoteTab() {
         </>
       )}
 
-      {/* Expanded Inline State: Ticket Stub Quote Form */}
+      {/* Expanded State: Big Screen-Covering Window Modal */}
       {isOpen && (
         <div
-          role="dialog"
-          aria-label="Plan My Trip Quick Form"
-          className="fixed z-50 md:right-4 md:top-1/2 md:-translate-y-1/2 bottom-4 inset-x-4 md:inset-x-auto w-auto md:w-96 max-h-[92vh] overflow-y-auto bg-[#14120F] text-[#F6F3EC] border-2 border-[#B08D3F] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.85)] p-5 sm:p-6 animate-in fade-in zoom-in-95 duration-200"
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-6 lg:p-8 animate-in fade-in duration-200"
+          onClick={() => setIsOpen(false)}
         >
-          {/* Decorative Corner Notches on Top and Bottom edges */}
-          <span className="absolute -left-2 top-10 w-4 h-4 rounded-full bg-[#F6F3EC] border border-[#B08D3F]" />
-          <span className="absolute -right-2 top-10 w-4 h-4 rounded-full bg-[#F6F3EC] border border-[#B08D3F]" />
+          <div
+            ref={panelRef}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Plan My Trip Window Console"
+            className="w-full max-w-5xl h-auto max-h-[92vh] bg-[#14120F] text-[#F6F3EC] border-2 border-[#B08D3F] rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 relative"
+          >
+            {/* Decorative Corner Notches on Top and Bottom edges */}
+            <span className="hidden sm:block absolute -left-3 top-14 w-6 h-6 rounded-full bg-[#14120F] border-2 border-[#B08D3F] z-20 pointer-events-none" />
+            <span className="hidden sm:block absolute -right-3 top-14 w-6 h-6 rounded-full bg-[#14120F] border-2 border-[#B08D3F] z-20 pointer-events-none" />
 
-          {/* Header Strip */}
-          <div className="flex items-center justify-between pb-3 border-b border-[#383229] mb-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded bg-[#1C1914] border border-[#B08D3F] flex items-center justify-center font-display text-sm font-bold text-[#C9A227]">
-                RV
+            {/* Window Top Title Bar */}
+            <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-[#383229] bg-[#181510] shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#14120F] border border-[#B08D3F] flex items-center justify-center font-display text-base font-bold text-[#C9A227] shadow-inner">
+                  RV
+                </div>
+                <div>
+                  <div className="font-display text-base sm:text-lg font-bold text-[#F6F3EC] tracking-wide flex items-center gap-2">
+                    <span>Plan My Trip</span>
+                    <span className="hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded bg-[#B08D3F]/20 text-[#E0C068] border border-[#B08D3F]/50 font-normal">
+                      DISPATCH CONSOLE
+                    </span>
+                  </div>
+                  <div className="font-mono text-[10px] sm:text-[11px] text-[#B08D3F] tracking-wider uppercase flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Direct Owner Dispatch // Proprietor R Ramesh</span>
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="font-display text-base font-bold text-[#F6F3EC] tracking-wide">
-                  Plan My Trip
-                </div>
-                <div className="font-mono text-[10px] text-[#B08D3F] tracking-widest uppercase">
-                  DIRECT DISPATCH // R RAMESH
-                </div>
+
+              {/* Close Button & ESC hint */}
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="hidden sm:inline-block font-mono text-[10px] text-[#F6F3EC]/40 uppercase tracking-widest border border-white/10 px-2 py-1 rounded">
+                  ESC to close
+                </span>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg text-[#F6F3EC]/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer border border-transparent hover:border-[#B08D3F]"
+                  aria-label="Close trip planning window"
+                  title="Close window"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
             </div>
 
-            {/* Close Control Button */}
-            <button
-              onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded text-[#F6F3EC]/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-              aria-label="Close quote form"
-              title="Close form"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            {/* Window Content Body */}
+            {submitted ? (
+              <div className="p-8 sm:p-16 text-center space-y-4 my-auto animate-in fade-in">
+                <CheckCircle2 className="w-14 h-14 text-emerald-400 mx-auto animate-bounce" />
+                <div className="font-display text-2xl font-bold text-[#F6F3EC]">
+                  Dispatching Your Itinerary to WhatsApp...
+                </div>
+                <p className="font-body text-sm text-[#F6F3EC]/80 max-w-md mx-auto leading-relaxed">
+                  Opening pre-filled message directly with proprietor <strong>R Ramesh</strong> on{" "}
+                  <span className="text-[#E0C068] font-mono">+91 98455 11169</span>.
+                </p>
+                <div className="text-xs font-mono text-[#B08D3F]">
+                  Reference Ref: RV-DISPATCH-{Date.now().toString().slice(-6)}
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
+                <div className="flex-1 overflow-y-auto p-5 sm:p-7 md:p-8 space-y-6">
+                  {/* Master 2-Column Responsive Layout */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                    {/* LEFT COLUMN: Passenger & Sector Logistics */}
+                    <div className="space-y-4">
+                      <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#E0C068] pb-1 border-b border-[#383229] flex items-center gap-2">
+                        <User className="w-3.5 h-3.5 text-[#C9A227]" />
+                        <span>Passenger &amp; Route Logistics</span>
+                      </div>
+
+                      {/* Field 1: Name */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-name"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                        >
+                          Your Name *
+                        </label>
+                        <input
+                          id="quote-tab-name"
+                          type="text"
+                          required
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="e.g. Anand Rao"
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
+                        />
+                      </div>
+
+                      {/* Field 2: WhatsApp Number */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-phone"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                        >
+                          WhatsApp Contact Number *
+                        </label>
+                        <input
+                          id="quote-tab-phone"
+                          type="tel"
+                          required
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="e.g. +91 98455 11169"
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
+                        />
+                      </div>
+
+                      {/* Field 3: Sector Dropdown */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-interest"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                        >
+                          Primary Sector / Tour Package
+                        </label>
+                        <select
+                          id="quote-tab-interest"
+                          value={interest}
+                          onChange={(e) => setInterest(e.target.value)}
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                        >
+                          {TRIP_OPTIONS.map((opt) => (
+                            <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                              {opt}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Field 4: Destination & Other Places */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-destination"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                        >
+                          <span>Destination / Places</span>
+                          <span className="text-[10px] text-stone-400 font-normal lowercase">
+                            (mention if any other places also)
+                          </span>
+                        </label>
+                        <input
+                          id="quote-tab-destination"
+                          type="text"
+                          value={destinationCustom}
+                          onChange={(e) => setDestinationCustom(e.target.value)}
+                          placeholder="e.g. Kollur, Murudeshwar, Gokarna (mention if any other places also)"
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
+                        />
+                      </div>
+
+                      {/* Field 5: Vehicle Preference */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-vehicle"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                        >
+                          Vehicle Preference
+                        </label>
+                        <select
+                          id="quote-tab-vehicle"
+                          value={vehicleType}
+                          onChange={(e) => setVehicleType(e.target.value)}
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                        >
+                          {VEHICLE_OPTIONS.map((opt) => (
+                            <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                              {opt}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* RIGHT COLUMN: Schedule, Party Size & Timings */}
+                    <div className="space-y-4">
+                      <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#E0C068] pb-1 border-b border-[#383229] flex items-center gap-2">
+                        <Calendar className="w-3.5 h-3.5 text-[#C9A227]" />
+                        <span>Schedule &amp; Group Coordination</span>
+                      </div>
+
+                      {/* Fields 6 & 7: Members & Trip Days (2-col grid) */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div className="space-y-1.5">
+                          <label
+                            htmlFor="quote-tab-members"
+                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                          >
+                            Members (Pax)
+                          </label>
+                          <select
+                            id="quote-tab-members"
+                            value={members}
+                            onChange={(e) => setMembers(e.target.value)}
+                            className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                          >
+                            {MEMBER_OPTIONS.map((opt) => (
+                              <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                                {opt}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label
+                            htmlFor="quote-tab-duration"
+                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                          >
+                            Trip Days
+                          </label>
+                          <select
+                            id="quote-tab-duration"
+                            value={tripDays}
+                            onChange={(e) => setTripDays(e.target.value)}
+                            className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                          >
+                            {DURATION_OPTIONS.map((opt) => (
+                              <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                                {opt}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Field 8: Travel Dates (From – To) */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-dates"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                        >
+                          <span>Travel Dates (From – To)</span>
+                          <span className="text-[10px] text-stone-400 font-normal lowercase">
+                            departure ➔ return
+                          </span>
+                        </label>
+                        <ModernDatePicker
+                          id="quote-tab-dates"
+                          value={travelDates}
+                          onChange={(val) => setTravelDates(val)}
+                          pickupTime={pickupTime}
+                          onTimeChange={(val) => setPickupTime(val)}
+                          placeholder="Select travel dates (From – To)"
+                          theme="dark"
+                        />
+                      </div>
+
+                      {/* Field 9: Pickup Time (Optional) */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-time"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                        >
+                          <span>Pickup Time (Optional)</span>
+                          <span className="text-[10px] text-stone-400 font-normal lowercase">
+                            non-mandatory
+                          </span>
+                        </label>
+                        <ModernTimePicker
+                          id="quote-tab-time"
+                          value={pickupTime}
+                          onChange={(val) => setPickupTime(val)}
+                          placeholder="Flexible / As required (Optional)"
+                          theme="dark"
+                        />
+                      </div>
+
+                      {/* Field 10: Additional Notes */}
+                      <div className="space-y-1.5">
+                        <label
+                          htmlFor="quote-tab-notes"
+                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                        >
+                          Special Requests / Temple Halts (Optional)
+                        </label>
+                        <textarea
+                          id="quote-tab-notes"
+                          rows={2}
+                          value={notes}
+                          onChange={(e) => setNotes(e.target.value)}
+                          placeholder="Flight numbers, senior citizen assistance, luggage amount, specific temple timings..."
+                          className="w-full px-3.5 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-xs font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors resize-none"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Window Bottom Action Deck */}
+                <div className="border-t border-[#383229] bg-[#181510] px-5 sm:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
+                  <div className="flex items-center gap-2 text-xs font-mono text-[#F6F3EC]/70">
+                    <ShieldCheck className="w-4 h-4 text-[#C9A227] shrink-0" />
+                    <span>
+                      Direct Owner Coordination with R Ramesh · No surge pricing · Zero cancellation fees
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(false)}
+                      className="px-4 py-2.5 rounded-lg border border-[#383229] hover:border-[#B08D3F] text-xs font-mono text-[#F6F3EC]/80 hover:text-white transition-colors cursor-pointer w-1/3 sm:w-auto text-center"
+                    >
+                      Cancel
+                    </button>
+
+                    <button
+                      type="submit"
+                      className="flex-1 sm:flex-initial px-6 py-2.5 bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] hover:brightness-110 font-mono text-xs uppercase font-bold tracking-wider rounded-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-98"
+                    >
+                      <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+                      <span>Send via WhatsApp ➔</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            )}
           </div>
-
-          {submitted ? (
-            <div className="py-8 text-center space-y-3 animate-in fade-in">
-              <CheckCircle2 className="w-10 h-10 text-[#2E6B6B] mx-auto" />
-              <div className="font-display text-lg font-bold text-[#F6F3EC]">
-                Dispatching to WhatsApp...
-              </div>
-              <p className="font-body text-xs text-[#F6F3EC]/80">
-                Opening pre-filled message with proprietor R Ramesh on +91 98455 11169.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-3.5">
-              {/* Field 1: Name */}
-              <div className="space-y-1">
-                <label
-                  htmlFor="quote-tab-name"
-                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
-                >
-                  Your Name *
-                </label>
-                <input
-                  id="quote-tab-name"
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Anand Rao"
-                  className="w-full px-3 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
-                />
-              </div>
-
-              {/* Field 2: WhatsApp Number */}
-              <div className="space-y-1">
-                <label
-                  htmlFor="quote-tab-phone"
-                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
-                >
-                  WhatsApp Number *
-                </label>
-                <input
-                  id="quote-tab-phone"
-                  type="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="e.g. +91 98765 43210"
-                  className="w-full px-3 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
-                />
-              </div>
-
-              {/* Field 3: I'm Interested In Dropdown */}
-              <div className="space-y-1">
-                <label
-                  htmlFor="quote-tab-interest"
-                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
-                >
-                  Trip Route / Sector
-                </label>
-                <select
-                  id="quote-tab-interest"
-                  value={interest}
-                  onChange={(e) => setInterest(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                >
-                  {TRIP_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                      {opt}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Field 4: Vehicle Type / Name */}
-              <div className="space-y-1">
-                <label
-                  htmlFor="quote-tab-vehicle"
-                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
-                >
-                  Vehicle Preference
-                </label>
-                <select
-                  id="quote-tab-vehicle"
-                  value={vehicleType}
-                  onChange={(e) => setVehicleType(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                >
-                  {VEHICLE_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                      {opt}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Fields 5 & 6: How Many Members & No. of Trip Days (2-col grid) */}
-              <div className="grid grid-cols-2 gap-2.5">
-                <div className="space-y-1">
-                  <label
-                    htmlFor="quote-tab-members"
-                    className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
-                  >
-                    Members (Pax)
-                  </label>
-                  <select
-                    id="quote-tab-members"
-                    value={members}
-                    onChange={(e) => setMembers(e.target.value)}
-                    className="w-full px-2.5 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                  >
-                    {MEMBER_OPTIONS.map((opt) => (
-                      <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="space-y-1">
-                  <label
-                    htmlFor="quote-tab-duration"
-                    className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
-                  >
-                    Trip Days
-                  </label>
-                  <select
-                    id="quote-tab-duration"
-                    value={tripDays}
-                    onChange={(e) => setTripDays(e.target.value)}
-                    className="w-full px-2.5 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded text-xs font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                  >
-                    {DURATION_OPTIONS.map((opt) => (
-                      <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Field 7: Travel Dates (From – To) */}
-              <div className="space-y-1">
-                <label
-                  htmlFor="quote-tab-dates"
-                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold"
-                >
-                  Travel Dates (From – To)
-                </label>
-                <ModernDatePicker
-                  id="quote-tab-dates"
-                  value={travelDates}
-                  onChange={(val) => setTravelDates(val)}
-                  pickupTime={pickupTime}
-                  onTimeChange={(val) => setPickupTime(val)}
-                  placeholder="Select travel dates (From – To)"
-                  theme="dark"
-                />
-              </div>
-
-              {/* Field 8: Pickup Time (Optional) */}
-              <div className="space-y-1">
-                <label
-                  htmlFor="quote-tab-time"
-                  className="block font-mono text-[11px] uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
-                >
-                  <span>Pickup Time (Optional)</span>
-                  <span className="text-[9px] text-[#F6F3EC]/50 font-normal normal-case">Non-mandatory</span>
-                </label>
-                <ModernTimePicker
-                  id="quote-tab-time"
-                  value={pickupTime}
-                  onChange={(val) => setPickupTime(val)}
-                  placeholder="Flexible / As required (Optional)"
-                  theme="dark"
-                />
-              </div>
-
-              {/* Ticket Perforation Divider */}
-              <div className="pt-2 border-t border-dashed border-[#B08D3F]/50 flex items-center justify-between text-[10px] font-mono text-[#F6F3EC]/60">
-                <span>SECTOR: DIRECT DISPATCH</span>
-                <span className="text-[#E0C068]">{BUSINESS_INFO.phoneDisplay}</span>
-              </div>
-
-              {/* Submit CTA */}
-              <button
-                type="submit"
-                className="w-full py-3 px-4 bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] hover:brightness-110 font-mono text-xs uppercase font-bold tracking-wider rounded-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-98"
-              >
-                <WhatsAppIcon className="w-4 h-4" withOriginalColor />
-                <span>Send via WhatsApp ➔</span>
-              </button>
-            </form>
-          )}
         </div>
       )}
     </div>
