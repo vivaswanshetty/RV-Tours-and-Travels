@@ -5,7 +5,7 @@ interface TicketButtonProps {
   children: React.ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: "primary-gold" | "secondary-outline" | "dark-ticket" | "paper-ticket";
+  variant?: "primary-gold" | "secondary-outline" | "dark-ticket" | "paper-ticket" | "whatsapp-green";
   size?: "sm" | "md" | "lg";
   className?: string;
   isExternal?: boolean;
@@ -43,6 +43,8 @@ export default function TicketButton({
       "bg-[#181510] text-[#F6F3EC] border border-[#383229] hover:border-[#B08D3F] hover:text-[#E0C068] hover:bg-[#221D16] hover:shadow-[0_6px_20px_rgba(0,0,0,0.6)]",
     "paper-ticket":
       "bg-[#EFEAE0] text-[#14120F] border border-[#B08D3F] hover:border-[#14120F] hover:bg-[#E8E1D2] hover:shadow-[0_4px_16px_rgba(176,141,63,0.2)]",
+    "whatsapp-green":
+      "bg-gradient-to-r from-[#1FAF55] via-[#25D366] to-[#128C7E] text-white border border-[#25D366]/40 hover:border-[#38ef7d] hover:shadow-[0_8px_25px_rgba(37,211,102,0.4)]",
   }[variant];
 
   const notchBg = variant === "paper-ticket" ? "bg-[#EFEAE0]" : "bg-[#14120F]";

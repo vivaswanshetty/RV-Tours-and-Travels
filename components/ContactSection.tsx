@@ -860,15 +860,15 @@ export default function ContactSection() {
                   <div className="pt-2">
                     <TicketButton
                       type="submit"
-                      variant="primary-gold"
+                      variant="whatsapp-green"
                       size="lg"
                       className="w-full"
                       disabled={isSubmitting}
                       icon={
                         isSubmitting ? (
-                          <Loader2 className="w-4 h-4 animate-spin text-[#14120F]" />
+                          <Loader2 className="w-4 h-4 animate-spin text-white" />
                         ) : (
-                          <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+                          <WhatsAppIcon className="w-4 h-4 text-white fill-white" />
                         )
                       }
                       ticketCode={isSubmitting ? "OPENING..." : "WHATSAPP"}

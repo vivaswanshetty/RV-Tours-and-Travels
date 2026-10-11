@@ -74,9 +74,9 @@ export default function Hero() {
           <button
             type="button"
             onClick={() => openTripBookingModal()}
-            className="flex-1 inline-flex items-center justify-center gap-3 h-14 px-7 rounded-xl bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] font-body font-bold text-sm sm:text-base tracking-wide uppercase hover:brightness-110 shadow-xl transition-all active:scale-98 cursor-pointer whitespace-nowrap"
+            className="flex-1 inline-flex items-center justify-center gap-3 h-14 px-7 rounded-xl bg-gradient-to-r from-[#1FAF55] via-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f766e] text-white font-body font-bold text-sm sm:text-base tracking-wide uppercase shadow-[0_4px_25px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_30px_rgba(37,211,102,0.5)] border border-[#25D366]/40 hover:border-[#38ef7d] transition-all active:scale-98 cursor-pointer whitespace-nowrap"
           >
-            <WhatsAppIcon className="w-5 h-5 shrink-0" withOriginalColor />
+            <WhatsAppIcon className="w-5 h-5 shrink-0 text-white fill-white" />
             <span>Plan &amp; Book on WhatsApp</span>
           </button>
 
