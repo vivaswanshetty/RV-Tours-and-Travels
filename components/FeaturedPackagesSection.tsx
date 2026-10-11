@@ -91,9 +91,9 @@ export default function FeaturedPackagesSection() {
                         interest: pkg.title,
                       })
                     }
-                    variant="paper-ticket"
+                    variant="primary-gold"
                     size="sm"
-                    icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
+                    icon={<WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />}
                     className="w-full justify-center"
                   >
                     Enquire Package

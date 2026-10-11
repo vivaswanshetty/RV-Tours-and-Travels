@@ -75,10 +75,10 @@ export default function ServicesSection() {
                       interest: service.title,
                     })
                   }
-                  variant="paper-ticket"
+                  variant="primary-gold"
                   size="sm"
                   className="w-full"
-                  icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
+                  icon={<WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />}
                 >
                   Enquire Route
                 </TicketButton>

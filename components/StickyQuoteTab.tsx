@@ -573,9 +573,9 @@ export default function StickyQuoteTab() {
 
                     <button
                       type="submit"
-                      className="flex-1 sm:flex-initial h-11 px-7 bg-gradient-to-r from-[#1FAF55] via-[#25D366] to-[#128C7E] hover:from-[#22c55e] hover:to-[#0f766e] text-white font-body text-sm uppercase font-bold tracking-wide rounded-lg shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.5)] border border-[#25D366]/40 flex items-center justify-center gap-2.5 cursor-pointer transition-all active:scale-98"
+                      className="flex-1 sm:flex-initial h-11 px-7 bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] font-body text-sm uppercase font-bold tracking-wide rounded-lg shadow-lg flex items-center justify-center gap-2.5 cursor-pointer transition-all active:scale-98 whitespace-nowrap"
                     >
-                      <WhatsAppIcon className="w-4 h-4 shrink-0 text-white fill-white" />
+                      <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
                       <span>Send via WhatsApp ➔</span>
                     </button>
                   </div>

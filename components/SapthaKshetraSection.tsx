@@ -76,7 +76,7 @@ export default function SapthaKshetraSection() {
               </div>
 
               {/* Card Footer Action */}
-              <div className="p-5 sm:p-6 pt-0 border-t border-[#DCD4C4]/60 mt-3 flex items-center justify-between gap-3">
+              <div className="p-5 sm:p-6 pt-0 border-t border-[#DCD4C4]/60 mt-3 flex items-center justify-center">
                 <TicketButton
                   onClick={() =>
                     openTripBookingModal({
@@ -84,12 +84,12 @@ export default function SapthaKshetraSection() {
                       interest: `${kshetra.name} (${kshetra.templeName})`,
                     })
                   }
-                  variant="paper-ticket"
+                  variant="primary-gold"
                   size="sm"
                   className="w-full"
-                  icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
+                  icon={<WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />}
                 >
-                  Enquire {kshetra.name} Trip
+                  Plan This Trip
                 </TicketButton>
               </div>
             </div>

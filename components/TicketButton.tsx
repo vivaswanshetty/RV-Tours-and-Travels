@@ -29,30 +29,30 @@ export default function TicketButton({
   disabled = false,
 }: TicketButtonProps) {
   const sizeStyles = {
-    sm: "px-3 py-1.5 text-[11px] sm:text-xs min-h-[36px]",
-    md: "px-3.5 sm:px-5 py-2.5 text-xs sm:text-sm min-h-[42px] sm:min-h-[44px]",
-    lg: "px-4 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-sm md:text-base min-h-[46px] sm:min-h-[52px]",
+    sm: "h-11 px-4 text-xs min-h-[44px]",
+    md: "h-12 px-5 text-xs sm:text-sm min-h-[48px]",
+    lg: "h-14 px-6 sm:px-7 text-xs sm:text-sm md:text-base min-h-[56px]",
   }[size];
 
   const variantStyles = {
     "primary-gold":
-      "bg-gradient-to-br from-[#1F1A13] to-[#120F0C] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] hover:text-white hover:shadow-[0_8px_25px_rgba(176,141,63,0.4)]",
+      "bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] shadow-md hover:shadow-[0_6px_20px_rgba(176,141,63,0.35)]",
     "secondary-outline":
       "bg-white/[0.08] text-[#F6F3EC] border border-[#B08D3F]/80 hover:border-[#E0C068] hover:bg-[#B08D3F]/20 hover:text-white hover:shadow-[0_4px_16px_rgba(176,141,63,0.25)]",
     "dark-ticket":
-      "bg-[#181510] text-[#F6F3EC] border border-[#383229] hover:border-[#B08D3F] hover:text-[#E0C068] hover:bg-[#221D16] hover:shadow-[0_6px_20px_rgba(0,0,0,0.6)]",
+      "bg-[#181510] text-[#E0C068] border border-[#383229] hover:border-[#B08D3F] hover:bg-[#B08D3F] hover:text-[#14120F] hover:shadow-[0_6px_20px_rgba(0,0,0,0.6)]",
     "paper-ticket":
       "bg-[#EFEAE0] text-[#14120F] border border-[#B08D3F] hover:border-[#14120F] hover:bg-[#E8E1D2] hover:shadow-[0_4px_16px_rgba(176,141,63,0.2)]",
     "whatsapp-green":
-      "bg-gradient-to-r from-[#1FAF55] via-[#25D366] to-[#128C7E] text-white border border-[#25D366]/40 hover:border-[#38ef7d] hover:shadow-[0_8px_25px_rgba(37,211,102,0.4)]",
+      "bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] shadow-md hover:shadow-[0_6px_20px_rgba(176,141,63,0.35)]",
   }[variant];
 
   const notchBg = variant === "paper-ticket" ? "bg-[#EFEAE0]" : "bg-[#14120F]";
 
   const content = (
-    <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-2.5 w-full font-body font-semibold text-xs sm:text-sm tracking-wide">
+    <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-2.5 w-full font-body font-bold text-xs uppercase tracking-wide whitespace-nowrap overflow-hidden">
       {icon && <span className="shrink-0">{icon}</span>}
-      <span className="tracking-wide text-current">{children}</span>
+      <span className="tracking-wide text-current truncate">{children}</span>
     </span>
   );
 

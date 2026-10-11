@@ -76,9 +76,9 @@ export default function DestinationsSection() {
                 <button
                   type="button"
                   onClick={() => openTripBookingModal({ destination: featuredDestination.name, interest: featuredDestination.name })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer shadow-md whitespace-nowrap"
                 >
-                  <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+                  <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
                   <span>Plan This Trip</span>
                 </button>
               </div>
@@ -120,9 +120,9 @@ export default function DestinationsSection() {
                       <button
                         type="button"
                         onClick={() => openTripBookingModal({ destination: dest.name, interest: dest.name })}
-                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#F6F3EC] hover:bg-[#B08D3F] text-[#14120F] hover:text-[#14120F] border border-[#DCD4C4] hover:border-[#B08D3F] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer"
+                        className="w-full inline-flex items-center justify-center gap-2 h-11 px-4 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer shadow-md whitespace-nowrap"
                       >
-                        <WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />
+                        <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
                         <span>Plan This Trip</span>
                       </button>
                     </div>

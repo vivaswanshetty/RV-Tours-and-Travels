@@ -156,10 +156,10 @@ export default function Header() {
           <button
             type="button"
             onClick={() => openTripBookingModal()}
-            className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[#1F1A13] to-[#120F0C] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] hover:shadow-[0_4px_20px_rgba(176,141,63,0.35)] transition-all duration-200 font-body text-xs font-bold uppercase tracking-wide whitespace-nowrap shrink-0 cursor-pointer"
+            className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] hover:shadow-[0_4px_20px_rgba(176,141,63,0.35)] transition-all duration-200 font-body text-xs font-bold uppercase tracking-wide whitespace-nowrap shrink-0 cursor-pointer"
           >
-            <WhatsAppIcon className="w-4 h-4" withOriginalColor />
-            <span className="text-[#F6F3EC] group-hover:text-white">Plan Your Trip</span>
+            <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
+            <span>Plan Your Trip</span>
           </button>
         </div>
 
@@ -228,9 +228,9 @@ export default function Header() {
                 setMobileMenuOpen(false);
                 openTripBookingModal();
               }}
-              className="w-full py-3 px-4 bg-gradient-to-br from-[#1F1A13] to-[#120F0C] border border-[#B08D3F] hover:border-[#E0C068] text-[#F6F3EC] font-body text-xs uppercase font-bold tracking-wide flex items-center justify-center gap-2 rounded-xl transition-all shadow-lg cursor-pointer"
+              className="w-full py-3 px-4 bg-[#14120F] hover:bg-[#B08D3F] border border-[#B08D3F] hover:border-[#E0C068] text-[#E0C068] hover:text-[#14120F] font-body text-xs uppercase font-bold tracking-wide flex items-center justify-center gap-2 rounded-xl transition-all shadow-lg cursor-pointer"
             >
-              <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+              <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
               <span>Plan Your Trip</span>
             </button>
 

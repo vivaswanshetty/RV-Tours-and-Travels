@@ -50,9 +50,9 @@ export default function FloatingWhatsApp() {
                 setIsOpen(false);
                 openTripBookingModal();
               }}
-              className="w-full py-2.5 px-3 bg-[#1F4C4C] hover:bg-[#2E6B6B] text-[#F6F3EC] font-body text-xs uppercase tracking-wide rounded-lg font-bold flex items-center justify-center gap-2 transition-colors border border-[#B08D3F] cursor-pointer shadow-md"
+              className="w-full h-11 px-4 bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] font-body text-xs uppercase tracking-wide rounded-lg font-bold flex items-center justify-center gap-2 transition-colors border border-[#B08D3F] hover:border-[#E0C068] cursor-pointer shadow-md whitespace-nowrap"
             >
-              <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+              <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
               <span>Fill Form &amp; Send to WhatsApp</span>
             </button>
 

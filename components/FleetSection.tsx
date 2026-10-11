@@ -85,12 +85,12 @@ export default function FleetSection() {
               <div className="p-5 sm:p-6 pt-0 border-t border-[#DCD4C4]/60 mt-2">
                 <TicketButton
                   onClick={() => openTripBookingModal({ vehicle: vehicle.name })}
-                  variant="paper-ticket"
+                  variant="primary-gold"
                   size="sm"
                   className="w-full"
-                  icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
+                  icon={<WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />}
                 >
-                  Enquire {vehicle.name}
+                  Book This Cab
                 </TicketButton>
               </div>
             </div>

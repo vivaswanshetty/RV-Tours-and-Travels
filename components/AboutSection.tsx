@@ -157,9 +157,9 @@ export default function AboutSection() {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <TicketButton
                 onClick={() => openTripBookingModal()}
-                variant="paper-ticket"
+                variant="primary-gold"
                 size="md"
-                icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
+                icon={<WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />}
               >
                 Plan Trip with R Ramesh
               </TicketButton>
