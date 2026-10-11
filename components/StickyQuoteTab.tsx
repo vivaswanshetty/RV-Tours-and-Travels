@@ -73,7 +73,7 @@ export default function StickyQuoteTab() {
   const [tripDays, setTripDays] = useState<string>(DURATION_OPTIONS[0]);
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
-  const [pickupTime, setPickupTime] = useState("Flexible (Optional)");
+  const [pickupTime, setPickupTime] = useState("");
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -122,7 +122,7 @@ export default function StickyQuoteTab() {
       `• *No. of Members:* ${members && members !== "Select no. of members" ? members : "[Enter no. of members]"}`,
       `• *No. of Trip Days:* ${tripDays && tripDays !== "Select trip duration" ? tripDays : "[Enter no. of days]"}`,
       `• *Travel Dates:* ${datesStr ? datesStr : "[Enter travel dates (From – To)]"}`,
-      `• *Pickup Time (Optional):* ${pickupTime && pickupTime !== "Flexible (Optional)" ? pickupTime : "Flexible / Not specified (Optional)"}`,
+      `• *Pickup Time (Optional):* ${pickupTime && pickupTime.trim() ? pickupTime.trim() : "Not specified (Optional)"}`,
     ];
 
     if (notes.trim()) {
@@ -150,7 +150,7 @@ export default function StickyQuoteTab() {
       setTripDays(DURATION_OPTIONS[0]);
       setFromDate("");
       setToDate("");
-      setPickupTime("Flexible (Optional)");
+      setPickupTime("");
       setNotes("");
       setIsOpen(false);
     }, 1500);
@@ -504,7 +504,7 @@ export default function StickyQuoteTab() {
                           id="quote-tab-time"
                           value={pickupTime}
                           onChange={(val) => setPickupTime(val)}
-                          placeholder="Flexible / As required (Optional)"
+                          placeholder="e.g. 06:00 AM or enter custom time"
                           theme="dark"
                         />
                       </div>

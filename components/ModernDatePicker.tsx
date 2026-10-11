@@ -44,13 +44,12 @@ const MONTH_SHORT = [
 const DAY_NAMES = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 export const TIME_PRESETS = [
-  { label: "Flexible", sub: "Any Time (Optional)", value: "Flexible (Optional)" },
-  { label: "06:00 AM", sub: "Early Morning", value: "06:00 AM (Early Morning)" },
-  { label: "09:00 AM", sub: "Morning", value: "09:00 AM (Morning)" },
-  { label: "01:30 PM", sub: "Afternoon", value: "01:30 PM (Afternoon)" },
-  { label: "05:00 PM", sub: "Evening", value: "05:00 PM (Evening)" },
-  { label: "08:30 PM", sub: "Night", value: "08:30 PM (Night)" },
-  { label: "11:00 PM", sub: "Late Night", value: "11:00 PM (Late Night)" },
+  { label: "06:00 AM", sub: "Early Morning", value: "06:00 AM" },
+  { label: "09:00 AM", sub: "Morning", value: "09:00 AM" },
+  { label: "01:30 PM", sub: "Afternoon", value: "01:30 PM" },
+  { label: "05:00 PM", sub: "Evening", value: "05:00 PM" },
+  { label: "08:30 PM", sub: "Night", value: "08:30 PM" },
+  { label: "11:00 PM", sub: "Late Night", value: "11:00 PM" },
 ];
 
 function formatDateDisplay(d: Date): string {
@@ -437,165 +436,111 @@ export default function ModernDatePicker({
 export function ModernTimePicker({
   value,
   onChange,
-  placeholder = "Flexible / As required (Optional)",
+  placeholder = "e.g. 06:00 AM or enter custom time",
   id = "pickupTime",
   className = "",
   theme = "light",
 }: ModernTimePickerProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [customTime, setCustomTime] = useState("");
+  const isLight = theme === "light";
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
-
-  const handleSelectPreset = (presetVal: string) => {
-    onChange(presetVal);
-    setIsOpen(false);
-  };
-
-  const handleCustomTimeSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!customTime) return;
-
-    // Convert 24hr to 12hr format
-    const [hours, minutes] = customTime.split(":");
+  const handleNativeTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (!val) return;
+    const [hours, minutes] = val.split(":");
     const h = parseInt(hours, 10);
     const ampm = h >= 12 ? "PM" : "AM";
     const formattedH = h % 12 || 12;
-    const formatted = `${formattedH.toString().padStart(2, "0")}:${minutes} ${ampm} (Custom Time)`;
-
-    onChange(formatted);
-    setIsOpen(false);
+    onChange(`${formattedH.toString().padStart(2, "0")}:${minutes} ${ampm}`);
   };
 
-  const isLight = theme === "light";
-
   return (
-    <div className={`relative ${className}`} ref={containerRef}>
-      {/* Trigger Button */}
-      <button
-        type="button"
-        id={id}
-        onClick={() => setIsOpen(!isOpen)}
-        className={`w-full px-4 py-3 rounded text-sm font-mono flex items-center justify-between cursor-pointer transition-all text-left ${
-          isLight
-            ? "bg-[#F6F3EC] border border-[#DCD4C4] text-[#14120F] hover:border-[#B08D3F] focus:border-[#B08D3F]"
-            : "bg-[#1C1914] border border-[#383229] text-[#F6F3EC] hover:border-[#B08D3F] focus:border-[#B08D3F]"
-        }`}
-        aria-expanded={isOpen}
-        aria-haspopup="dialog"
-        aria-label="Pick preferred pickup time (optional)"
-      >
-        <span className="flex items-center gap-2.5 truncate">
-          <Clock className="w-4 h-4 text-[#C9A227] shrink-0" />
-          <span className={value ? (isLight ? "text-[#14120F] font-semibold" : "text-[#F6F3EC] font-semibold") : (isLight ? "text-stone-400" : "text-[#F6F3EC]/40")}>
-            {value || placeholder}
-          </span>
-        </span>
+    <div className={`space-y-2 font-mono ${className}`}>
+      {/* Custom Time Enter Field */}
+      <div className="relative flex items-center">
+        <Clock className="w-4 h-4 text-[#C9A227] absolute left-3.5 pointer-events-none shrink-0" />
+        <input
+          type="text"
+          id={id}
+          name={id}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          className={`w-full pl-10 pr-16 py-2.5 rounded text-sm transition-all outline-none ${
+            isLight
+              ? "bg-[#F6F3EC] border border-[#DCD4C4] text-[#14120F] placeholder-stone-400 focus:border-[#B08D3F]"
+              : "bg-[#1C1914] border border-[#383229] text-[#F6F3EC] placeholder-[#F6F3EC]/30 focus:border-[#B08D3F]"
+          }`}
+        />
 
-        {value && value !== "Flexible (Optional)" ? (
-          <span
-            role="button"
-            tabIndex={0}
-            onClick={(e) => {
-              e.stopPropagation();
-              onChange("Flexible (Optional)");
-            }}
-            className="p-1 text-stone-400 hover:text-[#C9A227] transition-colors cursor-pointer"
-            title="Reset to flexible"
-          >
-            <X className="w-3.5 h-3.5" />
-          </span>
-        ) : (
-          <span className="font-mono text-xs text-[#B08D3F]">▾</span>
-        )}
-      </button>
-
-      <input type="hidden" name={id} value={value} />
-
-      {/* Popover Time Presets */}
-      {isOpen && (
-        <div className="absolute z-50 top-full left-0 right-0 sm:right-auto sm:w-[320px] mt-2 bg-[#181510] border border-[#B08D3F] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] p-4 font-mono animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl text-[#F6F3EC]">
-          <div className="flex items-center justify-between pb-2.5 border-b border-[#383229] mb-3">
-            <span className="text-xs font-bold text-[#E0C068] uppercase tracking-wider flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-[#C9A227]" />
-              Pickup Time (Optional)
-            </span>
-            <span className="text-[10px] text-stone-400">Non-mandatory</span>
-          </div>
-
-          {/* Time Presets Grid */}
-          <div className="grid grid-cols-2 gap-1.5 mb-3">
-            {TIME_PRESETS.map((p) => {
-              const active = value === p.value || (!value && p.label === "Flexible");
-              return (
-                <button
-                  key={p.label}
-                  type="button"
-                  onClick={() => handleSelectPreset(p.value)}
-                  className={`py-2 px-2.5 rounded text-left border transition-all cursor-pointer ${
-                    active
-                      ? "bg-[#B08D3F] text-[#14120F] font-bold border-[#E0C068] shadow"
-                      : "bg-[#14120F] text-[#F6F3EC]/80 border-[#383229] hover:border-[#B08D3F] hover:text-[#E0C068]"
-                  }`}
-                >
-                  <div className="text-xs font-bold leading-tight">{p.label}</div>
-                  <div className={`text-[9px] uppercase tracking-tight ${active ? "text-[#14120F]/80" : "text-[#F6F3EC]/50"}`}>
-                    {p.sub}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Custom Time Input */}
-          <form onSubmit={handleCustomTimeSubmit} className="pt-2.5 border-t border-[#383229] flex items-center gap-2">
-            <div className="flex-1">
-              <label htmlFor="custom-time-picker" className="block text-[10px] text-[#B08D3F] uppercase mb-1">
-                Or exact clock time:
-              </label>
-              <input
-                id="custom-time-picker"
-                type="time"
-                value={customTime}
-                onChange={(e) => setCustomTime(e.target.value)}
-                className="w-full px-2.5 py-1.5 bg-[#14120F] border border-[#383229] rounded text-xs text-[#F6F3EC] focus:border-[#B08D3F] outline-none font-mono"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={!customTime}
-              className="mt-4 px-3 py-1.5 bg-[#B08D3F] disabled:opacity-30 text-[#14120F] rounded text-xs font-bold uppercase transition-colors"
-            >
-              Set
-            </button>
-          </form>
-
-          {/* Done CTA */}
-          <div className="mt-3 pt-2 border-t border-[#383229] flex justify-end">
+        <div className="absolute right-2.5 flex items-center gap-1">
+          {value ? (
             <button
               type="button"
-              onClick={() => setIsOpen(false)}
-              className="px-3.5 py-1.5 bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] rounded text-xs uppercase font-bold tracking-wider transition-colors flex items-center gap-1 cursor-pointer"
+              onClick={() => onChange("")}
+              className="p-1 text-stone-400 hover:text-[#C9A227] transition-colors cursor-pointer"
+              title="Clear time"
+              aria-label="Clear time"
             >
-              <Check className="w-3.5 h-3.5" />
-              <span>Done</span>
+              <X className="w-3.5 h-3.5" />
             </button>
-          </div>
+          ) : null}
+
+          {/* Native Clock Picker Trigger */}
+          <label
+            htmlFor={`${id}-native-clock`}
+            className="p-1 text-stone-400 hover:text-[#C9A227] transition-colors cursor-pointer"
+            title="Pick exact clock time"
+          >
+            <Clock className="w-3.5 h-3.5" />
+            <input
+              id={`${id}-native-clock`}
+              type="time"
+              className="sr-only"
+              onChange={handleNativeTimeChange}
+              tabIndex={-1}
+            />
+          </label>
         </div>
-      )}
+      </div>
+
+      {/* Suggested Timings Chips */}
+      <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
+        <span
+          className={`text-[10px] uppercase tracking-wider ${
+            isLight ? "text-stone-500 font-semibold" : "text-stone-400"
+          }`}
+        >
+          Suggested:
+        </span>
+        {TIME_PRESETS.map((p) => {
+          const isSelected =
+            value?.trim().toLowerCase() === p.value.toLowerCase() ||
+            value?.startsWith(p.label);
+
+          return (
+            <button
+              key={p.label}
+              type="button"
+              onClick={() => {
+                if (isSelected) {
+                  onChange("");
+                } else {
+                  onChange(p.value);
+                }
+              }}
+              className={`px-2 py-1 rounded text-[11px] font-mono transition-all cursor-pointer border ${
+                isSelected
+                  ? "bg-[#B08D3F] text-[#14120F] font-bold border-[#C9A227] shadow-sm"
+                  : isLight
+                  ? "bg-[#EFEAE0] hover:bg-[#E5DFD1] text-[#14120F]/80 border-[#DCD4C4] hover:border-[#B08D3F]"
+                  : "bg-[#14120F] hover:bg-[#B08D3F]/20 text-[#F6F3EC]/80 border-[#383229] hover:border-[#B08D3F] hover:text-[#E0C068]"
+              }`}
+            >
+              {p.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

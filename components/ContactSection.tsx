@@ -65,7 +65,7 @@ export default function ContactSection() {
     fromDate: "",
     toDate: "",
     travelDates: "",
-    pickupTime: "Flexible (Optional)",
+    pickupTime: "",
     message: "",
   });
 
@@ -128,7 +128,7 @@ export default function ContactSection() {
       `• *Pickup Location:* ${item.pickupLocation || "Udupi / Manipal area"}`,
       `• *Destination:* ${item.destination ? `${item.destination} (mention if any other places also)` : "[Enter destination — mention if any other places also]"}`,
       `• *Travel Dates:* ${datesStr ? datesStr : "[Enter travel dates (From – To)]"}`,
-      `• *Pickup Time (Optional):* ${item.pickupTime && item.pickupTime !== "Flexible (Optional)" ? item.pickupTime : "Flexible / Not specified (Optional)"}`,
+      `• *Pickup Time (Optional):* ${item.pickupTime && item.pickupTime.trim() ? item.pickupTime.trim() : "Not specified (Optional)"}`,
     ];
 
     if (item.message && item.message.trim()) {
@@ -475,7 +475,7 @@ export default function ContactSection() {
                             {(item.travelDates || item.travelDate) && (
                               <div className="font-mono text-[11px] text-[#14120F]/70">
                                 <span className="text-[#1F4C4C] font-semibold">Travel Dates:</span> {item.travelDates || item.travelDate}
-                                {item.pickupTime && item.pickupTime !== "Flexible (Optional)" && (
+                                {item.pickupTime && (
                                   <span className="ml-2 text-stone-500">· Time: {item.pickupTime}</span>
                                 )}
                               </div>
@@ -513,7 +513,7 @@ export default function ContactSection() {
                                     fromDate: item.fromDate || (item.travelDates && item.travelDates.includes(" to ") ? item.travelDates.split(" to ")[0].trim() : (item.travelDates ? item.travelDates.split(" (")[0].trim() : "")),
                                     toDate: item.toDate || (item.travelDates && item.travelDates.includes(" to ") ? item.travelDates.split(" to ")[1].trim() : ""),
                                     travelDates: item.travelDates || item.travelDate || "",
-                                    pickupTime: item.pickupTime || "Flexible (Optional)",
+                                    pickupTime: item.pickupTime || "",
                                     message: item.message || "",
                                   });
                                   setSubmitted(false);
@@ -558,7 +558,7 @@ export default function ContactSection() {
                     <div><span className="text-[#1F4C4C] font-semibold">MEMBERS:</span> {formData.members || "To be specified"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">TRIP DAYS:</span> {formData.tripDays || "To be specified"}</div>
                     <div><span className="text-[#1F4C4C] font-semibold">TRAVEL DATES:</span> {getTravelDatesSummary(formData.fromDate, formData.toDate, formData.travelDates) || "Flexible (From – To)"}</div>
-                    <div><span className="text-[#1F4C4C] font-semibold">PICKUP TIME:</span> {formData.pickupTime || "Flexible (Optional)"}</div>
+                    <div><span className="text-[#1F4C4C] font-semibold">PICKUP TIME:</span> {formData.pickupTime || "Not specified (Optional)"}</div>
                     {formData.message && (
                       <div className="pt-1 border-t border-[#DCD4C4] text-[11px] text-[#14120F]/70">
                         <span className="text-[#1F4C4C] font-semibold">NOTES:</span> {formData.message}
@@ -594,7 +594,7 @@ export default function ContactSection() {
                           fromDate: "",
                           toDate: "",
                           travelDates: "",
-                          pickupTime: "Flexible (Optional)",
+                          pickupTime: "",
                           message: "",
                         });
                       }}
@@ -819,7 +819,7 @@ export default function ContactSection() {
                       id="pickupTime"
                       value={formData.pickupTime}
                       onChange={(val) => setFormData({ ...formData, pickupTime: val })}
-                      placeholder="Flexible / As required (Optional)"
+                      placeholder="e.g. 06:00 AM or enter custom time"
                       theme="light"
                     />
                   </div>

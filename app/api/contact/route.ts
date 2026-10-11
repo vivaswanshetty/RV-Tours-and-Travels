@@ -58,7 +58,7 @@ export async function POST(request: Request) {
       pickup_location: pickupLocation || "Udupi / TBD",
       destination: destination || "TBD",
       travel_dates: computedDates,
-      pickup_time: pickupTime || "Flexible (Optional)",
+      pickup_time: pickupTime || "Not Specified (Optional)",
       additional_notes: message || "No extra notes provided",
     };
 
