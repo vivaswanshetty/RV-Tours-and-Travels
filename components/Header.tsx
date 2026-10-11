@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { Phone, Menu, X, ArrowUpRight, HelpCircle } from "lucide-react";
 import { BUSINESS_INFO, NAV_LINKS } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function Header() {
   const pathname = usePathname();
@@ -151,16 +152,15 @@ export default function Header() {
             <Phone className="w-3.5 h-3.5 text-[#C9A227]" />
           </a>
 
-          {/* WhatsApp CTA Button (Pill Styled, Fits Perfectly Inside Container) */}
-          <a
-            href={BUSINESS_INFO.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[#1F1A13] to-[#120F0C] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] hover:shadow-[0_4px_20px_rgba(176,141,63,0.35)] transition-all duration-200 font-mono text-xs font-bold uppercase tracking-wider whitespace-nowrap shrink-0"
+          {/* Trip Booking CTA Button (Pill Styled) */}
+          <button
+            type="button"
+            onClick={() => openTripBookingModal()}
+            className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[#1F1A13] to-[#120F0C] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] hover:shadow-[0_4px_20px_rgba(176,141,63,0.35)] transition-all duration-200 font-mono text-xs font-bold uppercase tracking-wider whitespace-nowrap shrink-0 cursor-pointer"
           >
             <WhatsAppIcon className="w-4 h-4" withOriginalColor />
-            <span className="text-[#F6F3EC] group-hover:text-white">Book on WhatsApp</span>
-          </a>
+            <span className="text-[#F6F3EC] group-hover:text-white">Plan Your Trip</span>
+          </button>
         </div>
 
         {/* Mobile Action & Hamburger Toggle */}
@@ -222,15 +222,17 @@ export default function Header() {
           </div>
 
           <div className="pt-2 flex flex-col gap-2.5">
-            <a
-              href={BUSINESS_INFO.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 px-4 bg-gradient-to-br from-[#1F1A13] to-[#120F0C] border border-[#B08D3F] hover:border-[#E0C068] text-[#F6F3EC] font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 rounded-xl transition-all shadow-lg"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openTripBookingModal();
+              }}
+              className="w-full py-3 px-4 bg-gradient-to-br from-[#1F1A13] to-[#120F0C] border border-[#B08D3F] hover:border-[#E0C068] text-[#F6F3EC] font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 rounded-xl transition-all shadow-lg cursor-pointer"
             >
               <WhatsAppIcon className="w-4 h-4" withOriginalColor />
-              <span>Book on WhatsApp</span>
-            </a>
+              <span>Plan Your Trip</span>
+            </button>
 
             <a
               href={`tel:${BUSINESS_INFO.phoneClean}`}

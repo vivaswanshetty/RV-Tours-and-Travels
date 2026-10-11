@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, ArrowUp, Compass, HelpCircle } from "lucide-react";
 import { BUSINESS_INFO, NAV_LINKS } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -35,7 +36,7 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <div className="px-3.5 py-1.5 bg-[#1C1914] border border-[#383229] rounded font-mono text-xs text-[#E0C068] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#2E6B6B]" />
-              <span>TERMINAL: UDUPI (UD)</span>
+              <span>Udupi, Coastal Karnataka</span>
             </div>
 
             <button
@@ -53,10 +54,10 @@ export default function Footer() {
       {/* Main Boarding Pass Columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Column 1: Operator Manifest */}
+          {/* Column 1: Operator Profile */}
           <div className="space-y-3 font-mono text-xs">
             <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
-              // OPERATOR MANIFEST
+              ABOUT THE OPERATOR
             </div>
             <div className="p-3 bg-[#1C1914] border border-[#383229]/80 rounded space-y-1">
               <div className="text-[10px] text-[#F6F3EC]/60">PROPRIETOR</div>
@@ -71,18 +72,17 @@ export default function Footer() {
           {/* Column 2: Direct Lines */}
           <div className="space-y-3 font-mono text-xs">
             <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
-              // DIRECT LINES
+              DIRECT CONTACT
             </div>
             <div className="space-y-2">
-              <a
-                href={BUSINESS_INFO.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-[#F6F3EC] hover:text-[#C9A227] transition-colors"
+              <button
+                type="button"
+                onClick={() => openTripBookingModal()}
+                className="flex items-center gap-2.5 text-[#F6F3EC] hover:text-[#C9A227] transition-colors text-left cursor-pointer"
               >
                 <WhatsAppIcon className="w-4 h-4" withOriginalColor />
                 <span>WhatsApp: {BUSINESS_INFO.phoneDisplay}</span>
-              </a>
+              </button>
 
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -105,7 +105,7 @@ export default function Footer() {
           {/* Column 3: Site Navigation & Subpages */}
           <div className="space-y-3 font-mono text-xs">
             <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
-              // NAVIGATION &amp; PAGES
+              QUICK LINKS
             </div>
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
@@ -134,7 +134,7 @@ export default function Footer() {
           {/* Column 4: Base Location */}
           <div className="space-y-3 font-mono text-xs">
             <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
-              // BASE LOCATION
+              BASE LOCATION
             </div>
             <div className="flex items-start gap-2.5 text-[#F6F3EC]/80">
               <MapPin className="w-4 h-4 text-[#C9A227] shrink-0 mt-0.5" />

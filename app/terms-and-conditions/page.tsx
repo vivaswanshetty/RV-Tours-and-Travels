@@ -31,7 +31,7 @@ export default function TermsAndConditions() {
         <div className="border-b border-[#DCD4C4] pb-8 mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 font-mono text-xs text-[#1F4C4C] font-bold uppercase tracking-widest">
             <FileText className="w-4 h-4 text-[#1F4C4C]" />
-            <span>SERVICE AGREEMENT MANIFEST</span>
+            <span>SERVICE AGREEMENT</span>
           </div>
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14120F]">
             Terms &amp; Conditions

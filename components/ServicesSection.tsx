@@ -3,9 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import { Plane, MapPin, Car, Compass, ArrowRight } from "lucide-react";
-import { SERVICES, BUSINESS_INFO } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function ServicesSection() {
   const iconMap: Record<string, React.ReactNode> = {
@@ -18,12 +19,12 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 sm:py-28 bg-[#F6F3EC] text-[#14120F] relative border-b border-[#DCD4C4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Waypoint 02 Tag & Header */}
+        {/* Services Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-              <span>WAYPOINT 06 // SERVICES &amp; ROUTES</span>
+              <span>SERVICES &amp; TRANSFERS</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
               Tailored Chauffeur &amp; Travel Solutions
@@ -68,8 +69,12 @@ export default function ServicesSection() {
 
               <div className="pt-6 mt-6 border-t border-[#DCD4C4]/70">
                 <TicketButton
-                  href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(service.whatsappMessage)}`}
-                  isExternal
+                  onClick={() =>
+                    openTripBookingModal({
+                      destination: service.title,
+                      interest: service.title,
+                    })
+                  }
                   variant="paper-ticket"
                   size="sm"
                   className="w-full"

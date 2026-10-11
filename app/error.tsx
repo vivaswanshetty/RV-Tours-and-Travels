@@ -44,20 +44,17 @@ export default function ErrorPage({
         </Link>
 
         <div className="font-mono text-xs text-red-400 px-3 py-1 bg-[#1C1914] border border-red-900/50 rounded">
-          STATUS: ENGINE HOLD
+          ERROR 500
         </div>
       </header>
 
-      {/* Center 500 Boarding Pass Ticket Stub */}
+      {/* Center 500 Error Card */}
       <div className="flex-1 flex items-center justify-center p-4 sm:p-6 relative z-10 my-8">
         <div className="max-w-xl w-full bg-[#1C1914] border border-red-900/60 rounded-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden text-center space-y-6">
-          {/* Top Notch Perforation */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-[#14120F] rounded-full border border-red-900/60" />
-
           {/* Error 500 Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#14120F] border border-red-900/60 rounded-full font-mono text-xs text-red-400 tracking-widest uppercase">
             <AlertTriangle className="w-4 h-4 text-red-400" />
-            <span>DISPATCH INTERRUPTED // ERROR 500</span>
+            <span>SOMETHING WENT WRONG · ERROR 500</span>
           </div>
 
           <div className="space-y-2">
@@ -65,12 +62,12 @@ export default function ErrorPage({
               500
             </div>
             <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#F6F3EC]">
-              Temporary System Hold
+              Something Went Wrong
             </h1>
           </div>
 
           <p className="font-body text-sm sm:text-base text-[#F6F3EC]/80 max-w-md mx-auto leading-relaxed">
-            An unexpected road condition occurred while rendering this page. You can retry dispatching the page or return to the main terminal.
+            An unexpected error occurred while loading this page. Please try refreshing or return to the home page.
           </p>
 
           {error?.digest && (
@@ -84,17 +81,16 @@ export default function ErrorPage({
             <button
               type="button"
               onClick={() => reset()}
-              className="px-5 py-2.5 bg-[#B08D3F] hover:bg-[#E0C068] text-[#14120F] rounded font-mono text-xs font-bold tracking-wider uppercase inline-flex items-center gap-2 transition-colors shadow-lg"
+              className="px-5 py-2.5 bg-[#B08D3F] hover:bg-[#E0C068] text-[#14120F] rounded font-mono text-xs font-bold tracking-wider uppercase inline-flex items-center gap-2 transition-colors shadow-lg cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
-              <span>Retry Dispatch</span>
+              <span>Try Again</span>
             </button>
 
             <TicketButton
               href="/"
               variant="secondary-outline"
               size="md"
-              ticketCode="HOME"
               icon={<Home className="w-4 h-4" />}
             >
               Return Home

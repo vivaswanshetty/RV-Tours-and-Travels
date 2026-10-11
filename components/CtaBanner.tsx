@@ -4,6 +4,7 @@ import { Phone, ArrowRight, Compass } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function CtaBanner() {
   return (
@@ -13,10 +14,6 @@ export default function CtaBanner() {
           {/* Background Grid & Vignette */}
           <div className="absolute inset-0 bg-route-dots opacity-5 pointer-events-none" />
 
-          {/* Ticket Perforation Notch (Left & Right) */}
-          <div className="hidden sm:block absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#F6F3EC] border-r-2 border-[#B08D3F]" />
-          <div className="hidden sm:block absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#F6F3EC] border-l-2 border-[#B08D3F]" />
-
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="space-y-3 text-center lg:text-left max-w-2xl">
               <div className="inline-flex items-center gap-2 font-mono text-xs text-[#1F4C4C] tracking-widest uppercase font-bold">
@@ -24,24 +21,22 @@ export default function CtaBanner() {
                 <span>DIRECT CHAUFFEUR BOOKING</span>
               </div>
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#14120F]">
-                Ready to Redefine Your Next Journey?
+                Ready to Plan Your Next Journey?
               </h2>
               <p className="font-body text-base text-[#14120F]/80 leading-relaxed font-light">
-                Message R Ramesh directly on WhatsApp with your pickup location, destination, and travel dates for an immediate, transparent quote.
+                Send your travel dates, passenger count, and route for an immediate, transparent quote directly from proprietor R Ramesh.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
               <TicketButton
-                href={BUSINESS_INFO.whatsappUrl}
-                isExternal
+                onClick={() => openTripBookingModal()}
                 variant="primary-gold"
                 size="lg"
-                ticketCode="INSTANT"
                 icon={<WhatsAppIcon className="w-5 h-5" withOriginalColor />}
                 className="w-full sm:w-auto shadow-md"
               >
-                Book on WhatsApp
+                Plan Your Trip
               </TicketButton>
 
               <TicketButton

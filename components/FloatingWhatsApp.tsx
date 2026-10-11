@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { X } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,27 +43,40 @@ export default function FloatingWhatsApp() {
             Namaskara! Traveling to/from Udupi, Mangalore Airport, or planning a tour in Karnataka? Send me a message for instant rates.
           </p>
 
-          <a
-            href={BUSINESS_INFO.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full py-2.5 px-3 bg-[#1F4C4C] hover:bg-[#2E6B6B] text-[#F6F3EC] font-mono text-xs uppercase tracking-wider rounded font-bold flex items-center justify-center gap-2 transition-colors border border-[#B08D3F]"
-          >
-            <WhatsAppIcon className="w-4 h-4" withOriginalColor />
-            <span>Open WhatsApp Chat</span>
-          </a>
+          <div className="space-y-2">
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
+                openTripBookingModal();
+              }}
+              className="w-full py-2.5 px-3 bg-[#1F4C4C] hover:bg-[#2E6B6B] text-[#F6F3EC] font-mono text-xs uppercase tracking-wider rounded font-bold flex items-center justify-center gap-2 transition-colors border border-[#B08D3F] cursor-pointer shadow-md"
+            >
+              <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+              <span>Fill Form &amp; Send to WhatsApp</span>
+            </button>
+
+            <a
+              href={BUSINESS_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+              className="w-full py-1.5 px-2 text-center text-[#E0C068] hover:text-white font-mono text-[11px] block transition-colors"
+            >
+              Or direct WhatsApp chat without form ➔
+            </a>
+          </div>
         </div>
       )}
 
       {/* Main Floating Bubble Button */}
       <div className="relative group">
-        <a
-          href={BUSINESS_INFO.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative w-14 h-14 bg-[#14120F] text-[#C9A227] border-2 border-[#B08D3F] rounded-full flex items-center justify-center shadow-[0_4px_25px_rgba(0,0,0,0.5)] hover:scale-105 hover:border-[#E0C068] active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#B08D3F]/50"
-          aria-label="Chat on WhatsApp with R Ramesh"
-          title="Direct WhatsApp with R Ramesh"
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="relative w-14 h-14 bg-[#14120F] text-[#C9A227] border-2 border-[#B08D3F] rounded-full flex items-center justify-center shadow-[0_4px_25px_rgba(0,0,0,0.5)] hover:scale-105 hover:border-[#E0C068] active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#B08D3F]/50 cursor-pointer"
+          aria-label="Contact R Ramesh on WhatsApp"
+          title="Contact R Ramesh on WhatsApp"
         >
           <WhatsAppIcon className="w-7 h-7" withOriginalColor />
           
@@ -71,11 +85,11 @@ export default function FloatingWhatsApp() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C9A227] opacity-75" />
             <span className="relative inline-flex rounded-full h-4 w-4 bg-[#2E6B6B] border border-[#F6F3EC]" />
           </span>
-        </a>
+        </button>
 
         {/* Quick Hover Tooltip */}
         <div className="absolute right-16 top-1/2 -translate-y-1/2 bg-[#14120F] text-[#F6F3EC] border border-[#383229] px-3 py-1.5 rounded font-mono text-[11px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg hidden sm:block">
-          Chat with R Ramesh
+          Contact R Ramesh
         </div>
       </div>
     </div>

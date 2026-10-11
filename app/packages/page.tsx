@@ -9,6 +9,7 @@ import SeoContentSection from "@/components/SeoContentSection";
 import { BUSINESS_INFO, TOUR_PACKAGES } from "@/lib/constants";
 import TicketButton from "@/components/TicketButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import TripEnquiryButton from "@/components/TripEnquiryButton";
 import PackageImageCarousel from "@/components/PackageImageCarousel";
 import { Clock, Car, ChevronRight, Compass, Phone } from "lucide-react";
 
@@ -70,7 +71,7 @@ export default function PackagesPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase">
               <Compass className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span>CURATED 2026 ITINERARIES // PRIVATE CHAUFFEUR</span>
+              <span>CURATED 2026 ITINERARIES · PRIVATE CHAUFFEUR</span>
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC] leading-tight">
@@ -82,18 +83,13 @@ export default function PackagesPage() {
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <TicketButton
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                  "Hello Ramesh, I want to discuss a customized 2026 tour package with RV Tours & Travels.\n\n*Package Enquiry Details:*\n• *Destination:* [Enter destination — mention if any other places also]\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease share sample itinerary options and package quote."
-                )}`}
-                isExternal
+              <TripEnquiryButton
                 variant="primary-gold"
                 size="md"
-                ticketCode="CUSTOM YATRA"
                 icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
               >
-                Plan Custom Itinerary on WhatsApp
-              </TicketButton>
+                Plan Custom Itinerary
+              </TripEnquiryButton>
 
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -113,7 +109,7 @@ export default function PackagesPage() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#DCD4C4]">
             <div>
               <div className="font-mono text-xs text-[#1F4C4C] uppercase tracking-widest font-bold mb-1">
-                // ACTIVE 2026 CIRCUITS
+                ACTIVE 2026 CIRCUITS
               </div>
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#14120F]">
                 Featured Holiday &amp; Pilgrimage Packages
@@ -160,7 +156,7 @@ export default function PackagesPage() {
                     {/* Key Stops */}
                     <div className="p-3.5 bg-[#1C1914] border border-[#383229]/60 rounded-lg space-y-2">
                       <span className="font-mono text-[10px] text-[#B08D3F] uppercase tracking-wider block font-bold">
-                        KEY WAYPOINTS &amp; STOPS:
+                        ITINERARY ROUTE &amp; STOPS:
                       </span>
                       <ul className="space-y-1.5 font-mono text-xs text-[#F6F3EC]/85">
                         {pkg.stops.map((stop, idx) => (
@@ -180,20 +176,20 @@ export default function PackagesPage() {
                   </div>
                 </div>
 
-                {/* Bottom WhatsApp Booking CTA */}
+                {/* Bottom Booking CTA */}
                 <div className="p-6 sm:p-7 pt-0">
                   <div className="pt-6 border-t border-[#383229]/60">
-                    <TicketButton
-                      href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(pkg.whatsappMessage)}`}
-                      isExternal
+                    <TripEnquiryButton
+                      destination={pkg.title}
+                      interest={pkg.title}
+                      vehicle={pkg.idealVehicle}
                       variant="primary-gold"
                       size="sm"
-                      ticketCode="BOOK 2026"
                       icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
                       className="w-full justify-center"
                     >
-                      Enquire on WhatsApp
-                    </TicketButton>
+                      Enquire Package
+                    </TripEnquiryButton>
                   </div>
                 </div>
               </div>
@@ -209,7 +205,7 @@ export default function PackagesPage() {
       <section className="py-16 bg-[#16130F] text-[#F6F3EC] border-t border-[#383229]">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
           <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold">
-            CUSTOM ITINERARIES // DOOR-TO-DOOR DISPATCH
+            CUSTOM ITINERARIES · DOOR-TO-DOOR TRAVEL
           </span>
           <h2 className="font-display text-3xl sm:text-4xl font-bold">
             Have a Specific Multi-Day Tour Itinerary in Mind?
@@ -218,22 +214,20 @@ export default function PackagesPage() {
             Send your dates, destination list, and passenger count. Proprietor R Ramesh will provide an immediate customized schedule and fixed transparent pricing.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-6 py-3 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-lg"
+            <TripEnquiryButton
+              variant="primary-gold"
+              size="md"
+              className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-lg"
             >
-              Open Trip Enquiry Terminal ➔
-            </Link>
-            <TicketButton
-              href={BUSINESS_INFO.whatsappUrl}
-              isExternal
+              Plan Your Custom Trip ➔
+            </TripEnquiryButton>
+            <TripEnquiryButton
               variant="secondary-outline"
               size="md"
-              ticketCode="WHATSAPP"
               icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
             >
-              Chat on WhatsApp
-            </TicketButton>
+              Enquire on WhatsApp
+            </TripEnquiryButton>
           </div>
         </div>
       </section>

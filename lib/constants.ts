@@ -95,7 +95,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     subtitle: "Sacred Darshan & Arabian Sea Coastal Route",
     duration: "1 to 2 Days",
     category: "pilgrimage",
-    badge: "MOST POPULAR // 2026",
+    badge: "MOST POPULAR · 2026",
     popular: true,
     stops: ["Udupi Sri Krishna Matha", "Maravanthe Beach", "Kollur Mookambika Temple", "Murudeshwar Shiva Temple & Beach"],
     description: "The premier coastal pilgrimage route connecting Udupi's Krishna Matha, Kollur Mookambika, and the majestic 123-foot Shiva statue at Murudeshwar.",

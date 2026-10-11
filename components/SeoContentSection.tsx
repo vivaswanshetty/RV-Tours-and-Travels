@@ -16,6 +16,7 @@ import {
 import { BUSINESS_INFO, FAQS_DATA } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
 import TicketButton from "./TicketButton";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function SeoContentSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -36,7 +37,7 @@ export default function SeoContentSection() {
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B]" />
-            <span>TRAVEL ADVISORY // KARNATAKA ROUTE INTELLIGENCE</span>
+            <span>TRAVEL GUIDE &amp; ROUTE INFORMATION</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC] leading-[1.15]">
@@ -71,7 +72,7 @@ export default function SeoContentSection() {
 
           <div className="lg:col-span-4 p-6 bg-[#1C1914] border border-[#B08D3F]/60 rounded-xl space-y-4 shadow-xl">
             <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold block">
-              QUICK DISPATCH CONTACT
+              DIRECT CONTACT &amp; ENQUIRIES
             </span>
             <h4 className="font-display text-xl font-bold text-[#F6F3EC]">
               Direct Booking &amp; Enquiries
@@ -87,15 +88,14 @@ export default function SeoContentSection() {
                 <Phone className="w-4 h-4 text-[#C9A227]" />
                 <span>Call: {BUSINESS_INFO.phoneDisplay}</span>
               </a>
-              <a
-                href={BUSINESS_INFO.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 p-3 bg-[#14120F] border border-[#B08D3F]/50 rounded hover:border-[#E0C068] transition-colors text-[#E0C068]"
+              <button
+                type="button"
+                onClick={() => openTripBookingModal()}
+                className="w-full flex items-center gap-2.5 p-3 bg-[#14120F] border border-[#B08D3F]/50 rounded hover:border-[#E0C068] transition-colors text-[#E0C068] cursor-pointer text-left"
               >
                 <WhatsAppIcon className="w-4 h-4" withOriginalColor />
-                <span>WhatsApp: +91 98455 11169</span>
-              </a>
+                <span>Enquire &amp; Book on WhatsApp: +91 98455 11169</span>
+              </button>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@ export default function SeoContentSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2 font-mono text-xs">
             <div className="p-4 bg-[#14120F] border border-[#383229] rounded-lg space-y-2">
-              <div className="text-[#E0C068] font-bold">01 // Temple Circuit Package</div>
+              <div className="text-[#E0C068] font-bold">01 · Temple Circuit Package</div>
               <div className="text-[#F6F3EC] font-semibold text-sm font-display">
                 Udupi – Kollur – Murudeshwar – Gokarna
               </div>
@@ -127,7 +127,7 @@ export default function SeoContentSection() {
             </div>
 
             <div className="p-4 bg-[#14120F] border border-[#383229] rounded-lg space-y-2">
-              <div className="text-[#E0C068] font-bold">02 // South Kanara Pilgrimage</div>
+              <div className="text-[#E0C068] font-bold">02 · South Kanara Pilgrimage</div>
               <div className="text-[#F6F3EC] font-semibold text-sm font-display">
                 Dharmasthala – Kukke Subramanya – Kateel
               </div>
@@ -137,7 +137,7 @@ export default function SeoContentSection() {
             </div>
 
             <div className="p-4 bg-[#14120F] border border-[#383229] rounded-lg space-y-2">
-              <div className="text-[#E0C068] font-bold">03 // Western Ghats Nature Tour</div>
+              <div className="text-[#E0C068] font-bold">03 · Western Ghats Nature Tour</div>
               <div className="text-[#F6F3EC] font-semibold text-sm font-display">
                 Coorg – Chikmagalur – Sringeri – Agumbe
               </div>

@@ -9,6 +9,7 @@ import FleetSection from "@/components/FleetSection";
 import { BUSINESS_INFO, FLEET_CATEGORIES } from "@/lib/constants";
 import TicketButton from "@/components/TicketButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import TripEnquiryButton from "@/components/TripEnquiryButton";
 import { ShieldCheck, Users, Briefcase, Wind, CheckCircle2, ChevronRight, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -67,7 +68,7 @@ export default function FleetPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase">
               <ShieldCheck className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span>VEHICLE INVENTORY // SANITIZED &amp; CLIMATE-CONTROLLED</span>
+              <span>VEHICLE INVENTORY · SANITIZED &amp; CLIMATE-CONTROLLED</span>
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC]">
@@ -79,24 +80,19 @@ export default function FleetPage() {
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <TicketButton
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                  "Hello Ramesh, I would like to check fleet availability and pricing with RV Tours & Travels.\n\n*Vehicle Enquiry Details:*\n• *Destination:* [Enter destination — mention if any other places also]\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease share vehicle availability and tariff estimate."
-                )}`}
-                isExternal
+              <TripEnquiryButton
                 variant="primary-gold"
                 size="md"
-                ticketCode="CHECK FLEET"
                 icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
               >
-                Check Availability on WhatsApp
-              </TicketButton>
+                Plan Your Trip
+              </TripEnquiryButton>
 
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/[0.06] border border-white/[0.12] text-xs font-mono text-[#F6F3EC] hover:border-[#B08D3F] hover:text-[#E0C068] transition-all"
               >
-                <span>Open Trip Enquiry Form ➔</span>
+                <span>Trip Enquiry Form ➔</span>
               </Link>
             </div>
           </div>
@@ -111,7 +107,7 @@ export default function FleetPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
             <span className="font-mono text-xs text-[#1F4C4C] uppercase tracking-widest font-bold block mb-1">
-              // VEHICLE HYGIENE &amp; SAFETY ASSURANCE
+              VEHICLE HYGIENE &amp; SAFETY ASSURANCE
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#14120F]">
               Our Fleet Standards on Every Journey
@@ -165,22 +161,20 @@ export default function FleetPage() {
             Tell us your passenger count, luggage volume, and travel destination. We will recommend the most cost-effective and comfortable vehicle for your journey.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-6 py-3 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-lg"
+            <TripEnquiryButton
+              variant="primary-gold"
+              size="md"
+              className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-lg"
             >
-              Open Trip Enquiry Terminal ➔
-            </Link>
-            <TicketButton
-              href={BUSINESS_INFO.whatsappUrl}
-              isExternal
+              Plan Your Trip Now ➔
+            </TripEnquiryButton>
+            <TripEnquiryButton
               variant="secondary-outline"
               size="md"
-              ticketCode="WHATSAPP"
               icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
             >
-              Chat on WhatsApp
-            </TicketButton>
+              Enquire on WhatsApp
+            </TripEnquiryButton>
           </div>
         </div>
       </section>

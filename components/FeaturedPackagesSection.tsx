@@ -3,11 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { TOUR_PACKAGES, BUSINESS_INFO } from "@/lib/constants";
+import { TOUR_PACKAGES } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
 import PackageImageCarousel from "./PackageImageCarousel";
 import { Clock, Compass, ArrowRight } from "lucide-react";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function FeaturedPackagesSection() {
   // Show top 3 featured packages on the home page
@@ -21,7 +22,7 @@ export default function FeaturedPackagesSection() {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-              <span>WAYPOINT 04 // POPULAR TOUR PACKAGES</span>
+              <span>FEATURED TOUR PACKAGES</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
               Popular Karnataka Tour Packages
@@ -84,15 +85,18 @@ export default function FeaturedPackagesSection() {
               <div className="p-6 sm:p-7 pt-0">
                 <div className="pt-5 border-t border-[#DCD4C4]/70">
                   <TicketButton
-                    href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(pkg.whatsappMessage)}`}
-                    isExternal
+                    onClick={() =>
+                      openTripBookingModal({
+                        destination: pkg.title,
+                        interest: pkg.title,
+                      })
+                    }
                     variant="paper-ticket"
                     size="sm"
-                    ticketCode="BOOK 2026"
                     icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
                     className="w-full justify-center"
                   >
-                    Enquire on WhatsApp
+                    Enquire Package
                   </TicketButton>
                 </div>
               </div>

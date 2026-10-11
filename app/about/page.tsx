@@ -10,6 +10,7 @@ import OverviewSection from "@/components/OverviewSection";
 import { BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "@/components/TicketButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import TripEnquiryButton from "@/components/TripEnquiryButton";
 import { UserCheck, ShieldCheck, MapPin, Award, ChevronRight, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -67,7 +68,7 @@ export default function AboutPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase">
               <UserCheck className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span>OPERATOR PROFILE // DIRECT PROPRIETORSHIP</span>
+              <span>ABOUT RV TOURS &amp; TRAVELS</span>
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC]">
@@ -79,18 +80,13 @@ export default function AboutPage() {
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <TicketButton
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                  "Hello Ramesh, I would like to enquire about your chauffeur and tour services with RV Tours & Travels.\n\n*Travel Enquiry Details:*\n• *Destination:* [Enter destination — mention if any other places also]\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease share available vehicle options and tariff details."
-                )}`}
-                isExternal
+              <TripEnquiryButton
                 variant="primary-gold"
                 size="md"
-                ticketCode="CONNECT"
                 icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
               >
-                Chat with R Ramesh
-              </TicketButton>
+                Plan Trip with R Ramesh
+              </TripEnquiryButton>
 
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -123,22 +119,20 @@ export default function AboutPage() {
             Reach out directly for customized tour package advice, outstation estimates, and airport pickups.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-6 py-3 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-lg"
+            <TripEnquiryButton
+              variant="primary-gold"
+              size="md"
+              className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-lg"
             >
-              Open Trip Enquiry Terminal ➔
-            </Link>
-            <TicketButton
-              href={BUSINESS_INFO.whatsappUrl}
-              isExternal
+              Plan Your Trip Now ➔
+            </TripEnquiryButton>
+            <TripEnquiryButton
               variant="secondary-outline"
               size="md"
-              ticketCode="WHATSAPP"
               icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
             >
-              Chat on WhatsApp
-            </TicketButton>
+              Enquire on WhatsApp
+            </TripEnquiryButton>
           </div>
         </div>
       </section>

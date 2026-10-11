@@ -231,11 +231,11 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-20 sm:py-28 bg-[#F6F3EC] text-[#14120F] relative border-b border-[#DCD4C4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Waypoint 08 Header */}
+        {/* Booking Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
             <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-            <span>WAYPOINT 09 // DIRECT DISPATCH &amp; BOOKING</span>
+            <span>BOOKING &amp; ENQUIRIES</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
             Get in Touch &amp; Reserve Your Trip
@@ -252,11 +252,17 @@ export default function ContactSection() {
             {/* Quick Contact Cards */}
             <div className="space-y-4">
               {/* WhatsApp Card */}
-              <a
-                href={BUSINESS_INFO.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-5 bg-[#EFEAE0] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-xl flex items-center justify-between group transition-all shadow-sm"
+              <button
+                type="button"
+                onClick={() => {
+                  const formEl = document.getElementById("contact-enquiry-form");
+                  if (formEl) {
+                    formEl.scrollIntoView({ behavior: "smooth" });
+                    const nameInput = document.getElementById("name") || formEl.querySelector("input");
+                    if (nameInput) (nameInput as HTMLInputElement).focus();
+                  }
+                }}
+                className="w-full p-5 bg-[#EFEAE0] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-xl flex items-center justify-between group transition-all shadow-sm text-left cursor-pointer"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-lg bg-[#F6F3EC] border border-[#DCD4C4] flex items-center justify-center group-hover:border-[#B08D3F] transition-colors">
@@ -264,10 +270,10 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <span className="font-mono text-[10px] text-[#1F4C4C] uppercase tracking-widest block font-bold">
-                      FASTEST RESPONSE
+                      FILL FORM &amp; SEND TO WHATSAPP
                     </span>
                     <span className="font-display text-lg font-bold text-[#14120F] group-hover:text-[#B08D3F] transition-colors">
-                      Chat on WhatsApp
+                      Enquire on WhatsApp
                     </span>
                     <span className="font-mono text-xs text-[#14120F]/70 block mt-0.5">
                       {BUSINESS_INFO.phoneDisplay}
@@ -277,7 +283,7 @@ export default function ContactSection() {
                 <span className="font-mono text-xs text-[#B08D3F] group-hover:translate-x-1 transition-transform">
                   →
                 </span>
-              </a>
+              </button>
 
               {/* Direct Call Card */}
               <a
@@ -337,9 +343,9 @@ export default function ContactSection() {
               <div className="flex items-center justify-between px-2 pt-1">
                 <span className="font-mono text-xs text-[#1F4C4C] uppercase tracking-wider flex items-center gap-1.5 font-bold">
                   <MapPin className="w-3.5 h-3.5 text-[#B08D3F]" />
-                  BASE STATION MAP // UDUPI, KARNATAKA
+                  LOCATION MAP · UDUPI, KARNATAKA
                 </span>
-                <span className="font-mono text-[10px] text-[#14120F]/60">13.3409° N, 74.7421° E</span>
+                <span className="font-mono text-[10px] text-[#14120F]/60">Coastal Karnataka Hub</span>
               </div>
               <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden border border-[#DCD4C4]">
                 <iframe
@@ -357,14 +363,14 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Ticket Stub Booking & Enquiry Form (7 cols) */}
+          {/* Right Column: Booking & Enquiry Form (7 cols) */}
           <div className="lg:col-span-7">
             <div className="bg-[#EFEAE0] border border-[#DCD4C4] rounded-xl p-4 sm:p-8 shadow-sm relative text-[#14120F]">
               {/* Form Ticket Header with Tab Switcher */}
               <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#DCD4C4] mb-6">
                 <div>
                   <span className="font-mono text-xs text-[#1F4C4C] uppercase tracking-widest font-bold block">
-                    RESERVATION MANIFEST
+                    RESERVATION DETAILS
                   </span>
                   <h3 className="font-display text-2xl font-bold text-[#14120F]">
                     {activeTab === "form" ? "Send Trip Enquiry" : "Recent Enquiries"}
@@ -539,7 +545,7 @@ export default function ContactSection() {
 
                   <div>
                     <span className="font-mono text-xs text-[#1F4C4C] uppercase tracking-widest font-bold block mb-1">
-                      ENQUIRY PREPARED // REF: {refCode}
+                      ENQUIRY PREPARED · REF: {refCode}
                     </span>
                     <h4 className="font-display text-2xl font-bold text-[#14120F]">
                       Enquiry Ready on WhatsApp
@@ -605,7 +611,7 @@ export default function ContactSection() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 font-body">
+                <form id="contact-enquiry-form" onSubmit={handleSubmit} className="space-y-4 font-body">
                   {errorMessage && (
                     <div className="p-3 bg-red-50 border border-red-200 rounded text-xs font-mono text-red-800 flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />

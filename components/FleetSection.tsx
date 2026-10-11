@@ -7,16 +7,17 @@ import { Users, Briefcase, Wind } from "lucide-react";
 import { FLEET_CATEGORIES, BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function FleetSection() {
   return (
     <section id="fleet" className="py-20 sm:py-28 bg-[#F6F3EC] text-[#14120F] relative border-b border-[#DCD4C4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Waypoint 03 Header */}
+        {/* Fleet Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
             <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-            <span>WAYPOINT 05 // FLEET SPECIFICATIONS</span>
+            <span>OUR VEHICLE FLEET</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
             Maintained Fleet for Every Group Size
@@ -83,8 +84,7 @@ export default function FleetSection() {
               {/* Card Footer CTA */}
               <div className="p-5 sm:p-6 pt-0 border-t border-[#DCD4C4]/60 mt-2">
                 <TicketButton
-                  href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(vehicle.whatsappMessage)}`}
-                  isExternal
+                  onClick={() => openTripBookingModal({ vehicle: vehicle.name })}
                   variant="paper-ticket"
                   size="sm"
                   className="w-full"
@@ -114,14 +114,13 @@ export default function FleetSection() {
             >
               View Full Specs ➔
             </Link>
-            <a
-              href={BUSINESS_INFO.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2.5 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
+            <button
+              type="button"
+              onClick={() => openTripBookingModal()}
+              className="px-4 py-2.5 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-sm cursor-pointer"
             >
-              WhatsApp R Ramesh →
-            </a>
+              Plan Your Trip →
+            </button>
           </div>
         </div>
       </div>

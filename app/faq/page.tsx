@@ -9,6 +9,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { BUSINESS_INFO, FAQS_DATA } from "@/lib/constants";
 import TicketButton from "@/components/TicketButton";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import TripEnquiryButton from "@/components/TripEnquiryButton";
 import {
   HelpCircle,
   Search,
@@ -100,7 +101,7 @@ export default function FaqPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase">
               <HelpCircle className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span>HELPFUL CUSTOMER ADVISORY // TRANSPARENT TRAVEL</span>
+              <span>HELPFUL CUSTOMER ADVISORY · TRANSPARENT TRAVEL</span>
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F6F3EC]">
@@ -232,19 +233,14 @@ export default function FaqPage() {
                 </p>
 
                 <div className="pt-2 space-y-3">
-                  <TicketButton
-                    href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(
-                      "Hello Ramesh, I have an inquiry regarding taxi booking with RV Tours & Travels.\n\n*Travel Enquiry Details:*\n• *Destination:* [Enter destination — mention if any other places also]\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease assist with route availability and estimated fare."
-                    )}`}
-                    isExternal
+                  <TripEnquiryButton
                     variant="primary-gold"
                     size="md"
-                    ticketCode="DIRECT CHAT"
                     icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
                     className="w-full justify-center"
                   >
-                    Ask on WhatsApp
-                  </TicketButton>
+                    Plan Your Trip
+                  </TripEnquiryButton>
 
                   <a
                     href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -282,7 +278,7 @@ export default function FaqPage() {
                   </li>
                   <li className="pt-2">
                     <Link href="/contact" className="hover:text-[#B08D3F] flex items-center justify-between">
-                      <span>Online Booking Terminal</span>
+                      <span>Booking &amp; Enquiries</span>
                       <span>➔</span>
                     </Link>
                   </li>

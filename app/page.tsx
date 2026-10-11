@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import RouteLine from "@/components/RouteLine";
 import OverviewSection from "@/components/OverviewSection";
 import ServicesSection from "@/components/ServicesSection";
 import FleetSection from "@/components/FleetSection";
@@ -18,37 +17,34 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#F6F3EC] text-[#14120F] relative selection:bg-[#B08D3F] selection:text-[#14120F]">
-      {/* Persistent Sticky Header */}
+      {/* Persistent Header */}
       <Header />
 
-      {/* Signature Route Line Navigation Spine */}
-      <RouteLine />
-
-      {/* Waypoint 01: Hero & Departure Board */}
+      {/* Hero Section */}
       <Hero />
 
-      {/* Waypoint 02: Destinations ("Where We Drive") */}
+      {/* Destinations ("Popular Destinations") */}
       <DestinationsSection />
 
-      {/* Waypoint 03: Saptha Kshetra Sacred Pilgrimage */}
+      {/* Saptha Kshetra Sacred Pilgrimage */}
       <SapthaKshetraSection />
 
-      {/* Waypoint 04: Popular Tour Packages */}
+      {/* Popular Tour Packages */}
       <FeaturedPackagesSection />
 
-      {/* Waypoint 05: Fleet Specifications */}
+      {/* Fleet Specifications */}
       <FleetSection />
 
-      {/* Waypoint 06: Services & Routes */}
+      {/* Services & Routes */}
       <ServicesSection />
 
-      {/* Waypoint 07: Built on Trust ("Why Choose Us") */}
+      {/* Built on Trust ("Why Travel With Us") */}
       <OverviewSection />
 
-      {/* Waypoint 08: About / Operator Profile */}
+      {/* About / Operator Profile */}
       <AboutSection />
 
-      {/* Waypoint 09: Contact / Dispatch */}
+      {/* Booking & Contact */}
       <ContactSection />
 
       {/* Quick FAQs Teaser */}

@@ -6,23 +6,10 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Phone, ArrowRight, Compass, ShieldCheck, MapPin, Radio, Plane, Clock, Award } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
-import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function Hero() {
-  const quickRoutes = [
-    {
-      label: "✈️ Mangalore Airport (IXE)",
-      query:
-        "Hello Ramesh, I want to book a Mangalore Airport (IXE) cab with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination / Route:* Udupi / Manipal ⇄ Mangalore Airport (IXE) (mention if any other places / stops also)\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease share availability and fare estimate.",
-    },
-    {
-      label: "🚗 All-Karnataka Outstation",
-      query:
-        "Hello Ramesh, I need a chauffeur for an outstation Karnataka trip with RV Tours & Travels.\n\n*Trip Enquiry Details:*\n• *Destination / Route:* Outstation Karnataka Road Trip (mention if any other places also)\n• *Vehicle Type:* [Enter vehicle type / name]\n• *No. of Members:* [Enter no. of members]\n• *No. of Trip Days:* [Enter no. of days]\n• *Travel Dates:* [Enter travel dates (From – To)]\n• *Pickup Time (Optional):* [Enter preferred pickup time]\n\nPlease share availability and tariff details.",
-    },
-  ];
-
   const trustStats = [
     { value: "15+ Years", label: "Chauffeur Experience" },
     { value: "100% Punctual", label: "Flight-Timed Pickups" },
@@ -62,10 +49,10 @@ export default function Hero() {
           <span className="h-[1px] w-6 sm:w-12 bg-gradient-to-l from-transparent to-[#B08D3F]/60" />
         </div>
 
-        {/* Origin & Live Dispatch Pill */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-[#1C1914]/90 border border-[#B08D3F]/50 rounded-full text-xs font-mono tracking-widest text-[#E0C068] uppercase shadow-lg backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-[#2E6B6B] animate-pulse" />
-          <span>ORIGIN: UDUPI, KA (13.34° N, 74.74° E) · 24/7 DIRECT DISPATCH</span>
+        {/* Location & Availability Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#1C1914]/90 border border-[#B08D3F]/40 rounded-full text-xs tracking-wider text-[#E0C068] shadow-lg backdrop-blur-md">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Based in Udupi &amp; Manipal · Available 24/7 Private Cab Service</span>
         </div>
 
         {/* Hero Typography */}
@@ -84,17 +71,14 @@ export default function Hero() {
 
         {/* Primary Action Buttons */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-          <TicketButton
-            href={BUSINESS_INFO.whatsappUrl}
-            isExternal
-            variant="primary-gold"
-            size="lg"
-            ticketCode="WHATSAPP"
-            icon={<WhatsAppIcon className="w-5 h-5" withOriginalColor />}
-            className="w-full sm:w-auto shadow-xl"
+          <button
+            type="button"
+            onClick={() => openTripBookingModal()}
+            className="w-full sm:flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] font-bold text-xs sm:text-sm uppercase font-mono tracking-wider hover:brightness-110 shadow-xl transition-all active:scale-98 cursor-pointer"
           >
-            Book on WhatsApp
-          </TicketButton>
+            <WhatsAppIcon className="w-5 h-5" withOriginalColor />
+            <span>Plan &amp; Book on WhatsApp</span>
+          </button>
 
           <a
             href={`tel:${BUSINESS_INFO.phoneClean}`}
@@ -107,21 +91,31 @@ export default function Hero() {
 
         {/* Interactive Quick Route Chips */}
         <div className="pt-4 space-y-2.5">
-          <span className="font-mono text-[11px] text-[#B08D3F] uppercase tracking-widest block font-bold">
-            QUICK ENQUIRY SHORTCUTS // SELECT ROUTE:
+          <span className="text-xs text-[#B08D3F] uppercase tracking-wider block font-semibold">
+            Popular Travel Routes:
           </span>
           <div className="flex flex-wrap items-center justify-center gap-2">
-            {quickRoutes.map((route, idx) => (
-              <a
-                key={idx}
-                href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(route.query)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-1.5 bg-[#1C1914] hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/85 hover:text-[#E0C068] rounded-full font-mono text-xs transition-all duration-200 shadow-sm hover:scale-105 transform"
-              >
-                {route.label}
-              </a>
-            ))}
+            <button
+              type="button"
+              onClick={() => openTripBookingModal({ destination: "Mangalore Airport (IXE)", interest: "Airport Drop / Pickup" })}
+              className="px-3.5 py-1.5 bg-[#1C1914] hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/85 hover:text-[#E0C068] rounded-full text-xs transition-all duration-200 shadow-sm hover:scale-105 transform cursor-pointer"
+            >
+              ✈️ Mangalore Airport (IXE)
+            </button>
+            <button
+              type="button"
+              onClick={() => openTripBookingModal({ destination: "Karnataka Temple Circuit", interest: "Karnataka Temple Circuit" })}
+              className="px-3.5 py-1.5 bg-[#1C1914] hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/85 hover:text-[#E0C068] rounded-full text-xs transition-all duration-200 shadow-sm hover:scale-105 transform cursor-pointer"
+            >
+              🛕 Saptha Kshetra Temple Tour
+            </button>
+            <button
+              type="button"
+              onClick={() => openTripBookingModal({ destination: "Outstation Karnataka Road Trip", interest: "Custom Outstation Road Trip" })}
+              className="px-3.5 py-1.5 bg-[#1C1914] hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/85 hover:text-[#E0C068] rounded-full text-xs transition-all duration-200 shadow-sm hover:scale-105 transform cursor-pointer"
+            >
+              🚗 All-Karnataka Outstation
+            </button>
           </div>
         </div>
       </div>

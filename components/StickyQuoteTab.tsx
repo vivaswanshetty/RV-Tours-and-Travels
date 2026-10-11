@@ -62,6 +62,16 @@ const getTravelDatesSummary = (from: string, to: string) => {
   return "";
 };
 
+export function openTripBookingModal(detail?: {
+  interest?: string;
+  destination?: string;
+  vehicle?: string;
+}) {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("open-trip-modal", { detail }));
+  }
+}
+
 export default function StickyQuoteTab() {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -77,6 +87,23 @@ export default function StickyQuoteTab() {
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  // Listen for open-trip-modal custom event from buttons across the site
+  useEffect(() => {
+    const handleOpenModal = (e: Event) => {
+      const customEvent = e as CustomEvent<{
+        interest?: string;
+        destination?: string;
+        vehicle?: string;
+      }>;
+      setIsOpen(true);
+      if (customEvent.detail?.interest) setInterest(customEvent.detail.interest);
+      if (customEvent.detail?.destination) setDestinationCustom(customEvent.detail.destination);
+      if (customEvent.detail?.vehicle) setVehicleType(customEvent.detail.vehicle);
+    };
+    window.addEventListener("open-trip-modal", handleOpenModal);
+    return () => window.removeEventListener("open-trip-modal", handleOpenModal);
+  }, []);
 
   // Close when pressing Escape
   useEffect(() => {
@@ -218,13 +245,9 @@ export default function StickyQuoteTab() {
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
-            aria-label="Plan My Trip Window Console"
-            className="w-full max-w-5xl h-auto max-h-[92vh] bg-[#14120F] text-[#F6F3EC] border-2 border-[#B08D3F] rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 relative"
+            aria-label="Plan My Trip"
+            className="w-full max-w-5xl h-auto max-h-[92vh] bg-[#14120F] text-[#F6F3EC] border border-[#B08D3F] rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.95)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 relative"
           >
-            {/* Decorative Corner Notches on Top and Bottom edges */}
-            <span className="hidden sm:block absolute -left-3 top-14 w-6 h-6 rounded-full bg-[#14120F] border-2 border-[#B08D3F] z-20 pointer-events-none" />
-            <span className="hidden sm:block absolute -right-3 top-14 w-6 h-6 rounded-full bg-[#14120F] border-2 border-[#B08D3F] z-20 pointer-events-none" />
-
             {/* Window Top Title Bar */}
             <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-[#383229] bg-[#181510] shrink-0">
               <div className="flex items-center gap-3">
@@ -233,14 +256,14 @@ export default function StickyQuoteTab() {
                 </div>
                 <div>
                   <div className="font-display text-base sm:text-lg font-bold text-[#F6F3EC] tracking-wide flex items-center gap-2">
-                    <span>Plan My Trip</span>
-                    <span className="hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded bg-[#B08D3F]/20 text-[#E0C068] border border-[#B08D3F]/50 font-normal">
-                      DISPATCH CONSOLE
+                    <span>Plan Your Trip</span>
+                    <span className="text-xs font-normal text-stone-400 font-sans">
+                      · Booking Enquiry
                     </span>
                   </div>
-                  <div className="font-mono text-[10px] sm:text-[11px] text-[#B08D3F] tracking-wider uppercase flex items-center gap-2">
+                  <div className="text-[11px] text-[#B08D3F] tracking-wide flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>Direct Owner Dispatch // Proprietor R Ramesh</span>
+                    <span>Direct Owner Coordination with Proprietor R Ramesh</span>
                   </div>
                 </div>
               </div>
@@ -266,14 +289,14 @@ export default function StickyQuoteTab() {
               <div className="p-8 sm:p-16 text-center space-y-4 my-auto animate-in fade-in">
                 <CheckCircle2 className="w-14 h-14 text-emerald-400 mx-auto animate-bounce" />
                 <div className="font-display text-2xl font-bold text-[#F6F3EC]">
-                  Dispatching Your Itinerary to WhatsApp...
+                  Opening Your Trip Enquiry on WhatsApp...
                 </div>
                 <p className="font-body text-sm text-[#F6F3EC]/80 max-w-md mx-auto leading-relaxed">
-                  Opening pre-filled message directly with proprietor <strong>R Ramesh</strong> on{" "}
+                  Connecting directly with proprietor <strong>R Ramesh</strong> on{" "}
                   <span className="text-[#E0C068] font-mono">+91 98455 11169</span>.
                 </p>
                 <div className="text-xs font-mono text-[#B08D3F]">
-                  Reference Ref: RV-DISPATCH-{Date.now().toString().slice(-6)}
+                  Reference: RV-{Date.now().toString().slice(-6)}
                 </div>
               </div>
             ) : (

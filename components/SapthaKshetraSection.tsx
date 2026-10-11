@@ -2,9 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import { SAPTHA_KSHETRAS, BUSINESS_INFO } from "@/lib/constants";
+import { SAPTHA_KSHETRAS } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function SapthaKshetraSection() {
   return (
@@ -17,7 +18,7 @@ export default function SapthaKshetraSection() {
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
             <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-            <span>WAYPOINT 03 // SAPTHA KSHETRA</span>
+            <span>SACRED TEMPLE PILGRIMAGE</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
             Saptha Kshetra — Seven Sacred Kshetras
@@ -77,8 +78,12 @@ export default function SapthaKshetraSection() {
               {/* Card Footer Action */}
               <div className="p-5 sm:p-6 pt-0 border-t border-[#DCD4C4]/60 mt-3 flex items-center justify-between gap-3">
                 <TicketButton
-                  href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(kshetra.whatsappMessage)}`}
-                  isExternal
+                  onClick={() =>
+                    openTripBookingModal({
+                      destination: kshetra.name,
+                      interest: `${kshetra.name} (${kshetra.templeName})`,
+                    })
+                  }
                   variant="paper-ticket"
                   size="sm"
                   className="w-full"

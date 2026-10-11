@@ -32,20 +32,17 @@ export default function NotFound() {
         </Link>
 
         <div className="font-mono text-xs text-[#E0C068] px-3 py-1 bg-[#1C1914] border border-[#383229] rounded">
-          WAYPOINT: UNRESOLVED
+          ERROR 404
         </div>
       </header>
 
-      {/* Center 404 Boarding Pass Ticket Stub */}
+      {/* Center 404 Card */}
       <div className="flex-1 flex items-center justify-center p-4 sm:p-6 relative z-10 my-8">
         <div className="max-w-xl w-full bg-[#1C1914] border border-[#B08D3F] rounded-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden text-center space-y-6">
-          {/* Top Notch Perforations */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-[#14120F] rounded-full border border-[#B08D3F]/60" />
-
           {/* 404 Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#14120F] border border-[#B08D3F]/50 rounded-full font-mono text-xs text-[#E0C068] tracking-widest uppercase">
-            <Compass className="w-4 h-4 text-[#C9A227] animate-spin" style={{ animationDuration: "12s" }} />
-            <span>ROUTE DETOUR // ERROR 404</span>
+            <Compass className="w-4 h-4 text-[#C9A227]" />
+            <span>PAGE NOT FOUND · 404</span>
           </div>
 
           <div className="space-y-2">
@@ -53,12 +50,12 @@ export default function NotFound() {
               404
             </div>
             <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#F6F3EC]">
-              Destination Not Found
+              Page Not Found
             </h1>
           </div>
 
           <p className="font-body text-sm sm:text-base text-[#F6F3EC]/80 max-w-md mx-auto leading-relaxed">
-            The requested waypoint or route URL is not listed in our active Karnataka dispatch manifest. Let us guide you back to the main terminal.
+            The page you are looking for doesn&rsquo;t exist or has moved. Let us guide you back to our main travel itineraries.
           </p>
 
           {/* Action Buttons */}
@@ -67,10 +64,9 @@ export default function NotFound() {
               href="/"
               variant="primary-gold"
               size="md"
-              ticketCode="HOME"
               icon={<Home className="w-4 h-4" />}
             >
-              Return to Main Terminal
+              Return to Home Page
             </TicketButton>
 
             <TicketButton
@@ -78,10 +74,9 @@ export default function NotFound() {
               isExternal
               variant="secondary-outline"
               size="md"
-              ticketCode="DISPATCH"
               icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
             >
-              Enquire on WhatsApp
+              Contact on WhatsApp
             </TicketButton>
           </div>
 

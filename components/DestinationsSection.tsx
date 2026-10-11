@@ -3,9 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { DESTINATIONS, BUSINESS_INFO } from "@/lib/constants";
-import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
 import DestinationImageCarousel from "./DestinationImageCarousel";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function DestinationsSection() {
   const featuredDestination = DESTINATIONS[0];
@@ -17,12 +17,12 @@ export default function DestinationsSection() {
       className="py-20 sm:py-28 bg-[#F6F3EC] text-[#14120F] relative border-b border-[#DCD4C4] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Waypoint 04 Header */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-              <span>WAYPOINT 02 // WHERE WE DRIVE</span>
+              <span>POPULAR DESTINATIONS</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
               Where We Drive: Coastal Karnataka &amp; Beyond
@@ -37,94 +37,69 @@ export default function DestinationsSection() {
           </div>
         </div>
 
-        {/* Asymmetric Boarding Pass Layout */}
+        {/* Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Featured Large Ticket Stub: Udupi & Coastal Karnataka (6 cols) */}
+          {/* Featured Destination: Udupi & Coastal Karnataka (6 cols) */}
           <div className="lg:col-span-6 flex flex-col">
             <div className="relative bg-[#EFEAE0] text-[#14120F] border border-[#DCD4C4] rounded-xl overflow-hidden shadow-lg flex-1 flex flex-col justify-between group transition-all duration-300 hover:border-[#B08D3F]">
-              {/* Circular Ticket Cutouts on Left & Right edge at the perforation tear line */}
-              <span
-                className="absolute -left-3 bottom-[80px] w-6 h-6 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
-                aria-hidden="true"
-              />
-              <span
-                className="absolute -right-3 bottom-[80px] w-6 h-6 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
-                aria-hidden="true"
-              />
-
               {/* Card Top: Dynamic Landmark Carousel */}
               <div>
                 <DestinationImageCarousel
                   images={featuredDestination.images}
                   fallbackSrc={featuredDestination.imageSrc}
                   fallbackAlt={featuredDestination.imageAlt}
-                  stampBadge={`WP 02-A // ${featuredDestination.badge}`}
+                  stampBadge={featuredDestination.badge}
                   className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border-b border-[#DCD4C4]"
                   priority
                   staggerOffsetMs={0}
                 />
 
-                {/* Card Main Body: Strictly 2 label types (Heading + 1 sentence description) */}
+                {/* Card Main Body */}
                 <div className="p-6 sm:p-8 space-y-3">
                   <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#14120F]">
                     {featuredDestination.name}
                   </h3>
 
-                  <p className="font-body text-base sm:text-lg text-[#14120F]/80 leading-relaxed font-light">
+                  <p className="font-body text-sm sm:text-base text-[#14120F]/80 leading-relaxed font-light">
                     {featuredDestination.description}
                   </p>
                 </div>
               </div>
 
-              {/* Perforated Divider & Ticket Stub Action Base */}
-              <div className="mt-4 border-t-2 border-dashed border-[#DCD4C4] p-6 bg-[#E5DFD1]/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+              {/* Action Base */}
+              <div className="mt-4 border-t border-[#DCD4C4] p-6 bg-[#E5DFD1]/50 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="font-mono text-xs text-[#14120F]/70 text-center sm:text-left">
-                  <div className="text-[10px] text-[#1F4C4C] uppercase tracking-widest font-bold">DIRECT DISPATCH</div>
-                  <div>Direct Booking with R Ramesh · No Middlemen</div>
+                  <div className="text-[10px] text-[#1F4C4C] uppercase tracking-widest font-bold">DIRECT OWNER BOOKING</div>
+                  <div>Direct with Proprietor R Ramesh · No Middlemen</div>
                 </div>
 
-                <TicketButton
-                  href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(featuredDestination.whatsappMessage)}`}
-                  isExternal
-                  variant="primary-gold"
-                  size="md"
-                  ticketCode={featuredDestination.ticketCode}
-                  icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
-                  className="w-full sm:w-auto"
+                <button
+                  type="button"
+                  onClick={() => openTripBookingModal({ destination: featuredDestination.name, interest: featuredDestination.name })}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] font-mono text-xs uppercase font-bold tracking-wider transition-colors cursor-pointer"
                 >
-                  Plan This Trip
-                </TicketButton>
+                  <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+                  <span>Plan This Trip</span>
+                </button>
               </div>
             </div>
           </div>
 
-          {/* Supporting Stubs: 3 Stacked Horizontal Boarding Passes (6 cols) */}
+          {/* Supporting Cards: 3 Stacked Cards (6 cols) */}
           <div className="lg:col-span-6 flex flex-col gap-4">
             {supportingDestinations.map((dest, idx) => {
-              const wpIndex = idx === 0 ? "02-B" : idx === 1 ? "02-C" : "02-D";
-
               return (
                 <div
                   key={dest.id}
                   className="relative bg-[#EFEAE0] text-[#14120F] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-xl overflow-hidden shadow-sm group transition-all duration-300 flex flex-col sm:flex-row"
                 >
-                  {/* Circular Notches on Top and Bottom at the vertical divider line */}
-                  <span
-                    className="hidden sm:block absolute top-[-10px] left-[42%] -translate-x-1/2 w-5 h-5 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="hidden sm:block absolute bottom-[-10px] left-[42%] -translate-x-1/2 w-5 h-5 rounded-full bg-[#F6F3EC] border border-[#DCD4C4] z-20 pointer-events-none"
-                    aria-hidden="true"
-                  />
-
-                  {/* Left (Image section with dynamic carousel, 42% on desktop) */}
+                  {/* Left: Image section */}
                   <DestinationImageCarousel
                     images={dest.images}
                     fallbackSrc={dest.imageSrc}
                     fallbackAlt={dest.imageAlt}
-                    stampBadge={`WP ${wpIndex}`}
-                    className="relative w-full sm:w-[42%] h-48 sm:h-auto min-h-[180px] shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r-2 border-dashed border-[#DCD4C4]"
+                    stampBadge={dest.badge}
+                    className="relative w-full sm:w-[42%] h-48 sm:h-auto min-h-[180px] shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r border-[#DCD4C4]"
                     staggerOffsetMs={(idx + 1) * 750}
                   />
 
@@ -140,18 +115,16 @@ export default function DestinationsSection() {
                       </p>
                     </div>
 
-                    {/* Action Bar: Fully contained with comfortable padding */}
+                    {/* Action Bar */}
                     <div className="pt-3 border-t border-[#DCD4C4]/70 mt-3">
-                      <TicketButton
-                        href={`https://wa.me/${BUSINESS_INFO.whatsappNumber}?text=${encodeURIComponent(dest.whatsappMessage)}`}
-                        isExternal
-                        variant="paper-ticket"
-                        size="sm"
-                        icon={<WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />}
-                        className="w-full justify-center"
+                      <button
+                        type="button"
+                        onClick={() => openTripBookingModal({ destination: dest.name, interest: dest.name })}
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#F6F3EC] hover:bg-[#B08D3F] text-[#14120F] hover:text-[#14120F] border border-[#DCD4C4] hover:border-[#B08D3F] font-mono text-xs uppercase font-bold tracking-wider transition-colors cursor-pointer"
                       >
-                        Plan This Trip
-                      </TicketButton>
+                        <WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />
+                        <span>Plan This Trip</span>
+                      </button>
                     </div>
                   </div>
                 </div>

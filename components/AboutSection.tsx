@@ -7,13 +7,14 @@ import { Award, PhoneCall, Compass, ArrowRight } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "./TicketButton";
 import WhatsAppIcon from "./WhatsAppIcon";
+import { openTripBookingModal } from "./StickyQuoteTab";
 
 export default function AboutSection() {
   return (
     <section id="about" className="py-20 sm:py-28 bg-[#F6F3EC] text-[#14120F] relative border-b border-[#DCD4C4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: Chauffeur ID & Manifest Credential Card (5 cols) */}
+          {/* Left Column: Chauffeur Profile Card (5 cols) */}
           <div className="lg:col-span-5 max-w-md mx-auto lg:max-w-none w-full">
             <div className="relative bg-[#EFEAE0] border-2 border-[#DCD4C4] rounded-2xl p-5 sm:p-6 shadow-md hover:border-[#B08D3F] transition-all group">
               {/* Brass Corner Accents */}
@@ -29,12 +30,12 @@ export default function AboutSection() {
                     RV
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-[#1F4C4C] font-bold">OPERATOR MANIFEST</div>
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-[#1F4C4C] font-bold">DRIVER CREDENTIALS</div>
                     <div className="font-display text-xs font-bold text-[#14120F]">RV TOURS &amp; TRAVELS</div>
                   </div>
                 </div>
                 <span className="font-mono text-[10px] text-[#B08D3F] font-bold px-2 py-0.5 bg-[#F6F3EC] border border-[#DCD4C4] rounded">
-                  ID: KA-20-DISPATCH
+                  UDUPI · KARNATAKA
                 </span>
               </div>
 
@@ -88,11 +89,11 @@ export default function AboutSection() {
 
           {/* Right Column: Narrative, First-Person Quote, Backstory & Stats (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Waypoint Header */}
+            {/* About Header */}
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
-                <span>WAYPOINT 08 // OPERATOR PROFILE</span>
+                <span>ABOUT THE PROPRIETOR</span>
               </div>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#14120F]">
                 Dedicated Chauffeur Care by <span className="italic text-[#B08D3F]">R Ramesh</span>
@@ -155,14 +156,12 @@ export default function AboutSection() {
             {/* CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <TicketButton
-                href={BUSINESS_INFO.whatsappUrl}
-                isExternal
+                onClick={() => openTripBookingModal()}
                 variant="paper-ticket"
                 size="md"
-                ticketCode="WHATSAPP DIRECT"
                 icon={<WhatsAppIcon className="w-4 h-4" withOriginalColor />}
               >
-                Chat Directly with R Ramesh
+                Plan Trip with R Ramesh
               </TicketButton>
 
               <a
