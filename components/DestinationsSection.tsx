@@ -79,7 +79,7 @@ export default function DestinationsSection() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer shadow-md whitespace-nowrap"
                 >
                   <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
-                  <span>Plan This Trip</span>
+                  <span>Plan Custom Tour</span>
                 </button>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function DestinationsSection() {
                         className="w-full inline-flex items-center justify-center gap-2 h-11 px-4 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] hover:border-[#E0C068] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer shadow-md whitespace-nowrap"
                       >
                         <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
-                        <span>Plan This Trip</span>
+                        <span>Book Private Tour</span>
                       </button>
                     </div>
                   </div>

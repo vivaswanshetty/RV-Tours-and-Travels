@@ -89,7 +89,7 @@ export default function SapthaKshetraSection() {
                   className="w-full"
                   icon={<WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />}
                 >
-                  Plan This Trip
+                  Book Darshan Cab
                 </TicketButton>
               </div>
             </div>

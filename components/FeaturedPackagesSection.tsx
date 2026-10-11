@@ -96,7 +96,7 @@ export default function FeaturedPackagesSection() {
                     icon={<WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />}
                     className="w-full justify-center"
                   >
-                    Enquire Package
+                    Book Package Tour
                   </TicketButton>
                 </div>
               </div>
