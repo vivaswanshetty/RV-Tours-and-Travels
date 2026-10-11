@@ -16,7 +16,7 @@ export default function QuickFaqStrip() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+            <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
               <HelpCircle className="w-4 h-4 text-[#1F4C4C]" />
               <span>FREQUENTLY ASKED QUESTIONS</span>
             </div>
@@ -31,7 +31,7 @@ export default function QuickFaqStrip() {
           <div>
             <Link
               href="/faq"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-[#14120F] text-[#E0C068] hover:text-[#F6F3EC] border border-[#B08D3F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-[#14120F] text-[#E0C068] hover:text-[#F6F3EC] border border-[#B08D3F] rounded-lg font-body text-xs font-bold uppercase tracking-wide transition-all shadow-md"
             >
               <span>View All FAQs &amp; Travel Advisory</span>
               <ArrowRight className="w-3.5 h-3.5" />

@@ -30,11 +30,11 @@ export default function AboutSection() {
                     RV
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-[#1F4C4C] font-bold">DRIVER CREDENTIALS</div>
+                    <div className="font-body text-[11px] uppercase tracking-wider text-[#1F4C4C] font-semibold">DRIVER CREDENTIALS</div>
                     <div className="font-display text-xs font-bold text-[#14120F]">RV TOURS &amp; TRAVELS</div>
                   </div>
                 </div>
-                <span className="font-mono text-[10px] text-[#B08D3F] font-bold px-2 py-0.5 bg-[#F6F3EC] border border-[#DCD4C4] rounded">
+                <span className="font-body text-[11px] text-[#B08D3F] font-semibold px-2 py-0.5 bg-[#F6F3EC] border border-[#DCD4C4] rounded-md">
                   UDUPI · KARNATAKA
                 </span>
               </div>
@@ -50,7 +50,7 @@ export default function AboutSection() {
                   className="object-cover object-top filter brightness-[1.02] contrast-[1.02] group-hover:scale-102 transition-transform duration-500 ease-out"
                 />
                 {/* Subtle active status pill */}
-                <div className="absolute bottom-3 left-3 bg-[#14120F]/90 backdrop-blur-sm border border-[#B08D3F]/60 px-2.5 py-1 rounded text-[10px] font-mono text-[#E0C068] flex items-center gap-1.5 shadow-md">
+                <div className="absolute bottom-3 left-3 bg-[#14120F]/90 backdrop-blur-sm border border-[#B08D3F]/60 px-2.5 py-1 rounded-lg text-xs font-body font-semibold text-[#E0C068] flex items-center gap-1.5 shadow-md">
                   <span className="w-2 h-2 rounded-full bg-[#2E6B6B] animate-pulse" />
                   <span>ON ACTIVE SERVICE · UDUPI</span>
                 </div>
@@ -62,22 +62,22 @@ export default function AboutSection() {
                   <h3 className="font-display text-2xl font-bold text-[#14120F] tracking-tight">
                     R Ramesh
                   </h3>
-                  <span className="font-mono text-[11px] font-bold text-[#1F4C4C]">
+                  <span className="font-body text-xs font-bold text-[#1F4C4C]">
                     15+ YRS EXP.
                   </span>
                 </div>
-                <div className="font-mono text-xs text-[#1F4C4C] font-bold uppercase tracking-wider">
+                <div className="font-body text-xs text-[#1F4C4C] font-semibold uppercase tracking-wider">
                   Proprietor &amp; Chauffeur-in-Charge
                 </div>
 
                 {/* Metadata Rows */}
-                <div className="pt-2 grid grid-cols-2 gap-2 text-[11px] font-mono border-t border-dashed border-[#DCD4C4]">
+                <div className="pt-2 grid grid-cols-2 gap-2 text-xs font-body border-t border-dashed border-[#DCD4C4]">
                   <div>
-                    <span className="text-[#14120F]/60 block text-[10px] uppercase">Base Station</span>
+                    <span className="text-[#14120F]/60 block text-[10px] uppercase font-medium">Base Station</span>
                     <span className="text-[#14120F] font-semibold">{BUSINESS_INFO.location}</span>
                   </div>
                   <div>
-                    <span className="text-[#14120F]/60 block text-[10px] uppercase">Direct Helpline</span>
+                    <span className="text-[#14120F]/60 block text-[10px] uppercase font-medium">Direct Helpline</span>
                     <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="text-[#14120F] font-semibold hover:text-[#B08D3F]">
                       {BUSINESS_INFO.phoneDisplay}
                     </a>
@@ -91,7 +91,7 @@ export default function AboutSection() {
           <div className="lg:col-span-7 space-y-6">
             {/* About Header */}
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+              <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
                 <span>ABOUT THE PROPRIETOR</span>
               </div>
@@ -102,14 +102,14 @@ export default function AboutSection() {
 
             {/* First-Person Quote from R Ramesh */}
             <div className="relative p-5 sm:p-6 bg-[#EFEAE0] border-l-4 border-[#B08D3F] border-y border-r border-[#DCD4C4] rounded-r-xl rounded-l-sm shadow-sm space-y-2.5">
-              <div className="flex items-center gap-2 text-[#B08D3F] font-mono text-xs uppercase tracking-widest font-bold">
+              <div className="flex items-center gap-2 text-[#B08D3F] font-body text-xs uppercase tracking-wider font-semibold">
                 <span>“</span>
                 <span>PERSONAL CHAUFFEUR COMMITMENT</span>
               </div>
               <blockquote className="font-body text-base sm:text-lg text-[#14120F] italic font-normal leading-relaxed">
                 &ldquo;When you book a trip with me, you are trusting me with your family, your temple darshan timings, or your flight schedule. I don&rsquo;t treat driving as just running a taxi meter — I have a lot of experience navigating these coastal highways and Western Ghats passes, and I take personal pride in every journey being on time, comfortable, and completely stress-free.&rdquo;
               </blockquote>
-              <div className="pt-1 flex items-center gap-2 font-mono text-xs text-[#1F4C4C] font-semibold">
+              <div className="pt-1 flex items-center gap-2 font-body text-xs text-[#1F4C4C] font-semibold">
                 <span>— R Ramesh</span>
                 <span className="text-[#B08D3F]">·</span>
                 <span className="text-[#14120F]/70">Proprietor &amp; Lead Chauffeur</span>
@@ -133,7 +133,7 @@ export default function AboutSection() {
                   <Award className="w-4 h-4 text-[#1F4C4C]" />
                   <span className="font-display text-base sm:text-lg font-bold text-[#14120F]">15+ Years</span>
                 </div>
-                <p className="font-mono text-xs text-[#14120F]/75">Chauffeur Experience</p>
+                <p className="font-body text-xs text-[#14120F]/75">Chauffeur Experience</p>
               </div>
 
               <div className="relative bg-[#EFEAE0] border border-[#DCD4C4] rounded-lg p-4 transition-all hover:border-[#B08D3F] group shadow-sm">
@@ -141,7 +141,7 @@ export default function AboutSection() {
                   <PhoneCall className="w-4 h-4 text-[#1F4C4C]" />
                   <span className="font-display text-base sm:text-lg font-bold text-[#14120F]">Direct Contact</span>
                 </div>
-                <p className="font-mono text-xs text-[#14120F]/75">Speak With the Owner</p>
+                <p className="font-body text-xs text-[#14120F]/75">Speak With the Owner</p>
               </div>
 
               <div className="relative bg-[#EFEAE0] border border-[#DCD4C4] rounded-lg p-4 transition-all hover:border-[#B08D3F] group shadow-sm">
@@ -149,7 +149,7 @@ export default function AboutSection() {
                   <Compass className="w-4 h-4 text-[#1F4C4C]" />
                   <span className="font-display text-base sm:text-lg font-bold text-[#14120F]">Route Knowhow</span>
                 </div>
-                <p className="font-mono text-xs text-[#14120F]/75">Ghats &amp; Coastal Highways</p>
+                <p className="font-body text-xs text-[#14120F]/75">Ghats &amp; Coastal Highways</p>
               </div>
             </div>
 
@@ -166,7 +166,7 @@ export default function AboutSection() {
 
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
-                className="inline-flex items-center gap-2 px-4 py-3 bg-[#EFEAE0] hover:bg-[#E5DFD1] text-[#14120F] hover:text-[#B08D3F] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-3 bg-[#EFEAE0] hover:bg-[#E5DFD1] text-[#14120F] hover:text-[#B08D3F] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-lg font-body text-xs font-bold uppercase tracking-wide transition-all shadow-sm"
               >
                 <PhoneCall className="w-3.5 h-3.5 text-[#1F4C4C]" />
                 <span>Call: {BUSINESS_INFO.phoneDisplay}</span>
@@ -174,7 +174,7 @@ export default function AboutSection() {
 
               <Link
                 href="/about"
-                className="inline-flex items-center gap-1.5 font-mono text-xs text-[#1F4C4C] hover:text-[#B08D3F] font-bold uppercase tracking-wider transition-colors ml-auto sm:ml-0"
+                className="inline-flex items-center gap-1.5 font-body text-xs text-[#1F4C4C] hover:text-[#B08D3F] font-bold uppercase tracking-wide transition-colors ml-auto sm:ml-0"
               >
                 <span>Read Full Story</span>
                 <ArrowRight className="w-3.5 h-3.5" />

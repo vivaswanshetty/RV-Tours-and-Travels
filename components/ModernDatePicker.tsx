@@ -6,6 +6,7 @@ import {
   Clock,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   X,
   Check,
 } from "lucide-react";
@@ -214,7 +215,7 @@ export default function ModernDatePicker({
         type="button"
         id={id}
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full px-4 py-3 rounded text-sm font-mono flex items-center justify-between cursor-pointer transition-all text-left ${
+        className={`w-full px-3.5 py-2.5 rounded-lg text-sm font-body font-medium flex items-center justify-between cursor-pointer transition-all text-left ${
           isLight
             ? "bg-[#F6F3EC] border border-[#DCD4C4] text-[#14120F] hover:border-[#B08D3F] focus:border-[#B08D3F]"
             : "bg-[#1C1914] border border-[#383229] text-[#F6F3EC] hover:border-[#B08D3F] focus:border-[#B08D3F]"
@@ -225,7 +226,7 @@ export default function ModernDatePicker({
       >
         <span className="flex items-center gap-2.5 truncate">
           <CalendarIcon className="w-4 h-4 text-[#C9A227] shrink-0" />
-          <span className={value ? (isLight ? "text-[#14120F] font-semibold" : "text-[#F6F3EC] font-semibold") : (isLight ? "text-stone-400" : "text-[#F6F3EC]/40")}>
+          <span className={value ? (isLight ? "text-[#14120F] font-semibold" : "text-[#F6F3EC] font-semibold") : (isLight ? "text-stone-400" : "text-[#F6F3EC]/50 font-normal")}>
             {value || placeholder}
           </span>
         </span>
@@ -244,7 +245,7 @@ export default function ModernDatePicker({
             <X className="w-3.5 h-3.5" />
           </span>
         ) : (
-          <span className="font-mono text-xs text-[#B08D3F]">▾</span>
+          <ChevronDown className="w-4 h-4 text-[#B08D3F] shrink-0" />
         )}
       </button>
 
@@ -252,7 +253,7 @@ export default function ModernDatePicker({
 
       {/* Popover Calendar */}
       {isOpen && (
-        <div className="absolute z-50 top-full left-0 right-0 sm:right-auto sm:w-[340px] mt-2 bg-[#181510] border border-[#B08D3F] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] p-4 font-mono animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl text-[#F6F3EC]">
+        <div className="absolute z-50 top-full left-0 right-0 sm:right-auto sm:w-[340px] mt-2 bg-[#181510] border border-[#B08D3F] rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] p-4 font-body animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl text-[#F6F3EC]">
           {/* Header Title */}
           <div className="mb-3 pb-2.5 border-b border-[#383229] flex items-center justify-between">
             <div className="text-xs font-bold text-[#E0C068] uppercase tracking-wider flex items-center gap-1.5">
@@ -454,7 +455,7 @@ export function ModernTimePicker({
   };
 
   return (
-    <div className={`space-y-2 font-mono ${className}`}>
+    <div className={`space-y-2 font-body ${className}`}>
       {/* Custom Time Enter Field */}
       <div className="relative flex items-center">
         <Clock className="w-4 h-4 text-[#C9A227] absolute left-3.5 pointer-events-none shrink-0" />
@@ -465,10 +466,10 @@ export function ModernTimePicker({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className={`w-full pl-10 pr-16 py-2.5 rounded text-sm transition-all outline-none ${
+          className={`w-full pl-10 pr-16 py-2.5 rounded-lg text-sm font-body font-normal transition-all outline-none ${
             isLight
               ? "bg-[#F6F3EC] border border-[#DCD4C4] text-[#14120F] placeholder-stone-400 focus:border-[#B08D3F]"
-              : "bg-[#1C1914] border border-[#383229] text-[#F6F3EC] placeholder-[#F6F3EC]/30 focus:border-[#B08D3F]"
+              : "bg-[#1C1914] border border-[#383229] text-[#F6F3EC] placeholder-[#F6F3EC]/40 focus:border-[#B08D3F]"
           }`}
         />
 
@@ -506,8 +507,8 @@ export function ModernTimePicker({
       {/* Suggested Timings Chips */}
       <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
         <span
-          className={`text-[10px] uppercase tracking-wider ${
-            isLight ? "text-stone-500 font-semibold" : "text-stone-400"
+          className={`text-xs uppercase tracking-wider ${
+            isLight ? "text-stone-500 font-semibold" : "text-[#B08D3F] font-semibold"
           }`}
         >
           Suggested:
@@ -528,7 +529,7 @@ export function ModernTimePicker({
                   onChange(p.value);
                 }
               }}
-              className={`px-2 py-1 rounded text-[11px] font-mono transition-all cursor-pointer border ${
+              className={`px-2.5 py-1 rounded-md text-xs font-body font-medium transition-all cursor-pointer border ${
                 isSelected
                   ? "bg-[#B08D3F] text-[#14120F] font-bold border-[#C9A227] shadow-sm"
                   : isLight

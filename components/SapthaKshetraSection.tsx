@@ -16,7 +16,7 @@ export default function SapthaKshetraSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+          <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
             <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
             <span>SACRED TEMPLE PILGRIMAGE</span>
           </div>
@@ -56,7 +56,7 @@ export default function SapthaKshetraSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                   {/* Subtle Corner Badge */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#14120F]/85 border border-[#B08D3F]/70 rounded text-[10px] font-mono text-[#E0C068] tracking-widest uppercase backdrop-blur-sm">
+                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-[#14120F]/85 border border-[#B08D3F]/70 rounded-lg text-xs font-body font-semibold text-[#E0C068] tracking-wide uppercase backdrop-blur-sm">
                     KSHETRA {kshetra.number}
                   </div>
                 </div>

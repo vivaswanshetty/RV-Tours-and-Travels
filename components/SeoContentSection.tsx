@@ -35,7 +35,7 @@ export default function SeoContentSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded text-xs font-mono tracking-widest text-[#E0C068] uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1C1914] border border-[#B08D3F]/50 rounded-lg text-xs font-body tracking-wider text-[#E0C068] uppercase font-semibold mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B]" />
             <span>TRAVEL GUIDE &amp; ROUTE INFORMATION</span>
           </div>
@@ -71,7 +71,7 @@ export default function SeoContentSection() {
           </div>
 
           <div className="lg:col-span-4 p-6 bg-[#1C1914] border border-[#B08D3F]/60 rounded-xl space-y-4 shadow-xl">
-            <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold block">
+            <span className="font-body text-xs text-[#C9A227] uppercase tracking-wider font-semibold block">
               DIRECT CONTACT &amp; ENQUIRIES
             </span>
             <h4 className="font-display text-xl font-bold text-[#F6F3EC]">
@@ -80,10 +80,10 @@ export default function SeoContentSection() {
             <p className="font-body text-xs text-[#F6F3EC]/70 leading-relaxed">
               Reach proprietor R Ramesh directly for instant price quotations, vehicle availability, and personalized 2026 itinerary planning.
             </p>
-            <div className="pt-2 space-y-2 font-mono text-xs">
+            <div className="pt-2 space-y-2 font-body text-xs">
               <a
                 href={`tel:${BUSINESS_INFO.phoneClean}`}
-                className="flex items-center gap-2.5 p-3 bg-[#14120F] border border-[#383229] rounded hover:border-[#B08D3F] transition-colors text-[#F6F3EC]"
+                className="flex items-center gap-2.5 p-3 bg-[#14120F] border border-[#383229] rounded-lg hover:border-[#B08D3F] transition-colors text-[#F6F3EC]"
               >
                 <Phone className="w-4 h-4 text-[#C9A227]" />
                 <span>Call: {BUSINESS_INFO.phoneDisplay}</span>
@@ -91,7 +91,7 @@ export default function SeoContentSection() {
               <button
                 type="button"
                 onClick={() => openTripBookingModal()}
-                className="w-full flex items-center gap-2.5 p-3 bg-[#14120F] border border-[#B08D3F]/50 rounded hover:border-[#E0C068] transition-colors text-[#E0C068] cursor-pointer text-left"
+                className="w-full flex items-center gap-2.5 p-3 bg-[#14120F] border border-[#B08D3F]/50 rounded-lg hover:border-[#E0C068] transition-colors text-[#E0C068] cursor-pointer text-left"
               >
                 <WhatsAppIcon className="w-4 h-4" withOriginalColor />
                 <span>Enquire &amp; Book on WhatsApp: +91 98455 11169</span>
@@ -103,7 +103,7 @@ export default function SeoContentSection() {
         {/* Content Block 2: Karnataka Tour Packages */}
         <div className="p-8 sm:p-10 bg-[#1C1914] border border-[#383229] rounded-2xl mb-16 space-y-6">
           <div className="border-b border-[#383229] pb-4">
-            <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold block">
+            <span className="font-body text-xs text-[#C9A227] uppercase tracking-wider font-semibold block">
               CURATED ITINERARIES
             </span>
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F6F3EC]">
@@ -115,7 +115,7 @@ export default function SeoContentSection() {
             We specialize in customized multi-day and single-day sightseeing circuits across coastal Karnataka, Malnad coffee plantations, and heritage sites. Every package includes a dedicated chauffeur, air-conditioned vehicle, fuel allowances, and door-to-door pickup:
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2 font-mono text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2 font-body text-xs">
             <div className="p-4 bg-[#14120F] border border-[#383229] rounded-lg space-y-2">
               <div className="text-[#E0C068] font-bold">01 · Temple Circuit Package</div>
               <div className="text-[#F6F3EC] font-semibold text-sm font-display">
@@ -151,7 +151,7 @@ export default function SeoContentSection() {
         {/* Content Block 3: Service Commitments & Passenger Safety */}
         <div className="p-8 sm:p-10 bg-[#1C1914] border border-[#383229] rounded-2xl mb-16 space-y-6">
           <div className="border-b border-[#383229] pb-4">
-            <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold block">
+            <span className="font-body text-xs text-[#C9A227] uppercase tracking-wider font-semibold block">
               SERVICE COMMITMENTS
             </span>
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F6F3EC]">
@@ -163,23 +163,23 @@ export default function SeoContentSection() {
             Whether booking an airport transfer or a multi-day family holiday, we stand behind clear operational guarantees that ensure a stress-free travel experience:
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 font-mono text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 font-body text-xs">
             <div className="p-5 bg-[#14120F] border-l-2 border-[#B08D3F] rounded-r-lg space-y-2">
-              <div className="font-bold text-[#E0C068] uppercase">Zero Surge Pricing</div>
+              <div className="font-bold text-[#E0C068] uppercase tracking-wider">Zero Surge Pricing</div>
               <p className="font-body text-xs text-[#F6F3EC]/80 leading-relaxed">
                 Your agreed quote is fixed. We do not use surge pricing during rain, festival weekends, or peak travel seasons.
               </p>
             </div>
 
             <div className="p-5 bg-[#14120F] border-l-2 border-[#B08D3F] rounded-r-lg space-y-2">
-              <div className="font-bold text-[#E0C068] uppercase">Spotless Sanitized Fleet</div>
+              <div className="font-bold text-[#E0C068] uppercase tracking-wider">Spotless Sanitized Fleet</div>
               <p className="font-body text-xs text-[#F6F3EC]/80 leading-relaxed">
                 Every vehicle is thoroughly vacuumed, cleaned, and sanitized with functional air-conditioning before departure.
               </p>
             </div>
 
             <div className="p-5 bg-[#14120F] border-l-2 border-[#B08D3F] rounded-r-lg space-y-2">
-              <div className="font-bold text-[#E0C068] uppercase">Western Ghats Safety</div>
+              <div className="font-bold text-[#E0C068] uppercase tracking-wider">Western Ghats Safety</div>
               <p className="font-body text-xs text-[#F6F3EC]/80 leading-relaxed">
                 Experienced chauffeurs who navigate the steep curves of Agumbe, Charmadi, and Shiradi Ghats with patient, defensive driving.
               </p>
@@ -223,7 +223,7 @@ export default function SeoContentSection() {
         {/* Content Block 5: Relevant Local FAQs */}
         <div className="p-8 sm:p-10 bg-[#1C1914] border border-[#383229] rounded-2xl space-y-6">
           <div className="border-b border-[#383229] pb-4">
-            <span className="font-mono text-xs text-[#C9A227] uppercase tracking-widest font-bold block">
+            <span className="font-body text-xs text-[#C9A227] uppercase tracking-wider font-semibold block">
               KNOWLEDGE BASE
             </span>
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F6F3EC]">
@@ -242,13 +242,13 @@ export default function SeoContentSection() {
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 font-mono text-xs sm:text-sm text-[#F6F3EC] focus:outline-none"
+                    className="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 font-body text-xs sm:text-sm text-[#F6F3EC] focus:outline-none"
                     aria-expanded={isOpen}
                   >
                     <span className="font-semibold text-sm sm:text-base font-display">
                       {faq.q}
                     </span>
-                    <span className="text-[#C9A227] font-mono text-xs shrink-0 mt-0.5">
+                    <span className="text-[#C9A227] font-body text-xs font-semibold shrink-0 mt-0.5">
                       {isOpen ? "[-] COLLAPSE" : "[+] EXPAND"}
                     </span>
                   </button>

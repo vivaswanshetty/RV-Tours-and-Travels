@@ -14,6 +14,7 @@ import {
   Car,
   Users,
   FileText,
+  ChevronDown,
 } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
@@ -195,10 +196,6 @@ export default function StickyQuoteTab() {
             aria-label="Open Plan My Trip quote window"
             className="hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-[#14120F] text-[#F6F3EC] border-l-2 border-t-2 border-b-2 border-[#B08D3F] hover:border-[#E0C068] rounded-l-xl px-3 py-5 shadow-[-5px_0_25px_rgba(0,0,0,0.6)] hover:shadow-[-5px_0_25px_rgba(176,141,63,0.35)] transition-all duration-300 hover:-translate-x-1 group flex-col items-center gap-3 cursor-pointer"
           >
-            {/* Top & Bottom Ticket Notch Cutouts */}
-            <span className="absolute -left-2 top-2 w-3.5 h-3.5 rounded-full bg-[#F6F3EC] border border-[#B08D3F]/60" />
-            <span className="absolute -left-2 bottom-2 w-3.5 h-3.5 rounded-full bg-[#F6F3EC] border border-[#B08D3F]/60" />
-
             {/* Compass Icon */}
             <div className="w-6 h-6 rounded-full bg-[#1F4C4C] border border-[#B08D3F] flex items-center justify-center text-[#E0C068] group-hover:rotate-45 transition-transform duration-300">
               <Compass className="w-3.5 h-3.5" />
@@ -206,7 +203,7 @@ export default function StickyQuoteTab() {
 
             {/* Vertical Typography: PLAN MY TRIP */}
             <span
-              className="font-mono text-[11px] font-bold tracking-widest text-[#E0C068] uppercase group-hover:text-white transition-colors"
+              className="font-body text-[11px] font-bold tracking-widest text-[#E0C068] uppercase group-hover:text-white transition-colors"
               style={{ writingMode: "vertical-rl" }}
             >
               PLAN MY TRIP
@@ -226,7 +223,7 @@ export default function StickyQuoteTab() {
             <div className="w-5 h-5 rounded-full bg-[#1F4C4C] border border-[#B08D3F] flex items-center justify-center text-[#E0C068]">
               <Compass className="w-3.5 h-3.5" />
             </div>
-            <span className="font-mono text-xs font-bold tracking-wider text-[#E0C068] uppercase">
+            <span className="font-body text-xs font-bold tracking-wider text-[#E0C068] uppercase">
               Plan My Trip
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B] animate-pulse" />
@@ -251,26 +248,23 @@ export default function StickyQuoteTab() {
             {/* Window Top Title Bar */}
             <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-[#383229] bg-[#181510] shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#14120F] border border-[#B08D3F] flex items-center justify-center font-display text-base font-bold text-[#C9A227] shadow-inner">
+                <div className="w-10 h-10 rounded-xl bg-[#14120F] border border-[#B08D3F] flex items-center justify-center font-display text-base font-bold text-[#C9A227] shadow-inner">
                   RV
                 </div>
                 <div>
-                  <div className="font-display text-base sm:text-lg font-bold text-[#F6F3EC] tracking-wide flex items-center gap-2">
-                    <span>Plan Your Trip</span>
-                    <span className="text-xs font-normal text-stone-400 font-sans">
-                      · Booking Enquiry
-                    </span>
-                  </div>
-                  <div className="text-[11px] text-[#B08D3F] tracking-wide flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>Direct Owner Coordination with Proprietor R Ramesh</span>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-[#F6F3EC] tracking-wide">
+                    Plan Your Trip
+                  </h3>
+                  <div className="text-xs font-body text-[#E0C068] font-medium flex items-center gap-2 mt-0.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                    <span>Direct Owner Coordination with R Ramesh · Quick WhatsApp Quote</span>
                   </div>
                 </div>
               </div>
 
               {/* Close Button & ESC hint */}
               <div className="flex items-center gap-2 sm:gap-3">
-                <span className="hidden sm:inline-block font-mono text-[10px] text-[#F6F3EC]/40 uppercase tracking-widest border border-white/10 px-2 py-1 rounded">
+                <span className="hidden sm:inline-block font-body text-xs text-[#F6F3EC]/50 border border-white/10 px-2.5 py-1 rounded-md">
                   ESC to close
                 </span>
                 <button
@@ -293,9 +287,9 @@ export default function StickyQuoteTab() {
                 </div>
                 <p className="font-body text-sm text-[#F6F3EC]/80 max-w-md mx-auto leading-relaxed">
                   Connecting directly with proprietor <strong>R Ramesh</strong> on{" "}
-                  <span className="text-[#E0C068] font-mono">+91 98455 11169</span>.
+                  <span className="text-[#E0C068] font-body font-semibold">+91 98455 11169</span>.
                 </p>
-                <div className="text-xs font-mono text-[#B08D3F]">
+                <div className="text-xs font-body font-medium text-[#B08D3F]">
                   Reference: RV-{Date.now().toString().slice(-6)}
                 </div>
               </div>
@@ -306,8 +300,8 @@ export default function StickyQuoteTab() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                     {/* LEFT COLUMN: Passenger & Sector Logistics */}
                     <div className="space-y-4">
-                      <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#E0C068] pb-1 border-b border-[#383229] flex items-center gap-2">
-                        <User className="w-3.5 h-3.5 text-[#C9A227]" />
+                      <div className="text-xs sm:text-sm font-body font-semibold uppercase tracking-wider text-[#E0C068] pb-1.5 border-b border-[#383229] flex items-center gap-2">
+                        <User className="w-4 h-4 text-[#C9A227]" />
                         <span>Passenger &amp; Route Logistics</span>
                       </div>
 
@@ -315,7 +309,7 @@ export default function StickyQuoteTab() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="quote-tab-name"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                          className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                         >
                           Your Name *
                         </label>
@@ -326,7 +320,7 @@ export default function StickyQuoteTab() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="e.g. Anand Rao"
-                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] placeholder-[#F6F3EC]/40 outline-none transition-colors"
                         />
                       </div>
 
@@ -334,7 +328,7 @@ export default function StickyQuoteTab() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="quote-tab-phone"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                          className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                         >
                           WhatsApp Contact Number *
                         </label>
@@ -345,7 +339,7 @@ export default function StickyQuoteTab() {
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="e.g. +91 98455 11169"
-                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] placeholder-[#F6F3EC]/40 outline-none transition-colors"
                         />
                       </div>
 
@@ -353,32 +347,35 @@ export default function StickyQuoteTab() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="quote-tab-interest"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                          className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                         >
                           Primary Sector / Tour Package
                         </label>
-                        <select
-                          id="quote-tab-interest"
-                          value={interest}
-                          onChange={(e) => setInterest(e.target.value)}
-                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                        >
-                          {TRIP_OPTIONS.map((opt) => (
-                            <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                              {opt}
-                            </option>
-                          ))}
-                        </select>
+                        <div className="relative">
+                          <select
+                            id="quote-tab-interest"
+                            value={interest}
+                            onChange={(e) => setInterest(e.target.value)}
+                            className="w-full appearance-none pl-3.5 pr-10 py-2.5 bg-[#1C1914] border border-[#383229] hover:border-[#B08D3F]/70 focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                          >
+                            {TRIP_OPTIONS.map((opt) => (
+                              <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                                {opt}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B08D3F]" />
+                        </div>
                       </div>
 
                       {/* Field 4: Destination & Other Places */}
                       <div className="space-y-1.5">
                         <label
                           htmlFor="quote-tab-destination"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                          className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal flex items-center justify-between"
                         >
                           <span>Destination / Places</span>
-                          <span className="text-[10px] text-stone-400 font-normal lowercase">
+                          <span className="text-xs text-stone-400 font-normal">
                             (mention if any other places also)
                           </span>
                         </label>
@@ -387,8 +384,8 @@ export default function StickyQuoteTab() {
                           type="text"
                           value={destinationCustom}
                           onChange={(e) => setDestinationCustom(e.target.value)}
-                          placeholder="e.g. Kollur, Murudeshwar, Gokarna (mention if any other places also)"
-                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors"
+                          placeholder="e.g. Dharmasthala, Kukke, Kollur (mention if any other places also)"
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] placeholder-[#F6F3EC]/40 outline-none transition-colors"
                         />
                       </div>
 
@@ -396,29 +393,32 @@ export default function StickyQuoteTab() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="quote-tab-vehicle"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                          className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                         >
                           Vehicle Preference
                         </label>
-                        <select
-                          id="quote-tab-vehicle"
-                          value={vehicleType}
-                          onChange={(e) => setVehicleType(e.target.value)}
-                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                        >
-                          {VEHICLE_OPTIONS.map((opt) => (
-                            <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                              {opt}
-                            </option>
-                          ))}
-                        </select>
+                        <div className="relative">
+                          <select
+                            id="quote-tab-vehicle"
+                            value={vehicleType}
+                            onChange={(e) => setVehicleType(e.target.value)}
+                            className="w-full appearance-none pl-3.5 pr-10 py-2.5 bg-[#1C1914] border border-[#383229] hover:border-[#B08D3F]/70 focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                          >
+                            {VEHICLE_OPTIONS.map((opt) => (
+                              <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                                {opt}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B08D3F]" />
+                        </div>
                       </div>
                     </div>
 
                     {/* RIGHT COLUMN: Schedule, Party Size & Timings */}
                     <div className="space-y-4">
-                      <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#E0C068] pb-1 border-b border-[#383229] flex items-center gap-2">
-                        <Calendar className="w-3.5 h-3.5 text-[#C9A227]" />
+                      <div className="text-xs sm:text-sm font-body font-semibold uppercase tracking-wider text-[#E0C068] pb-1.5 border-b border-[#383229] flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-[#C9A227]" />
                         <span>Schedule &amp; Group Coordination</span>
                       </div>
 
@@ -427,43 +427,49 @@ export default function StickyQuoteTab() {
                         <div className="space-y-1.5">
                           <label
                             htmlFor="quote-tab-members"
-                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                            className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                           >
                             Members (Pax)
                           </label>
-                          <select
-                            id="quote-tab-members"
-                            value={members}
-                            onChange={(e) => setMembers(e.target.value)}
-                            className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                          >
-                            {MEMBER_OPTIONS.map((opt) => (
-                              <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                                {opt}
-                              </option>
-                            ))}
-                          </select>
+                          <div className="relative">
+                            <select
+                              id="quote-tab-members"
+                              value={members}
+                              onChange={(e) => setMembers(e.target.value)}
+                              className="w-full appearance-none pl-3.5 pr-10 py-2.5 bg-[#1C1914] border border-[#383229] hover:border-[#B08D3F]/70 focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                            >
+                              {MEMBER_OPTIONS.map((opt) => (
+                                <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                                  {opt}
+                                </option>
+                              ))}
+                            </select>
+                            <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B08D3F]" />
+                          </div>
                         </div>
 
                         <div className="space-y-1.5">
                           <label
                             htmlFor="quote-tab-duration"
-                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                            className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                           >
-                            Trip Days
+                            Trip Duration (Days)
                           </label>
-                          <select
-                            id="quote-tab-duration"
-                            value={tripDays}
-                            onChange={(e) => setTripDays(e.target.value)}
-                            className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-mono text-[#F6F3EC] outline-none transition-colors cursor-pointer"
-                          >
-                            {DURATION_OPTIONS.map((opt) => (
-                              <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
-                                {opt}
-                              </option>
-                            ))}
-                          </select>
+                          <div className="relative">
+                            <select
+                              id="quote-tab-duration"
+                              value={tripDays}
+                              onChange={(e) => setTripDays(e.target.value)}
+                              className="w-full appearance-none pl-3.5 pr-10 py-2.5 bg-[#1C1914] border border-[#383229] hover:border-[#B08D3F]/70 focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] outline-none transition-colors cursor-pointer"
+                            >
+                              {DURATION_OPTIONS.map((opt) => (
+                                <option key={opt} value={opt} className="bg-[#1C1914] text-[#F6F3EC]">
+                                  {opt}
+                                </option>
+                              ))}
+                            </select>
+                            <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B08D3F]" />
+                          </div>
                         </div>
                       </div>
 
@@ -472,19 +478,16 @@ export default function StickyQuoteTab() {
                         <div className="space-y-1.5">
                           <label
                             htmlFor="quote-tab-from-date"
-                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                            className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                           >
-                            <span>From Date (Departure)</span>
-                            <span className="text-[10px] text-stone-400 font-normal lowercase">
-                              departure
-                            </span>
+                            Departure Date (From)
                           </label>
                           <ModernDatePicker
                             id="quote-tab-from-date"
                             value={fromDate}
                             onChange={(val) => setFromDate(val)}
-                            placeholder="Select departure date"
-                            label="From Date (Departure)"
+                            placeholder="Select departure"
+                            label="Departure Date (From)"
                             theme="dark"
                           />
                         </div>
@@ -492,12 +495,9 @@ export default function StickyQuoteTab() {
                         <div className="space-y-1.5">
                           <label
                             htmlFor="quote-tab-to-date"
-                            className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                            className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                           >
-                            <span>To Date (Return)</span>
-                            <span className="text-[10px] text-stone-400 font-normal lowercase">
-                              return
-                            </span>
+                            Return Date (To)
                           </label>
                           <ModernDatePicker
                             id="quote-tab-to-date"
@@ -505,8 +505,8 @@ export default function StickyQuoteTab() {
                             onChange={(val) => setToDate(val)}
                             minDate={fromDate ? parseDateString(fromDate) : null}
                             isReturn={true}
-                            placeholder="Select return date"
-                            label="To Date (Return)"
+                            placeholder="Select return"
+                            label="Return Date (To)"
                             theme="dark"
                           />
                         </div>
@@ -516,10 +516,10 @@ export default function StickyQuoteTab() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="quote-tab-time"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold flex items-center justify-between"
+                          className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal flex items-center justify-between"
                         >
                           <span>Pickup Time (Optional)</span>
-                          <span className="text-[10px] text-stone-400 font-normal lowercase">
+                          <span className="text-xs text-stone-400 font-normal">
                             non-mandatory
                           </span>
                         </label>
@@ -536,7 +536,7 @@ export default function StickyQuoteTab() {
                       <div className="space-y-1.5">
                         <label
                           htmlFor="quote-tab-notes"
-                          className="block font-mono text-xs uppercase tracking-wider text-[#B08D3F] font-semibold"
+                          className="block font-body text-xs font-semibold text-[#E0C068] tracking-normal"
                         >
                           Special Requests / Temple Halts (Optional)
                         </label>
@@ -546,7 +546,7 @@ export default function StickyQuoteTab() {
                           value={notes}
                           onChange={(e) => setNotes(e.target.value)}
                           placeholder="Flight numbers, senior citizen assistance, luggage amount, specific temple timings..."
-                          className="w-full px-3.5 py-2 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-xs font-mono text-[#F6F3EC] placeholder-[#F6F3EC]/30 outline-none transition-colors resize-none"
+                          className="w-full px-3.5 py-2.5 bg-[#1C1914] border border-[#383229] focus:border-[#B08D3F] rounded-lg text-sm font-body font-normal text-[#F6F3EC] placeholder-[#F6F3EC]/40 outline-none transition-colors resize-none"
                         />
                       </div>
                     </div>
@@ -555,7 +555,7 @@ export default function StickyQuoteTab() {
 
                 {/* Window Bottom Action Deck */}
                 <div className="border-t border-[#383229] bg-[#181510] px-5 sm:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
-                  <div className="flex items-center gap-2 text-xs font-mono text-[#F6F3EC]/70">
+                  <div className="flex items-center gap-2 text-xs font-body font-normal text-[#F6F3EC]/80">
                     <ShieldCheck className="w-4 h-4 text-[#C9A227] shrink-0" />
                     <span>
                       Direct Owner Coordination with R Ramesh · No surge pricing · Zero cancellation fees
@@ -566,16 +566,16 @@ export default function StickyQuoteTab() {
                     <button
                       type="button"
                       onClick={() => setIsOpen(false)}
-                      className="px-4 py-2.5 rounded-lg border border-[#383229] hover:border-[#B08D3F] text-xs font-mono text-[#F6F3EC]/80 hover:text-white transition-colors cursor-pointer w-1/3 sm:w-auto text-center"
+                      className="h-11 px-5 rounded-lg border border-[#383229] hover:border-[#B08D3F] text-sm font-body font-medium text-[#F6F3EC]/80 hover:text-white transition-colors cursor-pointer w-1/3 sm:w-auto text-center"
                     >
                       Cancel
                     </button>
 
                     <button
                       type="submit"
-                      className="flex-1 sm:flex-initial px-6 py-2.5 bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] hover:brightness-110 font-mono text-xs uppercase font-bold tracking-wider rounded-lg shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-98"
+                      className="flex-1 sm:flex-initial h-11 px-7 bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] hover:brightness-110 font-body text-sm uppercase font-bold tracking-wide rounded-lg shadow-lg flex items-center justify-center gap-2.5 cursor-pointer transition-all active:scale-98"
                     >
-                      <WhatsAppIcon className="w-4 h-4" withOriginalColor />
+                      <WhatsAppIcon className="w-4 h-4 shrink-0" withOriginalColor />
                       <span>Send via WhatsApp ➔</span>
                     </button>
                   </div>

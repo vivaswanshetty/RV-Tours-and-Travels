@@ -16,7 +16,7 @@ export default function CtaBanner() {
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="space-y-3 text-center lg:text-left max-w-2xl">
-              <div className="inline-flex items-center gap-2 font-mono text-xs text-[#1F4C4C] tracking-widest uppercase font-bold">
+              <div className="inline-flex items-center gap-2 font-body text-xs text-[#1F4C4C] tracking-wider uppercase font-semibold">
                 <Compass className="w-3.5 h-3.5" />
                 <span>DIRECT CHAUFFEUR BOOKING</span>
               </div>

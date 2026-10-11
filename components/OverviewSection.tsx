@@ -18,7 +18,7 @@ export default function OverviewSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+          <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
             <span className="w-2 h-2 rounded-full bg-[#1F4C4C]" />
             <span>WHY TRAVEL WITH US</span>
           </div>
@@ -42,7 +42,7 @@ export default function OverviewSection() {
                 <div className="w-12 h-12 rounded bg-[#F6F3EC] border border-[#DCD4C4] flex items-center justify-center group-hover:border-[#B08D3F] transition-colors">
                   {iconMap[point.icon]}
                 </div>
-                <span className="font-mono text-xs font-bold text-[#B08D3F] tracking-widest">
+                <span className="font-body text-xs font-bold text-[#B08D3F] tracking-wider">
                   0{index + 1}
                 </span>
               </div>
@@ -63,7 +63,7 @@ export default function OverviewSection() {
         {/* Quick Operational Commitments Banner */}
         <div className="mt-12 p-4 sm:p-8 bg-[#EFEAE0] text-[#14120F] rounded-lg border border-[#DCD4C4] flex flex-col lg:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="space-y-1 text-center lg:text-left">
-            <div className="font-mono text-xs text-[#1F4C4C] uppercase tracking-widest font-bold">
+            <div className="font-body text-xs text-[#1F4C4C] uppercase tracking-wider font-semibold">
               OUR COMMITMENT TO EVERY PASSENGER
             </div>
             <div className="font-display text-lg sm:text-2xl font-bold">
@@ -71,18 +71,18 @@ export default function OverviewSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 w-full lg:w-auto lg:flex lg:items-center lg:gap-3 shrink-0 font-mono text-xs">
-            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-center">
+          <div className="grid grid-cols-3 gap-2 w-full lg:w-auto lg:flex lg:items-center lg:gap-3 shrink-0 font-body text-xs">
+            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg text-center">
               <span className="text-[#B08D3F] block font-bold">DIRECT</span>
-              <span className="text-[#14120F]/70 text-[9px] sm:text-[10px]">BOOKING</span>
+              <span className="text-[#14120F]/70 text-[10px] sm:text-[11px] font-medium">BOOKING</span>
             </div>
-            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-center">
+            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg text-center">
               <span className="text-[#B08D3F] block font-bold">UDUPI</span>
-              <span className="text-[#14120F]/70 text-[9px] sm:text-[10px]">HEADQUARTERS</span>
+              <span className="text-[#14120F]/70 text-[10px] sm:text-[11px] font-medium">HEADQUARTERS</span>
             </div>
-            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#F6F3EC] border border-[#DCD4C4] rounded text-center">
+            <div className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg text-center">
               <span className="text-[#B08D3F] block font-bold">DIRECT</span>
-              <span className="text-[#14120F]/70 text-[9px] sm:text-[10px]">NO MIDDLEMEN</span>
+              <span className="text-[#14120F]/70 text-[10px] sm:text-[11px] font-medium">NO MIDDLEMEN</span>
             </div>
           </div>
         </div>

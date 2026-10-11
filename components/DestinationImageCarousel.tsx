@@ -138,14 +138,14 @@ export default function DestinationImageCarousel({
       {/* Top Header Row: Stamp Badge & Slide Count with Indicators */}
       <div className="absolute top-2.5 inset-x-2.5 sm:top-3 sm:inset-x-3 z-10 flex items-center justify-between gap-1.5 pointer-events-none">
         {stampBadge && (
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#14120F]/90 border border-[#B08D3F]/80 rounded text-[10px] font-mono text-[#E0C068] tracking-widest uppercase backdrop-blur-md shadow-md">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#14120F]/90 border border-[#B08D3F]/80 rounded-lg text-xs font-body text-[#E0C068] tracking-wide uppercase font-semibold backdrop-blur-md shadow-md">
             <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B]" />
             <span className="truncate max-w-[170px] sm:max-w-[200px]">{stampBadge}</span>
           </div>
         )}
 
         {hasMultiple && (
-          <div className="bg-[#14120F]/90 border border-white/20 px-2 py-1 rounded text-[10px] font-mono text-[#F6F3EC]/90 backdrop-blur-md flex items-center gap-1.5 shadow-md shrink-0 pointer-events-auto">
+          <div className="bg-[#14120F]/90 border border-white/20 px-2 py-1 rounded-lg text-xs font-body text-[#F6F3EC]/90 font-medium backdrop-blur-md flex items-center gap-1.5 shadow-md shrink-0 pointer-events-auto">
             <Camera className="w-2.5 h-2.5 text-[#C9A227]" />
             <span>
               {currentIndex + 1}/{totalSlides}
@@ -198,7 +198,7 @@ export default function DestinationImageCarousel({
       {/* Bottom Row: Landmark Label (Dedicated Full Width, Zero Overlap) */}
       {currentSlide.label && (
         <div className="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-3 z-10 pointer-events-auto flex items-end">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-mono text-[10px] sm:text-[10.5px] text-[#E0C068] font-medium tracking-wide shadow-md max-w-full">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-body text-xs text-[#E0C068] font-semibold tracking-wide shadow-md max-w-full">
             <MapPin className="w-2.5 h-2.5 text-[#C9A227] shrink-0" />
             <span className="break-words leading-tight">{currentSlide.label}</span>
           </div>

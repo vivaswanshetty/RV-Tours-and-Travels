@@ -48,9 +48,9 @@ export default function TicketButton({
   const notchBg = variant === "paper-ticket" ? "bg-[#EFEAE0]" : "bg-[#14120F]";
 
   const content = (
-    <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-2.5 w-full font-mono uppercase font-bold tracking-wider overflow-hidden">
+    <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-2.5 w-full font-body font-semibold text-xs sm:text-sm tracking-wide">
       {icon && <span className="shrink-0">{icon}</span>}
-      <span className="truncate tracking-wide text-current">{children}</span>
+      <span className="tracking-wide text-current">{children}</span>
     </span>
   );
 

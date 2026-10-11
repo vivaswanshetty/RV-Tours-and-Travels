@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Phone, ArrowRight, Compass, ShieldCheck, MapPin, Radio, Plane, Clock, Award } from "lucide-react";
+import { Phone, ArrowRight, Compass, ShieldCheck, MapPin, Radio, Plane, Clock, Award, Car } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
 import { openTripBookingModal } from "./StickyQuoteTab";
@@ -50,8 +50,8 @@ export default function Hero() {
         </div>
 
         {/* Location & Availability Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#1C1914]/90 border border-[#B08D3F]/40 rounded-full text-xs tracking-wider text-[#E0C068] shadow-lg backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <div className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 bg-[#181510]/95 border border-[#B08D3F]/50 rounded-full text-xs sm:text-sm font-body font-medium text-[#F6F3EC] shadow-lg backdrop-blur-md">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
           <span>Based in Udupi &amp; Manipal · Available 24/7 Private Cab Service</span>
         </div>
 
@@ -70,51 +70,54 @@ export default function Hero() {
         </div>
 
         {/* Primary Action Buttons */}
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+        <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 max-w-xl mx-auto">
           <button
             type="button"
             onClick={() => openTripBookingModal()}
-            className="w-full sm:flex-1 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] font-bold text-xs sm:text-sm uppercase font-mono tracking-wider hover:brightness-110 shadow-xl transition-all active:scale-98 cursor-pointer"
+            className="flex-1 inline-flex items-center justify-center gap-3 h-14 px-7 rounded-xl bg-gradient-to-r from-[#B08D3F] via-[#C9A227] to-[#B08D3F] text-[#14120F] font-body font-bold text-sm sm:text-base tracking-wide uppercase hover:brightness-110 shadow-xl transition-all active:scale-98 cursor-pointer whitespace-nowrap"
           >
-            <WhatsAppIcon className="w-5 h-5" withOriginalColor />
+            <WhatsAppIcon className="w-5 h-5 shrink-0" withOriginalColor />
             <span>Plan &amp; Book on WhatsApp</span>
           </button>
 
           <a
             href={`tel:${BUSINESS_INFO.phoneClean}`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.15] hover:border-[#B08D3F] text-xs sm:text-sm font-mono text-[#F6F3EC] hover:text-[#E0C068] transition-all shadow-lg whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-3 h-14 px-7 rounded-xl bg-[#1C1914]/90 hover:bg-[#252019] border-2 border-[#B08D3F]/70 hover:border-[#E0C068] text-sm sm:text-base font-body font-bold text-[#F6F3EC] hover:text-[#E0C068] transition-all shadow-xl whitespace-nowrap"
           >
-            <Phone className="w-4 h-4 text-[#C9A227]" />
-            <span className="font-bold">Call: {BUSINESS_INFO.phoneDisplay}</span>
+            <Phone className="w-5 h-5 text-[#C9A227] shrink-0" />
+            <span>Call: {BUSINESS_INFO.phoneDisplay}</span>
           </a>
         </div>
 
         {/* Interactive Quick Route Chips */}
-        <div className="pt-4 space-y-2.5">
-          <span className="text-xs text-[#B08D3F] uppercase tracking-wider block font-semibold">
+        <div className="pt-4 space-y-3">
+          <span className="text-xs font-body uppercase tracking-wider text-[#B08D3F] block font-semibold">
             Popular Travel Routes:
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
             <button
               type="button"
               onClick={() => openTripBookingModal({ destination: "Mangalore Airport (IXE)", interest: "Airport Drop / Pickup" })}
-              className="px-3.5 py-1.5 bg-[#1C1914] hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/85 hover:text-[#E0C068] rounded-full text-xs transition-all duration-200 shadow-sm hover:scale-105 transform cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C1914]/90 hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/90 hover:text-[#E0C068] rounded-full text-xs sm:text-sm font-body font-medium transition-all shadow-sm hover:scale-105 cursor-pointer"
             >
-              ✈️ Mangalore Airport (IXE)
+              <Plane className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
+              <span>Mangalore Airport (IXE)</span>
             </button>
             <button
               type="button"
               onClick={() => openTripBookingModal({ destination: "Karnataka Temple Circuit", interest: "Karnataka Temple Circuit" })}
-              className="px-3.5 py-1.5 bg-[#1C1914] hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/85 hover:text-[#E0C068] rounded-full text-xs transition-all duration-200 shadow-sm hover:scale-105 transform cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C1914]/90 hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/90 hover:text-[#E0C068] rounded-full text-xs sm:text-sm font-body font-medium transition-all shadow-sm hover:scale-105 cursor-pointer"
             >
-              🛕 Saptha Kshetra Temple Tour
+              <Compass className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
+              <span>Saptha Kshetra Temple Tour</span>
             </button>
             <button
               type="button"
               onClick={() => openTripBookingModal({ destination: "Outstation Karnataka Road Trip", interest: "Custom Outstation Road Trip" })}
-              className="px-3.5 py-1.5 bg-[#1C1914] hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/85 hover:text-[#E0C068] rounded-full text-xs transition-all duration-200 shadow-sm hover:scale-105 transform cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C1914]/90 hover:bg-[#B08D3F]/20 border border-[#383229] hover:border-[#B08D3F] text-[#F6F3EC]/90 hover:text-[#E0C068] rounded-full text-xs sm:text-sm font-body font-medium transition-all shadow-sm hover:scale-105 cursor-pointer"
             >
-              🚗 All-Karnataka Outstation
+              <Car className="w-3.5 h-3.5 text-[#C9A227] shrink-0" />
+              <span>All-Karnataka Outstation</span>
             </button>
           </div>
         </div>
@@ -145,7 +148,7 @@ export default function Hero() {
               <div className="relative z-10 font-display text-xl sm:text-2xl font-bold text-[#E0C068] group-hover:text-white group-hover:scale-105 transform transition-all duration-200">
                 {item.value}
               </div>
-              <div className="relative z-10 font-mono text-[11px] text-[#F6F3EC]/70 group-hover:text-[#F6F3EC]/90 uppercase tracking-wider transition-colors">
+              <div className="relative z-10 font-body text-xs font-medium text-[#F6F3EC]/75 group-hover:text-[#F6F3EC] uppercase tracking-wide transition-colors">
                 {item.label}
               </div>
             </motion.div>

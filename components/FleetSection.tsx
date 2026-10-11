@@ -15,7 +15,7 @@ export default function FleetSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Fleet Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+          <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
             <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
             <span>OUR VEHICLE FLEET</span>
           </div>
@@ -45,7 +45,7 @@ export default function FleetSection() {
                     className="object-cover group-hover:scale-103 transition-transform duration-500 ease-out"
                   />
                   {/* Segment Badge */}
-                  <div className="absolute top-3 right-3 bg-[#14120F]/85 border border-[#B08D3F]/60 px-2.5 py-1 rounded text-[10px] font-mono text-[#E0C068] tracking-wider uppercase backdrop-blur-sm flex items-center gap-1.5 shadow-md">
+                  <div className="absolute top-3 right-3 bg-[#14120F]/85 border border-[#B08D3F]/60 px-2.5 py-1 rounded text-xs font-body text-[#E0C068] tracking-wide uppercase backdrop-blur-sm flex items-center gap-1.5 shadow-md font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B]" />
                     <span>{vehicle.placeholderLabel}</span>
                   </div>
@@ -62,20 +62,20 @@ export default function FleetSection() {
                   </p>
 
                   {/* Capacity Specs Pills */}
-                  <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#DCD4C4]/70 text-xs font-mono">
+                  <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#DCD4C4]/70 text-xs font-body font-medium">
                     <div className="p-2 bg-[#F6F3EC] rounded-md text-center border border-[#DCD4C4] flex flex-col items-center justify-center gap-1">
                       <Users className="w-4 h-4 text-[#1F4C4C]" />
-                      <span className="text-[10px] text-[#14120F]/85 font-medium leading-tight">{vehicle.capacity.passengers}</span>
+                      <span className="text-[11px] text-[#14120F]/85 font-medium leading-tight">{vehicle.capacity.passengers}</span>
                     </div>
 
                     <div className="p-2 bg-[#F6F3EC] rounded-md text-center border border-[#DCD4C4] flex flex-col items-center justify-center gap-1">
                       <Briefcase className="w-4 h-4 text-[#1F4C4C]" />
-                      <span className="text-[10px] text-[#14120F]/85 font-medium leading-tight">{vehicle.capacity.luggage}</span>
+                      <span className="text-[11px] text-[#14120F]/85 font-medium leading-tight">{vehicle.capacity.luggage}</span>
                     </div>
 
                     <div className="p-2 bg-[#F6F3EC] rounded-md text-center border border-[#DCD4C4] flex flex-col items-center justify-center gap-1">
                       <Wind className="w-4 h-4 text-[#1F4C4C]" />
-                      <span className="text-[10px] text-[#14120F]/85 font-medium leading-tight">Full AC</span>
+                      <span className="text-[11px] text-[#14120F]/85 font-medium leading-tight">Full AC</span>
                     </div>
                   </div>
                 </div>
@@ -110,14 +110,14 @@ export default function FleetSection() {
           <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
             <Link
               href="/fleet"
-              className="px-4 py-2.5 bg-[#F6F3EC] hover:bg-[#EFEAE0] text-[#14120F] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-lg font-mono text-xs uppercase tracking-wider transition-all"
+              className="px-4 py-2.5 bg-[#F6F3EC] hover:bg-[#EFEAE0] text-[#14120F] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-lg font-body text-xs uppercase font-semibold tracking-wide transition-all"
             >
               View Full Specs ➔
             </Link>
             <button
               type="button"
               onClick={() => openTripBookingModal()}
-              className="px-4 py-2.5 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-colors shadow-sm cursor-pointer"
+              className="px-4 py-2.5 bg-[#B08D3F] hover:bg-[#C9A227] text-[#14120F] rounded-lg font-body text-xs font-bold uppercase tracking-wide transition-colors shadow-sm cursor-pointer"
             >
               Plan Your Trip →
             </button>

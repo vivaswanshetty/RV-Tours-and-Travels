@@ -23,7 +23,7 @@ export default function FloatingWhatsApp() {
                 <div className="font-display text-xs font-bold text-[#F6F3EC]">
                   {BUSINESS_INFO.proprietor}
                 </div>
-                <div className="font-mono text-[9px] text-[#C9A227] flex items-center gap-1">
+                <div className="font-body text-[10px] text-[#C9A227] flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B]" />
                   <span>Online · RV Tours &amp; Travels</span>
                 </div>
@@ -50,7 +50,7 @@ export default function FloatingWhatsApp() {
                 setIsOpen(false);
                 openTripBookingModal();
               }}
-              className="w-full py-2.5 px-3 bg-[#1F4C4C] hover:bg-[#2E6B6B] text-[#F6F3EC] font-mono text-xs uppercase tracking-wider rounded font-bold flex items-center justify-center gap-2 transition-colors border border-[#B08D3F] cursor-pointer shadow-md"
+              className="w-full py-2.5 px-3 bg-[#1F4C4C] hover:bg-[#2E6B6B] text-[#F6F3EC] font-body text-xs uppercase tracking-wide rounded-lg font-bold flex items-center justify-center gap-2 transition-colors border border-[#B08D3F] cursor-pointer shadow-md"
             >
               <WhatsAppIcon className="w-4 h-4" withOriginalColor />
               <span>Fill Form &amp; Send to WhatsApp</span>
@@ -61,7 +61,7 @@ export default function FloatingWhatsApp() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="w-full py-1.5 px-2 text-center text-[#E0C068] hover:text-white font-mono text-[11px] block transition-colors"
+              className="w-full py-1.5 px-2 text-center text-[#E0C068] hover:text-white font-body text-xs font-medium block transition-colors"
             >
               Or direct WhatsApp chat without form ➔
             </a>
@@ -88,7 +88,7 @@ export default function FloatingWhatsApp() {
         </button>
 
         {/* Quick Hover Tooltip */}
-        <div className="absolute right-16 top-1/2 -translate-y-1/2 bg-[#14120F] text-[#F6F3EC] border border-[#383229] px-3 py-1.5 rounded font-mono text-[11px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg hidden sm:block">
+        <div className="absolute right-16 top-1/2 -translate-y-1/2 bg-[#14120F] text-[#F6F3EC] border border-[#383229] px-3 py-1.5 rounded-md font-body text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg hidden sm:block">
           Contact R Ramesh
         </div>
       </div>

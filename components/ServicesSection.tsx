@@ -22,7 +22,7 @@ export default function ServicesSection() {
         {/* Services Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+            <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
               <span>SERVICES &amp; TRANSFERS</span>
             </div>
@@ -34,7 +34,7 @@ export default function ServicesSection() {
             </p>
           </div>
 
-          <div className="shrink-0 font-mono text-xs text-[#14120F]/60">
+          <div className="shrink-0 font-body text-xs text-[#14120F]/60">
             <span className="text-[#B08D3F] font-bold">4 CORE SECTORS</span> · DIRECT BOOKING
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function ServicesSection() {
                   <div className="w-12 h-12 rounded-lg bg-[#F6F3EC] border border-[#DCD4C4] flex items-center justify-center group-hover:border-[#B08D3F] transition-colors">
                     {iconMap[service.icon]}
                   </div>
-                  <span className="font-mono text-xs font-bold text-[#1F4C4C] uppercase tracking-wider">
+                  <span className="font-body text-xs font-bold text-[#1F4C4C] uppercase tracking-wider">
                     0{index + 1}
                   </span>
                 </div>
@@ -91,7 +91,7 @@ export default function ServicesSection() {
         <div className="mt-12 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#14120F] text-[#E0C068] hover:text-[#F6F3EC] border border-[#B08D3F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:bg-[#1C1914]"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#14120F] text-[#E0C068] hover:text-[#F6F3EC] border border-[#B08D3F] rounded-lg font-body text-xs font-bold uppercase tracking-wide transition-all shadow-md hover:bg-[#1C1914]"
           >
             <span>View All Detailed Services &amp; Routes</span>
             <span>➔</span>

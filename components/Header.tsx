@@ -57,7 +57,7 @@ export default function Header() {
             </span>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B] animate-pulse" />
-              <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-[#B08D3F] uppercase font-semibold">
+              <span className="font-body text-[10px] tracking-wider text-[#B08D3F] uppercase font-semibold">
                 {BUSINESS_INFO.tagline} · UDUPI
               </span>
             </div>
@@ -75,7 +75,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider rounded-full transition-colors duration-200 flex items-center gap-1 whitespace-nowrap focus:outline-none"
+                className="relative px-3.5 py-1.5 text-xs font-body font-semibold uppercase tracking-wide rounded-full transition-colors duration-200 flex items-center gap-1 whitespace-nowrap focus:outline-none"
               >
                 {isActive && (
                   <motion.div
@@ -102,7 +102,7 @@ export default function Header() {
           {/* Dedicated FAQ Link */}
           <Link
             href="/faq"
-            className="relative px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider rounded-full transition-colors duration-200 flex items-center gap-1.5 whitespace-nowrap focus:outline-none"
+            className="relative px-3.5 py-1.5 text-xs font-body font-semibold uppercase tracking-wide rounded-full transition-colors duration-200 flex items-center gap-1.5 whitespace-nowrap focus:outline-none"
           >
             {pathname === "/faq" && (
               <motion.div
@@ -131,7 +131,7 @@ export default function Header() {
           {/* Quick Call Pill */}
           <a
             href={`tel:${BUSINESS_INFO.phoneClean}`}
-            className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.12] text-xs font-mono text-[#F6F3EC] hover:border-[#B08D3F] hover:bg-white/[0.1] hover:text-[#E0C068] transition-all shadow-sm whitespace-nowrap shrink-0 group"
+            className="hidden xl:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.12] text-xs font-body font-medium text-[#F6F3EC] hover:border-[#B08D3F] hover:bg-white/[0.1] hover:text-[#E0C068] transition-all shadow-sm whitespace-nowrap shrink-0 group"
             title="Call R Ramesh directly"
           >
             <div className="w-4 h-4 rounded-full bg-[#14120F] border border-[#B08D3F]/60 flex items-center justify-center shrink-0 group-hover:border-[#E0C068]">
@@ -156,7 +156,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => openTripBookingModal()}
-            className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[#1F1A13] to-[#120F0C] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] hover:shadow-[0_4px_20px_rgba(176,141,63,0.35)] transition-all duration-200 font-mono text-xs font-bold uppercase tracking-wider whitespace-nowrap shrink-0 cursor-pointer"
+            className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[#1F1A13] to-[#120F0C] text-[#F6F3EC] border border-[#B08D3F] hover:border-[#E0C068] hover:shadow-[0_4px_20px_rgba(176,141,63,0.35)] transition-all duration-200 font-body text-xs font-bold uppercase tracking-wide whitespace-nowrap shrink-0 cursor-pointer"
           >
             <WhatsAppIcon className="w-4 h-4" withOriginalColor />
             <span className="text-[#F6F3EC] group-hover:text-white">Plan Your Trip</span>
@@ -188,7 +188,7 @@ export default function Header() {
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="pointer-events-auto lg:hidden max-w-7xl mx-auto mt-2 bg-[#12100D]/95 backdrop-blur-2xl border border-white/12 rounded-2xl p-4 space-y-4 animate-in slide-in-from-top-3 duration-200 shadow-2xl">
-          <div className="flex flex-col divide-y divide-white/10 font-mono text-sm">
+          <div className="flex flex-col divide-y divide-white/10 font-body text-sm">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -196,7 +196,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`py-3 flex items-center justify-between uppercase tracking-wider font-bold ${
+                  className={`py-3 flex items-center justify-between uppercase tracking-wider font-semibold ${
                     isActive ? "text-[#E0C068]" : "text-white hover:text-[#E0C068]"
                   }`}
                 >
@@ -209,7 +209,7 @@ export default function Header() {
             <Link
               href="/faq"
               onClick={() => setMobileMenuOpen(false)}
-              className={`py-3 flex items-center justify-between uppercase tracking-wider font-bold ${
+              className={`py-3 flex items-center justify-between uppercase tracking-wider font-semibold ${
                 pathname === "/faq" ? "text-[#E0C068]" : "text-white hover:text-[#E0C068]"
               }`}
             >
@@ -228,7 +228,7 @@ export default function Header() {
                 setMobileMenuOpen(false);
                 openTripBookingModal();
               }}
-              className="w-full py-3 px-4 bg-gradient-to-br from-[#1F1A13] to-[#120F0C] border border-[#B08D3F] hover:border-[#E0C068] text-[#F6F3EC] font-mono text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2 rounded-xl transition-all shadow-lg cursor-pointer"
+              className="w-full py-3 px-4 bg-gradient-to-br from-[#1F1A13] to-[#120F0C] border border-[#B08D3F] hover:border-[#E0C068] text-[#F6F3EC] font-body text-xs uppercase font-bold tracking-wide flex items-center justify-center gap-2 rounded-xl transition-all shadow-lg cursor-pointer"
             >
               <WhatsAppIcon className="w-4 h-4" withOriginalColor />
               <span>Plan Your Trip</span>
@@ -236,14 +236,14 @@ export default function Header() {
 
             <a
               href={`tel:${BUSINESS_INFO.phoneClean}`}
-              className="w-full py-3 px-4 bg-white/[0.05] border border-white/10 text-[#F6F3EC] font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 rounded-xl hover:border-[#B08D3F] whitespace-nowrap transition-colors"
+              className="w-full py-3 px-4 bg-white/[0.05] border border-white/10 text-[#F6F3EC] font-body text-xs uppercase tracking-wide font-medium flex items-center justify-center gap-2.5 rounded-xl hover:border-[#B08D3F] whitespace-nowrap transition-colors"
             >
               <Phone className="w-4 h-4 text-[#B08D3F] shrink-0" />
               <span className="whitespace-nowrap font-bold">Direct Call: {BUSINESS_INFO.phoneDisplay}</span>
             </a>
           </div>
 
-          <div className="text-center pt-1 font-mono text-[10px] text-[#B08D3F]/80 uppercase tracking-widest flex items-center justify-center gap-2">
+          <div className="text-center pt-1 font-body text-xs text-[#B08D3F]/80 uppercase tracking-wider flex items-center justify-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#2E6B6B]" />
             <span>{BUSINESS_INFO.proprietor} · Udupi, Karnataka</span>
           </div>

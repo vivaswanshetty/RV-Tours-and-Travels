@@ -20,7 +20,7 @@ export default function FeaturedPackagesSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+            <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
               <span>FEATURED TOUR PACKAGES</span>
             </div>
@@ -35,7 +35,7 @@ export default function FeaturedPackagesSection() {
           <div>
             <Link
               href="/packages"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-[#EFEAE0] text-[#14120F] hover:text-[#B08D3F] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-[#EFEAE0] text-[#14120F] hover:text-[#B08D3F] border border-[#DCD4C4] hover:border-[#B08D3F] rounded-lg font-body text-xs font-bold uppercase tracking-wide transition-all shadow-sm"
             >
               <span>View All 2026 Tour Packages</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -75,8 +75,8 @@ export default function FeaturedPackagesSection() {
                   </div>
 
                   {/* Key stops snippet */}
-                  <div className="p-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg space-y-1 font-mono text-xs text-[#14120F]/80">
-                    <span className="text-[10px] text-[#1F4C4C] uppercase font-bold block">ROUTE STOPS:</span>
+                  <div className="p-3 bg-[#F6F3EC] border border-[#DCD4C4] rounded-lg space-y-1 font-body text-xs text-[#14120F]/80">
+                    <span className="text-[11px] text-[#1F4C4C] uppercase font-semibold block tracking-wider">ROUTE STOPS:</span>
                     <p className="truncate text-xs text-[#14120F]/75">{pkg.stops.join(" ➔ ")}</p>
                   </div>
                 </div>
@@ -108,13 +108,13 @@ export default function FeaturedPackagesSection() {
         <div className="mt-12 p-6 bg-[#EFEAE0] border border-[#DCD4C4] rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
           <div className="flex items-center gap-3">
             <Compass className="w-5 h-5 text-[#1F4C4C] shrink-0" />
-            <span className="font-mono text-xs text-[#14120F]/80">
+            <span className="font-body text-xs text-[#14120F]/80">
               Want a customized multi-day itinerary across Karnataka or neighboring states? We arrange custom vehicles and route scheduling.
             </span>
           </div>
           <Link
             href="/packages"
-            className="shrink-0 text-xs font-mono text-[#B08D3F] hover:underline font-bold uppercase tracking-wider"
+            className="shrink-0 text-xs font-body text-[#B08D3F] hover:underline font-bold uppercase tracking-wide"
           >
             Explore Complete Travel Guide ➔
           </Link>

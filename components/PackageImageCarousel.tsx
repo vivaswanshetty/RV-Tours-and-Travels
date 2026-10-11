@@ -146,12 +146,12 @@ export default function PackageImageCarousel({
         {/* Left Side: Package Badge & Photo Counter */}
         <div className="flex items-center gap-2 flex-wrap">
           {packageBadge && (
-            <span className="inline-block font-mono text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 bg-[#14120F]/90 text-[#E0C068] border border-[#B08D3F]/60 rounded backdrop-blur-sm shadow-md">
+            <span className="inline-block font-body text-xs font-semibold tracking-wide uppercase px-2.5 py-1 bg-[#14120F]/90 text-[#E0C068] border border-[#B08D3F]/60 rounded-lg backdrop-blur-sm shadow-md">
               {packageBadge}
             </span>
           )}
           {hasMultiple && (
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-mono text-[10px] text-[#F6F3EC]/90 font-semibold tracking-wide shadow-md pointer-events-auto">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-body text-xs text-[#F6F3EC]/90 font-medium tracking-wide shadow-md pointer-events-auto">
               <Camera className="w-3 h-3 text-[#C9A227]" />
               <span>
                 {currentIndex + 1}/{totalSlides}
@@ -180,7 +180,7 @@ export default function PackageImageCarousel({
         </div>
 
         {/* Right Side: Duration Badge */}
-        <div className="bg-[#14120F]/90 border border-white/20 px-2.5 py-1 rounded text-[10px] font-mono text-[#F6F3EC] backdrop-blur-sm flex items-center gap-1 shadow-md shrink-0">
+        <div className="bg-[#14120F]/90 border border-white/20 px-2.5 py-1 rounded-lg text-xs font-body font-medium text-[#F6F3EC] backdrop-blur-sm flex items-center gap-1.5 shadow-md shrink-0">
           <Clock className="w-3.5 h-3.5 text-[#C9A227]" />
           <span>{durationBadge}</span>
         </div>
@@ -211,8 +211,8 @@ export default function PackageImageCarousel({
       {/* Bottom Row: Landmark Label (Dedicated Full Width, Zero Overlap) */}
       {currentSlide.label && (
         <div className="absolute bottom-2.5 inset-x-3 z-10 pointer-events-auto flex items-end">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-mono text-[10px] sm:text-[10.5px] text-[#E0C068] font-medium tracking-wide shadow-md max-w-full">
-            <MapPin className="w-2.5 h-2.5 text-[#C9A227] shrink-0" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#14120F]/90 backdrop-blur-md border border-white/20 font-body text-xs text-[#E0C068] font-semibold tracking-wide shadow-md max-w-full">
+            <MapPin className="w-2.5 h-2.5 text-[#C9A227]" />
             <span className="break-words leading-tight">{currentSlide.label}</span>
           </div>
         </div>

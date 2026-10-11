@@ -26,7 +26,7 @@ export default function Footer() {
               <div className="font-display text-xl font-bold text-[#F6F3EC] tracking-wider">
                 RV TOURS &amp; TRAVELS
               </div>
-              <div className="font-mono text-xs text-[#C9A227] tracking-widest uppercase">
+              <div className="font-body text-xs text-[#C9A227] tracking-wider uppercase font-semibold">
                 {BUSINESS_INFO.tagline} · UDUPI, KARNATAKA
               </div>
             </div>
@@ -34,14 +34,14 @@ export default function Footer() {
 
           {/* Quick Dispatch Badge */}
           <div className="flex items-center gap-3">
-            <div className="px-3.5 py-1.5 bg-[#1C1914] border border-[#383229] rounded font-mono text-xs text-[#E0C068] flex items-center gap-2">
+            <div className="px-3.5 py-1.5 bg-[#1C1914] border border-[#383229] rounded-lg font-body text-xs text-[#E0C068] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#2E6B6B]" />
               <span>Udupi, Coastal Karnataka</span>
             </div>
 
             <button
               onClick={scrollToTop}
-              className="p-2.5 bg-[#1C1914] border border-[#383229] rounded text-[#F6F3EC] hover:text-[#C9A227] hover:border-[#B08D3F] transition-colors focus:outline-none"
+              className="p-2.5 bg-[#1C1914] border border-[#383229] rounded-lg text-[#F6F3EC] hover:text-[#C9A227] hover:border-[#B08D3F] transition-colors focus:outline-none"
               aria-label="Scroll back to top"
               title="Return to top"
             >
@@ -55,26 +55,26 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Column 1: Operator Profile */}
-          <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
+          <div className="space-y-3 font-body text-xs">
+            <div className="text-[#B08D3F] uppercase tracking-wider font-semibold">
               ABOUT THE OPERATOR
             </div>
-            <div className="p-3 bg-[#1C1914] border border-[#383229]/80 rounded space-y-1">
-              <div className="text-[10px] text-[#F6F3EC]/60">PROPRIETOR</div>
+            <div className="p-3 bg-[#1C1914] border border-[#383229]/80 rounded-lg space-y-1">
+              <div className="text-[11px] text-[#F6F3EC]/60">PROPRIETOR</div>
               <div className="text-sm font-bold text-[#F6F3EC] font-display">{BUSINESS_INFO.proprietor}</div>
-              <div className="text-[11px] text-[#C9A227]">Chauffeur &amp; Tour Management</div>
+              <div className="text-xs text-[#C9A227]">Chauffeur &amp; Tour Management</div>
             </div>
-            <p className="text-[11px] text-[#F6F3EC]/70 leading-relaxed font-body">
+            <p className="text-xs text-[#F6F3EC]/70 leading-relaxed font-body">
               Boutique, owner-supervised tour &amp; taxi operator serving coastal Karnataka and pan-state routes.
             </p>
           </div>
 
           {/* Column 2: Direct Lines */}
-          <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
+          <div className="space-y-3 font-body text-xs">
+            <div className="text-[#B08D3F] uppercase tracking-wider font-semibold">
               DIRECT CONTACT
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <button
                 type="button"
                 onClick={() => openTripBookingModal()}
@@ -97,14 +97,14 @@ export default function Footer() {
                 className="flex items-center gap-2.5 text-[#F6F3EC] hover:text-[#C9A227] transition-colors break-all"
               >
                 <Mail className="w-4 h-4 text-[#C9A227] shrink-0" />
-                <span className="text-[11px]">{BUSINESS_INFO.email}</span>
+                <span className="text-xs">{BUSINESS_INFO.email}</span>
               </a>
             </div>
           </div>
 
           {/* Column 3: Site Navigation & Subpages */}
-          <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
+          <div className="space-y-3 font-body text-xs">
+            <div className="text-[#B08D3F] uppercase tracking-wider font-semibold">
               QUICK LINKS
             </div>
             <ul className="space-y-2">
@@ -132,23 +132,23 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Base Location */}
-          <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#B08D3F] uppercase tracking-widest font-bold">
+          <div className="space-y-3 font-body text-xs">
+            <div className="text-[#B08D3F] uppercase tracking-wider font-semibold">
               BASE LOCATION
             </div>
             <div className="flex items-start gap-2.5 text-[#F6F3EC]/80">
               <MapPin className="w-4 h-4 text-[#C9A227] shrink-0 mt-0.5" />
               <div>
                 <div className="font-bold text-[#F6F3EC]">{BUSINESS_INFO.location}</div>
-                <div className="text-[11px] text-[#E0C068]">{BUSINESS_INFO.coordinates}</div>
-                <div className="text-[11px] text-[#F6F3EC]/60 mt-1">Mangalore Airport (IXE) Connect</div>
+                <div className="text-xs text-[#E0C068]">{BUSINESS_INFO.coordinates}</div>
+                <div className="text-xs text-[#F6F3EC]/60 mt-1">Mangalore Airport (IXE) Connect</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Legal & Policy Manifest Row */}
-        <div className="pt-8 border-t border-[#383229] flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-[#F6F3EC]/70">
+        <div className="pt-8 border-t border-[#383229] flex flex-col sm:flex-row items-center justify-between gap-4 font-body text-xs text-[#F6F3EC]/70">
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <Link href="/privacy-policy" className="hover:text-[#C9A227] transition-colors underline-offset-4 hover:underline">
               Privacy Policy
@@ -171,7 +171,7 @@ export default function Footer() {
         </div>
 
         {/* Boarding Pass Bottom Perforation & Copyright */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-[10px] text-[#F6F3EC]/50">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 font-body text-xs text-[#F6F3EC]/50">
           <div>
             © {new Date().getFullYear()} {BUSINESS_INFO.name}. All rights reserved. Managed by {BUSINESS_INFO.proprietor}.
           </div>

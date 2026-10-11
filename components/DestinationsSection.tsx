@@ -20,7 +20,7 @@ export default function DestinationsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#1F4C4C]">
+            <div className="inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#1F4C4C]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#1F4C4C]" />
               <span>POPULAR DESTINATIONS</span>
             </div>
@@ -32,7 +32,7 @@ export default function DestinationsSection() {
             </p>
           </div>
 
-          <div className="shrink-0 font-mono text-xs text-[#14120F]/60">
+          <div className="shrink-0 font-body text-xs text-[#14120F]/60">
             <span className="text-[#B08D3F] font-bold">4 CORE SECTORS</span> · DIRECT BOOKING
           </div>
         </div>
@@ -68,15 +68,15 @@ export default function DestinationsSection() {
 
               {/* Action Base */}
               <div className="mt-4 border-t border-[#DCD4C4] p-6 bg-[#E5DFD1]/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="font-mono text-xs text-[#14120F]/70 text-center sm:text-left">
-                  <div className="text-[10px] text-[#1F4C4C] uppercase tracking-widest font-bold">DIRECT OWNER BOOKING</div>
+                <div className="font-body text-xs text-[#14120F]/70 text-center sm:text-left">
+                  <div className="text-[11px] text-[#1F4C4C] uppercase tracking-wider font-semibold">DIRECT OWNER BOOKING</div>
                   <div>Direct with Proprietor R Ramesh · No Middlemen</div>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => openTripBookingModal({ destination: featuredDestination.name, interest: featuredDestination.name })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] font-mono text-xs uppercase font-bold tracking-wider transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#14120F] hover:bg-[#B08D3F] text-[#E0C068] hover:text-[#14120F] border border-[#B08D3F] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4" withOriginalColor />
                   <span>Plan This Trip</span>
@@ -120,7 +120,7 @@ export default function DestinationsSection() {
                       <button
                         type="button"
                         onClick={() => openTripBookingModal({ destination: dest.name, interest: dest.name })}
-                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#F6F3EC] hover:bg-[#B08D3F] text-[#14120F] hover:text-[#14120F] border border-[#DCD4C4] hover:border-[#B08D3F] font-mono text-xs uppercase font-bold tracking-wider transition-colors cursor-pointer"
+                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#F6F3EC] hover:bg-[#B08D3F] text-[#14120F] hover:text-[#14120F] border border-[#DCD4C4] hover:border-[#B08D3F] font-body text-xs uppercase font-bold tracking-wide transition-colors cursor-pointer"
                       >
                         <WhatsAppIcon className="w-3.5 h-3.5" withOriginalColor />
                         <span>Plan This Trip</span>
