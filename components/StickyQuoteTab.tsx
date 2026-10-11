@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   X,
   Compass,
@@ -248,8 +249,14 @@ export default function StickyQuoteTab() {
             {/* Window Top Title Bar */}
             <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-[#383229] bg-[#181510] shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#14120F] border border-[#B08D3F] flex items-center justify-center font-display text-base font-bold text-[#C9A227] shadow-inner">
-                  RV
+                <div className="relative h-11 aspect-[1024/682] rounded-xl overflow-hidden bg-[#FAF7EF] border border-[#B08D3F] p-0.5 shadow-sm shrink-0">
+                  <Image
+                    src="/logo.png"
+                    alt="RV Tours & Travels Official Logo"
+                    fill
+                    sizes="120px"
+                    className="object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="font-display text-lg sm:text-xl font-bold text-[#F6F3EC] tracking-wide">

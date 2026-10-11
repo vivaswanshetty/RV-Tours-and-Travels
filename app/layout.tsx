@@ -116,7 +116,7 @@ const jsonLdSchema = {
       name: "RV Tours and Travels",
       alternateName: ["RV Tours & Travels", "RV Travels Udupi"],
       url: "https://rvtravelsudupi.com",
-      logo: "https://rvtravelsudupi.com/icon.png",
+      logo: "https://rvtravelsudupi.com/logo.png",
       image: "https://rvtravelsudupi.com/og-image.jpg",
       description: "Reliable boutique chauffeur and taxi service headquartered in Udupi, Karnataka. Offering custom tour packages 2026, airport transfers (Mangalore IXE), temple pilgrimages, and outstation trips across Karnataka.",
       telephone: "+91-98455-11169",

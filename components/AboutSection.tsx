@@ -26,8 +26,14 @@ export default function AboutSection() {
               {/* Credential Header Bar */}
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#DCD4C4]">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded bg-[#14120F] border border-[#B08D3F] flex items-center justify-center font-display text-sm font-bold text-[#E0C068]">
-                    RV
+                  <div className="relative h-8 aspect-[1024/682] rounded bg-[#FAF7EF] border border-[#B08D3F] p-0.5 shadow-sm overflow-hidden shrink-0">
+                    <Image
+                      src="/logo.png"
+                      alt="RV Tours & Travels Official Logo"
+                      fill
+                      sizes="60px"
+                      className="object-contain"
+                    />
                   </div>
                   <div>
                     <div className="font-body text-[11px] uppercase tracking-wider text-[#1F4C4C] font-semibold">DRIVER CREDENTIALS</div>

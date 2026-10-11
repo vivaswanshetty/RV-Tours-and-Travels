@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Compass, Home, Phone, ArrowLeft } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import TicketButton from "@/components/TicketButton";
@@ -18,8 +19,15 @@ export default function NotFound() {
           href="/"
           className="flex items-center gap-3 group focus:outline-none"
         >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-b from-[#2A241C] to-[#12100C] border border-[#B08D3F] flex items-center justify-center font-display text-lg font-bold text-[#C9A227] shadow-[0_0_15px_rgba(201,162,39,0.3)]">
-            RV
+          <div className="relative h-11 aspect-[1024/682] rounded-lg overflow-hidden bg-[#FAF7EF] border border-[#B08D3F] p-0.5 shadow-sm shrink-0">
+            <Image
+              src="/logo.png"
+              alt="RV Tours & Travels Official Logo"
+              fill
+              priority
+              sizes="120px"
+              className="object-contain"
+            />
           </div>
           <div>
             <div className="font-display text-base font-bold text-[#F6F3EC] group-hover:text-[#E0C068] transition-colors">

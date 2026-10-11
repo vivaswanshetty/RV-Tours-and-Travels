@@ -228,12 +228,14 @@ const ogSvg = `
 async function generateAssets() {
   console.log('Generating image assets...');
 
-  // Logo PNG & SVG
+  // Logo PNG & SVG (preserve official logo if present)
   fs.writeFileSync(path.join(publicDir, 'logo.svg'), logoSvg.trim());
   fs.writeFileSync(path.join(publicDir, 'logo-dark.svg'), logoDarkSvg.trim());
-  await sharp(Buffer.from(logoSvg)).png().toFile(path.join(publicDir, 'logo.png'));
+  if (!fs.existsSync(path.join(publicDir, 'logo.png'))) {
+    await sharp(Buffer.from(logoSvg)).png().toFile(path.join(publicDir, 'logo.png'));
+  }
   await sharp(Buffer.from(logoDarkSvg)).png().toFile(path.join(publicDir, 'logo-white.png'));
-  console.log('✓ Logo assets generated');
+  console.log('✓ Logo assets verified');
 
   // Hero Image
   await sharp(Buffer.from(heroSvg)).jpeg({ quality: 90 }).toFile(path.join(publicDir, 'hero-road.jpg'));
@@ -250,9 +252,11 @@ async function generateAssets() {
   await sharp(Buffer.from(tempoSvg)).jpeg({ quality: 90 }).toFile(path.join(publicDir, 'fleet-tempo.jpg'));
   console.log('✓ Fleet placeholder images generated');
 
-  // OpenGraph Image
-  await sharp(Buffer.from(ogSvg)).jpeg({ quality: 90 }).toFile(path.join(publicDir, 'og-image.jpg'));
-  console.log('✓ OpenGraph image generated');
+  // OpenGraph Image (preserve official branding if present)
+  if (!fs.existsSync(path.join(publicDir, 'og-image.jpg'))) {
+    await sharp(Buffer.from(ogSvg)).jpeg({ quality: 90 }).toFile(path.join(publicDir, 'og-image.jpg'));
+  }
+  console.log('✓ OpenGraph image verified');
 
   console.log('All static assets created successfully in /public!');
 }

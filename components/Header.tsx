@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { Phone, Menu, X, ArrowUpRight, HelpCircle } from "lucide-react";
@@ -43,11 +44,16 @@ export default function Header() {
           className="group flex items-center gap-2.5 sm:gap-3 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08D3F] rounded-full"
           aria-label={`${BUSINESS_INFO.name} Home`}
         >
-          {/* Gold Monogram Badge */}
-          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-b from-[#2A241C] to-[#12100C] border border-[#B08D3F]/80 flex items-center justify-center shadow-[0_2px_10px_rgba(176,141,63,0.25)] group-hover:border-[#E0C068] group-hover:shadow-[0_0_15px_rgba(201,162,39,0.4)] transition-all">
-            <span className="font-display text-base sm:text-lg font-bold text-[#C9A227] tracking-wider">
-              RV
-            </span>
+          {/* Official Brand Logo Badge */}
+          <div className="relative h-10 sm:h-11 aspect-[1024/682] rounded-lg overflow-hidden bg-[#FAF7EF] border border-[#B08D3F]/70 shadow-[0_2px_10px_rgba(176,141,63,0.2)] p-0.5 group-hover:border-[#E0C068] group-hover:shadow-[0_0_15px_rgba(201,162,39,0.35)] transition-all shrink-0">
+            <Image
+              src="/logo.png"
+              alt="RV Tours & Travels Official Logo"
+              fill
+              priority
+              sizes="100px"
+              className="object-contain"
+            />
           </div>
 
           {/* Wordmark */}

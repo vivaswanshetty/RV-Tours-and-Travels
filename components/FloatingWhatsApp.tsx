@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { X } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
@@ -16,8 +17,14 @@ export default function FloatingWhatsApp() {
         <div className="bg-[#14120F] text-[#F6F3EC] border border-[#B08D3F] rounded-lg p-4 shadow-2xl w-72 sm:w-80 animate-in fade-in slide-in-from-bottom-3 duration-200">
           <div className="flex items-center justify-between pb-3 border-b border-[#383229] mb-3">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-[#1F4C4C] flex items-center justify-center text-xs font-bold text-[#F6F3EC] border border-[#B08D3F]">
-                RV
+              <div className="relative h-8 aspect-[1024/682] rounded-md overflow-hidden bg-[#FAF7EF] border border-[#B08D3F] p-0.5 shadow-sm shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="RV Tours & Travels Official Logo"
+                  fill
+                  sizes="60px"
+                  className="object-contain"
+                />
               </div>
               <div>
                 <div className="font-display text-xs font-bold text-[#F6F3EC]">

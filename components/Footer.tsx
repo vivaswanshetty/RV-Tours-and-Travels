@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, ArrowUp, Compass, HelpCircle } from "lucide-react";
 import { BUSINESS_INFO, NAV_LINKS } from "@/lib/constants";
 import WhatsAppIcon from "./WhatsAppIcon";
@@ -19,8 +20,14 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Brand & Monogram */}
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#1C1914] border border-[#B08D3F] rounded flex items-center justify-center font-display text-2xl font-bold text-[#C9A227]">
-              RV
+            <div className="relative h-14 sm:h-16 aspect-[1024/682] rounded-xl overflow-hidden bg-[#FAF7EF] border border-[#B08D3F] p-1 shadow-md shrink-0">
+              <Image
+                src="/logo.png"
+                alt="RV Tours & Travels Official Logo"
+                fill
+                sizes="150px"
+                className="object-contain"
+              />
             </div>
             <div>
               <div className="font-display text-xl font-bold text-[#F6F3EC] tracking-wider">
